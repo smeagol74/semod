@@ -1,4 +1,4 @@
-package example
+package example.business
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.business.structure.passive.{BusinessObject, Contract, Representation}

@@ -1,12 +1,22 @@
 package org.opengroup.archimate.application.behavior
 
-import org.opengroup.archimate.element.BehaviorElement
+import org.opengroup.archimate.application.structure.passive.DataObject
+import org.opengroup.archimate.element.{BehaviorElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.Application
 
 case class ApplicationService(
-	id: String = "",
-	name: String = "",
+	name: String,
 	desc: String = ""
-) extends Application with BehaviorElement {
+) extends Application
+	with BehaviorElement
+	with StrategyCoreStructureBehaviorElement {
+
+	val id: String = ""
+
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[ApplicationService] {
+		private[archimate] implicit val tt: ApplicationService = ApplicationService.this
+
+		def accesses(dst: DataObject): ApplicationService = tt._rel.accesses(dst)
+	}
 
 }
