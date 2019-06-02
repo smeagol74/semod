@@ -14,6 +14,10 @@ case class ApplicationCollaboration(
 
 	object rel extends StrategyCoreStructureBehaviorElementRelationships[ApplicationCollaboration] {
 		private[archimate] implicit val tt: ApplicationCollaboration = ApplicationCollaboration.this
+
+		def aggregates(dst: ApplicationComponent): ApplicationCollaboration = tt._rel.aggregates(dst)
+
+		def isSpecializationOf(dst: ApplicationComponent): ApplicationCollaboration = tt._rel.isSpecializationOf(dst)
 	}
 
 }
