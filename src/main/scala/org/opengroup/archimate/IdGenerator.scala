@@ -43,6 +43,44 @@ object IdGenerator {
 	}
 
 	object physical {
+		def material: String = _next("physical.material", "PM")
+
+		def facility: String = _next("physical.facility", "PF")
+
+		def equipment: String = _next("physical.equipment", "PE")
+
+		def distributionNetwork: String = _next("physical.distributionNetwork", "PDN")
+
+	}
+
+	object technology {
+		def technologyObject: String = _next("technology.technologyObject", "TO")
+
+		def artifact: String = _next("technology.artifact", "TA")
+
+		def technologyInterface: String = _next("technology.technologyInterface", "TIf")
+
+		def technologyCollaboration: String = _next("technology.technologyCollaboration", "TC")
+
+		def systemSoftware: String = _next("technology.systemSoftware", "TSS")
+
+		def path: String = _next("technology.path", "TPa")
+
+		def node: String = _next("technology.node", "TN")
+
+		def device: String = _next("technology.device", "TD")
+
+		def communicationNetwork: String = _next("technology.communicationNetwork", "TCN")
+
+		def technologyService: String = _next("technology.technologyService", "TS")
+
+		def technologyProcess: String = _next("technology.technologyProcess", "TP")
+
+		def technologyInteraction: String = _next("technology.technologyInteraction", "TI")
+
+		def technologyFunction: String = _next("technology.technologyFunction", "TF")
+
+		def technologyEvent: String = _next("technology.technologyEvent", "TE")
 
 	}
 
@@ -51,6 +89,23 @@ object IdGenerator {
 	}
 
 	object application {
+		def dataObject: String = _next("application.dataObject", "ADO")
+
+		def applicationInterface: String = _next("application.applicationInterface", "AIf")
+
+		def applicationComponent: String = _next("application.applicationComponent", "ACmp")
+
+		def applicationCollaboration: String = _next("application.applicationCollaboration", "AC")
+
+		def applicationService: String = _next("application.applicationService", "AS")
+
+		def applicationProcess: String = _next("application.applicationProcess", "AP")
+
+		def applicationInteraction: String = _next("application.applicationInteraction", "AI")
+
+		def applicationFunction: String = _next("application.applicationFunction", "AF")
+
+		def applicationEvent: String = _next("application.applicationEvent", "AE")
 
 	}
 
@@ -84,6 +139,15 @@ object IdGenerator {
 	}
 
 	object implementation {
+		def workPackage: String = _next("implementation.workPackage", "IWP")
+
+		def plateau: String = _next("implementation.plateau", "IP")
+
+		def implementationEvent: String = _next("implementation.implementationEvent", "IE")
+
+		def gap: String = _next("implementation.gap", "IG")
+
+		def deliverable: String = _next("implementation.deliverable", "ID")
 
 	}
 
