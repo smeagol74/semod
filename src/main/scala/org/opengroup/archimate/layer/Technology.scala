@@ -11,7 +11,7 @@ trait Technology extends Layer {
 
 trait TechnologyInternalBehaviorElement extends Element
 
-trait TechnologyInternalBehaviorElementRelationships[T <: Element] extends ElementRelationships[T] {
+trait TechnologyInternalBehaviorElementRelationships[T <: TechnologyInternalBehaviorElement] extends ElementRelationships[T] {
 	def realizes(dst: TechnologyService): T = tt._rel.aggregates(dst)
 	def aggregates(dst: TechnologyInternalBehaviorElement): T = tt._rel.aggregates(dst)
 	def isComposedOf(dst: TechnologyInternalBehaviorElement): T = tt._rel.isComposedOf(dst)
@@ -24,9 +24,11 @@ trait TechnologyInternalBehaviorElementRelationships[T <: Element] extends Eleme
 
 trait TechnologyObjectElement extends Element
 
+trait TechnologyObjectElementRelationships[T <: TechnologyObjectElement] extends ElementRelationships[T]
+
 trait TechnologyNodeElement extends Element
 
-trait TechnologyNodeElementRelationships[T <: Element] extends ElementRelationships[T] {
+trait TechnologyNodeElementRelationships[T <: TechnologyNodeElement] extends ElementRelationships[T] {
 	def realizes(dst: TechnologyNodeElement): T = tt._rel.realizes(dst)
 	def assignedTo(dst: TechnologyInternalBehaviorElement): T = tt._rel.assignedTo(dst)
 	def assignedTo(dst: TechnologyEvent): T = tt._rel.assignedTo(dst)
