@@ -4,10 +4,9 @@ import org.opengroup.archimate.IdGenerator
 import org.opengroup.archimate.application.behavior.ApplicationService
 import org.opengroup.archimate.application.structure.passive.DataObject
 import org.opengroup.archimate.business.behavior.BusinessService
-import org.opengroup.archimate.element.{CompositeElement, ElementRelationships, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
-import org.opengroup.archimate.layer.{Business, BusinessPassiveStructureElement}
+import org.opengroup.archimate.element.{CompositeElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
+import org.opengroup.archimate.layer.{Business, BusinessPassiveStructureElement, TechnologyObjectElement}
 import org.opengroup.archimate.technology.behavior.TechnologyService
-import org.opengroup.archimate.technology.structure.passive.TechnologyObject
 
 case class Product(
 	name: String,
@@ -28,9 +27,9 @@ case class Product(
 
 		def isComposedOf(dst: DataObject): Product = tt._rel.isComposedOf(dst)
 
-		def aggregates(dst: TechnologyObject): Product = tt._rel.aggregates(dst)
+		def aggregates(dst: TechnologyObjectElement): Product = tt._rel.aggregates(dst)
 
-		def isComposedOf(dst: TechnologyObject): Product = tt._rel.isComposedOf(dst)
+		def isComposedOf(dst: TechnologyObjectElement): Product = tt._rel.isComposedOf(dst)
 
 		def aggregates(dst: BusinessService): Product = tt._rel.aggregates(dst)
 

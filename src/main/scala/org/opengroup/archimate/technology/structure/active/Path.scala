@@ -2,7 +2,7 @@ package org.opengroup.archimate.technology.structure.active
 
 import org.opengroup.archimate.IdGenerator
 import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
-import org.opengroup.archimate.layer.Technology
+import org.opengroup.archimate.layer.{Technology, TechnologyNodeElement}
 
 case class Path(
 	name: String,
@@ -14,6 +14,9 @@ case class Path(
 
 	object rel extends StrategyCoreStructureBehaviorElementRelationships[Path] {
 		private[archimate] implicit val tt: Path = Path.this
+
+		def associatedWith(dst: TechnologyNodeElement): Path = tt._rel.associatedWith(dst)
+		def aggregates(dst: TechnologyNodeElement): Path = tt._rel.aggregates(dst)
 	}
 
 }
