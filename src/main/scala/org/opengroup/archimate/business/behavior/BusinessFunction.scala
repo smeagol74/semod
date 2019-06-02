@@ -1,7 +1,7 @@
 package org.opengroup.archimate.business.behavior
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{BehaviorElement, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{BehaviorElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.{Business, BusinessInternalBehaviorElement, BusinessInternalBehaviorElementRelationships}
 
 case class BusinessFunction(
@@ -13,8 +13,9 @@ case class BusinessFunction(
 	with BusinessInternalBehaviorElement {
 	val id: String = IdGenerator.business.businessFunction
 
-	object rel extends BusinessInternalBehaviorElementRelationships[BusinessFunction] {
-		private[archimate] implicit val tt: BusinessFunction = BusinessFunction.this
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[BusinessFunction]
+		with BusinessInternalBehaviorElementRelationships[BusinessFunction] {
+		override private[archimate] implicit val tt: BusinessFunction = BusinessFunction.this
 	}
 
 }

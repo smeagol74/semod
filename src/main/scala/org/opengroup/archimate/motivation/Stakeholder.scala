@@ -12,7 +12,7 @@ case class Stakeholder(
 	val id: String = IdGenerator.motivation.stakeholder
 
 	object rel extends ElementRelationships[Stakeholder] {
-		private[archimate] implicit val tt: Stakeholder = Stakeholder.this
+		override private[archimate] implicit val tt: Stakeholder = Stakeholder.this
 
 		def influences(dst: Stakeholder, label: String = ""): Stakeholder = tt._rel.influences(dst, label)
 

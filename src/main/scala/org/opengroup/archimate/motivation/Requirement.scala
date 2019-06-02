@@ -12,7 +12,7 @@ case class Requirement(
 
 	object rel extends MotivationElementRelationships[Requirement] {
 
-		private[archimate] implicit val tt:Requirement = Requirement.this
+		override private[archimate] implicit val tt:Requirement = Requirement.this
 
 		def associatedWith(dst: Value): Requirement = tt._rel.associatedWith(dst)
 

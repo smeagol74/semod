@@ -11,7 +11,7 @@ case class Outcome(
 	val id: String = IdGenerator.motivation.outcome
 
 	object rel extends MotivationElementRelationships[Outcome] {
-		private[archimate] implicit val tt: Outcome = Outcome.this
+		override private[archimate] implicit val tt: Outcome = Outcome.this
 
 		def realizes(dst: Goal): Outcome = tt._rel.realizes(dst)
 

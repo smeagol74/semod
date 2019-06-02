@@ -1,7 +1,7 @@
 package org.opengroup.archimate.business.behavior
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{BehaviorElement, ElementRelationships, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{BehaviorElement, ElementRelationships, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.{Business, BusinessInternalActiveStructureElement, BusinessInternalBehaviorElement, BusinessPassiveStructureElement}
 
 case class BusinessService(
@@ -13,9 +13,9 @@ case class BusinessService(
 
 	val id: String = IdGenerator.business.businessService
 
-	object rel extends ElementRelationships[BusinessService] {
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[BusinessService] {
 
-		private[archimate] implicit val tt: BusinessService = BusinessService.this
+		override private[archimate] implicit val tt: BusinessService = BusinessService.this
 
 		def triggers(dst: BusinessService): BusinessService = tt._rel.triggers(dst)
 

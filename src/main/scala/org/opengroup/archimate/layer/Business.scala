@@ -1,6 +1,6 @@
 package org.opengroup.archimate.layer
 
-import org.opengroup.archimate.business.behavior.BusinessEvent
+import org.opengroup.archimate.business.behavior.{BusinessEvent, BusinessService}
 import org.opengroup.archimate.business.structure.active.BusinessInterface
 import org.opengroup.archimate.element.{Element, ElementRelationships}
 
@@ -18,6 +18,7 @@ trait BusinessInternalBehaviorElementRelationships[T <: Element] extends Element
 	def triggers(dst: BusinessInternalBehaviorElement): T = tt._rel.triggers(dst)
 	def flowsTo(dst: BusinessInternalBehaviorElement): T = tt._rel.flowsTo(dst)
 	def accesses(dst: BusinessPassiveStructureElement): T = tt._rel.accesses(dst)
+	def realizes(dst: BusinessService): T = tt._rel.realizes(dst)
 }
 
 trait BusinessInternalActiveStructureElement extends Element

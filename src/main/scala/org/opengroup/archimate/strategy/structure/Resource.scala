@@ -13,7 +13,7 @@ case class Resource(
 
 	object rel extends StrategyCoreStructureBehaviorElementRelationships[Resource] {
 
-		implicit val tt: Resource = Resource.this
+		override private[archimate] implicit val tt: Resource = Resource.this
 
 		def assignedTo(dst: Capability): Resource = tt._rel.assignedTo(dst)
 	}

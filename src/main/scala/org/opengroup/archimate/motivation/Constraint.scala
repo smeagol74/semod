@@ -12,7 +12,7 @@ case class Constraint(
 
 	object rel extends MotivationElementRelationships[Constraint] {
 
-		private[archimate] implicit val tt:Constraint = Constraint.this
+		override private[archimate] implicit val tt:Constraint = Constraint.this
 
 		def isSpecializationOf(dst: Requirement): Constraint = tt._rel.isSpecializationOf(dst)
 

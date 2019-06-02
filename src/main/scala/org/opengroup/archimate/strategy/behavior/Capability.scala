@@ -12,7 +12,7 @@ case class Capability(
 
 	object rel extends StrategyCoreStructureBehaviorElementRelationships[Capability] {
 
-		private[archimate] implicit val tt: Capability = Capability.this
+		override private[archimate] implicit val tt: Capability = Capability.this
 
 		def realizes(dst: CourseOfAction): Capability = tt._rel.realizes(dst)
 

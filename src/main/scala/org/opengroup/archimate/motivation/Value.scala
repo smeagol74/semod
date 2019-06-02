@@ -13,7 +13,7 @@ case class Value(
 
 	object rel extends MotivationElementRelationships[Value] {
 
-		private[archimate] implicit val tt: Value = Value.this
+		override private[archimate] implicit val tt: Value = Value.this
 
 		def associatedWith(dst: Stakeholder): Value = tt._rel.associatedWith(dst)
 

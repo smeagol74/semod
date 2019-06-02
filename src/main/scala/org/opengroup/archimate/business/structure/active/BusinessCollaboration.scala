@@ -1,7 +1,7 @@
 package org.opengroup.archimate.business.structure.active
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.{Business, BusinessInternalActiveStructureElement, BusinessInternalActiveStructureElementRelationships}
 
 case class BusinessCollaboration(
@@ -9,12 +9,13 @@ case class BusinessCollaboration(
 	desc: String = ""
 ) extends Business
 	with ActiveStructureElement
-	with BusinessInternalActiveStructureElement
-	with StrategyCoreStructureBehaviorElement {
+	with StrategyCoreStructureBehaviorElement
+	with BusinessInternalActiveStructureElement {
 	val id: String = IdGenerator.business.businessCollaboration
 
-	object rel extends BusinessInternalActiveStructureElementRelationships[BusinessCollaboration] {
-		private[archimate] implicit val tt: BusinessCollaboration = BusinessCollaboration.this
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[BusinessCollaboration]
+		with BusinessInternalActiveStructureElementRelationships[BusinessCollaboration] {
+		override private[archimate] implicit val tt: BusinessCollaboration = BusinessCollaboration.this
 
 		def aggregates(dst: BusinessInternalActiveStructureElement): BusinessCollaboration = tt._rel.aggregates(dst)
 	}

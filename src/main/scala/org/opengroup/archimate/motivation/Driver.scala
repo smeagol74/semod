@@ -12,7 +12,7 @@ case class Driver(
 
 	object rel extends MotivationElementRelationships[Driver] {
 
-		implicit val tt: Driver = Driver.this
+		override private[archimate] implicit val tt: Driver = Driver.this
 
 		def associatedWith(dst: Assessment): Driver = tt._rel.associatedWith(dst)
 

@@ -13,7 +13,7 @@ case class Meaning(
 
 	object rel extends MotivationElementRelationships[Meaning] {
 
-		private[archimate] implicit val tt:Meaning = Meaning.this
+		override private[archimate] implicit val tt:Meaning = Meaning.this
 
 		def associatedWith(dst: Stakeholder): Meaning = tt._rel.associatedWith(dst)
 

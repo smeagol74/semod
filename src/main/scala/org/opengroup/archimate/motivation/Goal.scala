@@ -12,7 +12,7 @@ case class Goal(
 
 	object rel extends MotivationElementRelationships[Goal] {
 
-		private[archimate] implicit val tt:Goal = Goal.this
+		override private[archimate] implicit val tt:Goal = Goal.this
 
 		def associatedWith(dst: Assessment): Goal = tt._rel.associatedWith(dst)
 

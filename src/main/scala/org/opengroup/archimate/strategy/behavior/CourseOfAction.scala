@@ -13,7 +13,7 @@ case class CourseOfAction(
 
 	object rel extends StrategyCoreStructureBehaviorElementRelationships[CourseOfAction] {
 
-		private[archimate] implicit val tt: CourseOfAction = CourseOfAction.this
+		override private[archimate] implicit val tt: CourseOfAction = CourseOfAction.this
 
 		def serves(dst: CourseOfAction): CourseOfAction = tt._rel.serves(dst)
 

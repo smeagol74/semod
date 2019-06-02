@@ -4,7 +4,7 @@ import org.opengroup.archimate.IdGenerator
 import org.opengroup.archimate.application.behavior.ApplicationService
 import org.opengroup.archimate.application.structure.passive.DataObject
 import org.opengroup.archimate.business.behavior.BusinessService
-import org.opengroup.archimate.element.{CompositeElement, ElementRelationships, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{CompositeElement, ElementRelationships, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.{Business, BusinessPassiveStructureElement}
 import org.opengroup.archimate.technology.behavior.TechnologyService
 import org.opengroup.archimate.technology.structure.passive.TechnologyObject
@@ -13,11 +13,12 @@ case class Product(
 	name: String,
 	desc: String = ""
 ) extends Business
-	with CompositeElement {
+	with CompositeElement
+	with StrategyCoreStructureBehaviorElement {
 	val id: String = IdGenerator.business.product
 
-	object rel extends ElementRelationships[Product] {
-		private[archimate] implicit val tt: Product = Product.this
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[Product] {
+		override private[archimate] implicit val tt: Product = Product.this
 
 		def aggregates(dst: BusinessPassiveStructureElement): Product = tt._rel.aggregates(dst)
 

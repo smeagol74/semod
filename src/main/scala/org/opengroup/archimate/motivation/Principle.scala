@@ -12,7 +12,7 @@ case class Principle(
 
 	object rel extends MotivationElementRelationships[Principle] {
 
-		private[archimate] implicit val tt:Principle = Principle.this
+		override private[archimate] implicit val tt:Principle = Principle.this
 
 		def realizes(dst: Outcome): Principle = tt._rel.realizes(dst)
 
