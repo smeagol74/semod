@@ -1,7 +1,7 @@
 package org.opengroup.archimate.technology.behavior
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{BehaviorElement, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{BehaviorElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.Technology
 
 case class TechnologyFunction(
@@ -11,5 +11,9 @@ case class TechnologyFunction(
 	with BehaviorElement
 	with StrategyCoreStructureBehaviorElement {
 	val id: String = IdGenerator.technology.technologyFunction
+
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[TechnologyFunction] {
+		private[archimate] implicit val tt: TechnologyFunction = TechnologyFunction.this
+	}
 
 }

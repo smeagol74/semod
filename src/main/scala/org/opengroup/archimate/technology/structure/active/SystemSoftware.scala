@@ -1,7 +1,7 @@
 package org.opengroup.archimate.technology.structure.active
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.Technology
 
 case class SystemSoftware(
@@ -11,4 +11,9 @@ case class SystemSoftware(
 	with ActiveStructureElement
 	with StrategyCoreStructureBehaviorElement {
 	val id: String = IdGenerator.technology.systemSoftware
+
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[SystemSoftware] {
+		private[archimate] implicit val tt: SystemSoftware = SystemSoftware.this
+	}
+
 }

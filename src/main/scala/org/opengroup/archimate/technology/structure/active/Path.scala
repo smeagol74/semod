@@ -1,7 +1,7 @@
 package org.opengroup.archimate.technology.structure.active
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.Technology
 
 case class Path(
@@ -11,4 +11,9 @@ case class Path(
 	with ActiveStructureElement
 	with StrategyCoreStructureBehaviorElement {
 	val id: String = IdGenerator.technology.path
+
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[Path] {
+		private[archimate] implicit val tt: Path = Path.this
+	}
+
 }

@@ -1,7 +1,7 @@
 package org.opengroup.archimate.technology.structure.active
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.Technology
 
 case class Device(
@@ -11,4 +11,9 @@ case class Device(
 	with ActiveStructureElement
 	with StrategyCoreStructureBehaviorElement {
 	val id: String = IdGenerator.technology.device
+
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[Device] {
+		private[archimate] implicit val tt: Device = Device.this
+	}
+
 }

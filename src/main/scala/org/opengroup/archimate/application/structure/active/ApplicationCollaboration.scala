@@ -1,7 +1,7 @@
 package org.opengroup.archimate.application.structure.active
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement}
+import org.opengroup.archimate.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 import org.opengroup.archimate.layer.Application
 
 case class ApplicationCollaboration(
@@ -11,4 +11,9 @@ case class ApplicationCollaboration(
 	with ActiveStructureElement
 	with StrategyCoreStructureBehaviorElement {
 	val id: String = IdGenerator.application.applicationCollaboration
+
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[ApplicationCollaboration] {
+		private[archimate] implicit val tt: ApplicationCollaboration = ApplicationCollaboration.this
+	}
+
 }

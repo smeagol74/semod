@@ -1,7 +1,7 @@
 package org.opengroup.archimate.implementation
 
 import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.Element
+import org.opengroup.archimate.element.{Element, ElementRelationships}
 import org.opengroup.archimate.layer.Implementation
 
 case class Deliverable(
@@ -10,4 +10,9 @@ case class Deliverable(
 ) extends Implementation
 	with Element {
 	val id: String = IdGenerator.implementation.deliverable
+
+	object rel extends ElementRelationships[Deliverable] {
+		private[archimate] implicit val tt: Deliverable = Deliverable.this
+	}
+
 }
