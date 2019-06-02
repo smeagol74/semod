@@ -11,9 +11,7 @@ case class ApplicationInterface(
 	with ActiveStructureElement
 	with StrategyCoreStructureBehaviorElement {
 
-	object rel
-		extends ElementRelationships[ApplicationInterface]
-		with StrategyCoreStructureBehaviorElementRelationships[ApplicationInterface] {
+	object rel extends StrategyCoreStructureBehaviorElementRelationships[ApplicationInterface] {
 		override private[archimate] implicit val tt: ApplicationInterface = ApplicationInterface.this
 	}
 
