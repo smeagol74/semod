@@ -1,6 +1,6 @@
 package org.opengroup.archimate
 
-import org.opengroup.archimate.element.Element
+import org.opengroup.archimate.meta.element.Element
 
 import scala.collection.mutable
 import scala.compat.Platform.EOL

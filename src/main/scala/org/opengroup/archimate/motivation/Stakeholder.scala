@@ -1,22 +1,16 @@
 package org.opengroup.archimate.motivation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{ActiveStructureElement, ElementRelationships}
-import org.opengroup.archimate.layer.{Motivation, MotivationElement}
+import org.opengroup.archimate.meta.element.motivation.{StakeholderElement, StakeholderElementRelationships}
+import org.opengroup.archimate.meta.layer.Motivation
 
 case class Stakeholder(
 	name: String,
 	desc: String = ""
 ) extends Motivation
-	with ActiveStructureElement {
-	val id: String = IdGenerator.motivation.stakeholder
+	with StakeholderElement {
 
-	object rel extends ElementRelationships[Stakeholder] {
+	object rel extends StakeholderElementRelationships[Stakeholder] {
 		override private[archimate] implicit val tt: Stakeholder = Stakeholder.this
-
-		def influences(dst: Stakeholder, label: String = ""): Stakeholder = tt._rel.influences(dst, label)
-
-		def associatedWith(dst: MotivationElement): Stakeholder = tt._rel.associatedWith(dst)
 	}
 
 }

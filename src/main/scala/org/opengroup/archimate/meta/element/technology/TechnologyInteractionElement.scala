@@ -1,0 +1,12 @@
+package org.opengroup.archimate.meta.element.technology
+
+import org.opengroup.archimate.meta.element.{BehaviorElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
+
+trait TechnologyInteractionElement
+	extends BehaviorElement
+		with StrategyCoreStructureBehaviorElement
+		with TechnologyInternalBehaviorElement
+
+trait TechnologyInteractionElementRelationships[T <: TechnologyInteractionElement]
+	extends StrategyCoreStructureBehaviorElementRelationships[T]
+		with TechnologyInternalBehaviorElementRelationships[T]

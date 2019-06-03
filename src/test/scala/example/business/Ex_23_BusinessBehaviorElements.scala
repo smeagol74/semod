@@ -1,8 +1,7 @@
 package example.business
 
 import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.behavior._
-import org.opengroup.archimate.business.structure.active.{BusinessCollaboration, BusinessRole}
+import org.opengroup.archimate.business._
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046

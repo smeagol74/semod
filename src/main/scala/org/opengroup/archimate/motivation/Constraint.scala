@@ -1,24 +1,16 @@
 package org.opengroup.archimate.motivation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.layer.{Motivation, MotivationElement, MotivationElementRelationships}
+import org.opengroup.archimate.meta.element.motivation.{ConstraintElement, ConstraintElementRelationships}
+import org.opengroup.archimate.meta.layer.Motivation
 
 case class Constraint(
 	name: String,
 	desc: String = ""
 ) extends Motivation
-	with MotivationElement {
-	val id: String = IdGenerator.motivation.constraint
+	with ConstraintElement {
 
-	object rel extends MotivationElementRelationships[Constraint] {
-
-		override private[archimate] implicit val tt:Constraint = Constraint.this
-
-		def isSpecializationOf(dst: Requirement): Constraint = tt._rel.isSpecializationOf(dst)
-
-		def associatedWith(dst: Value): Constraint = tt._rel.associatedWith(dst)
-
-		def associatedWith(dst: Meaning): Constraint = tt._rel.associatedWith(dst)
+	object rel extends ConstraintElementRelationships[Constraint] {
+		override private[archimate] implicit val tt: Constraint = Constraint.this
 	}
 
 }

@@ -1,24 +1,16 @@
 package org.opengroup.archimate.motivation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.layer.{Motivation, MotivationElement, MotivationElementRelationships}
+import org.opengroup.archimate.meta.element.motivation.{PrincipleElement, PrincipleElementRelationships}
+import org.opengroup.archimate.meta.layer.Motivation
 
 case class Principle(
 	name: String,
 	desc: String = ""
 ) extends Motivation
-	with MotivationElement {
-	val id: String = IdGenerator.motivation.principle
+	with PrincipleElement {
 
-	object rel extends MotivationElementRelationships[Principle] {
-
-		override private[archimate] implicit val tt:Principle = Principle.this
-
-		def realizes(dst: Outcome): Principle = tt._rel.realizes(dst)
-
-		def associatedWith(dst: Value): Principle = tt._rel.associatedWith(dst)
-
-		def associatedWith(dst: Meaning): Principle = tt._rel.associatedWith(dst)
+	object rel extends PrincipleElementRelationships[Principle] {
+		override private[archimate] implicit val tt: Principle = Principle.this
 	}
 
 }

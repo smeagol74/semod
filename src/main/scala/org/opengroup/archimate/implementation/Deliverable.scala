@@ -1,17 +1,15 @@
 package org.opengroup.archimate.implementation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{Element, ElementRelationships}
-import org.opengroup.archimate.layer.Implementation
+import org.opengroup.archimate.meta.element.implementation.{DeliverableElement, DeliverableElementRelationships}
+import org.opengroup.archimate.meta.layer.Implementation
 
 case class Deliverable(
 	name: String,
 	desc: String = ""
 ) extends Implementation
-	with Element {
-	val id: String = IdGenerator.implementation.deliverable
+	with DeliverableElement {
 
-	object rel extends ElementRelationships[Deliverable] {
+	object rel extends DeliverableElementRelationships[Deliverable] {
 		private[archimate] implicit val tt: Deliverable = Deliverable.this
 	}
 

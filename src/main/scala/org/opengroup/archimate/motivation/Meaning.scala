@@ -1,23 +1,16 @@
 package org.opengroup.archimate.motivation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.StrategyCoreStructureBehaviorElement
-import org.opengroup.archimate.layer.{Motivation, MotivationElement, MotivationElementRelationships}
+import org.opengroup.archimate.meta.element.motivation.{MeaningElement, MeaningElementRelationships}
+import org.opengroup.archimate.meta.layer.Motivation
 
 case class Meaning(
 	name: String,
 	desc: String = ""
 ) extends Motivation
-	with MotivationElement {
-	val id: String = IdGenerator.motivation.meaning
+	with MeaningElement {
 
-	object rel extends MotivationElementRelationships[Meaning] {
-
-		override private[archimate] implicit val tt:Meaning = Meaning.this
-
-		def associatedWith(dst: Stakeholder): Meaning = tt._rel.associatedWith(dst)
-
-		def associatedWith(dst: StrategyCoreStructureBehaviorElement): Meaning = tt._rel.associatedWith(dst)
+	object rel extends MeaningElementRelationships[Meaning] {
+		override private[archimate] implicit val tt: Meaning = Meaning.this
 	}
 
 }

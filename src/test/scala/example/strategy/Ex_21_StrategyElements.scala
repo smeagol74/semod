@@ -1,8 +1,7 @@
 package example.strategy
 
 import org.opengroup.archimate.motivation.{Goal, Outcome}
-import org.opengroup.archimate.strategy.behavior.{Capability, CourseOfAction}
-import org.opengroup.archimate.strategy.structure.Resource
+import org.opengroup.archimate.strategy.{Capability, CourseOfAction, Resource}
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap07.html#_Toc489946036

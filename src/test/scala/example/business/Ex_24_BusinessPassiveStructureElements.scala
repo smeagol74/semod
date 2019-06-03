@@ -1,7 +1,7 @@
 package example.business
 
 import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.structure.passive.{BusinessObject, Contract, Representation}
+import org.opengroup.archimate.business.{BusinessObject, Contract, Representation}
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058

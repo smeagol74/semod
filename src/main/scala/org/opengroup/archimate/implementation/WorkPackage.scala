@@ -1,17 +1,15 @@
 package org.opengroup.archimate.implementation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{Element, ElementRelationships}
-import org.opengroup.archimate.layer.Implementation
+import org.opengroup.archimate.meta.element.implementation.{WorkPackageElement, WorkPackageElementRelationships}
+import org.opengroup.archimate.meta.layer.Implementation
 
 case class WorkPackage(
 	name: String,
 	desc: String = ""
 ) extends Implementation
-	with Element {
-	val id: String = IdGenerator.implementation.workPackage
+	with WorkPackageElement {
 
-	object rel extends ElementRelationships[WorkPackage] {
+	object rel extends WorkPackageElementRelationships[WorkPackage] {
 		private[archimate] implicit val tt: WorkPackage = WorkPackage.this
 	}
 

@@ -1,0 +1,11 @@
+package org.opengroup.archimate.meta.element.business
+
+import org.opengroup.archimate.meta.element.{PassiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
+
+trait BusinessObjectElement
+	extends PassiveStructureElement
+		with StrategyCoreStructureBehaviorElement
+		with BusinessPassiveStructureElement
+
+trait BusinessObjectElementRelationships[T <: BusinessObjectElement]
+	extends StrategyCoreStructureBehaviorElementRelationships[T]

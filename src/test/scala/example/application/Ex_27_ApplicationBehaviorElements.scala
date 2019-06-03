@@ -1,7 +1,7 @@
 package example.application
 
 import org.opengroup.archimate.Report
-import org.opengroup.archimate.application.behavior._
+import org.opengroup.archimate.application._
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076

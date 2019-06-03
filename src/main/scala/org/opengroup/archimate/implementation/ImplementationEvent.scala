@@ -1,17 +1,15 @@
 package org.opengroup.archimate.implementation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.element.{Element, ElementRelationships}
-import org.opengroup.archimate.layer.Implementation
+import org.opengroup.archimate.meta.element.implementation.{ImplementationEventElement, ImplementationEventElementRelationships}
+import org.opengroup.archimate.meta.layer.Implementation
 
 case class ImplementationEvent(
 	name: String,
 	desc: String = ""
 ) extends Implementation
-	with Element {
-	val id: String = IdGenerator.implementation.implementationEvent
+	with ImplementationEventElement {
 
-	object rel extends ElementRelationships[ImplementationEvent] {
+	object rel extends ImplementationEventElementRelationships[ImplementationEvent] {
 		private[archimate] implicit val tt: ImplementationEvent = ImplementationEvent.this
 	}
 

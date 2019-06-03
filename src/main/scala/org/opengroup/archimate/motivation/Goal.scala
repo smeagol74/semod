@@ -1,26 +1,16 @@
 package org.opengroup.archimate.motivation
 
-import org.opengroup.archimate.IdGenerator
-import org.opengroup.archimate.layer.{Motivation, MotivationElement, MotivationElementRelationships}
+import org.opengroup.archimate.meta.element.motivation.{GoalElement, GoalElementRelationships}
+import org.opengroup.archimate.meta.layer.Motivation
 
 case class Goal(
 	name: String,
 	desc: String = ""
 ) extends Motivation
-	with MotivationElement {
-	val id: String = IdGenerator.motivation.goal
+	with GoalElement {
 
-	object rel extends MotivationElementRelationships[Goal] {
-
-		override private[archimate] implicit val tt:Goal = Goal.this
-
-		def associatedWith(dst: Assessment): Goal = tt._rel.associatedWith(dst)
-
-		def associatedWith(dst: Driver): Goal = tt._rel.associatedWith(dst)
-
-		def associatedWith(dst: Value): Goal = tt._rel.associatedWith(dst)
-
-		def associatedWith(dst: Meaning): Goal = tt._rel.associatedWith(dst)
+	object rel extends GoalElementRelationships[Goal] {
+		override private[archimate] implicit val tt: Goal = Goal.this
 	}
 
 }

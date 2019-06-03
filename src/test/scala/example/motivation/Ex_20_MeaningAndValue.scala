@@ -1,8 +1,7 @@
 package example.motivation
 
 import org.opengroup.archimate.Report
-import org.opengroup.archimate.application.behavior.ApplicationService
-import org.opengroup.archimate.application.structure.passive.DataObject
+import org.opengroup.archimate.application.{ApplicationService, DataObject}
 import org.opengroup.archimate.motivation.{Meaning, Stakeholder, Value}
 
 /**

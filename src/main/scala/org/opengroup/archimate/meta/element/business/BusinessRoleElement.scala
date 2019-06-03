@@ -1,0 +1,13 @@
+package org.opengroup.archimate.meta.element.business
+
+import org.opengroup.archimate.business.BusinessRole
+import org.opengroup.archimate.meta.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
+
+trait BusinessRoleElement
+	extends ActiveStructureElement
+		with StrategyCoreStructureBehaviorElement
+		with BusinessInternalActiveStructureElement
+
+trait BusinessRoleElementRelationships[T <: BusinessRoleElement]
+	extends StrategyCoreStructureBehaviorElementRelationships[BusinessRole]
+		with BusinessInternalActiveStructureElementRelationships[BusinessRole]
