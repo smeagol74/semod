@@ -1,11 +1,17 @@
 package org.opengroup.archimate.meta.element.application
 
-import org.opengroup.archimate.application.DataObject
-import org.opengroup.archimate.meta.element.{PassiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
+import org.opengroup.archimate.meta.element._
 
 trait DataObjectElement
 	extends PassiveStructureElement
 		with StrategyCoreStructureBehaviorElement
 
+case object DataObjectElement
+	extends ElementName
+
 trait DataObjectElementRelationships[T <: DataObjectElement]
-	extends StrategyCoreStructureBehaviorElementRelationships[DataObject]
+	extends StrategyCoreStructureBehaviorElementRelationships[T] {
+
+	_register(DataObjectElement)
+
+}

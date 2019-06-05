@@ -13,7 +13,7 @@ object Ex_26_ApplicationActiveStructureElements extends App {
 		val webServicesInterface = ApplicationInterface("Web Services\nInterface")
   		.rel.serves(travelWebsite)
 		val onlineTravelInsruranceSales = ApplicationCollaboration("Online Travel\nInsurance Sales")
-  		.rel.isComposedOf(webServicesInterface)
+  		.rel.composedOf(webServicesInterface)
   		.rel.aggregates(ApplicationComponent("Quotation"))
   		.rel.aggregates(ApplicationComponent("Purchases"))
 	}

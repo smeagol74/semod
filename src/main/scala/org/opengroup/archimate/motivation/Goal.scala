@@ -9,8 +9,10 @@ case class Goal(
 ) extends Motivation
 	with GoalElement {
 
-	object rel extends GoalElementRelationships[Goal] {
+	case class GoalRelationships(
 		override private[archimate] implicit val tt: Goal = Goal.this
-	}
+	) extends GoalElementRelationships[Goal]
+
+	val rel: GoalRelationships = GoalRelationships()
 
 }

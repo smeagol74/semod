@@ -9,8 +9,10 @@ case class ApplicationFunction(
 ) extends Application
 	with ApplicationFunctionElement {
 
-	object rel extends ApplicationFunctionElementRelationships[ApplicationFunction] {
+	case class ApplicationFunctionRelationships(
 		private[archimate] implicit val tt: ApplicationFunction = ApplicationFunction.this
-	}
+	) extends ApplicationFunctionElementRelationships[ApplicationFunction]
+
+	val rel: ApplicationFunctionRelationships = ApplicationFunctionRelationships()
 
 }

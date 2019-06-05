@@ -9,8 +9,10 @@ case class Constraint(
 ) extends Motivation
 	with ConstraintElement {
 
-	object rel extends ConstraintElementRelationships[Constraint] {
+	case class ConstraintRelationships(
 		override private[archimate] implicit val tt: Constraint = Constraint.this
-	}
+	) extends ConstraintElementRelationships[Constraint]
+
+	val rel: ConstraintRelationships = ConstraintRelationships()
 
 }

@@ -9,8 +9,10 @@ case class Gap(
 ) extends Implementation
 	with GapElement {
 
-	object rel extends GapElementRelationships[Gap] {
-		private[archimate] implicit val tt: Gap = Gap.this
-	}
+	case class GapRelationships(
+		override private[archimate] implicit val tt: Gap = Gap.this
+	) extends GapElementRelationships[Gap]
+
+	val rel: GapRelationships = GapRelationships()
 
 }

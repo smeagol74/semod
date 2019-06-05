@@ -9,8 +9,10 @@ case class Outcome(
 ) extends Motivation
 	with OutcomeElement {
 
-	object rel extends OutcomeElementRelationships[Outcome] {
+	case class OutcomeRelationships(
 		override private[archimate] implicit val tt: Outcome = Outcome.this
-	}
+	) extends OutcomeElementRelationships[Outcome]
+
+	val rel: OutcomeRelationships = OutcomeRelationships()
 
 }

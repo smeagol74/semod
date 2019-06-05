@@ -9,8 +9,10 @@ case class SystemSoftware(
 ) extends Technology
 	with SystemSoftwareElement {
 
-	object rel extends SystemSoftwareElementRelationships[SystemSoftware] {
-		private[archimate] implicit val tt: SystemSoftware = SystemSoftware.this
-	}
+	case class SystemSoftwareRelationships(
+		override private[archimate] implicit val tt: SystemSoftware = SystemSoftware.this
+	) extends SystemSoftwareElementRelationships[SystemSoftware]
+
+	val rel: SystemSoftwareRelationships = SystemSoftwareRelationships()
 
 }

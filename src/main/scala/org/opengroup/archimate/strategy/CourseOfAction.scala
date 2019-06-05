@@ -9,8 +9,10 @@ case class CourseOfAction(
 ) extends Strategy
 	with CourseOfActionElement {
 
-	object rel extends CourseOfActionElementRelationships[CourseOfAction] {
+	case class CourseOfActionRelationships(
 		override private[archimate] implicit val tt: CourseOfAction = CourseOfAction.this
-	}
+	) extends CourseOfActionElementRelationships[CourseOfAction]
+
+	val rel: CourseOfActionRelationships = CourseOfActionRelationships()
 
 }

@@ -9,8 +9,10 @@ case class Value(
 ) extends Motivation
 	with ValueElement {
 
-	object rel extends ValueElementRelationships[Value] {
+	case class ValueRelationships(
 		override private[archimate] implicit val tt: Value = Value.this
-	}
+	) extends ValueElementRelationships[Value]
+
+	val rel: ValueRelationships = ValueRelationships()
 
 }

@@ -1,16 +1,27 @@
 package org.opengroup.archimate.meta.element
 
-import org.opengroup.archimate.motivation.{Meaning, Requirement, Value}
+import org.opengroup.archimate.meta.element.motivation.{MeaningElement, RequirementElement, ValueElement}
 
-trait CompositeElement extends Element
+trait CompositeElement
+	extends Element
 
-trait CompositeElementRelationships[T <: Element] extends ElementRelationships[T] {
+case object CompositeElement
+	extends ElementName
 
-	def influences(dst: Requirement, label: String = ""): T = tt._rel.influences(dst, label)
+trait CompositeElementRelationships[T <: CompositeElement] extends ElementRelationships[T] {
 
-	def realizes(dst: Requirement): T = tt._rel.realizes(dst)
+	def influences(dst: RequirementElement, label: String = ""): T = tt._rel.influences(dst, label)
 
-	def associatedWith(dst: Value): T = tt._rel.associatedWith(dst)
+	def realizes(dst: RequirementElement): T = tt._rel.realizes(dst)
 
-	def associatedWith(dst: Meaning): T = tt._rel.associatedWith(dst)
+	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
+
+	def associatedWith(dst: MeaningElement): T = tt._rel.associatedWith(dst)
+
+	JR.append(CompositeElement, tt,
+		JR.influences(RequirementElement),
+		JR.realizes(RequirementElement),
+		JR.associatedWith(ValueElement),
+		JR.associatedWith(MeaningElement)
+	)
 }

@@ -9,8 +9,10 @@ case class Plateau(
 ) extends Implementation
 	with PlateauElement {
 
-	object rel extends PlateauElementRelationships[Plateau] {
-		private[archimate] implicit val tt: Plateau = Plateau.this
-	}
+	case class PlateauRelationships(
+		override private[archimate] implicit val tt: Plateau = Plateau.this
+	) extends PlateauElementRelationships[Plateau]
+
+	val rel: PlateauRelationships = PlateauRelationships()
 
 }

@@ -9,8 +9,10 @@ case class Principle(
 ) extends Motivation
 	with PrincipleElement {
 
-	object rel extends PrincipleElementRelationships[Principle] {
+	case class PrincipleRelationships(
 		override private[archimate] implicit val tt: Principle = Principle.this
-	}
+	) extends PrincipleElementRelationships[Principle]
+
+	val rel: PrincipleRelationships = PrincipleRelationships()
 
 }

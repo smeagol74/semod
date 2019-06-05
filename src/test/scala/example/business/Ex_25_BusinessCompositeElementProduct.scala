@@ -11,8 +11,8 @@ object Ex_25_BusinessCompositeElementProduct extends App {
 	object db {
 
 		val insurance = Product("Insurance")
-			.rel.isComposedOf(Contract("Insurance Policy"))
-			.rel.isComposedOf(
+			.rel.composedOf(Contract("Insurance Policy"))
+			.rel.composedOf(
 			BusinessService("Customer\nService")
 				.rel.aggregates(BusinessService("Application"))
 				.rel.aggregates(BusinessService("Renewal"))
@@ -21,9 +21,9 @@ object Ex_25_BusinessCompositeElementProduct extends App {
 		)
 
 		val autoInsurance = Product("Auto Insurance")
-			.rel.isSpecializationOf(insurance)
-			.rel.isComposedOf(Contract("Drive Well and\nSave Agreement"))
-			.rel.isComposedOf(BusinessService("Drive Well\nand Save"))
+			.rel.specializationOf(insurance)
+			.rel.composedOf(Contract("Drive Well and\nSave Agreement"))
+			.rel.composedOf(BusinessService("Drive Well\nand Save"))
 	}
 
 	print(Report.withDependencies(Set(

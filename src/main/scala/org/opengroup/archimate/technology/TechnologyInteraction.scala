@@ -9,8 +9,10 @@ case class TechnologyInteraction(
 ) extends Technology
 	with TechnologyInteractionElement {
 
-	object rel extends TechnologyInteractionElementRelationships[TechnologyInteraction] {
-		private[archimate] implicit val tt: TechnologyInteraction = TechnologyInteraction.this
-	}
+	case class TechnologyInteractionRelationships(
+		override private[archimate] implicit val tt: TechnologyInteraction = TechnologyInteraction.this
+	) extends TechnologyInteractionElementRelationships[TechnologyInteraction]
+
+	val rel: TechnologyInteractionRelationships = TechnologyInteractionRelationships()
 
 }

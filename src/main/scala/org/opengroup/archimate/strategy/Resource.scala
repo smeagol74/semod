@@ -9,8 +9,10 @@ case class Resource(
 ) extends Strategy
 	with ResourceElement {
 
-	object rel extends ResourceElementRelationships[Resource] {
+	case class ResourceRelationships(
 		override private[archimate] implicit val tt: Resource = Resource.this
-	}
+	) extends ResourceElementRelationships[Resource]
+
+	val rel: ResourceRelationships = ResourceRelationships()
 
 }

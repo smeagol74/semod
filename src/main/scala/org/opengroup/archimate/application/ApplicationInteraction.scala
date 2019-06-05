@@ -9,8 +9,10 @@ case class ApplicationInteraction(
 ) extends Application
 	with ApplicationInteractionElement {
 
-	object rel extends ApplicationInteractionElementRelationships[ApplicationInteraction] {
+	case class ApplicationInteractionRelationships(
 		private[archimate] implicit val tt: ApplicationInteraction = ApplicationInteraction.this
-	}
+	) extends ApplicationInteractionElementRelationships[ApplicationInteraction]
+
+	val rel: ApplicationInteractionRelationships = ApplicationInteractionRelationships()
 
 }

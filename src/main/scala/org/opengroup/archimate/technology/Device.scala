@@ -9,8 +9,10 @@ case class Device(
 ) extends Technology
 	with DeviceElement {
 
-	object rel extends DeviceElementRelationships[Device] {
-		private[archimate] implicit val tt: Device = Device.this
-	}
+	case class DeviceRelationships(
+		override private[archimate] implicit val tt: Device = Device.this
+	) extends DeviceElementRelationships[Device]
+
+	val rel: DeviceRelationships = DeviceRelationships()
 
 }

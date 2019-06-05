@@ -9,8 +9,10 @@ case class Contract(
 ) extends Business
 	with ContractElement {
 
-	object rel extends ContractElementRelationships[Contract] {
+	case class ContractRelationships(
 		override private[archimate] implicit val tt: Contract = Contract.this
-	}
+	) extends ContractElementRelationships[Contract]
+
+	val rel: ContractRelationships = ContractRelationships()
 
 }

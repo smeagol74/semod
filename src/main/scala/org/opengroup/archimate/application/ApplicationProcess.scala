@@ -9,8 +9,10 @@ case class ApplicationProcess(
 ) extends Application
 	with ApplicationProcessElement {
 
-	object rel extends ApplicationProcessElementRelationships[ApplicationProcess] {
+	case class ApplicationProcessRelationships(
 		private[archimate] implicit val tt: ApplicationProcess = ApplicationProcess.this
-	}
+	) extends ApplicationProcessElementRelationships[ApplicationProcess]
+
+	val rel: ApplicationProcessRelationships = ApplicationProcessRelationships()
 
 }

@@ -9,8 +9,10 @@ case class Stakeholder(
 ) extends Motivation
 	with StakeholderElement {
 
-	object rel extends StakeholderElementRelationships[Stakeholder] {
+	case class StakeholderRelationships(
 		override private[archimate] implicit val tt: Stakeholder = Stakeholder.this
-	}
+	) extends StakeholderElementRelationships[Stakeholder]
+
+	val rel: StakeholderRelationships = StakeholderRelationships()
 
 }

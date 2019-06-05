@@ -9,8 +9,10 @@ case class Path(
 ) extends Technology
 	with PathElement {
 
-	object rel extends PathElementRelationships[Path] {
-		private[archimate] implicit val tt: Path = Path.this
-	}
+	case class PathRelationships(
+		override private[archimate] implicit val tt: Path = Path.this
+	) extends PathElementRelationships[Path]
+
+	val rel: PathRelationships = PathRelationships()
 
 }

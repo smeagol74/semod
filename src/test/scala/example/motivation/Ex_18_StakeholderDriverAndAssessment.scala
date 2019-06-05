@@ -52,8 +52,8 @@ object Ex_18_StakeholderDriverAndAssessment extends App {
 		cfo
   		.rel.associatedWith(profitability)
 		profitability
-  		.rel.isComposedOf(revenue)
-  		.rel.isComposedOf(costs)
+  		.rel.composedOf(revenue)
+  		.rel.composedOf(costs)
   		.rel.associatedWith(profitabilityIsDeclining)
 		marketShare
   		.rel.associatedWith(marketShareIsDeclining)

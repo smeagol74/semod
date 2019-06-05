@@ -9,8 +9,10 @@ case class DataObject(
 ) extends Application
 	with DataObjectElement {
 
-	object rel extends DataObjectElementRelationships[DataObject] {
+	case class DataObjectRelationships(
 		override private[archimate] implicit val tt: DataObject = DataObject.this
-	}
+	) extends DataObjectElementRelationships[DataObject]
+
+	val rel: DataObjectRelationships = DataObjectRelationships()
 
 }

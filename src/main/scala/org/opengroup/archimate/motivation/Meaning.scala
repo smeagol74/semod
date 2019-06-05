@@ -9,8 +9,10 @@ case class Meaning(
 ) extends Motivation
 	with MeaningElement {
 
-	object rel extends MeaningElementRelationships[Meaning] {
+	case class MeaningRelationships(
 		override private[archimate] implicit val tt: Meaning = Meaning.this
-	}
+	) extends MeaningElementRelationships[Meaning]
+
+	val rel: MeaningRelationships = MeaningRelationships()
 
 }

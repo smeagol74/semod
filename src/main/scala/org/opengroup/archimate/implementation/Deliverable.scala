@@ -9,8 +9,10 @@ case class Deliverable(
 ) extends Implementation
 	with DeliverableElement {
 
-	object rel extends DeliverableElementRelationships[Deliverable] {
+	case class DeliverableRelationships(
 		private[archimate] implicit val tt: Deliverable = Deliverable.this
-	}
+	) extends DeliverableElementRelationships[Deliverable]
+
+	val rel: DeliverableRelationships = DeliverableRelationships()
 
 }

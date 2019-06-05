@@ -9,8 +9,10 @@ case class Node(
 ) extends Technology
 	with NodeElement {
 
-	object rel extends NodeElementRelationships[Node] {
-		private[archimate] implicit val tt: Node = Node.this
-	}
+	case class NodeRelationships(
+		override private[archimate] implicit val tt: Node = Node.this
+	) extends NodeElementRelationships[Node]
+
+	val rel: NodeRelationships = NodeRelationships()
 
 }

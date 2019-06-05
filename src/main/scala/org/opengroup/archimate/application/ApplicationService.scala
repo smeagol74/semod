@@ -1,6 +1,6 @@
 package org.opengroup.archimate.application
 
-import org.opengroup.archimate.meta.element.application.{ApplicationServiceElement, ApplicationServiceRelationships}
+import org.opengroup.archimate.meta.element.application.{ApplicationServiceElement, ApplicationServiceElementRelationships}
 import org.opengroup.archimate.meta.layer.Application
 
 case class ApplicationService(
@@ -9,8 +9,10 @@ case class ApplicationService(
 ) extends Application
 	with ApplicationServiceElement {
 
-	object rel extends ApplicationServiceRelationships[ApplicationService] {
+	case class ApplicationServiceRelationships(
 		private[archimate] implicit val tt: ApplicationService = ApplicationService.this
-	}
+	) extends ApplicationServiceElementRelationships[ApplicationService]
+
+	val rel: ApplicationServiceRelationships = ApplicationServiceRelationships()
 
 }

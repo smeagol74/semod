@@ -9,8 +9,10 @@ case class Artifact(
 ) extends Technology
 	with ArtifactElement {
 
-	object rel extends ArtifactElementRelationships[Artifact] {
-		private[archimate] implicit val tt: Artifact = Artifact.this
-	}
+	case class ArtifactRelationships(
+		override private[archimate] implicit val tt: Artifact = Artifact.this
+	) extends ArtifactElementRelationships[Artifact]
+
+	val rel: ArtifactRelationships = ArtifactRelationships()
 
 }

@@ -9,8 +9,10 @@ case class ApplicationEvent(
 ) extends Application
 	with ApplicationEventElement {
 
-	object rel extends ApplicationEventElementRelationships[ApplicationEvent] {
+	case class ApplicationEventRelationships(
 		private[archimate] implicit val tt: ApplicationEvent = ApplicationEvent.this
-	}
+	) extends ApplicationEventElementRelationships[ApplicationEvent]
+
+	val rel: ApplicationEventRelationships = ApplicationEventRelationships()
 
 }

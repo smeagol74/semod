@@ -9,8 +9,10 @@ case class Requirement(
 ) extends Motivation
 	with RequirementElement {
 
-	object rel extends RequirementElementRelationships[Requirement] {
+	case class RequirementRelationships(
 		override private[archimate] implicit val tt: Requirement = Requirement.this
-	}
+	) extends RequirementElementRelationships[Requirement]
+
+	val rel: RequirementRelationships = RequirementRelationships()
 
 }

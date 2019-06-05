@@ -9,8 +9,10 @@ case class ApplicationCollaboration(
 ) extends Application
 	with ApplicationCollaborationElement {
 
-	object rel extends ApplicationCollaborationElementRelationships[ApplicationCollaboration] {
+	case class ApplicationCollaborationRelationships(
 		private[archimate] implicit val tt: ApplicationCollaboration = ApplicationCollaboration.this
-	}
+	) extends ApplicationCollaborationElementRelationships[ApplicationCollaboration]
+
+	val rel: ApplicationCollaborationRelationships = ApplicationCollaborationRelationships()
 
 }

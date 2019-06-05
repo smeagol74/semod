@@ -26,8 +26,8 @@ object Ex_27_ApplicationBehaviorElements extends App {
   		.rel.realizes(purchaseQuotedInsurance)
 
 		val purchaseTravelInsurance = ApplicationInteraction("PurchaseTravelInsurance")
-  		.rel.isComposedOf(prepareQuotation)
-  		.rel.isComposedOf(finalizePurchase)
+  		.rel.composedOf(prepareQuotation)
+  		.rel.composedOf(finalizePurchase)
 	}
 
 	print(Report.withDependencies(Set(

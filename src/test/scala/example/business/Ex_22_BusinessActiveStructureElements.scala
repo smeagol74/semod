@@ -17,10 +17,10 @@ object Ex_22_BusinessActiveStructureElements extends App {
 		val specialist = BusinessRole("Specialist")
 
 		val travelInsuranceClaimAnalyst = BusinessRole("Travel\nInsurance\nClaim Analyst")
-			.rel.isSpecializationOf(specialist)
+			.rel.specializationOf(specialist)
 
 		val homeInsuranceProductSpecialist = BusinessRole("Home Insurance\nProduct\nSpecialist")
-			.rel.isSpecializationOf(specialist)
+			.rel.specializationOf(specialist)
 
 		val customerServiceRepresentative = BusinessRole("Customer\nService\nRepresentative")
 
@@ -36,12 +36,12 @@ object Ex_22_BusinessActiveStructureElements extends App {
 			.rel.assignedTo(customerServiceRepresentative)
 
 		val contactCenter = BusinessActor("ArchiSurance Contact Center")
-			.rel.isComposedOf(phone)
-			.rel.isComposedOf(email)
-			.rel.isComposedOf(webChat)
-			.rel.isComposedOf(greg)
-			.rel.isComposedOf(joan)
-			.rel.isComposedOf(larry)
+			.rel.composedOf(phone)
+			.rel.composedOf(email)
+			.rel.composedOf(webChat)
+			.rel.composedOf(greg)
+			.rel.composedOf(joan)
+			.rel.composedOf(larry)
 
 	}
 

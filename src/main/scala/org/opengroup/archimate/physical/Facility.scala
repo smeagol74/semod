@@ -27,8 +27,10 @@ case class Facility(
 ) extends Physical
 	with FacilityElement {
 
-	object rel extends FacilityElementRelationships[Facility] {
+	case class FacilityRelationships(
 		private[archimate] implicit val tt: Facility = Facility.this
-	}
+	) extends FacilityElementRelationships[Facility]
+
+	val rel: FacilityRelationships = FacilityRelationships()
 
 }

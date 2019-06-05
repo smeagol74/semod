@@ -9,8 +9,10 @@ case class WorkPackage(
 ) extends Implementation
 	with WorkPackageElement {
 
-	object rel extends WorkPackageElementRelationships[WorkPackage] {
-		private[archimate] implicit val tt: WorkPackage = WorkPackage.this
-	}
+	case class WorkPackageRelationships(
+		override private[archimate] implicit val tt: WorkPackage = WorkPackage.this
+	) extends WorkPackageElementRelationships[WorkPackage]
 
+	val rel: WorkPackageRelationships = WorkPackageRelationships()
 }
+

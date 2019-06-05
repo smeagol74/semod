@@ -1,18 +1,29 @@
 package org.opengroup.archimate.meta.element.application
 
-import org.opengroup.archimate.meta.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
+import org.opengroup.archimate.meta.element._
 
 trait ApplicationComponentElement
 	extends ActiveStructureElement
 		with StrategyCoreStructureBehaviorElement
 
+case object ApplicationComponentElement
+	extends ElementName
+
 trait ApplicationComponentElementRelationships[T <: ApplicationComponentElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
-	def isComposedOf(dst: ApplicationInterfaceElement): T = tt._rel.isComposedOf(dst)
+
+	def composedOf(dst: ApplicationInterfaceElement): T = tt._rel.composedOf(dst)
 
 	def assignedTo(dst: ApplicationInternalBehaviorElement): T = tt._rel.assignedTo(dst)
 
 	def assignedTo(dst: ApplicationEventElement): T = tt._rel.assignedTo(dst)
 
 	def realizes(dst: ApplicationComponentElement): T = tt._rel.realizes(dst)
+
+	_register(ApplicationComponentElement,
+		JR.composedOf(ApplicationInterfaceElement),
+		JR.assignedTo(ApplicationInternalBehaviorElement),
+		JR.assignedTo(ApplicationEventElement),
+		JR.realizes(ApplicationComponentElement),
+	)
 }

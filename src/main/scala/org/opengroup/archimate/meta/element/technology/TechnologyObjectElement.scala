@@ -6,5 +6,12 @@ trait TechnologyObjectElement
 	extends PassiveStructureElement
 		with StrategyCoreStructureBehaviorElement
 
+case object TechnologyObjectElement
+	extends ElementName
+
 trait TechnologyObjectElementRelationships[T <: TechnologyObjectElement]
-	extends StrategyCoreStructureBehaviorElementRelationships[T]
+	extends StrategyCoreStructureBehaviorElementRelationships[T] {
+
+	_register(TechnologyObjectElement)
+
+}

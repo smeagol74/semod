@@ -9,8 +9,10 @@ case class ImplementationEvent(
 ) extends Implementation
 	with ImplementationEventElement {
 
-	object rel extends ImplementationEventElementRelationships[ImplementationEvent] {
+	case class ImplementationEventRelationships(
 		private[archimate] implicit val tt: ImplementationEvent = ImplementationEvent.this
-	}
+	) extends ImplementationEventElementRelationships[ImplementationEvent]
+
+	val rel: ImplementationEventRelationships = ImplementationEventRelationships()
 
 }

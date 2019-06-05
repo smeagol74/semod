@@ -9,8 +9,10 @@ case class BusinessProcess(
 ) extends Business
 	with BusinessProcessElement {
 
-	object rel extends BusinessProcessElementRelationships[BusinessProcess] {
+	case class BusinessProcessRelationships(
 		override private[archimate] implicit val tt: BusinessProcess = BusinessProcess.this
-	}
+	) extends BusinessProcessElementRelationships[BusinessProcess]
+
+	val rel: BusinessProcessRelationships = BusinessProcessRelationships()
 
 }

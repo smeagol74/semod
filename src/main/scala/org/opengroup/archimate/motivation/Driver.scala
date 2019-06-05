@@ -9,8 +9,10 @@ case class Driver(
 ) extends Motivation
 	with DriverElement {
 
-	object rel extends DriverElementRelationships[Driver] {
+	case class DriverRelationships(
 		override private[archimate] implicit val tt: Driver = Driver.this
-	}
+	) extends DriverElementRelationships[Driver]
+
+	val rel: DriverRelationships = DriverRelationships()
 
 }

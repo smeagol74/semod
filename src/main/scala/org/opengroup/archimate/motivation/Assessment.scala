@@ -9,8 +9,10 @@ case class Assessment(
 ) extends Motivation
 	with AssessmentElement {
 
-	object rel extends AssessmentElementRelationships[Assessment] {
+	case class AssessmentRelationships(
 		override private[archimate] implicit val tt: Assessment = Assessment.this
-	}
+	) extends AssessmentElementRelationships[Assessment]
+
+	val rel: AssessmentRelationships = AssessmentRelationships()
 
 }

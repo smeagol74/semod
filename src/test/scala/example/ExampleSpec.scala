@@ -2,11 +2,21 @@ package example
 
 import example.application.{Ex_26_ApplicationActiveStructureElements, Ex_27_ApplicationBehaviorElements, Ex_28_ApplicationPassiveStructureElements}
 import example.business.{Ex_22_BusinessActiveStructureElements, Ex_23_BusinessBehaviorElements, Ex_24_BusinessPassiveStructureElements, Ex_25_BusinessCompositeElementProduct}
+import example.genericMetamodel.Ex_01_Grouping
 import example.motivation.{Ex_18_StakeholderDriverAndAssessment, Ex_19_GoalOutcomePrincipleRequirementAndConstraint, Ex_20_MeaningAndValue}
 import example.strategy.Ex_21_StrategyElements
 import org.scalatest.FunSpec
 
 class ExampleSpec extends FunSpec {
+
+	describe("generic metamodel") {
+		describe("Ex_01_Grouping") {
+			it("should run without errors") {
+				Ex_01_Grouping.main(Array())
+			}
+		}
+	}
+
 	describe("motivation") {
 		describe("Ex_18_StakeholderDriverAndAssessment") {
 			it("should run without errors") {

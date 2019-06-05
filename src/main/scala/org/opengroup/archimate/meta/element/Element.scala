@@ -1,12 +1,12 @@
 package org.opengroup.archimate.meta.element
 
-import org.opengroup.archimate.{IdGenerator, Resource}
 import org.opengroup.archimate.meta.layer.Layer
 import org.opengroup.archimate.meta.relationship.Relationship
 import org.opengroup.archimate.relationship.dependency.{Access, Influence, Serving}
 import org.opengroup.archimate.relationship.dynamic.{Flow, Triggering}
 import org.opengroup.archimate.relationship.other.{Association, Specialization}
 import org.opengroup.archimate.relationship.structural.{Aggregation, Assignment, Composition, Realization}
+import org.opengroup.archimate.{IdGenerator, Resource}
 
 import scala.collection.mutable
 import scala.compat.Platform.EOL
@@ -25,7 +25,7 @@ trait Element {
 		case _ => ""
 	}
 
-	private def _elementName = Element.this match {
+	private[archimate] def _elementName = Element.this match {
 		case product: Product =>
 			product.productPrefix
 		case _ => ""
@@ -39,6 +39,7 @@ trait Element {
 
 	private[archimate] object _rel {
 		private def apply[T <: Element](rel: Relationship)(implicit tThis: T): T = {
+			JR.assertRelationAllowed(rel)
 			_relationships.add(rel)
 			rel.dst.relReverse(rel)
 			tThis
@@ -57,13 +58,13 @@ trait Element {
 
 		def associatedWith[T <: Element](dst: Element)(implicit tThis: T) = apply(Association(Element.this, dst))
 
-		def isSpecializationOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Specialization(Element.this, dst))
+		def specializationOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Specialization(Element.this, dst))
 
 		def aggregates[T <: Element](dst: Element)(implicit tThis: T) = apply(Aggregation(Element.this, dst))
 
 		def assignedTo[T <: Element](dst: Element)(implicit tThis: T) = apply(Assignment(Element.this, dst))
 
-		def isComposedOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Composition(Element.this, dst))
+		def composedOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Composition(Element.this, dst))
 
 		def realizes[T <: Element](dst: Element)(implicit tThis: T) = apply(Realization(Element.this, dst))
 	}
@@ -87,9 +88,28 @@ trait Element {
 trait ElementRelationships[T <: Element] {
 	private[archimate] implicit val tt: T
 
-	def isComposedOf(dst: T): T = tt._rel.isComposedOf(dst)
+	private[archimate] def _register(traitElement: ElementName, methods: (Method.Value, ElementName)*): Unit = {
+		JR.append(traitElement, tt, methods: _*)
+	}
+
+	def composedOf(dst: T): T = tt._rel.composedOf(dst)
 
 	def aggregates(dst: T): T = tt._rel.aggregates(dst)
 
-	def isSpecializationOf(dst: T): T = tt._rel.isSpecializationOf(dst)
+	def specializationOf(dst: T): T = tt._rel.specializationOf(dst)
+
+	private def _doRegister(): Unit = {
+		val element = new ElementName {
+			override def name: String = tt._elementName
+		}
+
+		_register(element,
+			JR.composedOf(element),
+			JR.aggregates(element),
+			JR.specializationOf(element)
+		)
+	}
+
+	_doRegister()
+
 }

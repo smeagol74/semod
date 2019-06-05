@@ -9,8 +9,10 @@ case class CommunicationNetwork(
 ) extends Technology
 	with CommunicationNetworkElement {
 
-	object rel extends CommunicationNetworkElementRelationships[CommunicationNetwork] {
-		private[archimate] implicit val tt: CommunicationNetwork = CommunicationNetwork.this
-	}
+	case class CommunicationNetworkRelationships(
+		override private[archimate] implicit val tt: CommunicationNetwork = CommunicationNetwork.this
+	) extends CommunicationNetworkElementRelationships[CommunicationNetwork]
+
+	val rel: CommunicationNetworkRelationships = CommunicationNetworkRelationships()
 
 }

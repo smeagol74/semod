@@ -10,13 +10,13 @@ object Ex_28_ApplicationPassiveStructureElements extends App {
 
 	object db {
 		val onlineInsuranceQuotation = DataObject("Online Insurance\nQuotation")
-			.rel.isComposedOf(DataObject("Quoted\nPrice"))
-			.rel.isComposedOf(DataObject("Terms and\nConditions"))
-			.rel.isComposedOf(DataObject("Certificate of\nAuthenticity"))
+			.rel.composedOf(DataObject("Quoted\nPrice"))
+			.rel.composedOf(DataObject("Terms and\nConditions"))
+			.rel.composedOf(DataObject("Certificate of\nAuthenticity"))
 		val autoInsuranceQuotation = DataObject("Auth Insurance\nQuotation")
-			.rel.isSpecializationOf(onlineInsuranceQuotation)
+			.rel.specializationOf(onlineInsuranceQuotation)
 		val travelInsuranceQuotation = DataObject("Travel Insurance\nQuotation")
-			.rel.isSpecializationOf(onlineInsuranceQuotation)
+			.rel.specializationOf(onlineInsuranceQuotation)
 	}
 
 	print(Report.withDependencies(Set(

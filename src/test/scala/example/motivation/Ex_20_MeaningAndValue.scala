@@ -15,7 +15,7 @@ object Ex_20_MeaningAndValue extends App {
 		val costEfficiency = Value("Cost Efficiency")
 		val beingInformed = Value("Being Informed")
 		val peaceOfMind = Value("Peace of Mind")
-			.rel.isComposedOf(Value("Certainty"))
+			.rel.composedOf(Value("Certainty"))
 
 		val insurer = Stakeholder("Insurer")
 			.rel.associatedWith(costEfficiency)
@@ -34,7 +34,7 @@ object Ex_20_MeaningAndValue extends App {
 		val confirmationOfReceipt = DataObject(
 			"""Confirmation Of
 				|Receipt Message""".stripMargin)
-			.rel.isSpecializationOf(message)
+			.rel.specializationOf(message)
 			.rel.associatedWith(Meaning(
 			"""Claim Has
 				|Been
@@ -43,7 +43,7 @@ object Ex_20_MeaningAndValue extends App {
 		val reviewCompelete = DataObject(
 			"""Review Complete
 				|Message""".stripMargin)
-			.rel.isSpecializationOf(message)
+			.rel.specializationOf(message)
 			.rel.associatedWith(Meaning(
 			"""Claim Review
 				|Complete""".stripMargin))
@@ -51,7 +51,7 @@ object Ex_20_MeaningAndValue extends App {
 		val paymentComplete = DataObject(
 			"""Payment Complete
 				|Message""".stripMargin)
-			.rel.isSpecializationOf(message)
+			.rel.specializationOf(message)
 			.rel.associatedWith(Meaning(
 			"""Claim Has
 				|Been Paid""".stripMargin))

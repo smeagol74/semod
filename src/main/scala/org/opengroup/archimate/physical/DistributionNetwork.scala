@@ -9,8 +9,10 @@ case class DistributionNetwork(
 ) extends Physical
 	with DistributionNetworkElement {
 
-	object rel extends DistributionNetworkElementRelationships[DistributionNetwork] {
+	case class DistributionNetworkRelationships(
 		private[archimate] implicit val tt: DistributionNetwork = DistributionNetwork.this
-	}
+	) extends DistributionNetworkElementRelationships[DistributionNetwork]
+
+	val rel: DistributionNetworkRelationships = DistributionNetworkRelationships()
 
 }

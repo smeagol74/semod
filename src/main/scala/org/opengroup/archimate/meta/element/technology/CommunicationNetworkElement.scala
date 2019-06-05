@@ -1,22 +1,33 @@
 package org.opengroup.archimate.meta.element.technology
 
-import org.opengroup.archimate.meta.element.{ActiveStructureElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
-import org.opengroup.archimate.technology.{Device, Path, SystemSoftware}
+import org.opengroup.archimate.meta.element._
 
 trait CommunicationNetworkElement
 	extends ActiveStructureElement
 		with StrategyCoreStructureBehaviorElement
 
+case object CommunicationNetworkElement
+	extends ElementName
+
 trait CommunicationNetworkElementRelationships[T <: CommunicationNetworkElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
-	def realizes(dst: Path): T = tt._rel.realizes(dst)
 
-	def associatedWith(dst: Device): T = tt._rel.associatedWith(dst)
+	def realizes(dst: PathElement): T = tt._rel.realizes(dst)
 
-	def aggregates(dst: Device): T = tt._rel.aggregates(dst)
+	def associatedWith(dst: DeviceElement): T = tt._rel.associatedWith(dst)
 
-	def associatedWith(dst: SystemSoftware): T = tt._rel.associatedWith(dst)
+	def aggregates(dst: DeviceElement): T = tt._rel.aggregates(dst)
 
-	def aggregates(dst: SystemSoftware): T = tt._rel.aggregates(dst)
+	def associatedWith(dst: SystemSoftwareElement): T = tt._rel.associatedWith(dst)
+
+	def aggregates(dst: SystemSoftwareElement): T = tt._rel.aggregates(dst)
+
+	_register(CommunicationNetworkElement,
+		JR.realizes(PathElement),
+		JR.associatedWith(DeviceElement),
+		JR.aggregates(DeviceElement),
+		JR.associatedWith(SystemSoftwareElement),
+		JR.aggregates(SystemSoftwareElement),
+	)
 }
 

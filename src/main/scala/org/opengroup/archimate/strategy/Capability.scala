@@ -9,8 +9,10 @@ case class Capability(
 ) extends Strategy
 	with CapabilityElement {
 
-	object rel extends CapabilityElementRelationships[Capability] {
+	case class CapabilityRelationships(
 		override private[archimate] implicit val tt: Capability = Capability.this
-	}
+	) extends CapabilityElementRelationships[Capability]
+
+	val rel: CapabilityRelationships = CapabilityRelationships()
 
 }

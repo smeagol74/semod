@@ -9,8 +9,10 @@ case class Material(
 ) extends Physical
 	with MaterialElement {
 
-	object rel extends MaterialElementRelationships[Material] {
-		private[archimate] implicit val tt: Material = Material.this
-	}
+	case class MaterialRelationships(
+		override private[archimate] implicit val tt: Material = Material.this
+	) extends MaterialElementRelationships[Material]
+
+	val rel: MaterialRelationships = MaterialRelationships()
 
 }
