@@ -65,6 +65,8 @@ object IdGenerator {
 		"Implementation_ImplementationEvent" -> "IE",
 		"Implementation_Gap" -> "IG",
 		"Implementation_Deliverable" -> "ID",
+		"Junction_And" -> "JA",
+		"Junction_Or" -> "JO"
 	)
 
 	def next(key: String): String = {

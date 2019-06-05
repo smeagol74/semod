@@ -2,66 +2,61 @@ package example.business
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.business._
+import org.opengroup.archimate.meta.relationship.Junction
 
 /**
-	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046
+	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946053
 	*/
 object Ex_23_BusinessBehaviorElements extends App {
 
 	object db {
 		val claimsProcessing = BusinessService("Claims Processing")
 
-		val closeClaim = BusinessProcess("Close\nClaim")
-
-		// TODO improve flowsTo with junctions
 		val notifyCustomer = BusinessProcess("Notify\nCustomer")
-			.rel.flowsTo(closeClaim)
 
-		// TODO improve flowsTo with junctions
 		val payClaim = BusinessProcess("Play\nClaim")
-			.rel.flowsTo(closeClaim)
 
-		// TODO improve flowsTo with junctions
+		val closeClaim = BusinessProcess("Close\nClaim")
+			.rel.junction.and(notifyCustomer, payClaim).triggersThis
+
 		val adjudcateStandardClaim = BusinessProcess("Adjudcate\nStandard Claim")
-			.rel.flowsTo(notifyCustomer)
-			.rel.flowsTo(payClaim)
 
-		// TODO improve flowsTo with junctions
 		val adjudcateHighRiskClaim = BusinessInteraction("Adjudcate\nHigh-Risk Claim")
-			.rel.flowsTo(notifyCustomer)
-  		.rel.flowsTo(payClaim)
 
-		// TODO improve flowsTo with junctions
+		Junction
+			.or(adjudcateStandardClaim, adjudcateHighRiskClaim)
+			.triggers
+			.and(notifyCustomer, payClaim)
+
 		val assignClaim = BusinessProcess("Assign\nClaim")
-			.rel.flowsTo(adjudcateStandardClaim)
-			.rel.flowsTo(adjudcateHighRiskClaim)
+			.rel.junction.triggers.or(adjudcateStandardClaim, adjudcateHighRiskClaim)
 
 		val acceptClaim = BusinessProcess("Accept\nClaim")
-			.rel.flowsTo(assignClaim)
+			.rel.triggers(assignClaim)
 		val claimFiled = BusinessEvent("Claim Filed")
-			.rel.flowsTo(acceptClaim)
+			.rel.triggers(acceptClaim)
 
 		val claimsAdministration = BusinessFunction("Claims Administration")
 			.rel.realizes(claimsProcessing)
-  		.rel.composedOf(acceptClaim)
-  		.rel.composedOf(assignClaim)
+			.rel.composedOf(acceptClaim)
+			.rel.composedOf(assignClaim)
 			.rel.composedOf(adjudcateStandardClaim)
 			.rel.composedOf(adjudcateHighRiskClaim)
-  		.rel.composedOf(notifyCustomer)
-  		.rel.composedOf(payClaim)
-  		.rel.composedOf(closeClaim)
+			.rel.composedOf(notifyCustomer)
+			.rel.composedOf(payClaim)
+			.rel.composedOf(closeClaim)
 
 		val customerServiceRepresentative = BusinessRole("Customer\nService\nRepresentative")
-  		.rel.assignedTo(acceptClaim)
+			.rel.assignedTo(acceptClaim)
 
 		val specialist = BusinessRole("Specialist")
-  		.rel.assignedTo(adjudcateStandardClaim)
+			.rel.assignedTo(adjudcateStandardClaim)
 
 		val highRiskClaimsAdjudcation = BusinessCollaboration("High-Risk\nClaims\nAdjudcation")
-  		.rel.aggregates(customerServiceRepresentative)
-  		.rel.aggregates(specialist)
-  		.rel.assignedTo(assignClaim)
-  		.rel.assignedTo(adjudcateHighRiskClaim)
+			.rel.aggregates(customerServiceRepresentative)
+			.rel.aggregates(specialist)
+			.rel.assignedTo(assignClaim)
+			.rel.assignedTo(adjudcateHighRiskClaim)
 	}
 
 	print(Report.withDependencies(Set(

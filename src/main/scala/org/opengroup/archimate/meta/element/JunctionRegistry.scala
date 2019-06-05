@@ -64,25 +64,9 @@ trait JunctionRegistry {
 		_appendMethods(elementInstance._elementName, map)
 	}
 
-	def assertRelationAllowed(rel: Relationship): Unit = {
-		val method = rel match {
-			case _: Access => Method.accesses
-			case _: Influence => Method.influences
-			case _: Serving => Method.serves
-			case _: Flow => Method.flowsTo
-			case _: Triggering => Method.triggers
-			case _: Association => Method.associatedWith
-			case _: Specialization => Method.specializationOf
-			case _: Aggregation => Method.aggregates
-			case _: Assignment => Method.assignedTo
-			case _: Composition => Method.composedOf
-			case _: Realization => Method.realizes
-		}
+	def assertRelationAllowed(method: Method.Value, src: Element, dst: Element): Unit = {
 
-		val src = if (rel.direct) rel.src else rel.dst
-		val dst = if (rel.direct) rel.dst else rel.src
-
-		def _doAssert(message: String) = assert(assertion = false, s"Отношение '$src' -$method-> '$dst' недопустимо в archimate. $message")
+		def _doAssert(message: String): Unit = assert(assertion = false, s"Отношение '$src' -$method-> '$dst' недопустимо в archimate. $message")
 
 		_methods.get(src._elementName) match {
 			case Some(methods) =>
@@ -101,6 +85,27 @@ trait JunctionRegistry {
 			case None =>
 				_doAssert(s"Нет зарегистрированных отношений для элемента `${src._elementName}`.")
 		}
+	}
+
+	def assertRelationAllowed(rel: Relationship): Unit = {
+		val method = rel match {
+			case _: Access => Method.accesses
+			case _: Influence => Method.influences
+			case _: Serving => Method.serves
+			case _: Flow => Method.flowsTo
+			case _: Triggering => Method.triggers
+			case _: Association => Method.associatedWith
+			case _: Specialization => Method.specializationOf
+			case _: Aggregation => Method.aggregates
+			case _: Assignment => Method.assignedTo
+			case _: Composition => Method.composedOf
+			case _: Realization => Method.realizes
+		}
+
+		val src = if (rel.direct) rel.src else rel.dst
+		val dst = if (rel.direct) rel.dst else rel.src
+
+		assertRelationAllowed(method, src, dst)
 	}
 
 	def accesses(tName: ElementName): (Method.Value, ElementName) = Method.accesses -> tName

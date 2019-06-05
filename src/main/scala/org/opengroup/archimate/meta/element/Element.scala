@@ -1,7 +1,8 @@
 package org.opengroup.archimate.meta.element
 
+import org.opengroup.archimate.meta.element.relationship.JunctionElement
 import org.opengroup.archimate.meta.layer.Layer
-import org.opengroup.archimate.meta.relationship.Relationship
+import org.opengroup.archimate.meta.relationship.{JunctionMethod, JunctionMode, JunctionSrc, Relationship}
 import org.opengroup.archimate.relationship.dependency.{Access, Influence, Serving}
 import org.opengroup.archimate.relationship.dynamic.{Flow, Triggering}
 import org.opengroup.archimate.relationship.other.{Association, Specialization}
@@ -31,7 +32,7 @@ trait Element {
 		case _ => ""
 	}
 
-	private def _fullElementName = s"${_layerName}_${_elementName}"
+	private def _fullElementName = s"${_layerName}${if (_layerName.nonEmpty) "_" else ""}${_elementName}"
 
 	def relatedElements: Set[Element] = _relationships.map(r => r.dst).toSet ++ _reverseRelationships.map(r => r.dst).toSet
 
@@ -39,7 +40,9 @@ trait Element {
 
 	private[archimate] object _rel {
 		private def apply[T <: Element](rel: Relationship)(implicit tThis: T): T = {
-			JR.assertRelationAllowed(rel)
+			if (!rel.src.isInstanceOf[JunctionElement] && !rel.dst.isInstanceOf[JunctionElement]) {
+				JR.assertRelationAllowed(rel)
+			}
 			_relationships.add(rel)
 			rel.dst.relReverse(rel)
 			tThis
@@ -67,14 +70,38 @@ trait Element {
 		def composedOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Composition(Element.this, dst))
 
 		def realizes[T <: Element](dst: Element)(implicit tThis: T) = apply(Realization(Element.this, dst))
+
+		def apply[T <: Element](method: Method.Value, dst: Element): T = method match {
+			case Method.accesses => apply(Access(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.influences => apply(Influence(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.serves => apply(Serving(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.flowsTo => apply(Flow(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.triggers => apply(Triggering(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.associatedWith => apply(Association(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.specializationOf => apply(Specialization(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.aggregates => apply(Aggregation(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.assignedTo => apply(Assignment(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.composedOf => apply(Composition(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.realizes => apply(Realization(Element.this, dst))(Element.this.asInstanceOf[T])
+		}
 	}
 
 	object puml {
 		def element: String = {
 			val sb = StringBuilder.newBuilder
 			val kind = Resource.b.getString(_fullElementName)
-			sb.append(_elementName)
-			sb.append(s"""($id, "${name.replaceAll("\n", "\\\\n")}\\n($kind)")""")
+			sb.append(_layerName)
+			if (_layerName.nonEmpty) {
+				sb.append("_")
+				sb.append(_elementName.replaceFirst(_layerName, ""))
+			} else {
+				sb.append(_elementName)
+			}
+			sb.append(s"""($id, "${name.replaceAll("\n", "\\\\n")}""")
+			if (name.nonEmpty) {
+				sb.append("\\n")
+			}
+			sb.append(s"""($kind)")""")
 			sb.mkString
 		}
 
@@ -83,6 +110,75 @@ trait Element {
 		def reverseRelationships: String = Element.this._reverseRelationships.map(r => r.puml).mkString(EOL)
 	}
 
+}
+
+case class JunctionMethodThis[T <: Element](tt: T, method: Method.Value) {
+	def and(dst: Element*): T = {
+		JunctionMethod(JunctionSrc(JunctionMode.AND, tt), method).and(dst: _*)
+		tt
+	}
+
+	def or(dst: Element*): T = {
+		JunctionMethod(JunctionSrc(JunctionMode.AND, tt), method).or(dst: _*)
+		tt
+	}
+}
+
+case class JunctionSrcThis[T <: Element](tt: T, mode: JunctionMode.Value, src: Element*) {
+	def accessesThis: T = {
+		JunctionSrc(mode, src: _*).accesses.and(tt)
+		tt
+	}
+
+	def influencesThis: T = {
+		JunctionSrc(mode, src: _*).influences.and(tt)
+		tt
+	}
+
+	def servesThis: T = {
+		JunctionSrc(mode, src: _*).serves.and(tt)
+		tt
+	}
+
+	def flowsToThis: T = {
+		JunctionSrc(mode, src: _*).flowsTo.and(tt)
+		tt
+	}
+
+	def triggersThis: T = {
+		JunctionSrc(mode, src: _*).triggers.and(tt)
+		tt
+	}
+
+	def associatedWithThis: T = {
+		JunctionSrc(mode, src: _*).associatedWith.and(tt)
+		tt
+	}
+
+	def specializationOfThis: T = {
+		JunctionSrc(mode, src: _*).specializationOf.and(tt)
+		tt
+	}
+
+	def aggregatesThis: T = {
+		JunctionSrc(mode, src: _*).aggregates.and(tt)
+		tt
+	}
+
+	def assignedToThis: T = {
+		JunctionSrc(mode, src: _*).assignedTo.and(tt)
+		tt
+	}
+
+	def composedOfThis: T = {
+		JunctionSrc(mode, src: _*).composedOf.and(tt)
+		tt
+	}
+
+	def realizesThis: T = {
+		JunctionSrc(mode, src: _*).realizes.and(tt)
+		tt
+	}
 }
 
 trait ElementRelationships[T <: Element] {
@@ -97,6 +193,34 @@ trait ElementRelationships[T <: Element] {
 	def aggregates(dst: T): T = tt._rel.aggregates(dst)
 
 	def specializationOf(dst: T): T = tt._rel.specializationOf(dst)
+
+	object junction {
+		def accesses: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.accesses)
+
+		def influences: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.influences)
+
+		def serves: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.serves)
+
+		def flowsTo: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.flowsTo)
+
+		def triggers: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.triggers)
+
+		def associatedWith: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.associatedWith)
+
+		def specializationOf: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.specializationOf)
+
+		def aggregates: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.aggregates)
+
+		def assignedTo: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.assignedTo)
+
+		def composedOf: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.composedOf)
+
+		def realizes: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.realizes)
+
+		def and(src: Element*): JunctionSrcThis[T] = JunctionSrcThis(tt, JunctionMode.AND, src: _*)
+
+		def or(src: Element*): JunctionSrcThis[T] = JunctionSrcThis(tt, JunctionMode.OR, src: _*)
+	}
 
 	private def _doRegister(): Unit = {
 		val element = new ElementName {
