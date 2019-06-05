@@ -26,6 +26,30 @@ trait Element {
 		case _ => ""
 	}
 
+	override def equals(obj: Any): Boolean = {
+		obj match {
+			case element: Element =>
+				id.equals(element.id)
+			case _ =>
+				super.equals(obj)
+		}
+	}
+
+	override def toString: String = Element.this match {
+		case product: Product =>
+			val sb = StringBuilder.newBuilder
+			sb.append(product.productPrefix)
+			sb.append("(")
+			sb.append(id)
+			if (product.productArity > 0) {
+				sb.append(",")
+			}
+			sb.append(product.productIterator.mkString(","))
+			sb.append(")")
+			sb.mkString
+		case _ => super.toString
+	}
+
 	private[archimate] def _elementName = Element.this match {
 		case product: Product =>
 			product.productPrefix
@@ -34,7 +58,10 @@ trait Element {
 
 	private def _fullElementName = s"${_layerName}${if (_layerName.nonEmpty) "_" else ""}${_elementName}"
 
-	def relatedElements: Set[Element] = _relationships.map(r => r.dst).toSet ++ _reverseRelationships.map(r => r.dst).toSet
+	def relatedElements: Set[Element] = _relationships.map(r => r.src).toSet ++
+		_relationships.map(r => r.dst).toSet ++
+		_reverseRelationships.map(r => r.src).toSet ++
+		_reverseRelationships.map(r => r.dst).toSet
 
 	private[archimate] def relReverse(rel: Relationship): Unit = _reverseRelationships += rel.reverse
 
