@@ -59,7 +59,7 @@ object Ex_23_BusinessBehaviorElements extends App {
 			.rel.assignedTo(adjudcateHighRiskClaim)
 	}
 
-	print(Report.withDependencies(Set(
+	print(Report.withDependencies(Some("Example 23. Business Behavior Elemenst (Business)"), Set(
 		db.claimsProcessing
 	)))
 

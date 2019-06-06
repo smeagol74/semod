@@ -19,7 +19,7 @@ object Ex_28_ApplicationPassiveStructureElements extends App {
 			.rel.specializationOf(onlineInsuranceQuotation)
 	}
 
-	print(Report.withDependencies(Set(
+	print(Report.withDependencies(Some("Example 28. Application Passive Structure Elements (Application)"), Set(
 		db.onlineInsuranceQuotation
 	)))
 

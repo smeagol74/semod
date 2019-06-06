@@ -48,35 +48,37 @@ object Ex_18_StakeholderDriverAndAssessment extends App {
 			.rel.associatedWith(marketShare)
 		ceo
 			.rel.associatedWith(marketShare)
-  		.rel.associatedWith(profitability)
+			.rel.associatedWith(profitability)
 		cfo
-  		.rel.associatedWith(profitability)
+			.rel.associatedWith(profitability)
 		profitability
-  		.rel.composedOf(revenue)
-  		.rel.composedOf(costs)
-  		.rel.associatedWith(profitabilityIsDeclining)
+			.rel.composedOf(revenue)
+			.rel.composedOf(costs)
+			.rel.associatedWith(profitabilityIsDeclining)
 		marketShare
-  		.rel.associatedWith(marketShareIsDeclining)
+			.rel.associatedWith(marketShareIsDeclining)
 		revenue
-  		.rel.associatedWith(revenueIsDeclining)
+			.rel.associatedWith(revenueIsDeclining)
 		costs
-  		.rel.associatedWith(costOfNewCustomersIsIncreasing)
+			.rel.associatedWith(costOfNewCustomersIsIncreasing)
 		marketShareIsDeclining
-  		.rel.influences(revenueIsDeclining, "+")
+			.rel.influences(revenueIsDeclining, "+")
 		revenueIsDeclining
-  		.rel.influences(profitabilityIsDeclining, "+")
+			.rel.influences(profitabilityIsDeclining, "+")
 		costOfNewCustomersIsIncreasing
-  		.rel.influences(profitabilityIsDeclining, "+")
+			.rel.influences(profitabilityIsDeclining, "+")
 		competitorsAdvancedFeatures
-  		.rel.influences(marketShareIsDeclining, "+")
-  		.rel.influences(discountsProvided, "+")
+			.rel.influences(marketShareIsDeclining, "+")
+			.rel.influences(discountsProvided, "+")
 		discountsProvided
-  		.rel.influences(marketShareIsDeclining, "-")
-  		.rel.influences(revenueIsDeclining, "+")
+			.rel.influences(marketShareIsDeclining, "-")
+			.rel.influences(revenueIsDeclining, "+")
 	}
 
-	print(Report.withDependencies(Set(
-		db.ceo
-	)))
+	print(Report.withDependencies(
+		Some("Example 18. Stakeholder, Driver and Assessment (Motivation)"),
+		Set(
+			db.ceo
+		)))
 
 }

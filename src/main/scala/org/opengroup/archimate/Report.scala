@@ -1,13 +1,30 @@
 package org.opengroup.archimate
 
 import org.opengroup.archimate.meta.element.Element
+import org.opengroup.archimate.meta.relationship.Relationship
+import org.opengroup.archimate.report.PlantUmlReportingEngine
 
 import scala.collection.mutable
-import scala.compat.Platform.EOL
+
+trait ReportingEngine {
+
+	def renderToString(
+		title: Option[String],
+		elements: Set[Element],
+		relationships: Set[Relationship]
+	): String
+
+	def renderToSvg(
+		file: String,
+		title: Option[String],
+		elements: Set[Element],
+		relationships: Set[Relationship]
+	)
+}
 
 object Report {
 
-	
+	val engine: ReportingEngine = PlantUmlReportingEngine
 
 	private def _getAllDependencies(elements: Set[Element]): Set[Element] = {
 		val res = mutable.HashSet.empty[Element]
@@ -21,19 +38,12 @@ object Report {
 			res.toSet
 	}
 
-	def withDependencies(elements: Set[Element]): String = {
-		val sb = StringBuilder.newBuilder
+	def withDependencies(title: Option[String], elements: Set[Element]): String = {
 		val deps = _getAllDependencies(elements)
-		sb.append("@startuml").append(EOL)
-		sb.append("!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml").append(EOL)
-
+		val rels = mutable.Set.empty[Relationship]
 		deps.foreach(el => {
-			sb.append(el.puml.element).append(EOL)
+			rels ++= el._relationships
 		})
-		deps.foreach(el => {
-			sb.append(el.puml.relationships).append(EOL)
-		})
-		sb.append("@enduml").append(EOL)
-		sb.mkString
+		engine.renderToString(title, deps, rels.toSet)
 	}
 }

@@ -5,7 +5,7 @@ import org.opengroup.archimate.meta.layer.Layer
 
 trait Junction
 	extends Layer {
-	override val _puml = "Junction"
+	override val layerName = "Junction"
 }
 
 trait JunctionElement

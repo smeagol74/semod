@@ -55,35 +55,35 @@ trait JunctionRegistry {
 		* @param data            methods with destination traits
 		*/
 	def append(elementTrait: ElementName, elementInstance: Element, data: (Method.Value, ElementName)*): Unit = {
-		_appendTraits(elementTrait.name, elementInstance._elementName)
+		_appendTraits(elementTrait.name, elementInstance.elementName)
 		val map = mutable.Map.empty[Method.Value, mutable.Set[String]]
 		for (row <- data) {
 			val m = map.getOrElseUpdate(row._1, mutable.Set.empty[String])
 			m.add(row._2.name)
 		}
-		_appendMethods(elementInstance._elementName, map)
+		_appendMethods(elementInstance.elementName, map)
 	}
 
 	def assertRelationAllowed(method: Method.Value, src: Element, dst: Element): Unit = {
 
 		def _doAssert(message: String): Unit = assert(assertion = false, s"Отношение '$src' -$method-> '$dst' недопустимо в archimate. $message")
 
-		_methods.get(src._elementName) match {
+		_methods.get(src.elementName) match {
 			case Some(methods) =>
 				methods.get(method) match {
 					case Some(traits) =>
 						var notFound = true
 						for (t <- traits) {
-							notFound = notFound && !_traits.getOrElse(t, mutable.Set.empty[String]).contains(dst._elementName)
+							notFound = notFound && !_traits.getOrElse(t, mutable.Set.empty[String]).contains(dst.elementName)
 						}
 						if (notFound) {
-							_doAssert(s"У элемента `${src._elementName}` нет зарегистрированного отношения `$method` с элементом `${dst._elementName}`.")
+							_doAssert(s"У элемента `${src.elementName}` нет зарегистрированного отношения `$method` с элементом `${dst.elementName}`.")
 						}
 					case None =>
-						_doAssert(s"У элемента `${src._elementName}` нет зарегистрированного отношения `$method`.")
+						_doAssert(s"У элемента `${src.elementName}` нет зарегистрированного отношения `$method`.")
 				}
 			case None =>
-				_doAssert(s"Нет зарегистрированных отношений для элемента `${src._elementName}`.")
+				_doAssert(s"Нет зарегистрированных отношений для элемента `${src.elementName}`.")
 		}
 	}
 

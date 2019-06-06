@@ -57,9 +57,11 @@ object Ex_20_MeaningAndValue extends App {
 				|Been Paid""".stripMargin))
 	}
 
-	print(Report.withDependencies(Set(
-		db.insurer,
-		db.customer
-	)))
+	print(Report.withDependencies(
+		Some("Example 20. Meaning and Value (Motivation)"),
+		Set(
+			db.insurer,
+			db.customer
+		)))
 
 }

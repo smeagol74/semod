@@ -23,7 +23,7 @@ object Ex_24_BusinessPassiveStructureElements extends App {
 			.rel.realizes(insurancePolicy)
 	}
 
-	print(Report.withDependencies(Set(
+	print(Report.withDependencies(Some("Example 24. Business Passive Structure Elements (Business)"), Set(
 		db.insurancePolicy
 	)))
 }

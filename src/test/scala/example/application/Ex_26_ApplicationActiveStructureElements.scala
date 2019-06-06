@@ -11,14 +11,14 @@ object Ex_26_ApplicationActiveStructureElements extends App {
 	object db {
 		val travelWebsite = ApplicationComponent("Travel Website")
 		val webServicesInterface = ApplicationInterface("Web Services\nInterface")
-  		.rel.serves(travelWebsite)
+			.rel.serves(travelWebsite)
 		val onlineTravelInsruranceSales = ApplicationCollaboration("Online Travel\nInsurance Sales")
-  		.rel.composedOf(webServicesInterface)
-  		.rel.aggregates(ApplicationComponent("Quotation"))
-  		.rel.aggregates(ApplicationComponent("Purchases"))
+			.rel.composedOf(webServicesInterface)
+			.rel.aggregates(ApplicationComponent("Quotation"))
+			.rel.aggregates(ApplicationComponent("Purchases"))
 	}
 
-	print(Report.withDependencies(Set(
+	print(Report.withDependencies(Some("Example 26. Application Active Structure Elements (Application)"), Set(
 		db.travelWebsite
 	)))
 

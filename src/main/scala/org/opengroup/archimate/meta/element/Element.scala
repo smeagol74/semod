@@ -1,5 +1,6 @@
 package org.opengroup.archimate.meta.element
 
+import org.opengroup.archimate.IdGenerator
 import org.opengroup.archimate.meta.element.relationship.JunctionElement
 import org.opengroup.archimate.meta.layer.Layer
 import org.opengroup.archimate.meta.relationship.{JunctionMethod, JunctionMode, JunctionSrc, Relationship}
@@ -7,24 +8,16 @@ import org.opengroup.archimate.relationship.dependency.{Access, Influence, Servi
 import org.opengroup.archimate.relationship.dynamic.{Flow, Triggering}
 import org.opengroup.archimate.relationship.other.{Association, Specialization}
 import org.opengroup.archimate.relationship.structural.{Aggregation, Assignment, Composition, Realization}
-import org.opengroup.archimate.{IdGenerator, Resource}
 
 import scala.collection.mutable
-import scala.compat.Platform.EOL
 
 trait Element {
-	val id: String = IdGenerator.next(_fullElementName)
+	val id: String = IdGenerator.next(fullElementName)
 	val name: String
 	val desc: String
 
 	val _relationships: mutable.HashSet[Relationship] = mutable.HashSet.empty[Relationship]
 	val _reverseRelationships: mutable.HashSet[Relationship] = mutable.HashSet.empty[Relationship]
-
-	private def _layerName = Element.this match {
-		case layer: Layer =>
-			layer._puml
-		case _ => ""
-	}
 
 	override def equals(obj: Any): Boolean = {
 		obj match {
@@ -50,13 +43,17 @@ trait Element {
 		case _ => super.toString
 	}
 
-	private[archimate] def _elementName = Element.this match {
+	def elementName: String = Element.this match {
 		case product: Product =>
 			product.productPrefix
 		case _ => ""
 	}
 
-	private def _fullElementName = s"${_layerName}${if (_layerName.nonEmpty) "_" else ""}${_elementName}"
+	def fullElementName: String = this match {
+		case layer: Layer =>
+			s"${layer.layerName}_$elementName"
+		case _ => elementName
+	}
 
 	def relatedElements: Set[Element] = _relationships.map(r => r.src).toSet ++
 		_relationships.map(r => r.dst).toSet ++
@@ -111,30 +108,6 @@ trait Element {
 			case Method.composedOf => apply(Composition(Element.this, dst))(Element.this.asInstanceOf[T])
 			case Method.realizes => apply(Realization(Element.this, dst))(Element.this.asInstanceOf[T])
 		}
-	}
-
-	object puml {
-		def element: String = {
-			val sb = StringBuilder.newBuilder
-			val kind = Resource.b.getString(_fullElementName)
-			sb.append(_layerName)
-			if (_layerName.nonEmpty) {
-				sb.append("_")
-				sb.append(_elementName.replaceFirst(_layerName, ""))
-			} else {
-				sb.append(_elementName)
-			}
-			sb.append(s"""($id, "${name.replaceAll("\n", "\\\\n")}""")
-			if (name.nonEmpty) {
-				sb.append("\\n")
-			}
-			sb.append(s"""($kind)")""")
-			sb.mkString
-		}
-
-		def relationships: String = Element.this._relationships.map(r => r.puml).mkString(EOL)
-
-		def reverseRelationships: String = Element.this._reverseRelationships.map(r => r.puml).mkString(EOL)
 	}
 
 }
@@ -251,7 +224,7 @@ trait ElementRelationships[T <: Element] {
 
 	private def _doRegister(): Unit = {
 		val element = new ElementName {
-			override def name: String = tt._elementName
+			override def name: String = tt.elementName
 		}
 
 		_register(element,

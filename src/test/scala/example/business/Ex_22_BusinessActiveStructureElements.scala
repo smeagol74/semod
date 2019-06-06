@@ -45,7 +45,7 @@ object Ex_22_BusinessActiveStructureElements extends App {
 
 	}
 
-	print(Report.withDependencies(Set(
+	print(Report.withDependencies(Some("Example 22. Business Active Structure Elements"), Set(
 		db.contactCenter
 	)))
 

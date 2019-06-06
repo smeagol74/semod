@@ -26,7 +26,7 @@ object Ex_25_BusinessCompositeElementProduct extends App {
 			.rel.composedOf(BusinessService("Drive Well\nand Save"))
 	}
 
-	print(Report.withDependencies(Set(
+	print(Report.withDependencies(Some("Example 25. Business Composite Element Product (Business)"), Set(
 		db.insurance
 	)))
 

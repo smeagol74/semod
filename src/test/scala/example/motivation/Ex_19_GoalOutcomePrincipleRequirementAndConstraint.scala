@@ -60,7 +60,9 @@ object Ex_19_GoalOutcomePrincipleRequirementAndConstraint extends App {
 				|Frameworks""".stripMargin)
 	}
 
-	print(Report.withDependencies(Set(
+	print(Report.withDependencies(
+		Some("Example 19. Goal, Outcome, Principle, Requirement and Constraint (Motivation)"),
+		Set(
 		db.improvePortability
 	)))
 }
