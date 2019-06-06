@@ -1,4 +1,4 @@
-package example.business
+package example._08_business
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.business._
@@ -59,8 +59,12 @@ object Ex_23_BusinessBehaviorElements extends App {
 			.rel.assignedTo(adjudcateHighRiskClaim)
 	}
 
-	print(Report.withDependencies(Some("Example 23. Business Behavior Elemenst (Business)"), Set(
+	print(Report.withDependencies(
+		Report.Options.empty
+			.title("Example 23. Business Behavior Elemenst (Business)")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946053")
+			.get,
 		db.claimsProcessing
-	)))
+	))
 
 }

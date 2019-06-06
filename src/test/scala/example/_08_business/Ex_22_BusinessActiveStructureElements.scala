@@ -1,4 +1,4 @@
-package example.business
+package example._08_business
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.business.{BusinessActor, BusinessCollaboration, BusinessInterface, BusinessRole}
@@ -45,8 +45,12 @@ object Ex_22_BusinessActiveStructureElements extends App {
 
 	}
 
-	print(Report.withDependencies(Some("Example 22. Business Active Structure Elements"), Set(
+	print(Report.withDependencies(
+		Report.Options.empty
+			.title("Example 22. Business Active Structure Elements")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046")
+			.get,
 		db.contactCenter
-	)))
+	))
 
 }

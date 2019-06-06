@@ -1,4 +1,4 @@
-package example.application
+package example._09_application
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.application._
@@ -31,8 +31,12 @@ object Ex_27_ApplicationBehaviorElements extends App {
 			.rel.composedOf(finalizePurchase)
 	}
 
-	print(Report.withDependencies(Some("Example 27. Application Behavior Elements (Application)"), Set(
+	print(Report.withDependencies(
+		Report.Options.empty
+			.title("Example 27. Application Behavior Elements (Application)")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076")
+			.get,
 		db.purchaseTravelInsurance
-	)))
+	))
 
 }

@@ -21,7 +21,7 @@ trait CapabilityElementRelationships[T <: CapabilityElement]
 
 	def triggers(dst: CapabilityElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: CapabilityElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: CapabilityElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	_register(CapabilityElement,
 		JR.realizes(CourseOfActionElement),

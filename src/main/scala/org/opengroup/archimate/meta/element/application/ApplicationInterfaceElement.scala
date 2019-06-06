@@ -1,6 +1,8 @@
 package org.opengroup.archimate.meta.element.application
 
 import org.opengroup.archimate.meta.element._
+import org.opengroup.archimate.meta.element.business.{BusinessInterfaceElement, BusinessInternalActiveStructureElement}
+import org.opengroup.archimate.meta.element.technology.NodeElement
 
 trait ApplicationInterfaceElement
 	extends ActiveStructureElement
@@ -16,9 +18,18 @@ trait ApplicationInterfaceElementRelationships[T <: ApplicationInterfaceElement]
 
 	def serves(dst: ApplicationComponentElement): T = tt._rel.serves(dst)
 
+	def serves(dst: BusinessInternalActiveStructureElement): T = tt._rel.serves(dst)
+
+	def realizes(dst: BusinessInterfaceElement): T = tt._rel.realizes(dst)
+
+	def serves(dst: NodeElement): T = tt._rel.serves(dst)
+
 	_register(ApplicationInterfaceElement,
 		JR.assignedTo(ApplicationServiceElement),
 		JR.serves(ApplicationComponentElement),
+		JR.serves(BusinessInternalActiveStructureElement),
+		JR.realizes(BusinessInterfaceElement),
+		JR.serves(NodeElement),
 	)
 
 }

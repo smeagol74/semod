@@ -2,6 +2,7 @@ package org.opengroup.archimate.meta.element.business
 
 import org.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
 import org.opengroup.archimate.meta.relationship.Junction
+import org.opengroup.archimate.relationship.dependency.AccessMode
 
 trait BusinessInternalBehaviorElement
 	extends Element
@@ -18,13 +19,13 @@ trait BusinessInternalBehaviorElementRelationships[T <: BusinessInternalBehavior
 
 	def triggers(dst: BusinessEventElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: BusinessEventElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: BusinessEventElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	def triggers(dst: BusinessInternalBehaviorElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: BusinessInternalBehaviorElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: BusinessInternalBehaviorElement, label: String): T = tt._rel.flowsTo(dst, label)
 
-	def accesses(dst: BusinessPassiveStructureElement): T = tt._rel.accesses(dst)
+	def accesses(dst: BusinessPassiveStructureElement, mode: AccessMode.Value): T = tt._rel.accesses(dst, mode)
 
 	def realizes(dst: BusinessServiceElement): T = tt._rel.realizes(dst)
 

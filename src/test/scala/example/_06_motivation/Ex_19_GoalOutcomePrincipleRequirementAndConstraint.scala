@@ -1,4 +1,4 @@
-package example.motivation
+package example._06_motivation
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.motivation._
@@ -61,8 +61,10 @@ object Ex_19_GoalOutcomePrincipleRequirementAndConstraint extends App {
 	}
 
 	print(Report.withDependencies(
-		Some("Example 19. Goal, Outcome, Principle, Requirement and Constraint (Motivation)"),
-		Set(
+		Report.Options.empty
+			.title("Example 19. Goal, Outcome, Principle, Requirement and Constraint (Motivation)")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946022")
+			.get,
 		db.improvePortability
-	)))
+	))
 }

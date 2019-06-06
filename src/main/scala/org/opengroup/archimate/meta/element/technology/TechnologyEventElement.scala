@@ -1,6 +1,7 @@
 package org.opengroup.archimate.meta.element.technology
 
 import org.opengroup.archimate.meta.element._
+import org.opengroup.archimate.relationship.dependency.AccessMode
 
 trait TechnologyEventElement
 	extends BehaviorElement
@@ -14,17 +15,17 @@ trait TechnologyEventElementRelationships[T <: TechnologyEventElement]
 
 	def triggers(dst: TechnologyInternalBehaviorElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: TechnologyInternalBehaviorElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: TechnologyInternalBehaviorElement, label: String): T = tt._rel.flowsTo(dst, label)
 
-	def accesses(dst: TechnologyObjectElement): T = tt._rel.accesses(dst)
+	def accesses(dst: TechnologyObjectElement, mode: AccessMode.Value): T = tt._rel.accesses(dst, mode)
 
 	def triggers(dst: TechnologyEventElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: TechnologyEventElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: TechnologyEventElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	def triggers(dst: TechnologyServiceElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: TechnologyServiceElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: TechnologyServiceElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	_register(TechnologyEventElement,
 		JR.triggers(TechnologyInternalBehaviorElement),

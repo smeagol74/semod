@@ -1,4 +1,4 @@
-package example.application
+package example._09_application
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.application.DataObject
@@ -19,8 +19,12 @@ object Ex_28_ApplicationPassiveStructureElements extends App {
 			.rel.specializationOf(onlineInsuranceQuotation)
 	}
 
-	print(Report.withDependencies(Some("Example 28. Application Passive Structure Elements (Application)"), Set(
+	print(Report.withDependencies(
+		Report.Options.empty
+			.title("Example 28. Application Passive Structure Elements (Application)")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946079")
+			.get,
 		db.onlineInsuranceQuotation
-	)))
+	))
 
 }

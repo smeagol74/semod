@@ -1,7 +1,9 @@
 package org.opengroup.archimate.meta.element.application
 
+import org.opengroup.archimate.meta.element.business.BusinessInternalBehaviorElement
 import org.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
 import org.opengroup.archimate.meta.relationship.Junction
+import org.opengroup.archimate.relationship.dependency.AccessMode
 
 trait ApplicationInternalBehaviorElement
 	extends Element
@@ -18,15 +20,17 @@ trait ApplicationInternalBehaviorElementRelationships[T <: ApplicationInternalBe
 
 	def realizes(dst: ApplicationServiceElement): T = tt._rel.realizes(dst)
 
-	def accesses(dst: DataObjectElement): T = tt._rel.accesses(dst)
+	def accesses(dst: DataObjectElement, mode: AccessMode.Value): T = tt._rel.accesses(dst, mode)
 
 	def triggers(dst: ApplicationInternalBehaviorElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: ApplicationInternalBehaviorElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: ApplicationInternalBehaviorElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	def triggers(dst: ApplicationEventElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: ApplicationEventElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: ApplicationEventElement, label: String): T = tt._rel.flowsTo(dst, label)
+
+	def realizes(dst: BusinessInternalBehaviorElement): T = tt._rel.realizes(dst)
 
 	_register(ApplicationInternalBehaviorElement,
 		JR.aggregates(ApplicationInternalBehaviorElement),
@@ -37,5 +41,6 @@ trait ApplicationInternalBehaviorElementRelationships[T <: ApplicationInternalBe
 		JR.flowsTo(ApplicationInternalBehaviorElement),
 		JR.triggers(ApplicationEventElement),
 		JR.flowsTo(ApplicationEventElement),
+		JR.realizes(BusinessInternalBehaviorElement)
 	)
 }

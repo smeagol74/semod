@@ -1,6 +1,9 @@
 package org.opengroup.archimate.meta.element.technology
 
+import org.opengroup.archimate.meta.element.application.ApplicationInternalBehaviorElement
+import org.opengroup.archimate.meta.element.business.BusinessInternalBehaviorElement
 import org.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
+import org.opengroup.archimate.relationship.dependency.AccessMode
 
 trait TechnologyInternalBehaviorElement
 	extends Element
@@ -17,15 +20,19 @@ trait TechnologyInternalBehaviorElementRelationships[T <: TechnologyInternalBeha
 
 	def composedOf(dst: TechnologyInternalBehaviorElement): T = tt._rel.composedOf(dst)
 
-	def accesses(dst: TechnologyObjectElement): T = tt._rel.accesses(dst)
+	def accesses(dst: TechnologyObjectElement, mode: AccessMode.Value): T = tt._rel.accesses(dst, mode)
 
 	def triggers(dst: TechnologyInternalBehaviorElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: TechnologyInternalBehaviorElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: TechnologyInternalBehaviorElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	def triggers(dst: TechnologyEventElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: TechnologyEventElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: TechnologyEventElement, label: String): T = tt._rel.flowsTo(dst, label)
+
+	def realizes(dst: BusinessInternalBehaviorElement): T = tt._rel.realizes(dst)
+
+	def realizes(dst: ApplicationInternalBehaviorElement): T = tt._rel.realizes(dst)
 
 	_register(TechnologyInternalBehaviorElement,
 		JR.realizes(TechnologyServiceElement),
@@ -36,5 +43,7 @@ trait TechnologyInternalBehaviorElementRelationships[T <: TechnologyInternalBeha
 		JR.flowsTo(TechnologyInternalBehaviorElement),
 		JR.triggers(TechnologyEventElement),
 		JR.flowsTo(TechnologyEventElement),
+		JR.realizes(BusinessInternalBehaviorElement),
+		JR.realizes(ApplicationInternalBehaviorElement),
 	)
 }

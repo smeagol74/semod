@@ -1,4 +1,4 @@
-package example.application
+package example._09_application
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.application.{ApplicationCollaboration, ApplicationComponent, ApplicationInterface}
@@ -18,8 +18,12 @@ object Ex_26_ApplicationActiveStructureElements extends App {
 			.rel.aggregates(ApplicationComponent("Purchases"))
 	}
 
-	print(Report.withDependencies(Some("Example 26. Application Active Structure Elements (Application)"), Set(
+	print(Report.withDependencies(
+		Report.Options.empty
+			.title("Example 26. Application Active Structure Elements (Application)")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946069")
+			.get,
 		db.travelWebsite
-	)))
+	))
 
 }

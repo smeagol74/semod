@@ -18,7 +18,7 @@ trait CourseOfActionElementRelationships[T <: CourseOfActionElement]
 
 	def triggers(dst: CourseOfActionElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: CourseOfActionElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: CourseOfActionElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	def realizes(dst: OutcomeElement): T = tt._rel.realizes(dst)
 

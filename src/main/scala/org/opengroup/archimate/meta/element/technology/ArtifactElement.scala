@@ -1,6 +1,7 @@
 package org.opengroup.archimate.meta.element.technology
 
 import org.opengroup.archimate.meta.element._
+import org.opengroup.archimate.meta.element.application.{ApplicationComponentElement, DataObjectElement}
 
 trait ArtifactElement
 	extends PassiveStructureElement
@@ -17,9 +18,15 @@ trait ArtifactElementRelationships[T <: ArtifactElement]
 
 	def realizes(dst: SystemSoftwareElement): T = tt._rel.realizes(dst)
 
+	def realizes(dst: DataObjectElement): T = tt._rel.realizes(dst)
+
+	def realizes(dst: ApplicationComponentElement): T = tt._rel.realizes(dst)
+
 	_register(ArtifactElement,
 		JR.specializationOf(TechnologyObjectElement),
-		JR.realizes(SystemSoftwareElement)
+		JR.realizes(SystemSoftwareElement),
+		JR.realizes(DataObjectElement),
+		JR.realizes(ApplicationComponentElement),
 	)
 
 }

@@ -1,4 +1,4 @@
-package example.motivation
+package example._06_motivation
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.motivation.{Assessment, Driver, Stakeholder}
@@ -76,9 +76,11 @@ object Ex_18_StakeholderDriverAndAssessment extends App {
 	}
 
 	print(Report.withDependencies(
-		Some("Example 18. Stakeholder, Driver and Assessment (Motivation)"),
-		Set(
-			db.ceo
-		)))
+		Report.Options.empty
+			.title("Example 18. Stakeholder, Driver and Assessment (Motivation)")
+  		.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015")
+			.get,
+		db.ceo
+	))
 
 }

@@ -1,10 +1,11 @@
 package org.opengroup.archimate.report
 
-import org.opengroup.archimate.{ReportingEngine, Resource}
+import org.opengroup.archimate.{ReportingEngine, ReportingEngineOptions, Resource}
 import org.opengroup.archimate.meta.element.Element
 import org.opengroup.archimate.meta.layer.Layer
 import org.opengroup.archimate.meta.relationship.Relationship
-import org.opengroup.archimate.relationship.dependency.Influence
+import org.opengroup.archimate.relationship.dependency.{Access, Influence}
+import org.opengroup.archimate.relationship.dynamic.Flow
 
 import scala.compat.Platform.EOL
 
@@ -50,14 +51,22 @@ object PlantUmlReportingEngine extends ReportingEngine {
 		sb.mkString
 	}
 
+	// TODO implement different Access modes
+	private def _renderAccess(relationship: Access): String = _renderGeneric(relationship)
+
+	// TODO implement Flow labels
+	private def _renderFlow(relationship: Flow): String = _renderGeneric(relationship)
+
 	private def renderRelationship(relationship: Relationship): String = relationship match {
 		case rel: Influence => _renderInfluence(rel)
+		case rel: Access => _renderAccess(rel)
+		case rel: Flow => _renderFlow(rel)
 		case _ => _renderGeneric(relationship)
 	}
 
 	override def renderToSvg(
 		file: String,
-		title: Option[String],
+		options: ReportingEngineOptions,
 		elements: Set[Element],
 		relationships: Set[Relationship]
 	): Unit = {
@@ -65,7 +74,7 @@ object PlantUmlReportingEngine extends ReportingEngine {
 	}
 
 	override def renderToString(
-		title: Option[String],
+		options: ReportingEngineOptions,
 		elements: Set[Element],
 		relationships: Set[Relationship]
 	): String = {
@@ -74,11 +83,9 @@ object PlantUmlReportingEngine extends ReportingEngine {
 		sb.append("@startuml").append(EOL)
 		sb.append("!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml").append(EOL).append(EOL)
 
-		title match {
-			case Some(titl) =>
-				sb.append(s"title ${_normalize(titl)}").append(EOL).append(EOL)
-			case None =>
-		}
+		options.header.foreach(header => sb.append(s"header ${_normalize(header)}").append(EOL).append(EOL))
+		options.footer.foreach(footer => sb.append(s"footer ${_normalize(footer)}").append(EOL).append(EOL))
+		options.title.foreach(title => sb.append(s"title ${_normalize(title)}").append(EOL).append(EOL))
 
 		elements.map(renderElement).foreach(sb.append(_).append(EOL))
 		relationships.map(renderRelationship).foreach(sb.append(_).append(EOL))

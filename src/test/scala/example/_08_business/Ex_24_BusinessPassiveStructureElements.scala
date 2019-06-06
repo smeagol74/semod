@@ -1,4 +1,4 @@
-package example.business
+package example._08_business
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.business.{BusinessObject, Contract, Representation}
@@ -23,7 +23,11 @@ object Ex_24_BusinessPassiveStructureElements extends App {
 			.rel.realizes(insurancePolicy)
 	}
 
-	print(Report.withDependencies(Some("Example 24. Business Passive Structure Elements (Business)"), Set(
+	print(Report.withDependencies(
+		Report.Options.empty
+			.title("Example 24. Business Passive Structure Elements (Business)")
+  		.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058")
+			.get,
 		db.insurancePolicy
-	)))
+	))
 }

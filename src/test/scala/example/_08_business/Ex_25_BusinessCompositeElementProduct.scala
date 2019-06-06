@@ -1,4 +1,4 @@
-package example.business
+package example._08_business
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.business.{BusinessService, Contract, Product}
@@ -26,8 +26,12 @@ object Ex_25_BusinessCompositeElementProduct extends App {
 			.rel.composedOf(BusinessService("Drive Well\nand Save"))
 	}
 
-	print(Report.withDependencies(Some("Example 25. Business Composite Element Product (Business)"), Set(
+	print(Report.withDependencies(
+		Report.Options.empty
+			.title("Example 25. Business Composite Element Product (Business)")
+  		.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061")
+			.get,
 		db.insurance
-	)))
+	))
 
 }

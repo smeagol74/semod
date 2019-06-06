@@ -1,7 +1,10 @@
 package org.opengroup.archimate.meta.element.business
 
 import org.opengroup.archimate.meta.element._
+import org.opengroup.archimate.meta.element.application.{ApplicationComponentElement, ApplicationInternalBehaviorElement}
+import org.opengroup.archimate.meta.element.technology.{NodeElement, TechnologyInternalBehaviorElement}
 import org.opengroup.archimate.meta.relationship.Junction
+import org.opengroup.archimate.relationship.dependency.AccessMode
 
 trait BusinessServiceElement
 	extends BehaviorElement
@@ -15,9 +18,9 @@ trait BusinessServiceElementRelationships[T <: BusinessServiceElement]
 
 	def triggers(dst: BusinessServiceElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: BusinessServiceElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: BusinessServiceElement, label: String): T = tt._rel.flowsTo(dst, label)
 
-	def accesses(dst: BusinessPassiveStructureElement): T = tt._rel.accesses(dst)
+	def accesses(dst: BusinessPassiveStructureElement, mode: AccessMode.Value): T = tt._rel.accesses(dst, mode)
 
 	def serves(dst: BusinessInternalBehaviorElement): T = tt._rel.serves(dst)
 
@@ -25,7 +28,15 @@ trait BusinessServiceElementRelationships[T <: BusinessServiceElement]
 
 	def triggers(dst: BusinessEventElement): T = tt._rel.triggers(dst)
 
-	def flowsTo(dst: BusinessEventElement): T = tt._rel.flowsTo(dst)
+	def flowsTo(dst: BusinessEventElement, label: String): T = tt._rel.flowsTo(dst, label)
+
+	def serves(dst: ApplicationInternalBehaviorElement): T = tt._rel.serves(dst)
+
+	def serves(dst: ApplicationComponentElement): T = tt._rel.serves(dst)
+
+	def serves(dst: TechnologyInternalBehaviorElement): T = tt._rel.serves(dst)
+
+	def serves(dst: NodeElement): T = tt._rel.serves(dst)
 
 	_register(BusinessServiceElement,
 		JR.triggers(BusinessServiceElement),
@@ -35,6 +46,10 @@ trait BusinessServiceElementRelationships[T <: BusinessServiceElement]
 		JR.serves(BusinessInternalActiveStructureElement),
 		JR.triggers(BusinessEventElement),
 		JR.flowsTo(BusinessEventElement),
+		JR.serves(ApplicationInternalBehaviorElement),
+		JR.serves(ApplicationComponentElement),
+		JR.serves(TechnologyInternalBehaviorElement),
+		JR.serves(NodeElement),
 	)
 
 }

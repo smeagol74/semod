@@ -1,6 +1,8 @@
 package org.opengroup.archimate.meta.element.technology
 
 import org.opengroup.archimate.meta.element._
+import org.opengroup.archimate.meta.element.application.{ApplicationComponentElement, ApplicationInterfaceElement}
+import org.opengroup.archimate.meta.element.business.{BusinessInterfaceElement, BusinessInternalActiveStructureElement}
 
 trait TechnologyInterfaceElement
 	extends ActiveStructureElement
@@ -22,11 +24,20 @@ trait TechnologyInterfaceElementRelationships[T <: TechnologyInterfaceElement]
 
 	def serves(dst: TechnologyCollaborationElement): T = tt._rel.serves(dst)
 
+	def serves(dst: BusinessInternalActiveStructureElement): T = tt._rel.serves(dst)
+	def serves(dst: ApplicationComponentElement): T = tt._rel.serves(dst)
+	def realizes(dst: BusinessInterfaceElement): T = tt._rel.realizes(dst)
+	def realizes(dst: ApplicationInterfaceElement): T = tt._rel.realizes(dst)
+
 	_register(TechnologyInterfaceElement,
 		JR.assignedTo(TechnologyServiceElement),
 		JR.serves(NodeElement),
 		JR.serves(SystemSoftwareElement),
 		JR.serves(DeviceElement),
 		JR.serves(TechnologyCollaborationElement),
+		JR.serves(BusinessInternalActiveStructureElement),
+		JR.serves(ApplicationComponentElement),
+		JR.realizes(BusinessInterfaceElement),
+		JR.realizes(ApplicationInterfaceElement),
 	)
 }

@@ -1,4 +1,4 @@
-package example.strategy
+package example._07_strategy
 
 import org.opengroup.archimate.motivation.{Goal, Outcome}
 import org.opengroup.archimate.strategy.{Capability, CourseOfAction, Resource}

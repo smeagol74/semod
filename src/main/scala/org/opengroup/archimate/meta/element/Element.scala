@@ -4,7 +4,7 @@ import org.opengroup.archimate.IdGenerator
 import org.opengroup.archimate.meta.element.relationship.JunctionElement
 import org.opengroup.archimate.meta.layer.Layer
 import org.opengroup.archimate.meta.relationship.{JunctionMethod, JunctionMode, JunctionSrc, Relationship}
-import org.opengroup.archimate.relationship.dependency.{Access, Influence, Serving}
+import org.opengroup.archimate.relationship.dependency.{Access, AccessMode, Influence, Serving}
 import org.opengroup.archimate.relationship.dynamic.{Flow, Triggering}
 import org.opengroup.archimate.relationship.other.{Association, Specialization}
 import org.opengroup.archimate.relationship.structural.{Aggregation, Assignment, Composition, Realization}
@@ -72,14 +72,15 @@ trait Element {
 			tThis
 		}
 
-		def accesses[T <: Element](dst: Element)(implicit tThis: T) = apply(Access(Element.this, dst))
+		def accesses[T <: Element](dst: Element, mode: AccessMode.Value)
+			(implicit tThis: T) = apply(Access(Element.this, dst, mode))
 
 		def influences[T <: Element](dst: Element, label: String)
 			(implicit tThis: T) = apply(Influence(Element.this, dst, label))
 
 		def serves[T <: Element](dst: Element)(implicit tThis: T) = apply(Serving(Element.this, dst))
 
-		def flowsTo[T <: Element](dst: Element)(implicit tThis: T) = apply(Flow(Element.this, dst))
+		def flowsTo[T <: Element](dst: Element, label: String)(implicit tThis: T) = apply(Flow(Element.this, dst, label))
 
 		def triggers[T <: Element](dst: Element)(implicit tThis: T) = apply(Triggering(Element.this, dst))
 
@@ -96,10 +97,10 @@ trait Element {
 		def realizes[T <: Element](dst: Element)(implicit tThis: T) = apply(Realization(Element.this, dst))
 
 		def apply[T <: Element](method: Method.Value, dst: Element): T = method match {
-			case Method.accesses => apply(Access(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.accesses => apply(Access(Element.this, dst, AccessMode.NONE))(Element.this.asInstanceOf[T])
 			case Method.influences => apply(Influence(Element.this, dst))(Element.this.asInstanceOf[T])
 			case Method.serves => apply(Serving(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.flowsTo => apply(Flow(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.flowsTo => apply(Flow(Element.this, dst, ""))(Element.this.asInstanceOf[T])
 			case Method.triggers => apply(Triggering(Element.this, dst))(Element.this.asInstanceOf[T])
 			case Method.associatedWith => apply(Association(Element.this, dst))(Element.this.asInstanceOf[T])
 			case Method.specializationOf => apply(Specialization(Element.this, dst))(Element.this.asInstanceOf[T])

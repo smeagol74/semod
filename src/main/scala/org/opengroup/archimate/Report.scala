@@ -6,17 +6,23 @@ import org.opengroup.archimate.report.PlantUmlReportingEngine
 
 import scala.collection.mutable
 
+trait ReportingEngineOptions {
+	val title: Option[String]
+	val header: Option[String]
+	val footer: Option[String]
+}
+
 trait ReportingEngine {
 
 	def renderToString(
-		title: Option[String],
+		options: ReportingEngineOptions,
 		elements: Set[Element],
 		relationships: Set[Relationship]
 	): String
 
 	def renderToSvg(
 		file: String,
-		title: Option[String],
+		options: ReportingEngineOptions,
 		elements: Set[Element],
 		relationships: Set[Relationship]
 	)
@@ -38,12 +44,49 @@ object Report {
 			res.toSet
 	}
 
-	def withDependencies(title: Option[String], elements: Set[Element]): String = {
-		val deps = _getAllDependencies(elements)
+	class OptionsBuilder {
+		private var _title: Option[String] = None
+		private var _header: Option[String] = None
+		private var _footer: Option[String] = None
+
+		def title(value: String): OptionsBuilder = {
+			_title = Some(value)
+			this
+		}
+
+		def header(value: String): OptionsBuilder = {
+			_header = Some(value)
+			this
+		}
+
+		def footer(value: String): OptionsBuilder = {
+			_footer = Some(value)
+			this
+		}
+
+		def get: ReportingEngineOptions = new ReportingEngineOptions {
+			override val title: Option[String] = _title
+			override val header: Option[String] = _header
+			override val footer: Option[String] = _footer
+		}
+	}
+
+	case class Options(
+		title: Option[String],
+		header: Option[String],
+		footer: Option[String]
+	) extends ReportingEngineOptions
+
+	object Options {
+		def empty = new OptionsBuilder
+	}
+
+	def withDependencies(options: ReportingEngineOptions, elements: Element*): String = {
+		val deps = _getAllDependencies(elements.toSet)
 		val rels = mutable.Set.empty[Relationship]
 		deps.foreach(el => {
 			rels ++= el._relationships
 		})
-		engine.renderToString(title, deps, rels.toSet)
+		engine.renderToString(options, deps, rels.toSet)
 	}
 }

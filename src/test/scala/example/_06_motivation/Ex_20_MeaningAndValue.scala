@@ -1,8 +1,9 @@
-package example.motivation
+package example._06_motivation
 
 import org.opengroup.archimate.Report
 import org.opengroup.archimate.application.{ApplicationService, DataObject}
 import org.opengroup.archimate.motivation.{Meaning, Stakeholder, Value}
+import org.opengroup.archimate.relationship.dependency.AccessMode
 
 /**
 	* This is example of
@@ -29,7 +30,7 @@ object Ex_20_MeaningAndValue extends App {
 			.rel.associatedWith(costEfficiency)
 			.rel.associatedWith(beingInformed)
 			.rel.associatedWith(peaceOfMind)
-			.rel.accesses(message)
+			.rel.accesses(message, AccessMode.WRITE)
 
 		val confirmationOfReceipt = DataObject(
 			"""Confirmation Of
@@ -58,10 +59,12 @@ object Ex_20_MeaningAndValue extends App {
 	}
 
 	print(Report.withDependencies(
-		Some("Example 20. Meaning and Value (Motivation)"),
-		Set(
-			db.insurer,
-			db.customer
-		)))
+		Report.Options.empty
+			.title("Example 20. Meaning and Value (Motivation)")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946026")
+			.get,
+		db.insurer,
+		db.customer
+	))
 
 }
