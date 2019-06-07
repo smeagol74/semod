@@ -1,7 +1,7 @@
 package example._09_application
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.application._
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.application._
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076

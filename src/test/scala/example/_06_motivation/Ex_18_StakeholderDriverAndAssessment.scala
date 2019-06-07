@@ -1,7 +1,7 @@
 package example._06_motivation
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.motivation.{Assessment, Driver, Stakeholder}
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.motivation.{Assessment, Driver, Stakeholder}
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015

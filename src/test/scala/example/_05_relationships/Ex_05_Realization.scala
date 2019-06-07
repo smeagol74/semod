@@ -1,9 +1,9 @@
 package example._05_relationships
 
 import example._05_relationships.Ex_04_Assignment.paymentService
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.{BusinessFunction, BusinessObject, BusinessService, Representation}
-import org.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessFunction, BusinessObject, BusinessService, Representation}
+import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 object Ex_05_Realization extends App {
 

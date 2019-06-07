@@ -1,9 +1,9 @@
 package example._06_motivation
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.application.{ApplicationService, DataObject}
-import org.opengroup.archimate.motivation.{Meaning, Stakeholder, Value}
-import org.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.application.{ApplicationService, DataObject}
+import ru.kvb74.semod.opengroup.archimate.motivation.{Meaning, Stakeholder, Value}
+import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 /**
 	* This is example of

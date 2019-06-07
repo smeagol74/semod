@@ -1,7 +1,7 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.motivation.{Goal, Principle}
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.motivation.{Goal, Principle}
 
 object Ex_08_Influence extends App {
 

@@ -1,7 +1,7 @@
 package example._08_business
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.{BusinessService, Contract, Product}
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessService, Contract, Product}
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061

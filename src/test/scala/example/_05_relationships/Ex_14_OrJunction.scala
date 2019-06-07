@@ -1,7 +1,7 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.{BusinessEvent, BusinessProcess}
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessEvent, BusinessProcess}
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004

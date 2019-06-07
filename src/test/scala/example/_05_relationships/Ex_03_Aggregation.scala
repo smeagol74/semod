@@ -1,7 +1,7 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.BusinessObject
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business.BusinessObject
 
 object Ex_03_Aggregation extends App {
 	val customerFile = BusinessObject("Customer File")

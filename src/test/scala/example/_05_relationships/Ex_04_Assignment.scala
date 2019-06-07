@@ -1,7 +1,7 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business._
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business._
 
 object Ex_04_Assignment extends App {
 

@@ -1,6 +1,6 @@
 package example._04_genericMetamodel
 
-import org.opengroup.archimate.business.{BusinessObject, BusinessProcess, BusinessService}
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessObject, BusinessProcess, BusinessService}
 
 object Ex_01_Grouping extends App {
 

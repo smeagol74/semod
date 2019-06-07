@@ -1,7 +1,7 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.{BusinessInterface, BusinessProcess, BusinessRole, BusinessService}
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessInterface, BusinessProcess, BusinessRole, BusinessService}
 
 object Ex_06_Serving extends App {
 

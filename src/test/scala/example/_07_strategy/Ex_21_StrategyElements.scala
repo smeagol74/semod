@@ -1,7 +1,7 @@
 package example._07_strategy
 
-import org.opengroup.archimate.motivation.{Goal, Outcome}
-import org.opengroup.archimate.strategy.{Capability, CourseOfAction, Resource}
+import ru.kvb74.semod.opengroup.archimate.motivation.{Goal, Outcome}
+import ru.kvb74.semod.opengroup.archimate.strategy.{Capability, CourseOfAction, Resource}
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap07.html#_Toc489946036

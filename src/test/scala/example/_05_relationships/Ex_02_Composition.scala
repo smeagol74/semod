@@ -1,8 +1,8 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.BusinessFunction
-import org.opengroup.archimate.meta.element.business.BusinessFunctionElement
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business.BusinessFunction
+import ru.kvb74.semod.opengroup.archimate.meta.element.business.BusinessFunctionElement
 
 object Ex_02_Composition extends App {
 

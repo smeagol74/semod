@@ -1,8 +1,8 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.business.{BusinessEvent, BusinessObject, BusinessProcess}
-import org.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessEvent, BusinessObject, BusinessProcess}
+import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945996

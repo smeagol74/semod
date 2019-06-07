@@ -1,9 +1,9 @@
 package example._05_relationships
 
-import org.opengroup.archimate.Report
-import org.opengroup.archimate.application.ApplicationService
-import org.opengroup.archimate.business.{BusinessFunction, BusinessProcess, BusinessService}
-import org.opengroup.archimate.meta.element.business.BusinessFunctionElement
+import ru.kvb74.semod.opengroup.archimate.Report
+import ru.kvb74.semod.opengroup.archimate.application.ApplicationService
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessFunction, BusinessProcess, BusinessService}
+import ru.kvb74.semod.opengroup.archimate.meta.element.business.BusinessFunctionElement
 
 object Ex_15_DerivedStructuralAndDependencyRelationship extends App {
 
