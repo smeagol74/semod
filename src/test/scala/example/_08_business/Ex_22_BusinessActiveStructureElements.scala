@@ -47,6 +47,7 @@ object Ex_22_BusinessActiveStructureElements extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_22_BusinessActiveStructureElements")
 			.title("Example 22. Business Active Structure Elements")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046")
 			.get,

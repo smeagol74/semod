@@ -13,6 +13,7 @@ object Ex_08_Influence extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_08_Influence")
 			.title("Example 8. Influence (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993")
 			.get,

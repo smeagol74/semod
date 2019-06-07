@@ -62,6 +62,7 @@ object Ex_19_GoalOutcomePrincipleRequirementAndConstraint extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_19_GoalOutcomePrincipleRequirementAndConstraint")
 			.title("Example 19. Goal, Outcome, Principle, Requirement and Constraint (Motivation)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946022")
 			.get,

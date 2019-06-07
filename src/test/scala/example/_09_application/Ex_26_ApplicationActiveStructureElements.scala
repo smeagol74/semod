@@ -20,6 +20,7 @@ object Ex_26_ApplicationActiveStructureElements extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_26_ApplicationActiveStructureElements")
 			.title("Example 26. Application Active Structure Elements (Application)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946069")
 			.get,

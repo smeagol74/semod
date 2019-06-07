@@ -22,6 +22,7 @@ object Ex_07_Access extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_07_Access")
 			.title("Example 7. Access (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945996")
 			.get,

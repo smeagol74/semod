@@ -77,8 +77,9 @@ object Ex_18_StakeholderDriverAndAssessment extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_18_StakeholderDriverAndAssessment")
 			.title("Example 18. Stakeholder, Driver and Assessment (Motivation)")
-  		.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015")
 			.get,
 		db.ceo
 	))

@@ -33,6 +33,7 @@ object Ex_27_ApplicationBehaviorElements extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_27_ApplicationBehaviorElements")
 			.title("Example 27. Application Behavior Elements (Application)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076")
 			.get,

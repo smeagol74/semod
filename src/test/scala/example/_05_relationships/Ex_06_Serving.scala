@@ -16,6 +16,7 @@ object Ex_06_Serving extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_06_Serving")
 			.title("Example 6. Serving (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993")
 			.get,

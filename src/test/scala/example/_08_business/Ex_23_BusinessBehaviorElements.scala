@@ -61,6 +61,7 @@ object Ex_23_BusinessBehaviorElements extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_23_BusinessBehaviorElements")
 			.title("Example 23. Business Behavior Elemenst (Business)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946053")
 			.get,

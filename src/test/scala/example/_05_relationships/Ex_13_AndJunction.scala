@@ -16,6 +16,7 @@ object Ex_13_AndJunction extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_13_AndJunction")
 			.title("Example 13. (And) Junction (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004")
 			.get,

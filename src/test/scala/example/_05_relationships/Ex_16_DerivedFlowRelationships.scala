@@ -24,6 +24,7 @@ object Ex_16_DerivedFlowRelationships extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_16_DerivedFlowRelationships")
 			.title("Example 16. Derived Flow Relationships (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946008")
 			.get,

@@ -7,6 +7,7 @@ import org.opengroup.archimate.report.PlantUmlReportingEngine
 import scala.collection.mutable
 
 trait ReportingEngineOptions {
+	val name: Option[String]
 	val title: Option[String]
 	val header: Option[String]
 	val footer: Option[String]
@@ -45,9 +46,15 @@ object Report {
 	}
 
 	class OptionsBuilder {
+		private var _name: Option[String] = None
 		private var _title: Option[String] = None
 		private var _header: Option[String] = None
 		private var _footer: Option[String] = None
+
+		def name(value: String): OptionsBuilder = {
+			_name = Some(value)
+			this
+		}
 
 		def title(value: String): OptionsBuilder = {
 			_title = Some(value)
@@ -64,14 +71,11 @@ object Report {
 			this
 		}
 
-		def get: ReportingEngineOptions = new ReportingEngineOptions {
-			override val title: Option[String] = _title
-			override val header: Option[String] = _header
-			override val footer: Option[String] = _footer
-		}
+		def get: ReportingEngineOptions = Options(_name, _title, _header, _footer)
 	}
 
 	case class Options(
+		name: Option[String],
 		title: Option[String],
 		header: Option[String],
 		footer: Option[String]

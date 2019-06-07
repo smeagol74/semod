@@ -80,7 +80,9 @@ object PlantUmlReportingEngine extends ReportingEngine {
 	): String = {
 
 		val sb = StringBuilder.newBuilder
-		sb.append("@startuml").append(EOL)
+		sb.append("@startuml")
+		options.name.foreach(name => sb.append(s" $name"))
+		sb.append(EOL)
 		sb.append("!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml").append(EOL).append(EOL)
 
 		options.header.foreach(header => sb.append(s"header ${_normalize(header)}").append(EOL).append(EOL))

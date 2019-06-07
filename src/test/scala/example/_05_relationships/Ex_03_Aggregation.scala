@@ -10,6 +10,7 @@ object Ex_03_Aggregation extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_03_Aggregation")
 			.title("Example 3. Aggregation (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945991")
 			.get,

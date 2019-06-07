@@ -16,6 +16,7 @@ object Ex_10_Flow extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_10_Flow")
 			.title("Example 10. Flow (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946000")
 			.get,

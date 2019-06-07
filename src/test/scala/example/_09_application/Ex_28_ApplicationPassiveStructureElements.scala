@@ -21,6 +21,7 @@ object Ex_28_ApplicationPassiveStructureElements extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_28_ApplicationPassiveStructureElements")
 			.title("Example 28. Application Passive Structure Elements (Application)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946079")
 			.get,

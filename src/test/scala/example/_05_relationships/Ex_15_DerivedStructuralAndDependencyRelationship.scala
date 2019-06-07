@@ -38,6 +38,7 @@ object Ex_15_DerivedStructuralAndDependencyRelationship extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_15_DerivedStructuralAndDependencyRelationship")
 			.title("Example 15. Derived Structural and Dependency Relationship (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946007")
 			.get,

@@ -28,8 +28,9 @@ object Ex_25_BusinessCompositeElementProduct extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_25_BusinessCompositeElementProduct")
 			.title("Example 25. Business Composite Element Product (Business)")
-  		.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061")
 			.get,
 		db.insurance
 	))

@@ -25,8 +25,9 @@ object Ex_24_BusinessPassiveStructureElements extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_24_BusinessPassiveStructureElements")
 			.title("Example 24. Business Passive Structure Elements (Business)")
-  		.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058")
+			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058")
 			.get,
 		db.insurancePolicy
 	))

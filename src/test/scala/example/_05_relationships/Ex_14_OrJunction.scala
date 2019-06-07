@@ -19,6 +19,7 @@ object Ex_14_OrJunction extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_14_OrJunction")
 			.title("Example 14. Or Junction (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004")
 			.get,

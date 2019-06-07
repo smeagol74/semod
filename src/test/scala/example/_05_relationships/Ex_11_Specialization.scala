@@ -16,6 +16,7 @@ object Ex_11_Specialization extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_11_Specialization")
 			.title("Example 11. Specialization (Relationships)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946002")
 			.get,

@@ -60,6 +60,7 @@ object Ex_20_MeaningAndValue extends App {
 
 	print(Report.withDependencies(
 		Report.Options.empty
+			.name("Ex_20_MeaningAndValue")
 			.title("Example 20. Meaning and Value (Motivation)")
 			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946026")
 			.get,
