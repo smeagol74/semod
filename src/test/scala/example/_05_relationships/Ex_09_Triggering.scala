@@ -1,12 +1,13 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessEvent, BusinessProcess}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945999
 	*/
-object Ex_09_Triggering extends App {
+case object Ex_09_Triggering extends App with Example {
 
 	val sent = BusinessEvent("Invoice Sent")
 	val send = BusinessProcess("Send Invoice")
@@ -16,13 +17,12 @@ object Ex_09_Triggering extends App {
 	val requested = BusinessEvent("Invoice Requested")
 		.rel.triggers(create)
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_09_Triggering")
+	render(
+		PlantUml.opt
 			.title("Example 9. Triggering (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945999")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945999]]")
 			.get,
 		requested
-	))
+	)
 
 }

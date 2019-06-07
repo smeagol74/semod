@@ -1,0 +1,20 @@
+@startuml Ex_24_BusinessPassiveStructureElements
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058]]
+
+title Example 24. Business Passive Structure Elements (Business)
+
+Business_Contract(BCn_1, "Insurance Policy\n(contract)")
+Business_Representation(BRep_3, "Claim File\nSummary\n(representation)")
+Business_Representation(BRep_5, "Policy\nSummary\n(representation)")
+Business_Representation(BRep_4, "Claim\nLetter\n(representation)")
+Business_Representation(BRep_2, "Submission\nForm\n(representation)")
+Business_Object(BO_8, "Claim\n(business object)")
+Rel_Realization(BRep_3, BO_8, "realizes")
+Rel_Aggregation(BRep_5, BRep_4, "aggregates")
+Rel_Realization(BRep_2, BO_8, "realizes")
+Rel_Realization(BRep_5, BCn_1, "realizes")
+Rel_Aggregation(BRep_5, BRep_2, "aggregates")
+Rel_Aggregation(BRep_5, BRep_3, "aggregates")
+@enduml

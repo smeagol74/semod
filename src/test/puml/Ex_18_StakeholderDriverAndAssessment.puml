@@ -1,0 +1,38 @@
+@startuml Ex_18_StakeholderDriverAndAssessment
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015]]
+
+title Example 18. Stakeholder, Driver and Assessment (Motivation)
+
+Motivation_Stakeholder(MS_1, "Chief Marketing\nOfficer (CMO)\n(stakeholder)")
+Motivation_Assessment(MA_6, "Discounts Provided\nTo Remain\nCompetitive\n(assessment)")
+Motivation_Driver(MD_4, "Costs\n(driver)")
+Motivation_Assessment(MA_1, "Market Share is\nDeclining\n(assessment)")
+Motivation_Stakeholder(MS_2, "Chief Executive\nOfficer (CEO)\n(stakeholder)")
+Motivation_Driver(MD_3, "Profitability\n(driver)")
+Motivation_Assessment(MA_4, "Cost Of\nAcquiring New\nCustomers Is\nIncreasing\n(assessment)")
+Motivation_Stakeholder(MS_3, "Chief Financial\nOfficer (CFO)\n(stakeholder)")
+Motivation_Assessment(MA_2, "Revenue is\nDeclining\n(assessment)")
+Motivation_Driver(MD_1, "Market Share\n(driver)")
+Motivation_Assessment(MA_5, "Competitors Are Including\nAdvanced Features In\nTheir Service Models\n(assessment)")
+Motivation_Assessment(MA_3, "Profitability is\nDeclining\n(assessment)")
+Motivation_Driver(MD_2, "Revenue\n(driver)")
+Rel_Influence(MA_1, MA_2, "influences (+)")
+Rel_Influence(MA_6, MA_2, "influences (+)")
+Rel_Association(MS_2, MD_3, "associated with")
+Rel_Influence(MA_5, MA_6, "influences (+)")
+Rel_Influence(MA_5, MA_1, "influences (+)")
+Rel_Association(MS_3, MD_3, "associated with")
+Rel_Composition(MD_3, MD_4, "composed of")
+Rel_Influence(MA_6, MA_1, "influences (-)")
+Rel_Composition(MD_3, MD_2, "composed of")
+Rel_Influence(MA_2, MA_3, "influences (+)")
+Rel_Influence(MA_4, MA_3, "influences (+)")
+Rel_Association(MD_2, MA_2, "associated with")
+Rel_Association(MD_4, MA_4, "associated with")
+Rel_Association(MD_1, MA_1, "associated with")
+Rel_Association(MD_3, MA_3, "associated with")
+Rel_Association(MS_2, MD_1, "associated with")
+Rel_Association(MS_1, MD_1, "associated with")
+@enduml

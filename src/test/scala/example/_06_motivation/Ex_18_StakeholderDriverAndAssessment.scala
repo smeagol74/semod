@@ -1,12 +1,13 @@
 package example._06_motivation
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.motivation.{Assessment, Driver, Stakeholder}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015
 	*/
-object Ex_18_StakeholderDriverAndAssessment extends App {
+case object Ex_18_StakeholderDriverAndAssessment extends App with Example {
 
 	object db {
 		val cmo = Stakeholder(
@@ -75,13 +76,12 @@ object Ex_18_StakeholderDriverAndAssessment extends App {
 			.rel.influences(revenueIsDeclining, "+")
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_18_StakeholderDriverAndAssessment")
+	render(
+		PlantUml.opt
 			.title("Example 18. Stakeholder, Driver and Assessment (Motivation)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015]]")
 			.get,
 		db.ceo
-	))
+	)
 
 }

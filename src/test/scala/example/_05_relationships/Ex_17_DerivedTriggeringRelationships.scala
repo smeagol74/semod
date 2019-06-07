@@ -1,12 +1,13 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
-import ru.kvb74.semod.opengroup.archimate.business.{BusinessCollaboration, BusinessFunction, BusinessService}
+import example.Example
+import ru.kvb74.semod.opengroup.archimate.business.{BusinessCollaboration, BusinessFunction}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946008
 	*/
-object Ex_17_DerivedTriggeringRelationships extends App {
+case object Ex_17_DerivedTriggeringRelationships extends App with Example {
 
 	val shipping = BusinessFunction("Shipping")
 	val billing = BusinessFunction("Billing & Payment")
@@ -23,13 +24,12 @@ object Ex_17_DerivedTriggeringRelationships extends App {
 	val shippingDep = BusinessCollaboration("Shipping Department")
 		.rel.assignedTo(shipping)
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_17_DerivedTriggeringRelationships")
+	render(
+		PlantUml.opt
 			.title("Example 17. Derived Triggering Relationships (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946008")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946008]]")
 			.get,
 		billing
-	))
+	)
 
 }

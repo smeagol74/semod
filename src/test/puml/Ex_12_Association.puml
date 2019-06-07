@@ -1,0 +1,11 @@
+@startuml Ex_12_Association
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946003]]
+
+title Example 12. Association (Relationships)
+
+Business_Function(BF_10, "Policy Management\n(business function)")
+Business_Function(BF_11, "Policy Creation\n(business function)")
+Rel_Flow(BF_11, BF_10, "flows to")
+@enduml

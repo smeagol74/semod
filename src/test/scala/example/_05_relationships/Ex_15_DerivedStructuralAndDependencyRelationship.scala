@@ -1,11 +1,12 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.application.ApplicationService
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessFunction, BusinessProcess, BusinessService}
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.BusinessFunctionElement
+import ru.kvb74.semod.plantuml.PlantUml
 
-object Ex_15_DerivedStructuralAndDependencyRelationship extends App {
+case object Ex_15_DerivedStructuralAndDependencyRelationship extends App with Example {
 
 	val invoicing = BusinessProcess("Invoicing and Collections")
 
@@ -36,13 +37,12 @@ object Ex_15_DerivedStructuralAndDependencyRelationship extends App {
 		.rel.serves(financialProcessing)
 		.rel.serves(invoicing) // this relation should be derived automatically
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_15_DerivedStructuralAndDependencyRelationship")
+	render(
+		PlantUml.opt
 			.title("Example 15. Derived Structural and Dependency Relationship (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946007")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946007]]")
 			.get,
 		financialApplication
-	))
+	)
 
 }

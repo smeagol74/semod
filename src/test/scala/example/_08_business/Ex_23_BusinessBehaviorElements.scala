@@ -1,13 +1,14 @@
 package example._08_business
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business._
 import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946053
 	*/
-object Ex_23_BusinessBehaviorElements extends App {
+case object Ex_23_BusinessBehaviorElements extends App with Example {
 
 	object db {
 		val claimsProcessing = BusinessService("Claims Processing")
@@ -59,13 +60,12 @@ object Ex_23_BusinessBehaviorElements extends App {
 			.rel.assignedTo(adjudcateHighRiskClaim)
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_23_BusinessBehaviorElements")
+	render(
+		PlantUml.opt
 			.title("Example 23. Business Behavior Elemenst (Business)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946053")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946053]]")
 			.get,
 		db.claimsProcessing
-	))
+	)
 
 }

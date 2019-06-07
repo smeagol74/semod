@@ -1,12 +1,13 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessCollaboration, BusinessFunction, BusinessService}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946008
 	*/
-object Ex_16_DerivedFlowRelationships extends App {
+case object Ex_16_DerivedFlowRelationships extends App with Example {
 
 	val salesSvc = BusinessService("Sales Service")
 	val developmentSvc = BusinessService("Development Service")
@@ -22,13 +23,12 @@ object Ex_16_DerivedFlowRelationships extends App {
 	//TODO complete Location element and flow relationships
 
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_16_DerivedFlowRelationships")
+	render(
+		PlantUml.opt
 			.title("Example 16. Derived Flow Relationships (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946008")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946008]]")
 			.get,
 		salesSvc
-	))
+	)
 
 }

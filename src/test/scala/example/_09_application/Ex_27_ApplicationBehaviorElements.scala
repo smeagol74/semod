@@ -1,12 +1,13 @@
 package example._09_application
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.application._
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076
 	*/
-object Ex_27_ApplicationBehaviorElements extends App {
+case object Ex_27_ApplicationBehaviorElements extends App with Example {
 
 	object db {
 		val obtainTravelInsurance = ApplicationProcess("Obtain Travel Insurance")
@@ -31,13 +32,12 @@ object Ex_27_ApplicationBehaviorElements extends App {
 			.rel.composedOf(finalizePurchase)
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_27_ApplicationBehaviorElements")
+	render(
+		PlantUml.opt
 			.title("Example 27. Application Behavior Elements (Application)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076]]")
 			.get,
 		db.purchaseTravelInsurance
-	))
+	)
 
 }

@@ -1,12 +1,13 @@
 package example._08_business
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessObject, Contract, Representation}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058
 	*/
-object Ex_24_BusinessPassiveStructureElements extends App {
+case object Ex_24_BusinessPassiveStructureElements extends App with Example {
 
 	object db {
 		val claim = BusinessObject("Claim")
@@ -23,12 +24,11 @@ object Ex_24_BusinessPassiveStructureElements extends App {
 			.rel.realizes(insurancePolicy)
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_24_BusinessPassiveStructureElements")
+	render(
+		PlantUml.opt
 			.title("Example 24. Business Passive Structure Elements (Business)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946058]]")
 			.get,
 		db.insurancePolicy
-	))
+	)
 }

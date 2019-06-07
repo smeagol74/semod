@@ -1,9 +1,10 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessInterface, BusinessProcess, BusinessRole, BusinessService}
+import ru.kvb74.semod.plantuml.PlantUml
 
-object Ex_06_Serving extends App {
+case object Ex_06_Serving extends App with Example {
 
 	val payInvoices = BusinessProcess("Pay Invoices")
 	val customer = BusinessRole("Customer")
@@ -14,13 +15,12 @@ object Ex_06_Serving extends App {
 		.rel.serves(customer)
 		.rel.assignedTo(paymentService)
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_06_Serving")
+	render(
+		PlantUml.opt
 			.title("Example 6. Serving (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993]]")
 			.get,
 		paymentService
-	))
+	)
 
 }

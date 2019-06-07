@@ -1,12 +1,13 @@
 package example._08_business
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessActor, BusinessCollaboration, BusinessInterface, BusinessRole}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046
 	*/
-object Ex_22_BusinessActiveStructureElements extends App {
+case object Ex_22_BusinessActiveStructureElements extends App with Example {
 
 	object db {
 
@@ -45,13 +46,12 @@ object Ex_22_BusinessActiveStructureElements extends App {
 
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_22_BusinessActiveStructureElements")
+	render(
+		PlantUml.opt
 			.title("Example 22. Business Active Structure Elements")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046]]")
 			.get,
 		db.contactCenter
-	))
+	)
 
 }

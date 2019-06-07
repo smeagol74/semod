@@ -1,0 +1,15 @@
+@startuml Ex_09_Triggering
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945999]]
+
+title Example 9. Triggering (Relationships)
+
+Business_Process(BP_7, "Create Invoice\n(business process)")
+Business_Process(BP_6, "Send Invoice\n(business process)")
+Business_Event(BE_4, "Invoice Requested\n(business event)")
+Business_Event(BE_3, "Invoice Sent\n(business event)")
+Rel_Triggering(BE_4, BP_7, "triggers")
+Rel_Triggering(BP_6, BE_3, "triggers")
+Rel_Triggering(BP_7, BP_6, "triggers")
+@enduml

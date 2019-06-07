@@ -1,0 +1,36 @@
+@startuml Ex_20_MeaningAndValue
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946026]]
+
+title Example 20. Meaning and Value (Motivation)
+
+Motivation_Value(MV_1, "Cost Efficiency\n(value)")
+Motivation_Value(MV_4, "Certainty\n(value)")
+Application_DataObject(ADO_4, "Payment Complete\nMessage\n(data object)")
+Application_DataObject(ADO_1, "Message\n(data object)")
+Motivation_Stakeholder(MS_5, "Customer\n(stakeholder)")
+Motivation_Meaning(MM_3, "Claim Has\nBeen Paid\n(meaning)")
+Application_Service(AS_2, "Push Notification\n(application service)")
+Application_DataObject(ADO_2, "Confirmation Of\nReceipt Message\n(data object)")
+Motivation_Value(MV_3, "Peace of Mind\n(value)")
+Motivation_Stakeholder(MS_4, "Insurer\n(stakeholder)")
+Motivation_Meaning(MM_1, "Claim Has\nBeen\nReceived\n(meaning)")
+Motivation_Meaning(MM_2, "Claim Review\nComplete\n(meaning)")
+Motivation_Value(MV_2, "Being Informed\n(value)")
+Application_DataObject(ADO_3, "Review Complete\nMessage\n(data object)")
+Rel_Association(AS_2, MV_1, "associated with")
+Rel_Association(ADO_4, MM_3, "associated with")
+Rel_Specialization(ADO_4, ADO_1, "is specialization of")
+Rel_Association(ADO_3, MM_2, "associated with")
+Rel_Association(MS_4, MV_1, "associated with")
+Rel_Association(AS_2, MV_2, "associated with")
+Rel_Specialization(ADO_2, ADO_1, "is specialization of")
+Rel_Composition(MV_3, MV_4, "composed of")
+Rel_Access(AS_2, ADO_1, "accesses")
+Rel_Association(MS_5, MV_3, "associated with")
+Rel_Association(AS_2, MV_3, "associated with")
+Rel_Association(MS_5, MV_2, "associated with")
+Rel_Specialization(ADO_3, ADO_1, "is specialization of")
+Rel_Association(ADO_2, MM_1, "associated with")
+@enduml

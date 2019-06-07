@@ -1,0 +1,16 @@
+@startuml Ex_06_Serving
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993]]
+
+title Example 6. Serving (Relationships)
+
+Business_Process(BP_3, "Pay Invoices\n(business process)")
+Business_Interface(BIf_2, "Payment Interface\n(business interface)")
+Business_Service(BS_4, "Payment Service\n(business service)")
+Business_Role(BR_1, "Customer\n(business role)")
+Rel_Serving(BS_4, BP_3, "serves")
+Rel_Assignment(BIf_2, BS_4, "assigned to")
+Rel_Serving(BIf_2, BR_1, "serves")
+Rel_Assignment(BR_1, BP_3, "assigned to")
+@enduml

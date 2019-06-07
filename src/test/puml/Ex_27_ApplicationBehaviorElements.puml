@@ -1,0 +1,22 @@
+@startuml Ex_27_ApplicationBehaviorElements
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946076]]
+
+title Example 27. Application Behavior Elements (Application)
+
+Application_Function(AF_1, "Prepare\nQuotation\n(application function)")
+Application_Process(AP_1, "Obtain Travel Insurance\n(application process)")
+Application_Event(AE_1, "Request for\na Quotation\n(application event)")
+Application_Function(AF_2, "Finalize\nPurchase\n(application function)")
+Application_Service(AS_4, "Purchase Quoted\nInsurance\n(application service)")
+Application_Interaction(AI_1, "PurchaseTravelInsurance\n(application interaction)")
+Application_Service(AS_3, "Get Quotation\n(application service)")
+Rel_Composition(AI_1, AF_1, "composed of")
+Rel_Triggering(AE_1, AP_1, "triggers")
+Rel_Serving(AS_4, AP_1, "serves")
+Rel_Realization(AF_2, AS_4, "realizes")
+Rel_Realization(AF_1, AS_3, "realizes")
+Rel_Serving(AS_3, AP_1, "serves")
+Rel_Composition(AI_1, AF_2, "composed of")
+@enduml

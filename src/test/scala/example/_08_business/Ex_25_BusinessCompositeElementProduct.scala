@@ -1,12 +1,13 @@
 package example._08_business
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessService, Contract, Product}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061
 	*/
-object Ex_25_BusinessCompositeElementProduct extends App {
+case object Ex_25_BusinessCompositeElementProduct extends App with Example {
 
 	object db {
 
@@ -26,13 +27,12 @@ object Ex_25_BusinessCompositeElementProduct extends App {
 			.rel.composedOf(BusinessService("Drive Well\nand Save"))
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_25_BusinessCompositeElementProduct")
+	render(
+		PlantUml.opt
 			.title("Example 25. Business Composite Element Product (Business)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061]]")
 			.get,
 		db.insurance
-	))
+	)
 
 }

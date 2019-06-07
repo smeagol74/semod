@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="787px" preserveAspectRatio="none" style="width:545px;height:787px;" version="1.1" viewBox="0 0 545 787" width="545px" zoomAndPan="magnify"><defs><filter height="300%" id="fanapyqqy7zfz" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="270" x="141" y="17.4023">Example 21. Strategy Elements</text><!--entity SCOA_1--><rect fill="#F6E4CC" filter="url(#fanapyqqy7zfz)" height="84.4648" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="140" x="282" y="366.1992"/><image height="16" width="16" x="397" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAcklEQVR4XqWS0Q2AIAxEiWH/QRzKLfwVU2MRHjW28pILWHqnAil9czQKcZn2bS0qraHPpDNSsk4DqQEyV3kDuka+2RMyBHAMB1jPMoevg42hPRBip5CXXFrd5dg9MAKU+guoP7x8gQ8afwew7mbKrMyEnGN545rI5qdMAAAAAElFTkSuQmCC" y="376.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="87" x="308.5" y="404.7344">Centralize IT</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="324.5" y="421.2227">Systems</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="120" x="292" y="437.7109">(course of action)</text><!--entity SR_2--><rect fill="#F6E4CC" filter="url(#fanapyqqy7zfz)" height="84.4648" style="stroke: #000000; stroke-width: 1.5;" width="90" x="319" y="29.1992"/><image height="16" width="16" x="384" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAP0lEQVR4XmNgGCzgH4kYBfz7em/Vf1IwuiHUMwDGRqfRMdQAuCFkGYBk0Ig1AKYZxQBiMbJmqhgANoREPIgAAH+QtOBantO7AAAAAElFTkSuQmCC" y="39.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="13" x="357.5" y="67.7344">IT</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="70" x="329" y="84.2227">Resources</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="70" x="329" y="100.7109">(resource)</text><!--entity SC_1--><rect fill="#F6E4CC" filter="url(#fanapyqqy7zfz)" height="100.9531" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="123" x="364.5" y="189.1992"/><image height="16" width="16" x="462.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAUElEQVR4XmNgIB78w4GJBv++3lv1HxmDxNAV4QNDzAD0gMKHsQKstmETQ9cIA1gVYxND1wgDWBVjE0PXCANYFWMTAyumEGM3mVix4WIAJRgAFyCi5v7dvaAAAAAASUVORK5CYII=" y="199.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="13" x="419.5" y="227.7344">IT</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="103" x="374.5" y="244.2227">Management &amp;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="388" y="260.7109">Operations</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="75" x="388.5" y="277.1992">(capability)</text><!--entity MG_6--><path d="M159,534.1992 L253,534.1992 L265,546.1992 L265,590.1758 L253,602.1758 L159,602.1758 L147,590.1758 L147,546.1992 L159,534.1992 " fill="#B19CD9" filter="url(#fanapyqqy7zfz)" style="stroke: #000000; stroke-width: 1.5;"/><image height="16" width="16" x="240" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR4Xq2SAQ7AIAgD/f/bfJMajGxYC7Jkl5AItmVbVopPM/WJaaq1dy2dgY6yGbHkHg0WbyubHxyiWw/+V4BiNpdzyhz1NoQGLMH2DfAcBtx6GxCGsDmaBXeT14N/wkTp/0Chj581K97WlNnyvAJe/MoAdTqU1kiehc8AAAAASUVORK5CYII=" y="544.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="98" x="157" y="572.7344">Increase Profit</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="186" y="589.2227">(goal)</text><!--entity MG_5--><path d="M44.5,686.1992 L159.5,686.1992 L171.5,698.1992 L171.5,742.1758 L159.5,754.1758 L44.5,754.1758 L32.5,742.1758 L32.5,698.1992 L44.5,686.1992 " fill="#B19CD9" filter="url(#fanapyqqy7zfz)" style="stroke: #000000; stroke-width: 1.5;"/><image height="16" width="16" x="146.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR4Xq2SAQ7AIAgD/f/bfJMajGxYC7Jkl5AItmVbVopPM/WJaaq1dy2dgY6yGbHkHg0WbyubHxyiWw/+V4BiNpdzyhz1NoQGLMH2DfAcBtx6GxCGsDmaBXeT14N/wkTp/0Chj581K97WlNnyvAJe/MoAdTqU1kiehc8AAAAASUVORK5CYII=" y="696.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="119" x="42.5" y="724.7344">Increase Revenue</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="82" y="741.2227">(goal)</text><!--entity MO_6--><path d="M18,526.1992 L88,526.1992 L100,538.1992 L100,598.6641 L88,610.6641 L18,610.6641 L6,598.6641 L6,538.1992 L18,526.1992 " fill="#B19CD9" filter="url(#fanapyqqy7zfz)" style="stroke: #000000; stroke-width: 1.5;"/><image height="16" width="16" x="75" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdUlEQVR4Xp2QUQ7AIAhDvf/ZPNNcMGKgto7sJXxQaHFr7T8PCogteDHkbA56H8PLNdihJCOWzVdR1NWtB+3gMGMftdUn0jCaKwHSzIwsRC4orRTw1ceAawjT0WzIS6oH/4QtpZ94Mzv0+VWzo66WzJH9CTiIvNiEkgS4JS3cAAAAAElFTkSuQmCC" y="536.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="48" x="29" y="564.7344">Loss of</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="74" x="16" y="581.2227">Customers</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="70" x="18" y="597.7109">(outcome)</text><!--entity MG_4--><path d="M247,686.1992 L347,686.1992 L359,698.1992 L359,742.1758 L347,754.1758 L247,754.1758 L235,742.1758 L235,698.1992 L247,686.1992 " fill="#B19CD9" filter="url(#fanapyqqy7zfz)" style="stroke: #000000; stroke-width: 1.5;"/><image height="16" width="16" x="334" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR4Xq2SAQ7AIAgD/f/bfJMajGxYC7Jkl5AItmVbVopPM/WJaaq1dy2dgY6yGbHkHg0WbyubHxyiWw/+V4BiNpdzyhz1NoQGLMH2DfAcBtx6GxCGsDmaBXeT14N/wkTp/0Chj581K97WlNnyvAJe/MoAdTqU1kiehc8AAAAASUVORK5CYII=" y="696.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="104" x="245" y="724.7344">Decrease Costs</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="277" y="741.2227">(goal)</text><!--entity MO_5--><path d="M318.5,526.1992 L385.5,526.1992 L397.5,538.1992 L397.5,598.6641 L385.5,610.6641 L318.5,610.6641 L306.5,598.6641 L306.5,538.1992 L318.5,526.1992 " fill="#B19CD9" filter="url(#fanapyqqy7zfz)" style="stroke: #000000; stroke-width: 1.5;"/><image height="16" width="16" x="372.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdUlEQVR4Xp2QUQ7AIAhDvf/ZPNNcMGKgto7sJXxQaHFr7T8PCogteDHkbA56H8PLNdihJCOWzVdR1NWtB+3gMGMftdUn0jCaKwHSzIwsRC4orRTw1ceAawjT0WzIS6oH/4QtpZ94Mzv0+VWzo66WzJH9CTiIvNiEkgS4JS3cAAAAAElFTkSuQmCC" y="536.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="316.5" y="564.7344">Decreased</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="38" x="333" y="581.2227">Costs</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="70" x="317" y="597.7109">(outcome)</text><!--entity SC_2--><rect fill="#F6E4CC" filter="url(#fanapyqqy7zfz)" height="84.4648" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="109" x="44.5" y="197.6992"/><image height="16" width="16" x="128.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAUElEQVR4XmNgIB78w4GJBv++3lv1HxmDxNAV4QNDzAD0gMKHsQKstmETQ9cIA1gVYxND1wgDWBVjE0PXCANYFWMTAyumEGM3mVix4WIAJRgAFyCi5v7dvaAAAAAASUVORK5CYII=" y="207.6992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="72.5" y="236.2344">Product</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="89" x="54.5" y="252.7227">Management</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="75" x="61.5" y="269.2109">(capability)</text><!--entity SR_1--><rect fill="#F6E4CC" filter="url(#fanapyqqy7zfz)" height="84.4648" style="stroke: #000000; stroke-width: 1.5;" width="90" x="444" y="29.1992"/><image height="16" width="16" x="509" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAP0lEQVR4XmNgGCzgH4kYBfz7em/Vf1IwuiHUMwDGRqfRMdQAuCFkGYBk0Ig1AKYZxQBiMbJmqhgANoREPIgAAH+QtOBantO7AAAAAElFTkSuQmCC" y="39.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="464.5" y="67.7344">Human</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="70" x="454" y="84.2227">Resources</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="70" x="454" y="100.7109">(resource)</text><!--entity SCOA_2--><rect fill="#F6E4CC" filter="url(#fanapyqqy7zfz)" height="84.4648" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="140" x="38" y="366.1992"/><image height="16" width="16" x="153" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAcklEQVR4XqWS0Q2AIAxEiWH/QRzKLfwVU2MRHjW28pILWHqnAil9czQKcZn2bS0qraHPpDNSsk4DqQEyV3kDuka+2RMyBHAMB1jPMoevg42hPRBip5CXXFrd5dg9MAKU+guoP7x8gQ8afwew7mbKrMyEnGN545rI5qdMAAAAAElFTkSuQmCC" y="376.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="78" x="69" y="404.7344">Standartize</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="60" x="78" y="421.2227">Products</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="120" x="48" y="437.7109">(course of action)</text><!--entity SCOA_3--><rect fill="#F6E4CC" filter="url(#fanapyqqy7zfz)" height="84.4648" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="140" x="189" y="197.6992"/><image height="16" width="16" x="304" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAcklEQVR4XqWS0Q2AIAxEiWH/QRzKLfwVU2MRHjW28pILWHqnAil9czQKcZn2bS0qraHPpDNSsk4DqQEyV3kDuka+2RMyBHAMB1jPMoevg42hPRBip5CXXFrd5dg9MAKU+guoP7x8gQ8afwew7mbKrMyEnGN545rI5qdMAAAAAElFTkSuQmCC" y="207.6992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="81" x="218.5" y="236.2344">Operational</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="223" y="252.7227">Excellence</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="120" x="199" y="269.2109">(course of action)</text><!--link SC_2 to SCOA_2--><path d="M101.2479,281.7842 C102.2841,301.1853 103.5351,324.6057 104.6772,345.9887 " fill="none" id="SC_2-SCOA_2" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="111.6728,345.7218,105.7496,366.0667,97.6927,346.4686,111.6728,345.7218" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="45" x="106" y="332.8008">realizes</text><!--link MG_6 to MG_4--><path d="M225.9681,614.6703 C232.4343,628.3586 240.0143,643.1556 248,656.1992 C254.1377,666.2243 261.5231,676.5611 268.6767,685.9256 " fill="none" id="MG_6-MG_4" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="220.3632,602.4931,219.2383,609.6159,225.3806,613.3938,226.5055,606.271,220.3632,602.4931" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="64" x="249" y="652.8008">aggregates</text><!--link SCOA_2 to MO_5--><path d="M172.1081,450.2373 C212.677,476.8398 264.3641,510.7331 301.9153,535.3568 " fill="none" id="SCOA_2-MO_5" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="306.423,538.3126,301.0904,530.0323,302.2418,535.5707,296.7034,536.7222,306.423,538.3126" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="79" x="239" y="492.8008">influences (+)</text><!--link SR_1 to SC_1--><path d="M471.4206,118.2171 C463.7458,138.7442 454.6909,162.9626 446.6934,184.3525 " fill="none" id="SR_1-SC_1" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="444.8981,189.1543,451.7968,182.1252,446.6492,184.471,444.3034,179.3234,444.8981,189.1543" style="stroke: #000000; stroke-width: 1.0;"/><ellipse cx="473.265" cy="113.2842" fill="#FFFFFF" rx="6" ry="6" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="66" x="462" y="155.8008">assigned to</text><!--link MO_5 to MG_4--><path d="M336.6794,610.5397 C328.7008,632.5896 319.0082,659.3767 311.1998,680.956 " fill="none" id="MO_5-MG_4" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="309.4621,685.7585,316.2857,678.6565,311.1634,681.0569,308.763,675.9345,309.4621,685.7585" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="79" x="326" y="652.8008">influences (+)</text><!--link MG_6 to MG_5--><path d="M175.1376,613.3058 C159.2249,636.5627 140.1297,664.4711 125.4414,685.9387 " fill="none" id="MG_6-MG_5" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="182.6604,602.311,175.9711,605.0041,175.8842,612.2147,182.5735,609.5216,182.6604,602.311" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="64" x="155" y="652.8008">aggregates</text><!--link SCOA_3 to SCOA_2--><path d="M212.3655,291.7384 C190.9737,315.6093 165.9422,343.5418 145.7567,366.0667 " fill="none" id="SCOA_3-SCOA_2" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="221.2858,281.7842,214.3027,283.583,213.2773,290.7208,220.2604,288.922,221.2858,281.7842" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="64" x="185" y="332.8008">aggregates</text><!--link SCOA_1 to MO_5--><path d="M352,450.2373 C352,472.0151 352,498.6789 352,521.1434 " fill="none" id="SCOA_1-MO_5" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="352,526.1644,356,517.1644,352,521.1644,348,517.1644,352,526.1644" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="79" x="353" y="492.8008">influences (+)</text><!--link MO_6 to MG_5--><path d="M27.6314,610.265 C21.9043,625.1125 19.259,641.7098 26,656.1992 C30.5022,665.8764 37.2678,674.6144 44.9398,682.302 " fill="none" id="MO_6-MG_5" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="48.7728,685.991,45.0617,676.8681,45.1701,682.5239,39.5143,682.6324,48.7728,685.991" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="76" x="27" y="652.8008">influences (-)</text><!--link SC_1 to SCOA_1--><path d="M403.7976,290.2548 C395.8568,308.3361 386.8273,328.8965 378.5562,347.73 " fill="none" id="SC_1-SCOA_1" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="384.8995,350.695,370.4482,366.1922,372.0811,345.0655,384.8995,350.695" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="45" x="390" y="332.8008">realizes</text><!--link SCOA_3 to SCOA_1--><path d="M286.7697,293.2098 C294.1998,307.2591 302.3068,322.3524 310,336.1992 C315.4118,345.9397 321.3677,356.3344 327.0509,366.1087 " fill="none" id="SCOA_3-SCOA_1" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="280.7114,281.7043,279.9675,288.877,286.3023,292.3223,287.0462,285.1497,280.7114,281.7043" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="64" x="311" y="332.8008">aggregates</text><!--link SCOA_2 to MO_6--><path d="M93.5494,450.2373 C86.0318,472.1066 76.8206,498.903 69.0782,521.4263 " fill="none" id="SCOA_2-MO_6" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="67.4495,526.1644,74.158,518.9536,69.0749,521.436,66.5925,516.3529,67.4495,526.1644" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="79" x="84" y="492.8008">influences (+)</text><!--link SR_2 to SC_1--><path d="M368.1611,118.4886 C370.2373,131.9103 373.3463,146.3595 378,159.1992 C381.0877,167.7181 385.1033,176.34 389.4972,184.6169 " fill="none" id="SR_2-SC_1" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="391.9736,189.1769,391.1934,179.359,389.5873,184.7831,384.1633,183.177,391.9736,189.1769" style="stroke: #000000; stroke-width: 1.0;"/><ellipse cx="367.3877" cy="113.2041" fill="#FFFFFF" rx="6" ry="6" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="66" x="379" y="155.8008">assigned to</text><a href="http://pubs.opengroup.org/architecture/archimate3-doc/chap07.html#_Toc489946036" target="_top" xlink:actuate="onRequest" xlink:show="new" xlink:title="http://pubs.opengroup.org/architecture/archimate3-doc/chap07.html#_Toc489946036" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="424" x="64" y="773.8672">http://pubs.opengroup.org/architecture/archimate3-doc/chap07.html#_Toc489946036</text></a><!--
+@startuml Ex_21_StrategyElements
+
+
+skinparam defaultTextAlignment center
+skinparam wrapWidth 400
+skinparam maxMessageSize 150
+skinparam StereotypeAlignment right
+
+skinparam Arrow {
+    Color #000000
+    FontColor #000000
+    FontSize 12
+}
+skinparam Folder<<grouping>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam Folder<<group>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BackgroundColor lightgrey
+}
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam node {
+  StereotypeAlignment right
+}
+skinparam cloud {
+  StereotypeAlignment right
+}
+skinparam frame {
+  StereotypeAlignment right
+}
+skinparam archimate {
+  StereotypeAlignment right
+  RoundCorner<<strategy-capability>> 25
+  RoundCorner<<strategy-course-of-action>> 25
+  RoundCorner<<business-process>> 25
+  RoundCorner<<business-function>> 25
+  RoundCorner<<business-interaction>> 25
+  RoundCorner<<business-event>> 25
+  RoundCorner<<business-service>> 25
+  RoundCorner<<application-function>> 25
+  RoundCorner<<application-interaction>> 25
+  RoundCorner<<application-process>> 25
+  RoundCorner<<application-event>> 25
+  RoundCorner<<application-service>> 25
+  RoundCorner<<technology-function>> 25
+  RoundCorner<<technology-process>> 25
+  RoundCorner<<technology-interaction>> 25
+  RoundCorner<<technology-event>> 25
+  RoundCorner<<technology-infra-service>> 25
+  RoundCorner<<implementation-workpackage>> 25
+  RoundCorner<<implementation-event>> 25
+  DiagonalCorner<<motivation-stakeholder>> 12
+  DiagonalCorner<<motivation-driver>> 12
+  DiagonalCorner<<motivation-assessment>> 12
+  DiagonalCorner<<motivation-goal>> 12
+  DiagonalCorner<<motivation-outcome>> 12
+  DiagonalCorner<<motivation-principle>> 12
+  DiagonalCorner<<motivation-requirement>> 12
+  DiagonalCorner<<motivation-constraint>> 12
+}
+skinparam usecase {
+  BorderColor #000000
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap07.html#_Toc489946036]]
+
+title Example 21. Strategy Elements
+
+archimate #STRATEGY "Centralize IT\nSystems\n(course of action)" <<strategy-course-of-action>> as SCOA_1
+archimate #STRATEGY "IT\nResources\n(resource)" <<strategy-resource>> as SR_2
+archimate #STRATEGY "IT\nManagement &\nOperations\n(capability)" <<strategy-capability>> as SC_1
+archimate #MOTIVATION "Increase Profit\n(goal)" <<motivation-goal>> as MG_6
+archimate #MOTIVATION "Increase Revenue\n(goal)" <<motivation-goal>> as MG_5
+archimate #MOTIVATION "Loss of\nCustomers\n(outcome)" <<motivation-outcome>> as MO_6
+archimate #MOTIVATION "Decrease Costs\n(goal)" <<motivation-goal>> as MG_4
+archimate #MOTIVATION "Decreased\nCosts\n(outcome)" <<motivation-outcome>> as MO_5
+archimate #STRATEGY "Product\nManagement\n(capability)" <<strategy-capability>> as SC_2
+archimate #STRATEGY "Human\nResources\n(resource)" <<strategy-resource>> as SR_1
+archimate #STRATEGY "Standartize\nProducts\n(course of action)" <<strategy-course-of-action>> as SCOA_2
+archimate #STRATEGY "Operational\nExcellence\n(course of action)" <<strategy-course-of-action>> as SCOA_3
+SC_2 ..|> SCOA_2 : "realizes"
+MG_6 o- - MG_4 : "aggregates"
+SCOA_2 - -> MO_5 : "influences (+)"
+SR_1 0- -> SC_1 : "assigned to"
+MO_5 - -> MG_4 : "influences (+)"
+MG_6 o- - MG_5 : "aggregates"
+SCOA_3 o- - SCOA_2 : "aggregates"
+SCOA_1 - -> MO_5 : "influences (+)"
+MO_6 - -> MG_5 : "influences (-)"
+SC_1 ..|> SCOA_1 : "realizes"
+SCOA_3 o- - SCOA_1 : "aggregates"
+SCOA_2 - -> MO_6 : "influences (+)"
+SR_2 0- -> SC_1 : "assigned to"
+@enduml
+
+PlantUML version 1.2019.06(Sat May 25 00:10:25 NOVT 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 12+33
+Operating System: Mac OS X
+OS Version: 10.14.5
+Default Encoding: UTF-8
+Language: en
+Country: RU
+--></g></svg>

@@ -1,0 +1,15 @@
+@startuml Ex_05_Realization
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993]]
+
+title Example 5. Realization (Relationships)
+
+Business_Service(BS_3, "Billing Service\n(business service)")
+Business_Representation(BRep_1, "Paper Invoice\n(representation)")
+Business_Object(BO_5, "Billing Data\n(business object)")
+Business_Function(BF_6, "Transaction Processing\n(business function)")
+Rel_Realization(BF_6, BS_3, "realizes")
+Rel_Access(BS_3, BO_5, "accesses")
+Rel_Realization(BRep_1, BO_5, "realizes")
+@enduml

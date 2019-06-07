@@ -1,0 +1,17 @@
+@startuml Ex_14_OrJunction
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004]]
+
+title Example 14. Or Junction (Relationships)
+
+Business_Process(BP_11, "Accept Request\n(business process)")
+Business_Process(BP_12, "Reject Request\n(business process)")
+Junction_Or(JO_1, "(or)")
+Business_Event(BE_5, "Request Received\n(business event)")
+Business_Process(BP_13, "Assess Request\n(business process)")
+Rel_Triggering(BE_5, BP_13, "triggers")
+Rel_Triggering(BP_13, JO_1, "triggers")
+Rel_Triggering(JO_1, BP_11, "triggers")
+Rel_Triggering(JO_1, BP_12, "triggers")
+@enduml

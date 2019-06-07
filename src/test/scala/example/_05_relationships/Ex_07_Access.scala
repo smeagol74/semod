@@ -1,13 +1,14 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessEvent, BusinessObject, BusinessProcess}
 import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945996
 	*/
-object Ex_07_Access extends App {
+case object Ex_07_Access extends App with Example {
 
 	val invoiceSent = BusinessEvent("Invoice Sent")
 	val invoice = BusinessObject("Invoice")
@@ -20,13 +21,12 @@ object Ex_07_Access extends App {
 	val invoiceRequest = BusinessEvent("Invoice Request")
 		.rel.triggers(createInvoice)
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_07_Access")
+	render(
+		PlantUml.opt
 			.title("Example 7. Access (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945996")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945996]]")
 			.get,
 		invoice
-	))
+	)
 
 }

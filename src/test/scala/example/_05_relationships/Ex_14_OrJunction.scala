@@ -1,12 +1,13 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessEvent, BusinessProcess}
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004
 	*/
-object Ex_14_OrJunction extends App {
+case object Ex_14_OrJunction extends App with Example {
 
 	val accept = BusinessProcess("Accept Request")
 	val reject = BusinessProcess("Reject Request")
@@ -17,13 +18,12 @@ object Ex_14_OrJunction extends App {
 	val request = BusinessEvent("Request Received")
 		.rel.triggers(assess)
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_14_OrJunction")
+	render(
+		PlantUml.opt
 			.title("Example 14. Or Junction (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004]]")
 			.get,
 		request
-	))
+	)
 
 }

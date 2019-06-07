@@ -1,0 +1,28 @@
+@startuml Ex_15_DerivedStructuralAndDependencyRelationship
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946007]]
+
+title Example 15. Derived Structural and Dependency Relationship (Relationships)
+
+Business_Function(BF_16, "Payment\n(business function)")
+Business_Process(BP_14, "Invoicing and Collections\n(business process)")
+Business_Function(BF_15, "Billing\n(business function)")
+Application_Service(AS_1, "Financial Application\n(application service)")
+Business_Function(BF_14, "Accounting\n(business function)")
+Business_Service(BS_8, "Payment Service\n(business service)")
+Business_Service(BS_7, "Billing Service\n(business service)")
+Business_Service(BS_6, "Accounting Service\n(business service)")
+Business_Function(BF_17, "Financial Processing\n(business function)")
+Rel_Serving(AS_1, BF_17, "serves")
+Rel_Composition(BF_17, BF_15, "composed of")
+Rel_Serving(BS_6, BP_14, "serves")
+Rel_Realization(BF_14, BS_6, "realizes")
+Rel_Serving(AS_1, BP_14, "serves")
+Rel_Serving(BS_8, BP_14, "serves")
+Rel_Realization(BF_16, BS_8, "realizes")
+Rel_Realization(BF_15, BS_7, "realizes")
+Rel_Composition(BF_17, BF_14, "composed of")
+Rel_Serving(BS_7, BP_14, "serves")
+Rel_Composition(BF_17, BF_16, "composed of")
+@enduml

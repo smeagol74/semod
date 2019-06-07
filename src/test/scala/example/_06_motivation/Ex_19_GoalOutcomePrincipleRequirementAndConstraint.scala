@@ -1,12 +1,13 @@
 package example._06_motivation
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.motivation._
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946022
 	*/
-object Ex_19_GoalOutcomePrincipleRequirementAndConstraint extends App {
+case object Ex_19_GoalOutcomePrincipleRequirementAndConstraint extends App with Example {
 
 	object db {
 		val improvePortability = Goal(
@@ -60,12 +61,11 @@ object Ex_19_GoalOutcomePrincipleRequirementAndConstraint extends App {
 				|Frameworks""".stripMargin)
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_19_GoalOutcomePrincipleRequirementAndConstraint")
+	render(
+		PlantUml.opt
 			.title("Example 19. Goal, Outcome, Principle, Requirement and Constraint (Motivation)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946022")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946022]]")
 			.get,
 		db.improvePortability
-	))
+	)
 }

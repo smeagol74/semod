@@ -1,12 +1,13 @@
 package example._05_relationships
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.BusinessFunction
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946000
 	*/
-object Ex_10_Flow extends App {
+case object Ex_10_Flow extends App with Example {
 
 	val settlement = BusinessFunction("Claim Settlement")
 	val assessment = BusinessFunction("Claim Assessment")
@@ -14,13 +15,12 @@ object Ex_10_Flow extends App {
 	val scheduling = BusinessFunction("Scheduling")
 		.rel.flowsTo(assessment, "schedule info")
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_10_Flow")
+	render(
+		PlantUml.opt
 			.title("Example 10. Flow (Relationships)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946000")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946000]]")
 			.get,
 		scheduling
-	))
+	)
 
 }

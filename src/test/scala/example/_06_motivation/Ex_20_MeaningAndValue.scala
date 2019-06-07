@@ -1,16 +1,17 @@
 package example._06_motivation
 
-import ru.kvb74.semod.opengroup.archimate.Report
+import example.Example
 import ru.kvb74.semod.opengroup.archimate.application.{ApplicationService, DataObject}
 import ru.kvb74.semod.opengroup.archimate.motivation.{Meaning, Stakeholder, Value}
 import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.plantuml.PlantUml
 
 /**
 	* This is example of
 	*
 	* @see [[http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946026 Archimate 3.0.1 / Motivation Elements / Meaning and Value / Example]]
 	*/
-object Ex_20_MeaningAndValue extends App {
+case object Ex_20_MeaningAndValue extends App with Example {
 
 	object db {
 		val costEfficiency = Value("Cost Efficiency")
@@ -58,14 +59,13 @@ object Ex_20_MeaningAndValue extends App {
 				|Been Paid""".stripMargin))
 	}
 
-	print(Report.withDependencies(
-		Report.Options.empty
-			.name("Ex_20_MeaningAndValue")
+	render(
+		PlantUml.opt
 			.title("Example 20. Meaning and Value (Motivation)")
-			.footer("http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946026")
+			.footer("[[http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946026]]")
 			.get,
 		db.insurer,
 		db.customer
-	))
+	)
 
 }
