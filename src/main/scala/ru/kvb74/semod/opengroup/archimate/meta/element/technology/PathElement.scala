@@ -12,12 +12,13 @@ case object PathElement
 trait PathElementRelationships[T <: PathElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 
-	def associatedWith(dst: NodeElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: NodeElement): T = tt._rel.associatedWith(dst)
 
 	def aggregates(dst: NodeElement): T = tt._rel.aggregates(dst)
 
 	_register(PathElement,
-		JR.associatedWith(NodeElement),
+		//		JR.associatedWith(NodeElement),
 		JR.aggregates(NodeElement),
 	)
 }

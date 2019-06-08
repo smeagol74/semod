@@ -20,13 +20,14 @@ trait NodeElementRelationships[T <: NodeElement]
 
 	def assignedTo(dst: ArtifactElement): T = tt._rel.assignedTo(dst)
 
-	def associatedWith(dst: PathElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: PathElement): T = tt._rel.associatedWith(dst)
 
 	_register(NodeElement,
 		JR.realizes(NodeElement),
 		JR.assignedTo(TechnologyInternalBehaviorElement),
 		JR.assignedTo(TechnologyEventElement),
 		JR.assignedTo(ArtifactElement),
-		JR.associatedWith(PathElement),
+		//		JR.associatedWith(PathElement),
 	)
 }

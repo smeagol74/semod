@@ -4,10 +4,10 @@ import java.util.ResourceBundle
 
 object Resource {
 
-	private var _bundle = ResourceBundle.getBundle("terms/archimate")
+	private var _bundle = ResourceBundle.getBundle("archimate/opengroup")
 
 	def use(bundle: String): Unit = {
-		_bundle = ResourceBundle.getBundle(s"terms/$bundle")
+		_bundle = ResourceBundle.getBundle(s"archimate/$bundle")
 	}
 
 	def b: ResourceBundle = _bundle

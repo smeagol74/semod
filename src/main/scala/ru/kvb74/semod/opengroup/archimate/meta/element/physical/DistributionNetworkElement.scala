@@ -18,20 +18,22 @@ trait DistributionNetworkElementRelationships[T <: DistributionNetworkElement]
 
 	def realizes(dst: PathElement): T = tt._rel.realizes(dst)
 
-	def associatedWith(dst: FacilityElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: FacilityElement): T = tt._rel.associatedWith(dst)
 
 	def aggregates(dst: FacilityElement): T = tt._rel.aggregates(dst)
 
 	def aggregates(dst: EquipmentElement): T = tt._rel.aggregates(dst)
 
-	def associatedWith(dst: MaterialElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: MaterialElement): T = tt._rel.associatedWith(dst)
 
 	_register(DistributionNetworkElement,
 		JR.realizes(PathElement),
-		JR.associatedWith(FacilityElement),
+		//		JR.associatedWith(FacilityElement),
 		JR.aggregates(FacilityElement),
 		JR.aggregates(EquipmentElement),
-		JR.associatedWith(MaterialElement),
+		//		JR.associatedWith(MaterialElement),
 	)
 
 }

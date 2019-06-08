@@ -84,7 +84,8 @@ trait Element {
 
 		def triggers[T <: Element](dst: Element)(implicit tThis: T) = apply(Triggering(Element.this, dst))
 
-		def associatedWith[T <: Element](dst: Element)(implicit tThis: T) = apply(Association(Element.this, dst))
+		def associatedWith[T <: Element](dst: Element, label: String)
+			(implicit tThis: T) = apply(Association(Element.this, dst, label))
 
 		def specializationOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Specialization(Element.this, dst))
 
@@ -102,7 +103,7 @@ trait Element {
 			case Method.serves => apply(Serving(Element.this, dst))(Element.this.asInstanceOf[T])
 			case Method.flowsTo => apply(Flow(Element.this, dst, ""))(Element.this.asInstanceOf[T])
 			case Method.triggers => apply(Triggering(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.associatedWith => apply(Association(Element.this, dst))(Element.this.asInstanceOf[T])
+			case Method.associatedWith => apply(Association(Element.this, dst, ""))(Element.this.asInstanceOf[T])
 			case Method.specializationOf => apply(Specialization(Element.this, dst))(Element.this.asInstanceOf[T])
 			case Method.aggregates => apply(Aggregation(Element.this, dst))(Element.this.asInstanceOf[T])
 			case Method.assignedTo => apply(Assignment(Element.this, dst))(Element.this.asInstanceOf[T])
@@ -195,6 +196,8 @@ trait ElementRelationships[T <: Element] {
 
 	def specializationOf(dst: T): T = tt._rel.specializationOf(dst)
 
+	def associatedWith(dst: Element, label: String = ""): T = tt._rel.associatedWith(dst, label)
+
 	object junction {
 		def accesses: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.accesses)
 
@@ -233,8 +236,15 @@ trait ElementRelationships[T <: Element] {
 			JR.aggregates(element),
 			JR.specializationOf(element)
 		)
+
+		_register(Element,
+			JR.associatedWith(Element),
+		)
 	}
 
 	_doRegister()
 
 }
+
+case object Element
+	extends ElementName

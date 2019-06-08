@@ -1,0 +1,19 @@
+@startuml Ex_01_Grouping
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap04.html#_Toc489945986]]
+
+title Example 1. Grouping (Composite)
+
+Business_Process(BP_1, "Process 2\n(business process)")
+Business_Service(BS_1, "Service\n(business service)")
+Business_Process(BP_2, "Process 1\n(business process)")
+Business_Object(BO_1, "Object\n(business object)")
+Grouping(Composite_Grouping_1, "Grouping\n(grouping)")
+Rel_Aggregation(Composite_Grouping_1, BP_2, "aggregates")
+Rel_Aggregation(Composite_Grouping_1, BP_1, "aggregates")
+Rel_Triggering(BP_2, BP_1, "triggers")
+Rel_Realization(Composite_Grouping_1, BS_1, "realizes")
+Rel_Aggregation(Composite_Grouping_1, BO_1, "aggregates")
+Rel_Access(BP_2, BO_1, "accesses")
+@enduml

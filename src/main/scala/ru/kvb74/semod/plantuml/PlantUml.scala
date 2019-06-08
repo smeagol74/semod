@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream
 import java.nio.charset.Charset
 
 import net.sourceforge.plantuml.{FileFormat, FileFormatOption, SourceStringReader}
+import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
 import ru.kvb74.semod.opengroup.archimate.meta.element.Element
 import ru.kvb74.semod.opengroup.archimate.meta.layer.Layer
 import ru.kvb74.semod.opengroup.archimate.meta.relationship.Relationship
@@ -18,7 +19,7 @@ object PlantUml {
 
 	private def _normalize(text: String): String = text.replaceAll("\n", "\\\\n")
 
-	private def renderElement(element: Element): String = {
+	private def _renderGenericElement(element: Element): String = {
 		val sb = StringBuilder.newBuilder
 		val kind = Resource.b.getString(element.fullElementName)
 		element match {
@@ -35,6 +36,37 @@ object PlantUml {
 		}
 		sb.append(s"""($kind)")""")
 		sb.mkString
+	}
+
+	private def _renderNoLayerElement(element: Element): String = {
+		val sb = StringBuilder.newBuilder
+		val kind = Resource.b.getString(element.fullElementName)
+		sb.append(element.elementName)
+		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
+		if (element.name.nonEmpty) {
+			sb.append("\\n")
+		}
+		sb.append(s"""($kind)")""")
+		sb.mkString
+	}
+
+	private def _renderLocationElement(element: Location): String = {
+		val sb = StringBuilder.newBuilder
+		val kind = Resource.b.getString(element.fullElementName)
+		sb.append("Other_")
+		sb.append(element.elementName)
+		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
+		if (element.name.nonEmpty) {
+			sb.append("\\n")
+		}
+		sb.append(s"""($kind)")""")
+		sb.mkString
+	}
+
+	private def renderElement(element: Element): String = element match {
+		case _: Grouping => _renderNoLayerElement(element)
+		case el: Location => _renderLocationElement(el)
+		case _ => _renderGenericElement(element)
 	}
 
 	private def _renderInfluence(relationship: Influence): String = {

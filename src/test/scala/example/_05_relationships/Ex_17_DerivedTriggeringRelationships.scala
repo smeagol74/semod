@@ -14,15 +14,15 @@ case object Ex_17_DerivedTriggeringRelationships extends App with Example {
 		.rel.triggers(shipping)
 	val selling = BusinessFunction("Selling")
 		.rel.triggers(billing)
-		.rel.triggers(shipping) // TODO This one should be derived
-	val salesDep = BusinessCollaboration("Sales Department")
-		.rel.assignedTo(selling)
-	//    .rel.triggers(financialDep) // TODO This one should be derived
-	val financialDep = BusinessCollaboration("Financial Department")
-		.rel.assignedTo(billing)
-	// .rel.triggers(shippingDep) // TODO This one should be derived
+		.rel.associatedWith(shipping, "derived triggers")
 	val shippingDep = BusinessCollaboration("Shipping Department")
 		.rel.assignedTo(shipping)
+	val financialDep = BusinessCollaboration("Financial Department")
+		.rel.assignedTo(billing)
+		.rel.associatedWith(shippingDep, "derived triggers")
+	val salesDep = BusinessCollaboration("Sales Department")
+		.rel.assignedTo(selling)
+		.rel.associatedWith(financialDep, "derived triggers")
 
 	render(
 		PlantUml.opt

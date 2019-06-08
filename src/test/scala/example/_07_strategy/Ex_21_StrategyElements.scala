@@ -1,6 +1,7 @@
 package example._07_strategy
 
 import example.Example
+import ru.kvb74.semod.opengroup.archimate.composite.Location
 import ru.kvb74.semod.opengroup.archimate.motivation.{Goal, Outcome}
 import ru.kvb74.semod.opengroup.archimate.strategy.{Capability, CourseOfAction, Resource}
 import ru.kvb74.semod.plantuml.PlantUml
@@ -28,7 +29,7 @@ case object Ex_21_StrategyElements extends App with Example {
 		.rel.influences(lossOfCustomers, "+")
 
 	val operationalExcellence = CourseOfAction("Operational\nExcellence")
-		//  	.rel.associatedWith(decreaseCosts) ??? этой связи нет в спецификации или я её где-то пропустил TODO найти и починить
+		.rel.associatedWith(decreaseCosts)
 		.rel.aggregates(centralizeItSystems)
 		.rel.aggregates(standartizeProducts)
 
@@ -37,12 +38,14 @@ case object Ex_21_StrategyElements extends App with Example {
 	val productManagement = Capability("Product\nManagement")
 		.rel.realizes(standartizeProducts)
 
-	val humarResources = Resource("Human\nResources")
+	val humanResources = Resource("Human\nResources")
 		.rel.assignedTo(itManagementAndOperations)
-	val ieResources = Resource("IT\nResources")
+	val itResources = Resource("IT\nResources")
 		.rel.assignedTo(itManagementAndOperations)
 
-	//	val headquarters = Location("Headquarters")
+	val headquarters = Location("Headquarters")
+		.rel.aggregates(humanResources)
+		.rel.aggregates(itResources)
 
 	render(
 		PlantUml.opt

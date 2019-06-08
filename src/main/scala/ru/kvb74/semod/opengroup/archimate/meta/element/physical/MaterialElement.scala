@@ -20,10 +20,11 @@ trait MaterialElementRelationships[T <: MaterialElement]
 
 	def specializationOf(dst: TechnologyObjectElement): T = tt._rel.specializationOf(dst)
 
-	def associatedWith(dst: DistributionNetworkElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: DistributionNetworkElement): T = tt._rel.associatedWith(dst)
 
 	_register(MaterialElement,
 		JR.specializationOf(TechnologyObjectElement),
-		JR.associatedWith(DistributionNetworkElement)
+		//		JR.associatedWith(DistributionNetworkElement)
 	)
 }

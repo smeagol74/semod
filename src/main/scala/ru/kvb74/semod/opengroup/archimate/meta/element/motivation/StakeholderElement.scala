@@ -13,11 +13,12 @@ trait StakeholderElementRelationships[T <: StakeholderElement]
 
 	def influences(dst: StakeholderElement, label: String = ""): T = tt._rel.influences(dst, label)
 
-	def associatedWith(dst: MotivationElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: MotivationElement): T = tt._rel.associatedWith(dst)
 
 	_register(StakeholderElement,
 		JR.influences(StakeholderElement),
-		JR.associatedWith(MotivationElement)
+		//		JR.associatedWith(MotivationElement)
 	)
 
 }

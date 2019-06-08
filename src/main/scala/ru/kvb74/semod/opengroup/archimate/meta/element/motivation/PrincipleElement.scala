@@ -13,14 +13,16 @@ trait PrincipleElementRelationships[T <: PrincipleElement]
 
 	def realizes(dst: OutcomeElement): T = tt._rel.realizes(dst)
 
-	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
 
-	def associatedWith(dst: MeaningElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: MeaningElement): T = tt._rel.associatedWith(dst)
 
 	_register(PrincipleElement,
 		JR.realizes(OutcomeElement),
-		JR.associatedWith(ValueElement),
-		JR.associatedWith(MeaningElement),
+		//		JR.associatedWith(ValueElement),
+		//		JR.associatedWith(MeaningElement),
 	)
 
 }

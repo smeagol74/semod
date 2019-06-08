@@ -11,19 +11,23 @@ case object GoalElement
 trait GoalElementRelationships[T <: GoalElement]
 	extends MotivationElementRelationships[T] {
 
-	def associatedWith(dst: AssessmentElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: AssessmentElement): T = tt._rel.associatedWith(dst)
 
-	def associatedWith(dst: DriverElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: DriverElement): T = tt._rel.associatedWith(dst)
 
-	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
 
-	def associatedWith(dst: MeaningElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: MeaningElement): T = tt._rel.associatedWith(dst)
 
 	_register(GoalElement,
-		JR.associatedWith(AssessmentElement),
-		JR.associatedWith(DriverElement),
-		JR.associatedWith(ValueElement),
-		JR.associatedWith(MeaningElement),
+		//		JR.associatedWith(AssessmentElement),
+		//		JR.associatedWith(DriverElement),
+		//		JR.associatedWith(ValueElement),
+		//		JR.associatedWith(MeaningElement),
 	)
 
 }

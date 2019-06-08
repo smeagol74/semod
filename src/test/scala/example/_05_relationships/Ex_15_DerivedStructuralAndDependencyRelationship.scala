@@ -35,7 +35,7 @@ case object Ex_15_DerivedStructuralAndDependencyRelationship extends App with Ex
 
 	val financialApplication = ApplicationService("Financial Application")
 		.rel.serves(financialProcessing)
-		.rel.serves(invoicing) // this relation should be derived automatically
+		.rel.associatedWith(invoicing, "derived serves")
 
 	render(
 		PlantUml.opt

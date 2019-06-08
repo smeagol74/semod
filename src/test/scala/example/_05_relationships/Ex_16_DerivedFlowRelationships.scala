@@ -2,6 +2,7 @@ package example._05_relationships
 
 import example.Example
 import ru.kvb74.semod.opengroup.archimate.business.{BusinessCollaboration, BusinessFunction, BusinessService}
+import ru.kvb74.semod.opengroup.archimate.composite.Location
 import ru.kvb74.semod.plantuml.PlantUml
 
 /**
@@ -14,14 +15,18 @@ case object Ex_16_DerivedFlowRelationships extends App with Example {
 		.rel.flowsTo(salesSvc, "")
 	val productDev = BusinessFunction("Product Development")
 		.rel.realizes(developmentSvc)
-	val rdDep = BusinessCollaboration("R&D Department")
-		.rel.assignedTo(productDev)
 	val sales = BusinessFunction("Sales")
 		.rel.realizes(salesSvc)
+	val rdDep = BusinessCollaboration("R&D Department")
+		.rel.assignedTo(productDev)
+  	.rel.associatedWith(sales, "derived flowsTo")
 	val salesDep = BusinessCollaboration("Sales Department")
 		.rel.assignedTo(sales)
-	//TODO complete Location element and flow relationships
-
+	val londonOffice = Location("London Office")
+  	.rel.aggregates(salesDep)
+	val parisOffice = Location("Paris Office")
+  		.rel.aggregates(rdDep)
+  		.rel.associatedWith(londonOffice, "derived flowsTo")
 
 	render(
 		PlantUml.opt

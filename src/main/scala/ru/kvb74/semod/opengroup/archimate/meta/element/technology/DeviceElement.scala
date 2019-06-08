@@ -16,10 +16,11 @@ trait DeviceElementRelationships[T <: DeviceElement]
 
 	def assignedTo(dst: SystemSoftwareElement): T = tt._rel.assignedTo(dst)
 
-	def associatedWith(dst: CommunicationNetworkElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: CommunicationNetworkElement): T = tt._rel.associatedWith(dst)
 
 	_register(DeviceElement,
 		JR.assignedTo(SystemSoftwareElement),
-		JR.associatedWith(CommunicationNetworkElement),
+		//		JR.associatedWith(CommunicationNetworkElement),
 	)
 }

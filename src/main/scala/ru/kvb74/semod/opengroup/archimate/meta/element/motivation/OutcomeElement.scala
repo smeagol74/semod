@@ -13,11 +13,12 @@ trait OutcomeElementRelationships[T <: OutcomeElement]
 
 	def realizes(dst: GoalElement): T = tt._rel.realizes(dst)
 
-	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
 
 	_register(OutcomeElement,
 		JR.realizes(GoalElement),
-		JR.associatedWith(ValueElement)
+		//		JR.associatedWith(ValueElement)
 	)
 
 }

@@ -22,12 +22,13 @@ trait FacilityElementRelationships[T <: FacilityElement]
 
 	def assignedTo(dst: BusinessActorElement): T = tt._rel.assignedTo(dst)
 
-	def associatedWith(dst: DistributionNetworkElement): T = tt._rel.associatedWith(dst)
+	// лишнее ограничение уже есть в ElementRelationships
+	//	def associatedWith(dst: DistributionNetworkElement): T = tt._rel.associatedWith(dst)
 
 	_register(FacilityElement,
 		JR.assignedTo(NodeElement),
 		JR.assignedTo(BusinessActorElement),
-		JR.associatedWith(DistributionNetworkElement),
+		//		JR.associatedWith(DistributionNetworkElement),
 	)
 }
 
