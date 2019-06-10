@@ -14,9 +14,9 @@ trait TechnologyCollaborationElementRelationships[T <: TechnologyCollaborationEl
 	extends StrategyCoreStructureBehaviorElementRelationships[T]
 		with NodeElementRelationships[T] {
 
-	def aggregates(dst: NodeElement): T = tt._rel.aggregates(dst)
+//	def aggregates(dst: NodeElement): T = tt._rel.aggregates(dst)
 
 	_register(TechnologyCollaborationElement,
-		JR.aggregates(NodeElement)
+//		JR.aggregates(NodeElement)
 	)
 }

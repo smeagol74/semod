@@ -14,6 +14,12 @@ trait NodeElementRelationships[T <: NodeElement]
 
 	def realizes(dst: NodeElement): T = tt._rel.realizes(dst)
 
+	def composedOf(dst: TechnologyInterfaceElement): T = tt._rel.composedOf(dst)
+
+	def composedOf(dst: NodeElement): T = tt._rel.composedOf(dst)
+
+	def aggregates(dst: NodeElement): T = tt._rel.aggregates(dst)
+
 	def assignedTo(dst: TechnologyInternalBehaviorElement): T = tt._rel.assignedTo(dst)
 
 	def assignedTo(dst: TechnologyEventElement): T = tt._rel.assignedTo(dst)
@@ -25,6 +31,9 @@ trait NodeElementRelationships[T <: NodeElement]
 
 	_register(NodeElement,
 		JR.realizes(NodeElement),
+		JR.composedOf(TechnologyInterfaceElement),
+		JR.composedOf(NodeElement),
+		JR.aggregates(NodeElement),
 		JR.assignedTo(TechnologyInternalBehaviorElement),
 		JR.assignedTo(TechnologyEventElement),
 		JR.assignedTo(ArtifactElement),

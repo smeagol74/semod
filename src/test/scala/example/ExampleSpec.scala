@@ -6,6 +6,10 @@ import example._09_application._
 import example._08_business._
 import example._06_motivation._
 import example._07_strategy._
+import example._10_technology.{Ex_29_TechnologyActiveStructureElements, Ex_30_TechnologyBehaviorElements, Ex_31_TechnologyPassiveStructureElement}
+import example._11_physical.Ex_32_PhysicalElements
+import example._12_cross_layer.Ex_33_CrossLayerRelationships
+import example._13_implementation.Ex_34_ImplementationAndMigrationElements
 import org.scalatest.FunSpec
 
 class ExampleSpec extends FunSpec {
@@ -164,6 +168,48 @@ class ExampleSpec extends FunSpec {
 		describe("Ex_28_ApplicationPassiveStructureElements") {
 			it("should run without errors") {
 				Ex_28_ApplicationPassiveStructureElements.main(Array())
+			}
+		}
+	}
+
+	describe("10. technology") {
+		describe("Ex_29_TechnologyActiveStructureElements") {
+			it("should run without errors") {
+				Ex_29_TechnologyActiveStructureElements.main(Array())
+			}
+		}
+		describe("Ex_30_TechnologyBehaviorElements") {
+			it("should run without errors") {
+				Ex_30_TechnologyBehaviorElements.main(Array())
+			}
+		}
+		describe("Ex_31_TechnologyPassiveStructureElement") {
+			it("should run without errors") {
+				Ex_31_TechnologyPassiveStructureElement.main(Array())
+			}
+		}
+	}
+
+	describe("11. physical") {
+		describe("Ex_32_PhysicalElements") {
+			it("should run without errors") {
+				Ex_32_PhysicalElements.main(Array())
+			}
+		}
+	}
+
+	describe("12. cross-layer") {
+		describe("Ex_33_CrossLayerRelationships") {
+			it("should run without errors") {
+				Ex_33_CrossLayerRelationships.main(Array())
+			}
+		}
+	}
+
+	describe("13. implementation") {
+		describe("Ex_34_ImplementationAndMigrationElements") {
+			it("should run without errors") {
+				Ex_34_ImplementationAndMigrationElements.main(Array())
 			}
 		}
 	}

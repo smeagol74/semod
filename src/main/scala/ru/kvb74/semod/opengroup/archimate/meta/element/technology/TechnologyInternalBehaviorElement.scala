@@ -14,7 +14,7 @@ case object TechnologyInternalBehaviorElement
 trait TechnologyInternalBehaviorElementRelationships[T <: TechnologyInternalBehaviorElement]
 	extends ElementRelationships[T] {
 
-	def realizes(dst: TechnologyServiceElement): T = tt._rel.aggregates(dst)
+	def realizes(dst: TechnologyServiceElement): T = tt._rel.realizes(dst)
 
 	def aggregates(dst: TechnologyInternalBehaviorElement): T = tt._rel.aggregates(dst)
 
