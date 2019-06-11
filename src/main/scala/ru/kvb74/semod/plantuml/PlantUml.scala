@@ -2,6 +2,7 @@ package ru.kvb74.semod.plantuml
 
 import java.io.ByteArrayOutputStream
 import java.nio.charset.Charset
+import java.util.ResourceBundle
 
 import net.sourceforge.plantuml.{FileFormat, FileFormatOption, SourceStringReader}
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
@@ -19,9 +20,9 @@ object PlantUml {
 
 	private def _normalize(text: String): String = text.replaceAll("\n", "\\\\n")
 
-	private def _renderGenericElement(element: Element): String = {
+	private def _renderGenericElement(bundle: ResourceBundle, element: Element): String = {
 		val sb = StringBuilder.newBuilder
-		val kind = Resource.b.getString(element.fullElementName)
+		val kind = bundle.getString(element.fullElementName)
 		element match {
 			case layer: Layer =>
 				sb.append(layer.layerName)
@@ -38,9 +39,9 @@ object PlantUml {
 		sb.mkString
 	}
 
-	private def _renderNoLayerElement(element: Element): String = {
+	private def _renderNoLayerElement(bundle: ResourceBundle, element: Element): String = {
 		val sb = StringBuilder.newBuilder
-		val kind = Resource.b.getString(element.fullElementName)
+		val kind = bundle.getString(element.fullElementName)
 		sb.append(element.elementName)
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
 		if (element.name.nonEmpty) {
@@ -50,9 +51,9 @@ object PlantUml {
 		sb.mkString
 	}
 
-	private def _renderLocationElement(element: Location): String = {
+	private def _renderLocationElement(bundle: ResourceBundle, element: Location): String = {
 		val sb = StringBuilder.newBuilder
-		val kind = Resource.b.getString(element.fullElementName)
+		val kind = bundle.getString(element.fullElementName)
 		sb.append("Other_")
 		sb.append(element.elementName)
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
@@ -63,42 +64,42 @@ object PlantUml {
 		sb.mkString
 	}
 
-	private def renderElement(element: Element): String = element match {
-		case _: Grouping => _renderNoLayerElement(element)
-		case el: Location => _renderLocationElement(el)
-		case _ => _renderGenericElement(element)
+	private def renderElement(bundle: ResourceBundle, element: Element): String = element match {
+		case _: Grouping => _renderNoLayerElement(bundle, element)
+		case el: Location => _renderLocationElement(bundle, el)
+		case _ => _renderGenericElement(bundle, element)
 	}
 
-	private def _renderInfluence(relationship: Influence): String = {
+	private def _renderInfluence(bundle: ResourceBundle, relationship: Influence): String = {
 		val sb = StringBuilder.newBuilder
 		val name = s"Rel_${relationship.asInstanceOf[Product].productPrefix}"
-		val desc = Resource.b.getString(if (relationship.direct) name else s"${name}_back")
+		val desc = bundle.getString(if (relationship.direct) name else s"${name}_back")
 		val label = if (relationship.label.isEmpty) "" else s" (${relationship.label})"
 		sb.append(name)
 		sb.append(s"""(${relationship.src.id}, ${relationship.dst.id}, "$desc$label")""")
 		sb.mkString
 	}
 
-	private def _renderGeneric(relationship: Relationship): String = {
+	private def _renderGeneric(bundle: ResourceBundle, relationship: Relationship): String = {
 		val sb = StringBuilder.newBuilder
 		val name = s"Rel_${relationship.asInstanceOf[Product].productPrefix}"
-		val desc = Resource.b.getString(if (relationship.direct) name else s"${name}_back")
+		val desc = bundle.getString(if (relationship.direct) name else s"${name}_back")
 		sb.append(name)
 		sb.append(s"""(${relationship.src.id}, ${relationship.dst.id}, "$desc")""")
 		sb.mkString
 	}
 
 	// TODO implement different Access modes
-	private def _renderAccess(relationship: Access): String = _renderGeneric(relationship)
+	private def _renderAccess(bundle: ResourceBundle, relationship: Access): String = _renderGeneric(bundle, relationship)
 
 	// TODO implement Flow labels
-	private def _renderFlow(relationship: Flow): String = _renderGeneric(relationship)
+	private def _renderFlow(bundle: ResourceBundle, relationship: Flow): String = _renderGeneric(bundle, relationship)
 
-	private def renderRelationship(relationship: Relationship): String = relationship match {
-		case rel: Influence => _renderInfluence(rel)
-		case rel: Access => _renderAccess(rel)
-		case rel: Flow => _renderFlow(rel)
-		case _ => _renderGeneric(relationship)
+	private def renderRelationship(bundle: ResourceBundle, relationship: Relationship): String = relationship match {
+		case rel: Influence => _renderInfluence(bundle, rel)
+		case rel: Access => _renderAccess(bundle, rel)
+		case rel: Flow => _renderFlow(bundle, rel)
+		case _ => _renderGeneric(bundle, relationship)
 	}
 
 	/**
@@ -128,6 +129,10 @@ object PlantUml {
 			* * любой другой — текстовый файл в формате .puml
 			*/
 		val file: Option[String]
+		/**
+			* Название ресурса с терминологией файл "archimate/${terms}.properties"
+			*/
+		val terms: String
 	}
 
 	class OptionsBuilder {
@@ -136,6 +141,7 @@ object PlantUml {
 		private var _header: Option[String] = None
 		private var _footer: Option[String] = None
 		private var _file: Option[String] = None
+		private var _terms: String = "opengroup"
 
 		def name(value: String): OptionsBuilder = {
 			_name = Some(value)
@@ -187,7 +193,12 @@ object PlantUml {
 			this
 		}
 
-		def get: Options = OptionsInstance(_name, _title, _header, _footer, _file)
+		def terms(value: String): OptionsBuilder = {
+			_terms = value
+			this
+		}
+
+		def get: Options = OptionsInstance(_name, _title, _header, _footer, _file, _terms)
 	}
 
 	/**
@@ -202,7 +213,8 @@ object PlantUml {
 		title: Option[String],
 		header: Option[String],
 		footer: Option[String],
-		file: Option[String]
+		file: Option[String],
+		terms: String
 	) extends Options
 
 	private def renderToString(
@@ -210,7 +222,7 @@ object PlantUml {
 		elements: Set[Element],
 		relationships: Set[Relationship]
 	): String = {
-
+		val bundle = Resource.bundle(options.terms)
 		val sb = StringBuilder.newBuilder
 		sb.append("@startuml")
 		options.name.foreach(name => sb.append(s" $name"))
@@ -221,8 +233,8 @@ object PlantUml {
 		options.footer.foreach(footer => sb.append(s"footer ${_normalize(footer)}").append(EOL).append(EOL))
 		options.title.foreach(title => sb.append(s"title ${_normalize(title)}").append(EOL).append(EOL))
 
-		elements.map(renderElement).foreach(sb.append(_).append(EOL))
-		relationships.map(renderRelationship).foreach(sb.append(_).append(EOL))
+		elements.map(renderElement(bundle, _)).foreach(sb.append(_).append(EOL))
+		relationships.map(renderRelationship(bundle, _)).foreach(sb.append(_).append(EOL))
 
 		sb.append("@enduml").append(EOL)
 		sb.mkString
