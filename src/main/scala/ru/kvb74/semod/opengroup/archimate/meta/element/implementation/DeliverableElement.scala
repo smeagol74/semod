@@ -1,7 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.implementation
 
 import ru.kvb74.semod.Origin
-import ru.kvb74.semod.opengroup.archimate.Urls
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.ProductElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.composite.LocationElement
