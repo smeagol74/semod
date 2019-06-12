@@ -14,7 +14,4 @@ case class Access(
 	src: Element,
 	dst: Element,
 	mode: AccessMode.Value,
-	direct: Boolean = true
-) extends DependencyRelationship {
-	override def reverse = Access(dst, src, mode, direct = false)
-}
+) extends DependencyRelationship

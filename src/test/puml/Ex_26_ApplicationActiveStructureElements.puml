@@ -5,13 +5,13 @@ footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc4
 
 title Example 26. Application Active Structure Elements (Application)
 
-Application_Component(ACmp_2, "Quotation\n(application component)")
-Application_Interface(AIf_1, "Web Services\nInterface\n(application interface)")
 Application_Collaboration(AC_1, "Online Travel\nInsurance Sales\n(application collaboration)")
 Application_Component(ACmp_1, "Travel Website\n(application component)")
+Application_Component(ACmp_2, "Quotation\n(application component)")
 Application_Component(ACmp_3, "Purchases\n(application component)")
-Rel_Composition(AC_1, AIf_1, "composed of")
+Application_Interface(AIf_1, "Web Services\nInterface\n(application interface)")
 Rel_Aggregation(AC_1, ACmp_2, "aggregates")
 Rel_Aggregation(AC_1, ACmp_3, "aggregates")
+Rel_Composition(AC_1, AIf_1, "composed of")
 Rel_Serving(AIf_1, ACmp_1, "serves")
 @enduml

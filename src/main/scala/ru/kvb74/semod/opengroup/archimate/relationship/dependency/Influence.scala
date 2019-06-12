@@ -7,7 +7,4 @@ case class Influence(
 	src: Element,
 	dst: Element,
 	label: String = "",
-	direct: Boolean = true
-) extends DependencyRelationship {
-	override def reverse = Influence(dst, src, label, direct = false)
-}
+) extends DependencyRelationship

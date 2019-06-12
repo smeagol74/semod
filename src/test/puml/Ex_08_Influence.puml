@@ -5,9 +5,9 @@ footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc4
 
 title Example 8. Influence (Relationships)
 
-Motivation_Goal(MG_2, "Decrease Costs\n(goal)")
 Motivation_Goal(MG_1, "Reduce Workload\nOf Employees\n(goal)")
+Motivation_Goal(MG_2, "Decrease Costs\n(goal)")
 Motivation_Principle(MP_1, "Assign Personal\nAssistant\n(principle)")
-Rel_Influence(MP_1, MG_2, "influences (--)")
-Rel_Influence(MP_1, MG_1, "influences (++)")
+Rel_Influence(MP_1, MG_1, "++\n(influences)")
+Rel_Influence(MP_1, MG_2, "--\n(influences)")
 @enduml

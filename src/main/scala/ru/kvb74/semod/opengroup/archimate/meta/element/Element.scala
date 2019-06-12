@@ -60,7 +60,7 @@ trait Element {
 		_reverseRelationships.map(r => r.src).toSet ++
 		_reverseRelationships.map(r => r.dst).toSet
 
-	private[archimate] def relReverse(rel: Relationship): Unit = _reverseRelationships += rel.reverse
+	private[archimate] def relReverse(rel: Relationship): Unit = _reverseRelationships += rel
 
 	private[archimate] object _rel {
 		private def apply[T <: Element](rel: Relationship)(implicit tThis: T): T = {

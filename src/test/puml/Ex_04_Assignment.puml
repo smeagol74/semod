@@ -6,11 +6,11 @@ footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc4
 title Example 4. Assignment (Relationships)
 
 Business_Collaboration(BC_1, "Finance\n(business collaboration)")
-Business_Interface(BIf_1, "Payment Interface\n(business interface)")
 Business_Function(BF_5, "Transaction Processing\n(business function)")
+Business_Interface(BIf_1, "Payment Interface\n(business interface)")
 Business_Service(BS_2, "Payment Service\n(business service)")
-Rel_Realization(BF_5, BS_2, "realizes")
 Rel_Assignment(BIf_1, BS_2, "assigned to")
-Rel_Composition(BC_1, BIf_1, "composed of")
 Rel_Assignment(BC_1, BF_5, "assigned to")
+Rel_Composition(BC_1, BIf_1, "composed of")
+Rel_Realization(BF_5, BS_2, "realizes")
 @enduml

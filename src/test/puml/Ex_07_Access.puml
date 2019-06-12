@@ -5,14 +5,14 @@ footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc4
 
 title Example 7. Access (Relationships)
 
-Business_Process(BP_4, "Send Invoice\n(business process)")
+Business_Event(BE_1, "Invoice Sent\n(business event)")
 Business_Event(BE_2, "Invoice Request\n(business event)")
 Business_Object(BO_6, "Invoice\n(business object)")
-Business_Event(BE_1, "Invoice Sent\n(business event)")
+Business_Process(BP_4, "Send Invoice\n(business process)")
 Business_Process(BP_5, "Create Invoice\n(business process)")
-Rel_Access(BP_5, BO_6, "accesses")
+Rel_Access_r(BP_4, BO_6, "reads")
+Rel_Access_w(BP_5, BO_6, "writes")
 Rel_Triggering(BP_4, BE_1, "triggers")
-Rel_Access(BP_4, BO_6, "accesses")
-Rel_Triggering(BE_2, BP_5, "triggers")
 Rel_Triggering(BP_5, BP_4, "triggers")
+Rel_Triggering(BE_2, BP_5, "triggers")
 @enduml

@@ -6,7 +6,4 @@ import ru.kvb74.semod.opengroup.archimate.meta.relationship.DependencyRelationsh
 case class Serving(
 	src: Element,
 	dst: Element,
-	direct: Boolean = true
-)  extends DependencyRelationship {
-	override def reverse = Serving(dst, src, direct = false)
-}
+) extends DependencyRelationship

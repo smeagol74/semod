@@ -6,7 +6,4 @@ import ru.kvb74.semod.opengroup.archimate.meta.relationship.StructuralRelationsh
 case class Assignment(
 	src: Element,
 	dst: Element,
-	direct: Boolean = true
-) extends StructuralRelationship {
-	override def reverse = Assignment(dst, src, direct = false)
-}
+) extends StructuralRelationship

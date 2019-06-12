@@ -102,10 +102,7 @@ trait JunctionRegistry {
 			case _: Realization => Method.realizes
 		}
 
-		val src = if (rel.direct) rel.src else rel.dst
-		val dst = if (rel.direct) rel.dst else rel.src
-
-		assertRelationAllowed(method, src, dst)
+		assertRelationAllowed(method, rel.src, rel.dst)
 	}
 
 	def accesses(tName: ElementName): (Method.Value, ElementName) = Method.accesses -> tName

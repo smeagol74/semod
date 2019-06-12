@@ -7,7 +7,4 @@ case class Flow(
 	src: Element,
 	dst: Element,
 	label: String,
-	direct: Boolean = true
-) extends DynamicRelationship {
-	override def reverse = Flow(dst, src, label, direct = false)
-}
+) extends DynamicRelationship

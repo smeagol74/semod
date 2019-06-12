@@ -7,7 +7,4 @@ case class Association(
 	src: Element,
 	dst: Element,
 	label: String,
-	direct: Boolean = true
-) extends OtherRelationship {
-	override def reverse = Association(dst, src, label, direct = false)
-}
+) extends OtherRelationship

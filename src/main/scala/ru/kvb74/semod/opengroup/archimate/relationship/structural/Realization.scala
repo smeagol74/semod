@@ -5,8 +5,5 @@ import ru.kvb74.semod.opengroup.archimate.meta.relationship.StructuralRelationsh
 
 case class Realization(
 	src: Element,
-	dst: Element,
-	direct: Boolean = true
-) extends StructuralRelationship {
-	override def reverse = Realization(dst, src, direct = false)
-}
+	dst: Element
+) extends StructuralRelationship

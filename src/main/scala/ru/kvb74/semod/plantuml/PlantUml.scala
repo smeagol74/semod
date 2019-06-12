@@ -9,7 +9,7 @@ import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
 import ru.kvb74.semod.opengroup.archimate.meta.element.Element
 import ru.kvb74.semod.opengroup.archimate.meta.layer.Layer
 import ru.kvb74.semod.opengroup.archimate.meta.relationship.Relationship
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.{Access, Influence}
+import ru.kvb74.semod.opengroup.archimate.relationship.dependency.{Access, AccessMode, Influence}
 import ru.kvb74.semod.opengroup.archimate.relationship.dynamic.Flow
 import ru.kvb74.semod.opengroup.archimate.{Report, Resource}
 
@@ -70,30 +70,48 @@ object PlantUml {
 		case _ => _renderGenericElement(bundle, element)
 	}
 
-	private def _renderInfluence(bundle: ResourceBundle, relationship: Influence): String = {
-		val sb = StringBuilder.newBuilder
-		val name = s"Rel_${relationship.asInstanceOf[Product].productPrefix}"
-		val desc = bundle.getString(if (relationship.direct) name else s"${name}_back")
-		val label = if (relationship.label.isEmpty) "" else s" (${relationship.label})"
-		sb.append(name)
-		sb.append(s"""(${relationship.src.id}, ${relationship.dst.id}, "$desc$label")""")
-		sb.mkString
-	}
+	private def _relPuml(relationship: Relationship, suff: String = "") =
+		s"Rel_${relationship.asInstanceOf[Product].productPrefix}$suff"
 
-	private def _renderGeneric(bundle: ResourceBundle, relationship: Relationship): String = {
+	private def _relDesc(bundle: ResourceBundle, relationship: Relationship, puml: String) =
+		bundle.getString(puml)
+
+	private def _renderRelationship(relationship: Relationship, puml: String, desc: String): String = {
 		val sb = StringBuilder.newBuilder
-		val name = s"Rel_${relationship.asInstanceOf[Product].productPrefix}"
-		val desc = bundle.getString(if (relationship.direct) name else s"${name}_back")
-		sb.append(name)
+		sb.append(puml)
 		sb.append(s"""(${relationship.src.id}, ${relationship.dst.id}, "$desc")""")
 		sb.mkString
 	}
 
-	// TODO implement different Access modes
-	private def _renderAccess(bundle: ResourceBundle, relationship: Access): String = _renderGeneric(bundle, relationship)
+	private def _renderInfluence(bundle: ResourceBundle, relationship: Influence): String = {
+		val puml = _relPuml(relationship)
+		val desc = if (relationship.label.isBlank) _relDesc(bundle, relationship, puml) else s"\\n(${_relDesc(bundle, relationship, puml)})"
+		_renderRelationship(relationship, puml, s"${relationship.label.trim}$desc")
+	}
 
-	// TODO implement Flow labels
-	private def _renderFlow(bundle: ResourceBundle, relationship: Flow): String = _renderGeneric(bundle, relationship)
+	private def _renderGeneric(bundle: ResourceBundle, relationship: Relationship): String = {
+		val puml = _relPuml(relationship)
+		val desc = _relDesc(bundle, relationship, puml)
+		_renderRelationship(relationship, puml, desc)
+	}
+
+	private def _renderAccess(bundle: ResourceBundle, relationship: Access): String = {
+		val puml = relationship.mode match {
+			case AccessMode.NONE => _relPuml(relationship)
+			case AccessMode.READ => _relPuml(relationship, "_r")
+			case AccessMode.WRITE => _relPuml(relationship, "_w")
+			case AccessMode.READ_WRITE => _relPuml(relationship, "_rw")
+		}
+		val desc = _relDesc(bundle, relationship, puml)
+		_renderRelationship(relationship, puml, desc)
+	}
+
+	private def _renderFlow(bundle: ResourceBundle, relationship: Flow): String = {
+		val puml = _relPuml(relationship)
+		val desc = if (relationship.label.isBlank) _relDesc(bundle, relationship, puml) else s"\\n(${_relDesc(bundle, relationship, puml)})"
+		_renderRelationship(relationship, puml, s"${relationship.label.trim}$desc")
+	}
+
 
 	private def renderRelationship(bundle: ResourceBundle, relationship: Relationship): String = relationship match {
 		case rel: Influence => _renderInfluence(bundle, rel)
@@ -233,8 +251,8 @@ object PlantUml {
 		options.footer.foreach(footer => sb.append(s"footer ${_normalize(footer)}").append(EOL).append(EOL))
 		options.title.foreach(title => sb.append(s"title ${_normalize(title)}").append(EOL).append(EOL))
 
-		elements.map(renderElement(bundle, _)).foreach(sb.append(_).append(EOL))
-		relationships.map(renderRelationship(bundle, _)).foreach(sb.append(_).append(EOL))
+		elements.toList.sortBy(_.id).map(renderElement(bundle, _)).foreach(sb.append(_).append(EOL))
+		relationships.toList.sortBy(_.id).map(renderRelationship(bundle, _)).foreach(sb.append(_).append(EOL))
 
 		sb.append("@enduml").append(EOL)
 		sb.mkString

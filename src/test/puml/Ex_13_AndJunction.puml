@@ -5,11 +5,11 @@ footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc4
 
 title Example 13. (And) Junction (Relationships)
 
-Business_Function(BF_13, "Finance\n(business function)")
-Junction_And(JA_2, "(and)")
-Business_Service(BS_5, "Invoicing\n(business service)")
 Business_Function(BF_12, "Sales\n(business function)")
-Rel_Realization(JA_2, BS_5, "realizes")
-Rel_Realization(BF_13, JA_2, "realizes")
+Business_Function(BF_13, "Finance\n(business function)")
+Business_Service(BS_5, "Invoicing\n(business service)")
+Junction_And(JA_2, "(and)")
 Rel_Realization(BF_12, JA_2, "realizes")
+Rel_Realization(BF_13, JA_2, "realizes")
+Rel_Realization(JA_2, BS_5, "realizes")
 @enduml

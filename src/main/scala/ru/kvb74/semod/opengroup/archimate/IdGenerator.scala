@@ -66,7 +66,20 @@ object IdGenerator {
 		"Implementation_Gap" -> "IG",
 		"Implementation_Deliverable" -> "ID",
 		"Junction_And" -> "JA",
-		"Junction_Or" -> "JO"
+		"Junction_Or" -> "JO",
+		"Composite_Grouping" -> "CG",
+		"Composite_Location" -> "OL",
+		"Rel_Access" -> "RA",
+		"Rel_Influence" -> "RI",
+		"Rel_Serving" -> "RS",
+		"Rel_Flow" -> "RF",
+		"Rel_Triggering" -> "RT",
+		"Rel_Association" -> "RAs",
+		"Rel_Specialization" -> "RSp",
+		"Rel_Aggregation" -> "RAg",
+		"Rel_Assignment" -> "RAsg",
+		"Rel_Composition" -> "RC",
+		"Rel_Relization" -> "RR",
 	)
 
 	def next(key: String): String = {

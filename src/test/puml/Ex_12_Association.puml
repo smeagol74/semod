@@ -5,16 +5,16 @@ footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc4
 
 title Example 12. Association (Relationships)
 
-Business_Object(BO_9, "Insured Object\n(business object)")
-Business_Function(BF_11, "Policy Creation\n(business function)")
 Business_Function(BF_10, "Policy Management\n(business function)")
+Business_Function(BF_11, "Policy Creation\n(business function)")
 Business_Object(BO_7, "Insurance Policy\n(business object)")
 Business_Object(BO_8, "Customer File\n(business object)")
+Business_Object(BO_9, "Insured Object\n(business object)")
 Junction_And(JA_1, "(and)")
 Rel_Association(BO_7, JA_1, "associated with")
-Rel_Flow(BF_11, BF_10, "flows to")
+Rel_Association(JA_1, BF_11, "associated with")
+Rel_Association(JA_1, BF_10, "associated with")
 Rel_Association(BO_7, BO_8, "associated with")
 Rel_Association(BO_7, BO_9, "associated with")
-Rel_Association(JA_1, BF_10, "associated with")
-Rel_Association(JA_1, BF_11, "associated with")
+Rel_Flow(BF_11, BF_10, "Insurance Policy\n(flows to)")
 @enduml

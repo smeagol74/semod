@@ -5,11 +5,11 @@ footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc4
 
 title Example 5. Realization (Relationships)
 
-Business_Service(BS_3, "Billing Service\n(business service)")
-Business_Representation(BRep_1, "Paper Invoice\n(representation)")
-Business_Object(BO_5, "Billing Data\n(business object)")
 Business_Function(BF_6, "Transaction Processing\n(business function)")
+Business_Object(BO_5, "Billing Data\n(business object)")
+Business_Representation(BRep_1, "Paper Invoice\n(representation)")
+Business_Service(BS_3, "Billing Service\n(business service)")
+Rel_Access_w(BS_3, BO_5, "writes")
 Rel_Realization(BF_6, BS_3, "realizes")
-Rel_Access(BS_3, BO_5, "accesses")
 Rel_Realization(BRep_1, BO_5, "realizes")
 @enduml
