@@ -18,6 +18,7 @@ trait Example {
 				.title(options.title)
 				.header(options.header)
 				.footer(options.footer)
+  			.showHints(options.showHints)
 				.get,
 			report
 		)
@@ -29,6 +30,7 @@ trait Example {
 				.title(options.title)
 				.header(options.header)
 				.footer(options.footer)
+				.showHints(options.showHints)
 				.get,
 			report
 		)
@@ -40,6 +42,7 @@ trait Example {
 				.title(options.title)
 				.header(options.header)
 				.footer(options.footer)
+				.showHints(options.showHints)
 				.get,
 			report
 		))

@@ -18,63 +18,59 @@ import scala.reflect.io.{File, Path}
 
 object PlantUml {
 
+	private val b = Resource.bundle("opengroup")
+
+	private def _res(bundle: ResourceBundle, key: String): String = {
+		if (bundle.containsKey(key))
+			bundle.getString(key)
+		else
+			b.getString(key)
+	}
+
 	private def _normalize(text: String): String = text.replaceAll("\n", "\\\\n")
 
-	private def _renderGenericElement(bundle: ResourceBundle, element: Element): String = {
+	private def _appendHint(sb: StringBuilder, bundle: ResourceBundle, showHints: Boolean, element: Element) = {
+		if (showHints) {
+			if (element.name.nonEmpty) {
+				sb.append("\\n")
+			}
+			sb.append(s"""(${_res(bundle, element.fullElementName)})""")
+		}
+	}
+
+	private def _renderElement(bundle: ResourceBundle, showHints: Boolean, element: Element, layer: String): String = {
 		val sb = StringBuilder.newBuilder
-		val kind = bundle.getString(element.fullElementName)
-		element match {
-			case layer: Layer =>
-				sb.append(layer.layerName)
-				sb.append("_")
-				sb.append(element.elementName.replaceFirst(layer.layerName, ""))
-			case _ =>
-				sb.append(element.elementName)
+		if (!layer.isBlank) {
+			sb.append(layer)
+			sb.append("_")
+			sb.append(element.elementName.replaceFirst(layer, ""))
+		} else {
+			sb.append(element.elementName)
 		}
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
-		if (element.name.nonEmpty) {
-			sb.append("\\n")
-		}
-		sb.append(s"""($kind)")""")
+		_appendHint(sb, bundle, showHints, element)
+		sb.append("\")")
 		sb.mkString
 	}
 
-	private def _renderNoLayerElement(bundle: ResourceBundle, element: Element): String = {
-		val sb = StringBuilder.newBuilder
-		val kind = bundle.getString(element.fullElementName)
-		sb.append(element.elementName)
-		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
-		if (element.name.nonEmpty) {
-			sb.append("\\n")
-		}
-		sb.append(s"""($kind)")""")
-		sb.mkString
+	private def _layerName(element: Element): String = element match {
+		case layer: Layer =>
+			layer.layerName
+		case _ =>
+			""
 	}
 
-	private def _renderLocationElement(bundle: ResourceBundle, element: Location): String = {
-		val sb = StringBuilder.newBuilder
-		val kind = bundle.getString(element.fullElementName)
-		sb.append("Other_")
-		sb.append(element.elementName)
-		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
-		if (element.name.nonEmpty) {
-			sb.append("\\n")
-		}
-		sb.append(s"""($kind)")""")
-		sb.mkString
-	}
-
-	private def renderElement(bundle: ResourceBundle, element: Element): String = element match {
-		case _: Grouping => _renderNoLayerElement(bundle, element)
-		case el: Location => _renderLocationElement(bundle, el)
-		case _ => _renderGenericElement(bundle, element)
+	private def renderElement(bundle: ResourceBundle, showHints: Boolean, element: Element): String = element match {
+		case _: Grouping => _renderElement(bundle, showHints, element, "")
+		case el: Location => _renderElement(bundle, showHints, element, "Other")
+		case _ => _renderElement(bundle, showHints, element, _layerName(element))
 	}
 
 	private def _relPuml(relationship: Relationship, suff: String = "") =
 		s"Rel_${relationship.asInstanceOf[Product].productPrefix}$suff"
 
 	private def _relDesc(bundle: ResourceBundle, relationship: Relationship, puml: String) =
-		bundle.getString(puml)
+		_res(bundle, puml)
 
 	private def _renderRelationship(relationship: Relationship, puml: String, desc: String): String = {
 		val sb = StringBuilder.newBuilder
@@ -83,41 +79,58 @@ object PlantUml {
 		sb.mkString
 	}
 
-	private def _renderInfluence(bundle: ResourceBundle, relationship: Influence): String = {
+	private def _relHint(standalone: Boolean,
+		bundle: ResourceBundle,
+		showHints: Boolean,
+		relationship: Relationship,
+		puml: String): String = {
+		if (showHints) {
+			if (standalone)
+				_relDesc(bundle, relationship, puml)
+			else
+				s"\\n(${_relDesc(bundle, relationship, puml)})"
+		} else {
+			""
+		}
+	}
+
+	private def _renderInfluence(bundle: ResourceBundle, showHints: Boolean, relationship: Influence): String = {
 		val puml = _relPuml(relationship)
-		val desc = if (relationship.label.isBlank) _relDesc(bundle, relationship, puml) else s"\\n(${_relDesc(bundle, relationship, puml)})"
+		val desc = _relHint(relationship.label.isBlank, bundle, showHints, relationship, puml)
 		_renderRelationship(relationship, puml, s"${relationship.label.trim}$desc")
 	}
 
-	private def _renderGeneric(bundle: ResourceBundle, relationship: Relationship): String = {
+	private def _renderGeneric(bundle: ResourceBundle, showHints: Boolean, relationship: Relationship): String = {
 		val puml = _relPuml(relationship)
-		val desc = _relDesc(bundle, relationship, puml)
+		val desc = _relHint(standalone = true, bundle, showHints = showHints, relationship, puml)
 		_renderRelationship(relationship, puml, desc)
 	}
 
-	private def _renderAccess(bundle: ResourceBundle, relationship: Access): String = {
+	private def _renderAccess(bundle: ResourceBundle, showHints: Boolean, relationship: Access): String = {
 		val puml = relationship.mode match {
 			case AccessMode.NONE => _relPuml(relationship)
 			case AccessMode.READ => _relPuml(relationship, "_r")
 			case AccessMode.WRITE => _relPuml(relationship, "_w")
 			case AccessMode.READ_WRITE => _relPuml(relationship, "_rw")
 		}
-		val desc = _relDesc(bundle, relationship, puml)
+		val desc = _relHint(standalone = true, bundle, showHints = showHints, relationship, puml)
 		_renderRelationship(relationship, puml, desc)
 	}
 
-	private def _renderFlow(bundle: ResourceBundle, relationship: Flow): String = {
+	private def _renderFlow(bundle: ResourceBundle, showHints: Boolean, relationship: Flow): String = {
 		val puml = _relPuml(relationship)
-		val desc = if (relationship.label.isBlank) _relDesc(bundle, relationship, puml) else s"\\n(${_relDesc(bundle, relationship, puml)})"
+		val desc = _relHint(relationship.label.isBlank, bundle, showHints, relationship, puml)
 		_renderRelationship(relationship, puml, s"${relationship.label.trim}$desc")
 	}
 
 
-	private def renderRelationship(bundle: ResourceBundle, relationship: Relationship): String = relationship match {
-		case rel: Influence => _renderInfluence(bundle, rel)
-		case rel: Access => _renderAccess(bundle, rel)
-		case rel: Flow => _renderFlow(bundle, rel)
-		case _ => _renderGeneric(bundle, relationship)
+	private def renderRelationship(bundle: ResourceBundle,
+		showHints: Boolean,
+		relationship: Relationship): String = relationship match {
+		case rel: Influence => _renderInfluence(bundle, showHints, rel)
+		case rel: Access => _renderAccess(bundle, showHints, rel)
+		case rel: Flow => _renderFlow(bundle, showHints, rel)
+		case _ => _renderGeneric(bundle, showHints, relationship)
 	}
 
 	/**
@@ -151,6 +164,10 @@ object PlantUml {
 			* Название ресурса с терминологией файл "archimate/${terms}.properties"
 			*/
 		val terms: String
+		/**
+			* Если True то добавлять названия элементов и отношений на диаграммы
+			*/
+		val showHints: Boolean
 	}
 
 	class OptionsBuilder {
@@ -160,6 +177,7 @@ object PlantUml {
 		private var _footer: Option[String] = None
 		private var _file: Option[String] = None
 		private var _terms: String = "opengroup"
+		private var _showHints: Boolean = true
 
 		def name(value: String): OptionsBuilder = {
 			_name = Some(value)
@@ -216,7 +234,12 @@ object PlantUml {
 			this
 		}
 
-		def get: Options = OptionsInstance(_name, _title, _header, _footer, _file, _terms)
+		def showHints(value: Boolean): OptionsBuilder = {
+			_showHints = value
+			this
+		}
+
+		def get: Options = OptionsInstance(_name, _title, _header, _footer, _file, _terms, _showHints)
 	}
 
 	/**
@@ -232,7 +255,8 @@ object PlantUml {
 		header: Option[String],
 		footer: Option[String],
 		file: Option[String],
-		terms: String
+		terms: String,
+		showHints: Boolean
 	) extends Options
 
 	private def renderToString(
@@ -251,8 +275,8 @@ object PlantUml {
 		options.footer.foreach(footer => sb.append(s"footer ${_normalize(footer)}").append(EOL).append(EOL))
 		options.title.foreach(title => sb.append(s"title ${_normalize(title)}").append(EOL).append(EOL))
 
-		elements.toList.sortBy(_.id).map(renderElement(bundle, _)).foreach(sb.append(_).append(EOL))
-		relationships.toList.sortBy(_.id).map(renderRelationship(bundle, _)).foreach(sb.append(_).append(EOL))
+		elements.toList.sortBy(_.id).map(renderElement(bundle, options.showHints, _)).foreach(sb.append(_).append(EOL))
+		relationships.toList.sortBy(_.id).map(renderRelationship(bundle, options.showHints, _)).foreach(sb.append(_).append(EOL))
 
 		sb.append("@enduml").append(EOL)
 		sb.mkString
