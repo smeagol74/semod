@@ -13,7 +13,7 @@ case object Ex_14_OrJunction extends App with Example {
 	val reject = BusinessProcess("Reject Request")
 
 	val assess = BusinessProcess("Assess Request")
-		.rel.junction.triggers.or(accept, reject)
+		.rel.junction.triggers.or(accept, reject)()
 
 	val request = BusinessEvent("Request Received")
 		.rel.triggers(assess)

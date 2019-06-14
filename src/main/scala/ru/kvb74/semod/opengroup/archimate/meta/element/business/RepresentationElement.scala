@@ -1,6 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
 import ru.kvb74.semod.opengroup.archimate.meta.element._
+import ru.kvb74.semod.opengroup.archimate.meta.relationship.DirectionHint
 
 trait RepresentationElement
 	extends PassiveStructureElement

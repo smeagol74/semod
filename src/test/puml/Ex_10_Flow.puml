@@ -8,6 +8,6 @@ title Example 10. Flow (Relationships)
 Business_Function(BF_7, "Claim Settlement\n(business function)")
 Business_Function(BF_8, "Claim Assessment\n(business function)")
 Business_Function(BF_9, "Scheduling\n(business function)")
-Rel_Flow(BF_8, BF_7, "decision\n(flows to)")
-Rel_Flow(BF_9, BF_8, "schedule info\n(flows to)")
+Rel_Flow_Right(BF_8, BF_7, "decision\n(flows to)")
+Rel_Flow_Right(BF_9, BF_8, "schedule info\n(flows to)")
 @enduml

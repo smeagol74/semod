@@ -16,5 +16,5 @@ Rel_Association(JA_1, BF_11, "associated with")
 Rel_Association(JA_1, BF_10, "associated with")
 Rel_Association(BO_7, BO_8, "associated with")
 Rel_Association(BO_7, BO_9, "associated with")
-Rel_Flow(BF_11, BF_10, "Insurance Policy\n(flows to)")
+Rel_Flow_Right(BF_11, BF_10, "Insurance Policy\n(flows to)")
 @enduml

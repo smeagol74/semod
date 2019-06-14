@@ -13,7 +13,7 @@ case object Ex_13_AndJunction extends App with Example {
 	val finance = BusinessFunction("Finance")
 
 	val invoicing = BusinessService("Invoicing")
-		.rel.junction.and(sales, finance).realizesThis
+		.rel.junction.and(sales, finance).realizesThis()
 
 	render(
 		PlantUml.opt

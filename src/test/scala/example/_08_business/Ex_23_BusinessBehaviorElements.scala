@@ -18,7 +18,7 @@ case object Ex_23_BusinessBehaviorElements extends App with Example {
 		val payClaim = BusinessProcess("Play\nClaim")
 
 		val closeClaim = BusinessProcess("Close\nClaim")
-			.rel.junction.and(notifyCustomer, payClaim).triggersThis
+			.rel.junction.and(notifyCustomer, payClaim).triggersThis()
 
 		val adjudcateStandardClaim = BusinessProcess("Adjudcate\nStandard Claim")
 
@@ -27,10 +27,10 @@ case object Ex_23_BusinessBehaviorElements extends App with Example {
 		Junction
 			.or(adjudcateStandardClaim, adjudcateHighRiskClaim)
 			.triggers
-			.and(notifyCustomer, payClaim)
+			.and(notifyCustomer, payClaim)()
 
 		val assignClaim = BusinessProcess("Assign\nClaim")
-			.rel.junction.triggers.or(adjudcateStandardClaim, adjudcateHighRiskClaim)
+			.rel.junction.triggers.or(adjudcateStandardClaim, adjudcateHighRiskClaim)()
 
 		val acceptClaim = BusinessProcess("Accept\nClaim")
 			.rel.triggers(assignClaim)

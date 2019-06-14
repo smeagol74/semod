@@ -3,7 +3,7 @@ package ru.kvb74.semod.opengroup.archimate.meta.element
 import ru.kvb74.semod.opengroup.archimate.IdGenerator
 import ru.kvb74.semod.opengroup.archimate.meta.element.relationship.JunctionElement
 import ru.kvb74.semod.opengroup.archimate.meta.layer.Layer
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.{JunctionMethod, JunctionMode, JunctionSrc, Relationship}
+import ru.kvb74.semod.opengroup.archimate.meta.relationship._
 import ru.kvb74.semod.opengroup.archimate.relationship.dependency.{Access, AccessMode, Influence, Serving}
 import ru.kvb74.semod.opengroup.archimate.relationship.dynamic.{Flow, Triggering}
 import ru.kvb74.semod.opengroup.archimate.relationship.other.{Association, Specialization}
@@ -72,113 +72,113 @@ trait Element {
 			tThis
 		}
 
-		def accesses[T <: Element](dst: Element, mode: AccessMode.Value)
-			(implicit tThis: T) = apply(Access(Element.this, dst, mode))
+		def accesses[T <: Element](dst: Element, mode: AccessMode.Value, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Access(Element.this, dst, dir, mode))
 
-		def influences[T <: Element](dst: Element, label: String)
-			(implicit tThis: T) = apply(Influence(Element.this, dst, label))
+		def influences[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Influence(Element.this, dst, dir, label))
 
-		def serves[T <: Element](dst: Element)(implicit tThis: T) = apply(Serving(Element.this, dst))
+		def serves[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Serving(Element.this, dst, dir))
 
-		def flowsTo[T <: Element](dst: Element, label: String)(implicit tThis: T) = apply(Flow(Element.this, dst, label))
+		def flowsTo[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Flow(Element.this, dst, dir, label))
 
-		def triggers[T <: Element](dst: Element)(implicit tThis: T) = apply(Triggering(Element.this, dst))
+		def triggers[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Triggering(Element.this, dst, dir))
 
-		def associatedWith[T <: Element](dst: Element, label: String)
-			(implicit tThis: T) = apply(Association(Element.this, dst, label))
+		def associatedWith[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Association(Element.this, dst, dir, label))
 
-		def specializationOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Specialization(Element.this, dst))
+		def specializationOf[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Specialization(Element.this, dst, dir))
 
-		def aggregates[T <: Element](dst: Element)(implicit tThis: T) = apply(Aggregation(Element.this, dst))
+		def aggregates[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Aggregation(Element.this, dst, dir))
 
-		def assignedTo[T <: Element](dst: Element)(implicit tThis: T) = apply(Assignment(Element.this, dst))
+		def assignedTo[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Assignment(Element.this, dst, dir))
 
-		def composedOf[T <: Element](dst: Element)(implicit tThis: T) = apply(Composition(Element.this, dst))
+		def composedOf[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Composition(Element.this, dst, dir))
 
-		def realizes[T <: Element](dst: Element)(implicit tThis: T) = apply(Realization(Element.this, dst))
+		def realizes[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Realization(Element.this, dst, dir))
 
-		def apply[T <: Element](method: Method.Value, dst: Element): T = method match {
-			case Method.accesses => apply(Access(Element.this, dst, AccessMode.NONE))(Element.this.asInstanceOf[T])
-			case Method.influences => apply(Influence(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.serves => apply(Serving(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.flowsTo => apply(Flow(Element.this, dst, ""))(Element.this.asInstanceOf[T])
-			case Method.triggers => apply(Triggering(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.associatedWith => apply(Association(Element.this, dst, ""))(Element.this.asInstanceOf[T])
-			case Method.specializationOf => apply(Specialization(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.aggregates => apply(Aggregation(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.assignedTo => apply(Assignment(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.composedOf => apply(Composition(Element.this, dst))(Element.this.asInstanceOf[T])
-			case Method.realizes => apply(Realization(Element.this, dst))(Element.this.asInstanceOf[T])
+		def add[T <: Element](method: Method.Value, dst: Element)(dir: DirectionHint.Value): T = method match {
+			case Method.accesses => apply(Access(Element.this, dst, dir, AccessMode.NONE))(Element.this.asInstanceOf[T])
+			case Method.influences => apply(Influence(Element.this, dst, dir))(Element.this.asInstanceOf[T])
+			case Method.serves => apply(Serving(Element.this, dst, dir))(Element.this.asInstanceOf[T])
+			case Method.flowsTo => apply(Flow(Element.this, dst, dir, ""))(Element.this.asInstanceOf[T])
+			case Method.triggers => apply(Triggering(Element.this, dst, dir))(Element.this.asInstanceOf[T])
+			case Method.associatedWith => apply(Association(Element.this, dst, dir, ""))(Element.this.asInstanceOf[T])
+			case Method.specializationOf => apply(Specialization(Element.this, dst, dir))(Element.this.asInstanceOf[T])
+			case Method.aggregates => apply(Aggregation(Element.this, dst, dir))(Element.this.asInstanceOf[T])
+			case Method.assignedTo => apply(Assignment(Element.this, dst, dir))(Element.this.asInstanceOf[T])
+			case Method.composedOf => apply(Composition(Element.this, dst, dir))(Element.this.asInstanceOf[T])
+			case Method.realizes => apply(Realization(Element.this, dst, dir))(Element.this.asInstanceOf[T])
 		}
 	}
 
 }
 
 case class JunctionMethodThis[T <: Element](tt: T, method: Method.Value) {
-	def and(dst: Element*): T = {
-		JunctionMethod(JunctionSrc(JunctionMode.AND, tt), method).and(dst: _*)
+	def and(dst: Element*)(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionMethod(JunctionSrc(JunctionMode.AND, tt), method).and(dst: _*)(dir)
 		tt
 	}
 
-	def or(dst: Element*): T = {
-		JunctionMethod(JunctionSrc(JunctionMode.AND, tt), method).or(dst: _*)
+	def or(dst: Element*)(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionMethod(JunctionSrc(JunctionMode.AND, tt), method).or(dst: _*)(dir)
 		tt
 	}
 }
 
 case class JunctionSrcThis[T <: Element](tt: T, mode: JunctionMode.Value, src: Element*) {
-	def accessesThis: T = {
-		JunctionSrc(mode, src: _*).accesses.and(tt)
+	def accessesThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).accesses.and(tt)(dir)
 		tt
 	}
 
-	def influencesThis: T = {
-		JunctionSrc(mode, src: _*).influences.and(tt)
+	def influencesThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).influences.and(tt)(dir)
 		tt
 	}
 
-	def servesThis: T = {
-		JunctionSrc(mode, src: _*).serves.and(tt)
+	def servesThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).serves.and(tt)(dir)
 		tt
 	}
 
-	def flowsToThis: T = {
-		JunctionSrc(mode, src: _*).flowsTo.and(tt)
+	def flowsToThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).flowsTo.and(tt)(dir)
 		tt
 	}
 
-	def triggersThis: T = {
-		JunctionSrc(mode, src: _*).triggers.and(tt)
+	def triggersThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).triggers.and(tt)(dir)
 		tt
 	}
 
-	def associatedWithThis: T = {
-		JunctionSrc(mode, src: _*).associatedWith.and(tt)
+	def associatedWithThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).associatedWith.and(tt)(dir)
 		tt
 	}
 
-	def specializationOfThis: T = {
-		JunctionSrc(mode, src: _*).specializationOf.and(tt)
+	def specializationOfThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).specializationOf.and(tt)(dir)
 		tt
 	}
 
-	def aggregatesThis: T = {
-		JunctionSrc(mode, src: _*).aggregates.and(tt)
+	def aggregatesThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).aggregates.and(tt)(dir)
 		tt
 	}
 
-	def assignedToThis: T = {
-		JunctionSrc(mode, src: _*).assignedTo.and(tt)
+	def assignedToThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).assignedTo.and(tt)(dir)
 		tt
 	}
 
-	def composedOfThis: T = {
-		JunctionSrc(mode, src: _*).composedOf.and(tt)
+	def composedOfThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).composedOf.and(tt)(dir)
 		tt
 	}
 
-	def realizesThis: T = {
-		JunctionSrc(mode, src: _*).realizes.and(tt)
+	def realizesThis(dir: DirectionHint.Value = DirectionHint.AUTO): T = {
+		JunctionSrc(mode, src: _*).realizes.and(tt)(dir)
 		tt
 	}
 }
@@ -189,6 +189,13 @@ trait ElementRelationships[T <: Element] {
 	private[archimate] def _register(traitElement: ElementName, methods: (Method.Value, ElementName)*): Unit = {
 		JR.append(traitElement, tt, methods: _*)
 	}
+
+	/**
+		* Универсальный метод для добавления отношений с контролем типов на этапе выполнения и возможностью задать направление линии
+		*
+		* Universal add relationship method with runtime type control and ability to specify rendering direction hint
+		*/
+	def add(method: Method.Value, dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO): T = tt._rel.add(method, dst)(dir)
 
 	def composedOf(dst: T): T = tt._rel.composedOf(dst)
 

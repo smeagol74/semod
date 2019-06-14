@@ -13,7 +13,7 @@ case object Ex_12_Association extends App with Example {
 	val creation = BusinessFunction("Policy Creation")
 		.rel.flowsTo(management, "Insurance Policy")
 	val policy = BusinessObject("Insurance Policy")
-  	.rel.junction.associatedWith.and(creation, management)
+  	.rel.junction.associatedWith.and(creation, management)()
 		.rel.associatedWith(BusinessObject("Customer File"))
 		.rel.associatedWith(BusinessObject("Insured Object"))
 

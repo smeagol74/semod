@@ -10,6 +10,6 @@ Business_Object(BO_5, "Billing Data\n(business object)")
 Business_Representation(BRep_1, "Paper Invoice\n(representation)")
 Business_Service(BS_3, "Billing Service\n(business service)")
 Rel_Access_w(BS_3, BO_5, "writes")
-Rel_Realization(BF_6, BS_3, "realizes")
-Rel_Realization(BRep_1, BO_5, "realizes")
+Rel_Realization_Up(BF_6, BS_3, "realizes")
+Rel_Realization_Up(BRep_1, BO_5, "realizes")
 @enduml

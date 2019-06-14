@@ -8,6 +8,6 @@ title Example 3. Aggregation (Relationships)
 Business_Object(BO_2, "Customer File\n(business object)")
 Business_Object(BO_3, "Insurance Policy\n(business object)")
 Business_Object(BO_4, "Insurance Claim\n(business object)")
-Rel_Aggregation(BO_2, BO_3, "aggregates")
-Rel_Aggregation(BO_2, BO_4, "aggregates")
+Rel_Aggregation_Down(BO_2, BO_3, "aggregates")
+Rel_Aggregation_Down(BO_2, BO_4, "aggregates")
 @enduml

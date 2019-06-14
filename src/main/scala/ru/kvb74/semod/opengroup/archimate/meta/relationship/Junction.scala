@@ -38,9 +38,9 @@ case class JunctionMethod(src: JunctionSrc, method: Method.Value) {
 		case JunctionMode.OR => Or()
 	}
 
-	private def _apply[T <: Element](implicit src: T, method: Method.Value, dst: Element): T = src._rel.apply(method, dst)
+	private def _apply[T <: Element](implicit src: T, method: Method.Value, dst: Element, dir: DirectionHint.Value): T = src._rel.add(method, dst)(dir)
 
-	private def _junction(mode: JunctionMode.Value, dst: Element*): Unit = {
+	private def _junction(mode: JunctionMode.Value, dir: DirectionHint.Value, dst: Element*): Unit = {
 		val _src = src.src
 		val _dst = dst
 
@@ -52,36 +52,36 @@ case class JunctionMethod(src: JunctionSrc, method: Method.Value) {
 
 		if (_src.size == 1 && _dst.size > 1) {
 			val j = _junctionElement(mode)
-			_apply(_src.head, method, j)
+			_apply(_src.head, method, j, dir)
 			for (_d <- _dst) {
-				_apply(j, method, _d)
+				_apply(j, method, _d, dir)
 			}
 		} else if (_src.size > 1 && _dst.size == 1) {
 			val j = _junctionElement(src.mode)
 			for (_s <- _src) {
-				_apply(_s, method, j)
+				_apply(_s, method, j, dir)
 			}
-			_apply(j, method, _dst.head)
+			_apply(j, method, _dst.head, dir)
 		} else if (_src.size > 1 && _dst.size > 1) {
 			val js = _junctionElement(src.mode)
 			val jd = _junctionElement(mode)
 			for (_s <- _src) {
-				_apply(_s, method, js)
+				_apply(_s, method, js, dir)
 			}
-			_apply(js, method, jd)
+			_apply(js, method, jd, dir)
 			for (_d <- _dst) {
-				_apply(jd, method, _d)
+				_apply(jd, method, _d, dir)
 			}
 		} else if (_src.size == 1 && _dst.size == 1) {
-			_apply(_src.head, method, _dst.head)
+			_apply(_src.head, method, _dst.head, dir)
 		} else {
 			assert(assertion = false, "Source elements or destination elements can not be empty")
 		}
 	}
 
-	def and(dst: Element*): Unit = _junction(JunctionMode.AND, dst: _*)
+	def and(dst: Element*)(dir: DirectionHint.Value = DirectionHint.AUTO): Unit = _junction(JunctionMode.AND, dir, dst: _*)
 
-	def or(dst: Element*): Unit = _junction(JunctionMode.OR, dst: _*)
+	def or(dst: Element*)(dir: DirectionHint.Value = DirectionHint.AUTO): Unit = _junction(JunctionMode.OR, dir, dst: _*)
 }
 
 object Junction {

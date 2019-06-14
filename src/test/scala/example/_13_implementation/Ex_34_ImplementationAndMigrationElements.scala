@@ -12,7 +12,7 @@ case object Ex_34_ImplementationAndMigrationElements extends App with Example {
 
 	lazy val strategicPlanComplete = Plateau("Strategic Plan Complete")
 		.rel.triggers(applicationServiceLayerInPlace)
-		.rel.junction.and(businessPlan, architecture, roadmap).realizesThis
+		.rel.junction.and(businessPlan, architecture, roadmap).realizesThis()
 
 	lazy val applicationServiceLayerInPlace = Plateau("Application Services Layer In Place")
 		.rel.triggers(nextGenerationServicesInPlace)

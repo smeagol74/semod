@@ -39,7 +39,7 @@ case object Ex_32_PhysicalElements extends App with Example {
 		.rel.associatedWith(manufacturingPlant)
 
 	val intermodalFreight = Path("Intermodal Freight")
-		.rel.junction.and(localTrucking, overseasShipping).realizesThis
+		.rel.junction.and(localTrucking, overseasShipping).realizesThis()
 
 	render(
 		PlantUml.opt

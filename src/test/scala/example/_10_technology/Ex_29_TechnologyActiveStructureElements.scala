@@ -47,7 +47,7 @@ case object Ex_29_TechnologyActiveStructureElements extends App with Example {
 		.rel.associatedWith(dataCenterSwitch)
 
 	val dataReplicationPath = Path("Data Replication Path")
-		.rel.junction.and(dataCenterNetwork, wideAreaNetwork).realizesThis
+		.rel.junction.and(dataCenterNetwork, wideAreaNetwork).realizesThis()
 
 	render(
 		PlantUml.opt

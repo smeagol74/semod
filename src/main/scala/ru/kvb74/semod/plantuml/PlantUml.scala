@@ -6,11 +6,13 @@ import java.util.ResourceBundle
 
 import net.sourceforge.plantuml.{FileFormat, FileFormatOption, SourceStringReader}
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
-import ru.kvb74.semod.opengroup.archimate.meta.element.Element
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Layer
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Relationship
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement, Element, PassiveStructureElement}
+import ru.kvb74.semod.opengroup.archimate.meta.layer._
+import ru.kvb74.semod.opengroup.archimate.meta.relationship.{DirectionHint, Relationship}
 import ru.kvb74.semod.opengroup.archimate.relationship.dependency.{Access, AccessMode, Influence}
-import ru.kvb74.semod.opengroup.archimate.relationship.dynamic.Flow
+import ru.kvb74.semod.opengroup.archimate.relationship.dynamic.{Flow, Triggering}
+import ru.kvb74.semod.opengroup.archimate.relationship.other.Specialization
+import ru.kvb74.semod.opengroup.archimate.relationship.structural.{Aggregation, Composition, Realization}
 import ru.kvb74.semod.opengroup.archimate.{Report, Resource}
 
 import scala.compat.Platform.EOL
@@ -72,9 +74,78 @@ object PlantUml {
 	private def _relDesc(bundle: ResourceBundle, relationship: Relationship, puml: String) =
 		_res(bundle, puml)
 
+	private def _layerWeight(element: Element) = element match {
+		case _: Business => 1
+		case _: Application => 2
+		case _: Technology => 3
+		case _: Physical => 4
+		case _: Implementation => 5
+		case _ => 0
+	}
+
+	private def _aspectWeight(element: Element) = element match {
+		case _: ActiveStructureElement => 1
+		case _: BehaviorElement => 2
+		case _ => 0
+	}
+
+	private def _directionForLayers(relationship: Relationship): Option[DirectionHint.Value] = {
+		val srcWeight = _layerWeight(relationship.src)
+		val dstWeight = _layerWeight(relationship.dst)
+		if (srcWeight > 0 && dstWeight > 0 && srcWeight > dstWeight) {
+			Some(DirectionHint.UP)
+		} else if (srcWeight > 0 && dstWeight > 0 && srcWeight < dstWeight) {
+			Some(DirectionHint.DOWN)
+		} else {
+			None
+		}
+	}
+
+	private def _directionForRelationship(relationship: Relationship): Option[DirectionHint.Value] = relationship match {
+		case _: Triggering => Some(DirectionHint.RIGHT)
+		case _: Flow => Some(DirectionHint.RIGHT)
+		case _: Specialization => Some(DirectionHint.UP)
+		case _: Aggregation => Some(DirectionHint.DOWN)
+		case _: Composition => Some(DirectionHint.DOWN)
+		case _: Realization => Some(DirectionHint.UP)
+		case _ => None
+	}
+
+	private def _directionForAspect(relationship: Relationship): Option[DirectionHint.Value] = {
+		val srcWeight = _aspectWeight(relationship.src)
+		val dstWeight = _aspectWeight(relationship.dst)
+		if (srcWeight > 0 && dstWeight > 0 && srcWeight > dstWeight) {
+			Some(DirectionHint.LEFT)
+		} else if (srcWeight > 0 && dstWeight > 0 && srcWeight < dstWeight) {
+			Some(DirectionHint.RIGHT)
+		} else {
+			None
+		}
+	}
+
+	private def _directionAuto(relationship: Relationship) =
+		_directionForLayers(relationship)
+			.orElse(_directionForRelationship(relationship))
+			.orElse(_directionForAspect(relationship))
+			.getOrElse(DirectionHint.NONE)
+
+	private def _directionHint(dir: DirectionHint.Value) = dir match {
+		case DirectionHint.NONE => ""
+		case DirectionHint.UP => "_Up"
+		case DirectionHint.DOWN => "_Down"
+		case DirectionHint.LEFT => "_Left"
+		case DirectionHint.RIGHT => "_Right"
+	}
+
+	private def _directionHint(relationship: Relationship): String = relationship.dir match {
+		case DirectionHint.AUTO => _directionHint(_directionAuto(relationship))
+		case _ => _directionHint(relationship.dir)
+	}
+
 	private def _renderRelationship(relationship: Relationship, puml: String, desc: String): String = {
 		val sb = StringBuilder.newBuilder
 		sb.append(puml)
+		sb.append(_directionHint(relationship))
 		sb.append(s"""(${relationship.src.id}, ${relationship.dst.id}, "$desc")""")
 		sb.mkString
 	}
