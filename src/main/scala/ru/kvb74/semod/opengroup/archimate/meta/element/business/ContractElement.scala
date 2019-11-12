@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait ContractElement
@@ -19,7 +20,7 @@ trait ContractElementRelationships[T <: ContractElement]
 	def specializationOf(dst: BusinessObjectElement): T = tt._rel.specializationOf(dst)
 
 	_register(ContractElement,
-		JR.specializationOf(BusinessObjectElement)
+		RR.specializationOf(BusinessObjectElement)
 	)
 
 }

@@ -1,20 +1,21 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.composite
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
+import ru.kvb74.semod.meta.{ElementName, RR}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
 
 trait LocationElement
-	extends Element
+	extends ArchimateElement
 
 case object LocationElement
 	extends ElementName
 
 trait LocationElementRelationships[T <: LocationElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
-	def aggregates(dst: Element): T = tt._rel.aggregates(dst)
+	def aggregates(dst: ArchimateElement): T = tt._rel.aggregates(dst)
 
-	_register(GroupingElement,
-		JR.aggregates(Element)
+	_register(LocationElement,
+		RR.aggregates(ArchimateElement)
 	)
 
 }

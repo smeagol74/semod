@@ -10,9 +10,10 @@ case class Equipment(
 	with EquipmentElement {
 
 	case class EquipmentRelationships(
-		override private[archimate] implicit val tt: Equipment = Equipment.this
+		override private[semod] implicit val tt: Equipment = Equipment.this
 	) extends EquipmentElementRelationships[Equipment]
 
 	val rel: EquipmentRelationships = EquipmentRelationships()
 
+	_registerPrefix("PE")
 }

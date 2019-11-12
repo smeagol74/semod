@@ -10,9 +10,10 @@ case class Path(
 	with PathElement {
 
 	case class PathRelationships(
-		override private[archimate] implicit val tt: Path = Path.this
+		override private[semod] implicit val tt: Path = Path.this
 	) extends PathElementRelationships[Path]
 
 	val rel: PathRelationships = PathRelationships()
 
+	_registerPrefix("TPa")
 }

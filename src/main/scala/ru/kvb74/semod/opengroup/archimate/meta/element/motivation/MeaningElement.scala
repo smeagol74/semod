@@ -1,6 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.motivation
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ElementName, JR, StrategyCoreStructureBehaviorElement}
+import ru.kvb74.semod.meta.ElementName
+import ru.kvb74.semod.opengroup.archimate.meta.element.StrategyCoreStructureBehaviorElement
 
 trait MeaningElement
 	extends MotivationElement

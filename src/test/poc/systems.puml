@@ -1,0 +1,47 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml
+
+rectangle "Издательство" as pub
+rectangle "Система улучшения текста" as imp
+rectangle "Система написания текста" as wri
+rectangle "Система управления" as rule
+Rel_Aggregation_Down(pub, imp)
+Rel_Aggregation_Down(pub, wri)
+Rel_Aggregation_Down(pub, rule)
+
+actor "редактор/корректор" as ed
+Rel_Aggregation_Down(imp, ed)
+
+rectangle "Вычислительная система" as comp
+Rel_Aggregation_Down(imp, comp)
+
+rectangle "Система корректировки" as corr
+Rel_Aggregation_Down(imp, corr)
+
+Grouping(conc, "Конкуренты") {
+  rectangle "Google Docs" as gd
+
+  rectangle "Орфо" as orfo
+
+  rectangle "Language Tools" as lt
+}
+
+Rel_Realization_Up(conc, corr)
+
+rectangle "Орфограммка" as og
+Rel_Realization_Up(og, corr)
+
+rectangle "Литера5" as l5
+Rel_Realization_Up(l5, corr)
+
+Business_Representation(rstart, "Внедрение")
+Business_Representation(rsupport, "Обслуживание")
+Business_Representation(rimprove, "Улучшение")
+Rel_Association(og, rstart)
+Rel_Association(og, rsupport)
+Rel_Association(og, rimprove)
+
+Rel_Association(ed, corr, "использует")
+Rel_Association(corr, comp, "запускается на")
+
+@enduml

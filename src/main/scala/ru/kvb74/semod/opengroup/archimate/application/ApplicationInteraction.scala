@@ -10,9 +10,10 @@ case class ApplicationInteraction(
 	with ApplicationInteractionElement {
 
 	case class ApplicationInteractionRelationships(
-		private[archimate] implicit val tt: ApplicationInteraction = ApplicationInteraction.this
+		override private[semod] implicit val tt: ApplicationInteraction = ApplicationInteraction.this
 	) extends ApplicationInteractionElementRelationships[ApplicationInteraction]
 
 	val rel: ApplicationInteractionRelationships = ApplicationInteractionRelationships()
 
+	_registerPrefix("AI")
 }

@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait BusinessActorElement
@@ -17,7 +18,7 @@ trait BusinessActorElementRelationships[T <: BusinessActorElement]
 	def assignedTo(dst: BusinessRoleElement): T = tt._rel.assignedTo(dst)
 
 	_register(BusinessActorElement,
-		JR.assignedTo(BusinessRoleElement)
+		RR.assignedTo(BusinessRoleElement)
 	)
 
 }

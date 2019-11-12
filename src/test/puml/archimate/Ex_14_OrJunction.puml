@@ -1,0 +1,17 @@
+@startuml Ex_14_OrJunction
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004]]
+
+title Example 14. Or Junction (Relationships)
+
+Business_Event(BE_5, "Request Received\n(business event)")
+Business_Process(BP_11, "Accept Request\n(business process)")
+Business_Process(BP_12, "Reject Request\n(business process)")
+Business_Process(BP_13, "Assess Request\n(business process)")
+Junction_Or(Junction_Or_1, "(or)")
+Rel_Triggering_Right(Junction_Or_1, BP_12, "triggers")
+Rel_Triggering_Right(BE_5, BP_13, "triggers")
+Rel_Triggering_Right(BP_13, Junction_Or_1, "triggers")
+Rel_Triggering_Right(Junction_Or_1, BP_11, "triggers")
+@enduml

@@ -1,0 +1,15 @@
+@startuml Ex_13_AndJunction
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489946004]]
+
+title Example 13. (And) Junction (Relationships)
+
+Business_Function(BF_12, "Sales\n(business function)")
+Business_Function(BF_13, "Finance\n(business function)")
+Business_Service(BS_5, "Invoicing\n(business service)")
+Junction_And(JA_2, "(and)")
+Rel_Realization_Up(BF_12, JA_2, "realizes")
+Rel_Realization_Up(BF_13, JA_2, "realizes")
+Rel_Realization_Up(JA_2, BS_5, "realizes")
+@enduml

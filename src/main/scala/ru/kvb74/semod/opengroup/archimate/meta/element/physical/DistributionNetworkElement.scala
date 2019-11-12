@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.physical
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.PathElement
 
@@ -29,10 +30,10 @@ trait DistributionNetworkElementRelationships[T <: DistributionNetworkElement]
 	//	def associatedWith(dst: MaterialElement): T = tt._rel.associatedWith(dst)
 
 	_register(DistributionNetworkElement,
-		JR.realizes(PathElement),
+		RR.realizes(PathElement),
 		//		JR.associatedWith(FacilityElement),
-		JR.aggregates(FacilityElement),
-		JR.aggregates(EquipmentElement),
+		RR.aggregates(FacilityElement),
+		RR.aggregates(EquipmentElement),
 		//		JR.associatedWith(MaterialElement),
 	)
 

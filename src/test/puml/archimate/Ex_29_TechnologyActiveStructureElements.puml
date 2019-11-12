@@ -1,0 +1,41 @@
+@startuml Ex_29_TechnologyActiveStructureElements
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap10.html#_Toc489946091]]
+
+title Example 29. Technology Active Structure Elements (Technology)
+
+Junction_And(JA_5, "(and)")
+Technology_CommunicationNetwork(TCN_2, "Wide Area Network\n(communication network)")
+Technology_Device(TD_2, "Blade System 1\n(device)")
+Technology_Interface(TIf_3, "Management Interface\n(technology interface)")
+Technology_Node(TN_2, "Purchase Virtual Host\n(node)")
+Technology_Node(TN_3, "Data Center Switch\n(node)")
+Technology_SystemSoftware(TSS_2, "Proprietary Operating System\n(system software)")
+Technology_SystemSoftware(TSS_3, "Hypervisor\n(system software)")
+Technology_CommunicationNetwork(Technology_CommunicationNetwork_1, "Data Center Network\n(communication network)")
+Technology_Device(Technology_Device_1, "Blade System 2\n(device)")
+Technology_Node(Technology_Node_1, "Quotation Virtual Host\n(node)")
+Technology_Path(Technology_Path_1, "Data Replication Path\n(path)")
+Technology_SystemSoftware(Technology_SystemSoftware_1, "Open Source Operating System\n(system software)")
+Technology_Collaboration(Technology_TechnologyCollaboration_1, "E-Commerce Hosting\n(technology collaboration)")
+Technology_Interface(Technology_TechnologyInterface_1, "Management Interface\n(technology interface)")
+Rel_Aggregation_Down(Technology_Node_1, Technology_SystemSoftware_1, "aggregates")
+Rel_Aggregation_Down(TN_2, TSS_2, "aggregates")
+Rel_Aggregation_Down(Technology_TechnologyCollaboration_1, Technology_Node_1, "aggregates")
+Rel_Aggregation_Down(Technology_TechnologyCollaboration_1, TN_2, "aggregates")
+Rel_Aggregation_Down(Technology_TechnologyCollaboration_1, TSS_3, "aggregates")
+Rel_Association(Technology_CommunicationNetwork_1, TD_2, "associated with")
+Rel_Association(Technology_CommunicationNetwork_1, Technology_Device_1, "associated with")
+Rel_Association(Technology_CommunicationNetwork_1, TN_3, "associated with")
+Rel_Association(TCN_2, TN_3, "associated with")
+Rel_Assignment(TSS_3, Technology_SystemSoftware_1, "assigned to")
+Rel_Assignment(TSS_3, TSS_2, "assigned to")
+Rel_Assignment(TD_2, TSS_3, "assigned to")
+Rel_Composition_Down(Technology_Device_1, Technology_TechnologyInterface_1, "composed of")
+Rel_Composition_Down(TD_2, Technology_TechnologyInterface_1, "composed of")
+Rel_Composition_Down(TN_3, TIf_3, "composed of")
+Rel_Realization_Up(Technology_CommunicationNetwork_1, JA_5, "realizes")
+Rel_Realization_Up(TCN_2, JA_5, "realizes")
+Rel_Realization_Up(JA_5, Technology_Path_1, "realizes")
+@enduml

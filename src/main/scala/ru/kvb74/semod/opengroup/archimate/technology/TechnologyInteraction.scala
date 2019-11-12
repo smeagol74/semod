@@ -10,9 +10,10 @@ case class TechnologyInteraction(
 	with TechnologyInteractionElement {
 
 	case class TechnologyInteractionRelationships(
-		override private[archimate] implicit val tt: TechnologyInteraction = TechnologyInteraction.this
+		override private[semod] implicit val tt: TechnologyInteraction = TechnologyInteraction.this
 	) extends TechnologyInteractionElementRelationships[TechnologyInteraction]
 
 	val rel: TechnologyInteractionRelationships = TechnologyInteractionRelationships()
 
+	_registerPrefix("TI")
 }

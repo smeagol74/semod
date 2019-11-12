@@ -10,9 +10,10 @@ case class ApplicationFunction(
 	with ApplicationFunctionElement {
 
 	case class ApplicationFunctionRelationships(
-		private[archimate] implicit val tt: ApplicationFunction = ApplicationFunction.this
+		override private[semod] implicit val tt: ApplicationFunction = ApplicationFunction.this
 	) extends ApplicationFunctionElementRelationships[ApplicationFunction]
 
 	val rel: ApplicationFunctionRelationships = ApplicationFunctionRelationships()
 
+	_registerPrefix("AF")
 }

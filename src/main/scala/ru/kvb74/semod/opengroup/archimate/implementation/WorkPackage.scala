@@ -10,9 +10,11 @@ case class WorkPackage(
 	with WorkPackageElement {
 
 	case class WorkPackageRelationships(
-		override private[archimate] implicit val tt: WorkPackage = WorkPackage.this
+		override private[semod] implicit val tt: WorkPackage = WorkPackage.this
 	) extends WorkPackageElementRelationships[WorkPackage]
 
 	val rel: WorkPackageRelationships = WorkPackageRelationships()
+
+	_registerPrefix("IWP")
 }
 

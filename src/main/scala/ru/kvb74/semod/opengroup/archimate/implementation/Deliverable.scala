@@ -10,9 +10,10 @@ case class Deliverable(
 	with DeliverableElement {
 
 	case class DeliverableRelationships(
-		private[archimate] implicit val tt: Deliverable = Deliverable.this
+		override private[semod] implicit val tt: Deliverable = Deliverable.this
 	) extends DeliverableElementRelationships[Deliverable]
 
 	val rel: DeliverableRelationships = DeliverableRelationships()
 
+	_registerPrefix("ID")
 }

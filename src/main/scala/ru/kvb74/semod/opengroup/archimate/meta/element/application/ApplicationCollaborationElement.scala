@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.application
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait ApplicationCollaborationElement
@@ -25,11 +26,11 @@ trait ApplicationCollaborationElementRelationships[T <: ApplicationCollaboration
 	def specializationOf(dst: ApplicationComponentElement): T = tt._rel.specializationOf(dst)
 
 	_register(ApplicationCollaborationElement,
-		JR.composedOf(ApplicationInterfaceElement),
-		JR.assignedTo(ApplicationInternalBehaviorElement),
-		JR.assignedTo(ApplicationEventElement),
-		JR.realizes(ApplicationComponentElement),
-		JR.aggregates(ApplicationComponentElement),
-		JR.specializationOf(ApplicationComponentElement),
+		RR.composedOf(ApplicationInterfaceElement),
+		RR.assignedTo(ApplicationInternalBehaviorElement),
+		RR.assignedTo(ApplicationEventElement),
+		RR.realizes(ApplicationComponentElement),
+		RR.aggregates(ApplicationComponentElement),
+		RR.specializationOf(ApplicationComponentElement),
 	)
 }

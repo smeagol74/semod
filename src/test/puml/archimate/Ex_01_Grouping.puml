@@ -1,0 +1,19 @@
+@startuml Ex_01_Grouping
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap04.html#_Toc489945986]]
+
+title Example 1. Grouping (Composite)
+
+Business_Process(BP_2, "Process 1\n(business process)")
+Business_Object(Business_BusinessObject_1, "Object\n(business object)")
+Business_Process(Business_BusinessProcess_1, "Process 2\n(business process)")
+Business_Service(Business_BusinessService_1, "Service\n(business service)")
+Grouping(Composite_Grouping_1, "Grouping\n(grouping)")
+Rel_Aggregation_Down(Composite_Grouping_1, BP_2, "aggregates")
+Rel_Aggregation_Down(Composite_Grouping_1, Business_BusinessProcess_1, "aggregates")
+Rel_Access_w(BP_2, Business_BusinessObject_1, "writes")
+Rel_Aggregation_Down(Composite_Grouping_1, Business_BusinessObject_1, "aggregates")
+Rel_Realization_Up(Composite_Grouping_1, Business_BusinessService_1, "realizes")
+Rel_Triggering_Right(BP_2, Business_BusinessProcess_1, "triggers")
+@enduml

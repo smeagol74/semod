@@ -10,9 +10,10 @@ case class ApplicationEvent(
 	with ApplicationEventElement {
 
 	case class ApplicationEventRelationships(
-		private[archimate] implicit val tt: ApplicationEvent = ApplicationEvent.this
+		override private[semod] implicit val tt: ApplicationEvent = ApplicationEvent.this
 	) extends ApplicationEventElementRelationships[ApplicationEvent]
 
 	val rel: ApplicationEventRelationships = ApplicationEventRelationships()
 
+	_registerPrefix("AE")
 }

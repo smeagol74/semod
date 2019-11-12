@@ -1,8 +1,8 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.application
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, Junction, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 trait ApplicationEventElement
 	extends BehaviorElement
@@ -32,13 +32,13 @@ trait ApplicationEventElementRelationships[T <: ApplicationEventElement]
 	def triggers(dst: ApplicationServiceElement): T = tt._rel.triggers(dst)
 
 	_register(ApplicationEventElement,
-		JR.accesses(DataObjectElement),
-		JR.flowsTo(ApplicationEventElement),
-		JR.flowsTo(ApplicationInternalBehaviorElement),
-		JR.flowsTo(ApplicationServiceElement),
-		JR.triggers(ApplicationEventElement),
-		JR.triggers(ApplicationInternalBehaviorElement),
-		JR.triggers(ApplicationServiceElement),
+		RR.accesses(DataObjectElement),
+		RR.flowsTo(ApplicationEventElement),
+		RR.flowsTo(ApplicationInternalBehaviorElement),
+		RR.flowsTo(ApplicationServiceElement),
+		RR.triggers(ApplicationEventElement),
+		RR.triggers(ApplicationInternalBehaviorElement),
+		RR.triggers(ApplicationServiceElement),
 	)
 
 }

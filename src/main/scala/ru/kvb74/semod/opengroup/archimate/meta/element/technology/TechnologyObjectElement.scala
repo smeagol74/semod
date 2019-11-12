@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.BusinessObjectElement
 
@@ -16,7 +17,7 @@ trait TechnologyObjectElementRelationships[T <: TechnologyObjectElement]
 	def realizes(dst: BusinessObjectElement): T = tt._rel.realizes(dst)
 
 	_register(TechnologyObjectElement,
-		JR.realizes(BusinessObjectElement)
+		RR.realizes(BusinessObjectElement)
 	)
 
 }

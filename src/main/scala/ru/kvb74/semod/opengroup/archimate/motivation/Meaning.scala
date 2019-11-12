@@ -10,9 +10,10 @@ case class Meaning(
 	with MeaningElement {
 
 	case class MeaningRelationships(
-		override private[archimate] implicit val tt: Meaning = Meaning.this
+		override private[semod] implicit val tt: Meaning = Meaning.this
 	) extends MeaningElementRelationships[Meaning]
 
 	val rel: MeaningRelationships = MeaningRelationships()
 
+	_registerPrefix("MM")
 }

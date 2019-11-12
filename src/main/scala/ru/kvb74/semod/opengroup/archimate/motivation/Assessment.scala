@@ -10,9 +10,10 @@ case class Assessment(
 	with AssessmentElement {
 
 	case class AssessmentRelationships(
-		override private[archimate] implicit val tt: Assessment = Assessment.this
+		override private[semod] implicit val tt: Assessment = Assessment.this
 	) extends AssessmentElementRelationships[Assessment]
 
 	val rel: AssessmentRelationships = AssessmentRelationships()
 
+	_registerPrefix("MA")
 }

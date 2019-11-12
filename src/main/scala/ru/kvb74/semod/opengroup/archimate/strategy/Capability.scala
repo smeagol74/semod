@@ -10,9 +10,10 @@ case class Capability(
 	with CapabilityElement {
 
 	case class CapabilityRelationships(
-		override private[archimate] implicit val tt: Capability = Capability.this
+		override private[semod] implicit val tt: Capability = Capability.this
 	) extends CapabilityElementRelationships[Capability]
 
 	val rel: CapabilityRelationships = CapabilityRelationships()
 
+	_registerPrefix("SC")
 }

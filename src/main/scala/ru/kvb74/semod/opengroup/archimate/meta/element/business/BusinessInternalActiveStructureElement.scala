@@ -1,15 +1,16 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
+import ru.kvb74.semod.meta.{ElementName, RR}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
 
 trait BusinessInternalActiveStructureElement
-	extends Element
+	extends ArchimateElement
 
 case object BusinessInternalActiveStructureElement
 	extends ElementName
 
 trait BusinessInternalActiveStructureElementRelationships[T <: BusinessInternalActiveStructureElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	def composedOf(dst: BusinessInterfaceElement): T = tt._rel.composedOf(dst)
 
@@ -18,8 +19,8 @@ trait BusinessInternalActiveStructureElementRelationships[T <: BusinessInternalA
 	def assignedTo(dst: BusinessInternalBehaviorElement): T = tt._rel.assignedTo(dst)
 
 	_register(BusinessInternalActiveStructureElement,
-		JR.composedOf(BusinessInterfaceElement),
-		JR.assignedTo(BusinessEventElement),
-		JR.assignedTo(BusinessInternalBehaviorElement)
+		RR.composedOf(BusinessInterfaceElement),
+		RR.assignedTo(BusinessEventElement),
+		RR.assignedTo(BusinessInternalBehaviorElement)
 	)
 }

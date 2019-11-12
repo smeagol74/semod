@@ -10,9 +10,10 @@ case class Location(
 	with LocationElement {
 
 	case class LocationRelationships(
-		private[archimate] implicit val tt: Location = Location.this
+		override private[semod] implicit val tt: Location = Location.this
 	) extends LocationElementRelationships[Location]
 
 	val rel: LocationRelationships = LocationRelationships()
 
+	_registerPrefix("OL")
 }

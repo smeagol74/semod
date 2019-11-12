@@ -1,7 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.{DirectionHint, ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.DirectionHint
 
 trait RepresentationElement
 	extends PassiveStructureElement
@@ -19,7 +19,7 @@ trait RepresentationElementRelationships[T <: RepresentationElement]
 	def realizes(dst: ContractElement): T = tt._rel.realizes(dst)
 
 	_register(RepresentationElement,
-		JR.realizes(BusinessObjectElement),
-		JR.realizes(ContractElement),
+		RR.realizes(BusinessObjectElement),
+		RR.realizes(ContractElement),
 	)
 }

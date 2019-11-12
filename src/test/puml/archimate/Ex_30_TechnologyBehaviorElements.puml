@@ -1,0 +1,26 @@
+@startuml Ex_30_TechnologyBehaviorElements
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap10.html#_Toc489946098]]
+
+title Example 30. Technology Behavior Elements (Technology)
+
+Technology_Function(TF_2, "Handle Remote Updates\n(technology function)")
+Technology_Function(TF_3, "Monitor Replication Status\n(technology function)")
+Technology_Function(TF_4, "Administrate Replication\n(technology function)")
+Technology_Function(TF_5, "Database Replication\n(technology function)")
+Technology_Event(Technology_TechnologyEvent_1, "Database Update\n(technology event)")
+Technology_Function(Technology_TechnologyFunction_1, "Handle Local Updates\n(technology function)")
+Technology_Process(Technology_TechnologyProcess_1, "Remote Data Replication\n(technology process)")
+Technology_Service(Technology_TechnologyService_1, "Replicate Database Updates\n(technology service)")
+Rel_Composition_Down(TF_5, TF_4, "composed of")
+Rel_Composition_Down(TF_5, Technology_TechnologyFunction_1, "composed of")
+Rel_Composition_Down(TF_5, TF_2, "composed of")
+Rel_Composition_Down(TF_5, TF_3, "composed of")
+Rel_Flow_Right(TF_4, Technology_TechnologyFunction_1, "flows to")
+Rel_Flow_Right(TF_4, TF_2, "flows to")
+Rel_Flow_Right(TF_4, TF_3, "flows to")
+Rel_Realization_Up(TF_5, Technology_TechnologyService_1, "realizes")
+Rel_Serving(Technology_TechnologyService_1, Technology_TechnologyProcess_1, "serves")
+Rel_Triggering_Right(Technology_TechnologyEvent_1, Technology_TechnologyProcess_1, "triggers")
+@enduml

@@ -10,9 +10,10 @@ case class ApplicationCollaboration(
 	with ApplicationCollaborationElement {
 
 	case class ApplicationCollaborationRelationships(
-		private[archimate] implicit val tt: ApplicationCollaboration = ApplicationCollaboration.this
+		override private[semod] implicit val tt: ApplicationCollaboration = ApplicationCollaboration.this
 	) extends ApplicationCollaborationElementRelationships[ApplicationCollaboration]
 
 	val rel: ApplicationCollaborationRelationships = ApplicationCollaborationRelationships()
 
+	_registerPrefix("AC")
 }

@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait DeviceElement
@@ -20,7 +21,7 @@ trait DeviceElementRelationships[T <: DeviceElement]
 	//	def associatedWith(dst: CommunicationNetworkElement): T = tt._rel.associatedWith(dst)
 
 	_register(DeviceElement,
-		JR.assignedTo(SystemSoftwareElement),
+		RR.assignedTo(SystemSoftwareElement),
 		//		JR.associatedWith(CommunicationNetworkElement),
 	)
 }

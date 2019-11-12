@@ -1,6 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.motivation
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ElementName, JR}
+import ru.kvb74.semod.meta.{ElementName, RR}
 
 trait OutcomeElement
 	extends MotivationElement
@@ -17,7 +17,7 @@ trait OutcomeElementRelationships[T <: OutcomeElement]
 	//	def associatedWith(dst: ValueElement): T = tt._rel.associatedWith(dst)
 
 	_register(OutcomeElement,
-		JR.realizes(GoalElement),
+		RR.realizes(GoalElement),
 		//		JR.associatedWith(ValueElement)
 	)
 

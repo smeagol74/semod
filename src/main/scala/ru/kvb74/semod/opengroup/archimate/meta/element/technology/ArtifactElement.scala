@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.{ApplicationComponentElement, DataObjectElement}
 
@@ -23,10 +24,10 @@ trait ArtifactElementRelationships[T <: ArtifactElement]
 	def realizes(dst: ApplicationComponentElement): T = tt._rel.realizes(dst)
 
 	_register(ArtifactElement,
-		JR.specializationOf(TechnologyObjectElement),
-		JR.realizes(SystemSoftwareElement),
-		JR.realizes(DataObjectElement),
-		JR.realizes(ApplicationComponentElement),
+		RR.specializationOf(TechnologyObjectElement),
+		RR.realizes(SystemSoftwareElement),
+		RR.realizes(DataObjectElement),
+		RR.realizes(ApplicationComponentElement),
 	)
 
 }

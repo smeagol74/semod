@@ -10,9 +10,10 @@ case class Value(
 	with ValueElement {
 
 	case class ValueRelationships(
-		override private[archimate] implicit val tt: Value = Value.this
+		override private[semod] implicit val tt: Value = Value.this
 	) extends ValueElementRelationships[Value]
 
 	val rel: ValueRelationships = ValueRelationships()
 
+	_registerPrefix("MV")
 }

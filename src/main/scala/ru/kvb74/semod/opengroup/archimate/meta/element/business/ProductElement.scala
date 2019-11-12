@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.{ApplicationServiceElement, DataObjectElement}
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{TechnologyObjectElement, TechnologyServiceElement}
@@ -39,18 +40,18 @@ trait ProductElementRelationships[T <: ProductElement]
 	def composedOf(dst: TechnologyServiceElement): T = tt._rel.composedOf(dst)
 
 	_register(ProductElement,
-		JR.aggregates(BusinessPassiveStructureElement),
-		JR.composedOf(BusinessPassiveStructureElement),
-		JR.aggregates(DataObjectElement),
-		JR.composedOf(DataObjectElement),
-		JR.aggregates(TechnologyObjectElement),
-		JR.composedOf(TechnologyObjectElement),
-		JR.aggregates(BusinessServiceElement),
-		JR.composedOf(BusinessServiceElement),
-		JR.aggregates(ApplicationServiceElement),
-		JR.composedOf(ApplicationServiceElement),
-		JR.aggregates(TechnologyServiceElement),
-		JR.composedOf(TechnologyServiceElement),
+		RR.aggregates(BusinessPassiveStructureElement),
+		RR.composedOf(BusinessPassiveStructureElement),
+		RR.aggregates(DataObjectElement),
+		RR.composedOf(DataObjectElement),
+		RR.aggregates(TechnologyObjectElement),
+		RR.composedOf(TechnologyObjectElement),
+		RR.aggregates(BusinessServiceElement),
+		RR.composedOf(BusinessServiceElement),
+		RR.aggregates(ApplicationServiceElement),
+		RR.composedOf(ApplicationServiceElement),
+		RR.aggregates(TechnologyServiceElement),
+		RR.composedOf(TechnologyServiceElement),
 	)
 
 }

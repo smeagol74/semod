@@ -1,19 +1,20 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.{MeaningElement, RequirementElement, ValueElement}
+import ru.kvb74.semod.meta.{ElementName, RR}
+import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.RequirementElement
 
 /**
 	* Structure Element / Behavior Element
 	* (Strategy & Core)
 	*/
 trait StrategyCoreStructureBehaviorElement
-	extends Element
+	extends ArchimateElement
 
 case object StrategyCoreStructureBehaviorElement
 	extends ElementName
 
 trait StrategyCoreStructureBehaviorElementRelationships[T <: StrategyCoreStructureBehaviorElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	def influences(dst: RequirementElement, label: String): T = tt._rel.influences(dst, label)
 
@@ -26,8 +27,8 @@ trait StrategyCoreStructureBehaviorElementRelationships[T <: StrategyCoreStructu
 	//	def associatedWith(dst: MeaningElement): T = tt._rel.associatedWith(dst)
 
 	_register(StrategyCoreStructureBehaviorElement,
-		JR.influences(RequirementElement),
-		JR.realizes(RequirementElement),
+		RR.influences(RequirementElement),
+		RR.realizes(RequirementElement),
 		//		JR.associatedWith(ValueElement),
 		//		JR.associatedWith(MeaningElement)
 	)

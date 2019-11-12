@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="527px" preserveAspectRatio="none" style="width:379px;height:527px;" version="1.1" viewBox="0 0 379 527" width="379px" zoomAndPan="magnify"><defs><filter height="300%" id="fwbztkplq15go" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="157" x="114.5" y="17.4023">Example. Systems</text><!--entity SOther_2--><rect fill="#D3D3D3" filter="url(#fwbztkplq15go)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="150" x="6" y="463.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="130" x="16" y="486.7344">Concurrent System</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="28.5" y="503.2227">(others system)</text><!--entity System_Placeholder_1--><rect fill="#EEEEEE" filter="url(#fwbztkplq15go)" height="52.9766" rx="3" ry="3" style="stroke: #00008B; stroke-width: 1.0; stroke-dasharray: 1.0,3.0;" width="162" x="81" y="310.6992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="119.5" y="334.2344">System Type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="142" x="91" y="350.7227">(system placeholder)</text><!--entity System_SystemOfInterest_1--><rect fill="#FEFECE" filter="url(#fwbztkplq15go)" height="52.9766" rx="3" ry="3" style="stroke: #8B0000; stroke-width: 1.5;" width="151" x="166.5" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="122" x="181" y="181.7344">System of Interest</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="131" x="176.5" y="198.2227">(system of interest)</text><!--entity System_SystemOther_1--><rect fill="#D3D3D3" filter="url(#fwbztkplq15go)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="125" x="179.5" y="29.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="189.5" y="52.7344">Owning System</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="189.5" y="69.2227">(others system)</text><!--entity System_SystemOur_1--><rect fill="#ADD8E6" filter="url(#fwbztkplq15go)" height="52.9766" rx="3" ry="3" style="stroke: #00008B; stroke-width: 1.5;" width="105" x="191.5" y="463.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="78" x="205" y="486.7344">Our System</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="201.5" y="503.2227">(our system)</text><!--entity System_SystemRole_1--><ellipse cx="322" cy="297.1992" fill="#D3D3D3" filter="url(#fwbztkplq15go)" rx="8" ry="8" style="stroke: #777777; stroke-width: 2.0;"/><path d="M322,305.1992 L322,332.1992 M309,313.1992 L335,313.1992 M322,332.1992 L309,347.1992 M322,332.1992 L335,347.1992 " fill="none" filter="url(#fwbztkplq15go)" style="stroke: #777777; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="69" x="287.5" y="367.7344">Performer</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="88" x="278" y="384.2227">(system role)</text><!--link System_SystemOther_1 to System_SystemOfInterest_1--><path d="M242,95.4356 C242,115.7538 242,139.9374 242,158.0046 " fill="none" id="System_SystemOther_1-System_SystemOfInterest_1" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="242,82.4281,238,88.4281,242,94.4281,246,88.4281,242,82.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="243" y="124.8008">composed of</text><!--link System_SystemOfInterest_1 to System_Placeholder_1--><path d="M213.8316,222.0544 C209.628,228.2997 205.5278,234.824 202,241.1992 C189.5863,263.6325 178.6369,290.7159 171.3468,310.3886 " fill="none" id="System_SystemOfInterest_1-System_Placeholder_1" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="221.4086,211.2067,214.6935,213.835,214.537,221.0444,221.252,218.4161,221.4086,211.2067" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="203" y="253.8008">composed of</text><!--link System_SystemOfInterest_1 to System_SystemRole_1--><path d="M271.0921,222.1629 C275.343,228.3604 279.4703,234.8416 283,241.1992 C290.9461,255.5118 298.171,271.7794 304.1833,286.8036 " fill="none" id="System_SystemOfInterest_1-System_SystemRole_1" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="263.4092,211.4017,263.6401,218.6091,270.3818,221.1681,270.151,213.9607,263.4092,211.4017" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="292" y="253.8008">composed of</text><!--link System_Placeholder_1 to System_SystemOur_1--><path d="M185.9167,381.6784 C200.1292,408.1103 217.6769,440.7447 229.743,463.1847 " fill="none" id="System_Placeholder_1-System_SystemOur_1" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="179.5898,384.6928,176.2833,363.7627,191.9203,378.0626,179.5898,384.6928" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="45" x="214" y="429.8008">realizes</text><!--link System_Placeholder_1 to SOther_2--><path d="M138.375,381.6784 C124.3358,408.1103 107.002,440.7447 95.0831,463.1847 " fill="none" id="System_Placeholder_1-SOther_2" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="132.3271,378.1421,147.8909,363.7627,144.6912,384.7094,132.3271,378.1421" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="45" x="121" y="429.8008">realizes</text><!--
+@startuml Ex_Systems
+
+skinparam defaultTextAlignment center
+skinparam wrapWidth 400
+skinparam maxMessageSize 150
+skinparam StereotypeAlignment right
+
+skinparam Arrow {
+    Color #000000
+    FontColor #000000
+    FontSize 12
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam Folder<<grouping>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam Folder<<group>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BackgroundColor lightgrey
+}
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam node {
+  StereotypeAlignment right
+}
+skinparam cloud {
+  StereotypeAlignment right
+}
+skinparam frame {
+  StereotypeAlignment right
+}
+skinparam archimate {
+  StereotypeAlignment right
+  RoundCorner<<strategy-capability>> 25
+  RoundCorner<<strategy-course-of-action>> 25
+  RoundCorner<<business-process>> 25
+  RoundCorner<<business-function>> 25
+  RoundCorner<<business-interaction>> 25
+  RoundCorner<<business-event>> 25
+  RoundCorner<<business-service>> 25
+  RoundCorner<<application-function>> 25
+  RoundCorner<<application-interaction>> 25
+  RoundCorner<<application-process>> 25
+  RoundCorner<<application-event>> 25
+  RoundCorner<<application-service>> 25
+  RoundCorner<<technology-function>> 25
+  RoundCorner<<technology-process>> 25
+  RoundCorner<<technology-interaction>> 25
+  RoundCorner<<technology-event>> 25
+  RoundCorner<<technology-infra-service>> 25
+  RoundCorner<<implementation-workpackage>> 25
+  RoundCorner<<implementation-event>> 25
+  DiagonalCorner<<motivation-stakeholder>> 12
+  DiagonalCorner<<motivation-driver>> 12
+  DiagonalCorner<<motivation-assessment>> 12
+  DiagonalCorner<<motivation-goal>> 12
+  DiagonalCorner<<motivation-outcome>> 12
+  DiagonalCorner<<motivation-principle>> 12
+  DiagonalCorner<<motivation-requirement>> 12
+  DiagonalCorner<<motivation-constraint>> 12
+}
+skinparam usecase {
+  BorderColor #000000
+}
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle {
+    Shadowing true
+    RoundCorner 6
+    BorderColor<<system-other>> darkgray
+    BackgroundColor<<system-other>> lightgray
+    BorderColor<<system-of-interest>> darkred
+    BorderColor<<system-our>> darkblue
+    BackgroundColor<<system-our>> lightblue
+    BorderColor<<system-placeholder>> darkblue
+    BackgroundColor<<system-placeholder>> #eeeeee
+    BorderStyle<<system-placeholder>> dotted
+}
+skinparam actor<<system-role>> {
+    BorderColor #777777
+    BackgroundColor lightgray
+}
+
+hide <<system-other>> stereotype
+hide <<system-of-interest>> stereotype
+hide <<system-our>> stereotype
+hide <<system-role>> stereotype
+hide <<system-placeholder>> stereotype
+
+
+
+
+title Example. Systems
+
+rectangle "Concurrent System\n(others system)" <<system-other>> as SOther_2
+rectangle "System Type\n(system placeholder)" <<system-placeholder>> as System_Placeholder_1
+rectangle "System of Interest\n(system of interest)" <<system-of-interest>> as System_SystemOfInterest_1
+rectangle "Owning System\n(others system)" <<system-other>> as System_SystemOther_1
+rectangle "Our System\n(our system)" <<system-our>> as System_SystemOur_1
+actor "Performer\n(system role)" <<system-role>> as System_SystemRole_1
+System_SystemOther_1 *-DOWN- System_SystemOfInterest_1 : "composed of"
+System_SystemOfInterest_1 *-DOWN- System_Placeholder_1 : "composed of"
+System_SystemOfInterest_1 *-DOWN- System_SystemRole_1 : "composed of"
+System_SystemOur_1 .UP.|> System_Placeholder_1 : "realizes"
+SOther_2 .UP.|> System_Placeholder_1 : "realizes"
+@enduml
+
+PlantUML version 1.2019.06(Sat May 25 00:10:25 NOVT 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 12.0.2+10
+Operating System: Mac OS X
+OS Version: 10.15
+Default Encoding: UTF-8
+Language: en
+Country: RU
+--></g></svg>

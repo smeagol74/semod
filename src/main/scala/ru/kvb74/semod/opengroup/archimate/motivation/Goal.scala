@@ -10,9 +10,10 @@ case class Goal(
 	with GoalElement {
 
 	case class GoalRelationships(
-		override private[archimate] implicit val tt: Goal = Goal.this
+		override private[semod] implicit val tt: Goal = Goal.this
 	) extends GoalElementRelationships[Goal]
 
 	val rel: GoalRelationships = GoalRelationships()
 
+	_registerPrefix("MG")
 }

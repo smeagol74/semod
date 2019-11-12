@@ -10,9 +10,10 @@ case class CommunicationNetwork(
 	with CommunicationNetworkElement {
 
 	case class CommunicationNetworkRelationships(
-		override private[archimate] implicit val tt: CommunicationNetwork = CommunicationNetwork.this
+		override private[semod] implicit val tt: CommunicationNetwork = CommunicationNetwork.this
 	) extends CommunicationNetworkElementRelationships[CommunicationNetwork]
 
 	val rel: CommunicationNetworkRelationships = CommunicationNetworkRelationships()
 
+	_registerPrefix("TCN")
 }

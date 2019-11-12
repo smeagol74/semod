@@ -1,0 +1,16 @@
+@startuml Ex_06_Serving
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993]]
+
+title Example 6. Serving (Relationships)
+
+Business_Interface(BIf_2, "Payment Interface\n(business interface)")
+Business_Process(BP_3, "Pay Invoices\n(business process)")
+Business_Service(BS_4, "Payment Service\n(business service)")
+Business_Role(Business_BusinessRole_1, "Customer\n(business role)")
+Rel_Assignment_Right(Business_BusinessRole_1, BP_3, "assigned to")
+Rel_Assignment_Right(BIf_2, BS_4, "assigned to")
+Rel_Serving(BIf_2, Business_BusinessRole_1, "serves")
+Rel_Serving(BS_4, BP_3, "serves")
+@enduml

@@ -1,18 +1,18 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.application
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.BusinessInternalBehaviorElement
-import ru.kvb74.semod.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
 
 trait ApplicationInternalBehaviorElement
-	extends Element
+	extends ArchimateElement
 
 case object ApplicationInternalBehaviorElement
 	extends ElementName
 
 trait ApplicationInternalBehaviorElementRelationships[T <: ApplicationInternalBehaviorElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	def aggregates(dst: ApplicationInternalBehaviorElement): T = tt._rel.aggregates(dst)
 
@@ -33,14 +33,14 @@ trait ApplicationInternalBehaviorElementRelationships[T <: ApplicationInternalBe
 	def realizes(dst: BusinessInternalBehaviorElement): T = tt._rel.realizes(dst)
 
 	_register(ApplicationInternalBehaviorElement,
-		JR.aggregates(ApplicationInternalBehaviorElement),
-		JR.composedOf(ApplicationInternalBehaviorElement),
-		JR.realizes(ApplicationServiceElement),
-		JR.accesses(DataObjectElement),
-		JR.triggers(ApplicationInternalBehaviorElement),
-		JR.flowsTo(ApplicationInternalBehaviorElement),
-		JR.triggers(ApplicationEventElement),
-		JR.flowsTo(ApplicationEventElement),
-		JR.realizes(BusinessInternalBehaviorElement)
+		RR.aggregates(ApplicationInternalBehaviorElement),
+		RR.composedOf(ApplicationInternalBehaviorElement),
+		RR.realizes(ApplicationServiceElement),
+		RR.accesses(DataObjectElement),
+		RR.triggers(ApplicationInternalBehaviorElement),
+		RR.flowsTo(ApplicationInternalBehaviorElement),
+		RR.triggers(ApplicationEventElement),
+		RR.flowsTo(ApplicationEventElement),
+		RR.realizes(BusinessInternalBehaviorElement)
 	)
 }

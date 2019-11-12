@@ -10,9 +10,10 @@ case class Requirement(
 	with RequirementElement {
 
 	case class RequirementRelationships(
-		override private[archimate] implicit val tt: Requirement = Requirement.this
+		override private[semod] implicit val tt: Requirement = Requirement.this
 	) extends RequirementElementRelationships[Requirement]
 
 	val rel: RequirementRelationships = RequirementRelationships()
 
+	_registerPrefix("MR")
 }

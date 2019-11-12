@@ -1,8 +1,8 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, Junction, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 trait BusinessEventElement
 	extends BehaviorElement
@@ -29,13 +29,13 @@ trait BusinessEventElementRelationships[T <: BusinessEventElement]
 	def accesses(dst: BusinessPassiveStructureElement, mode: AccessMode.Value): T = tt._rel.accesses(dst, mode)
 
 	_register(BusinessEventElement,
-		JR.triggers(BusinessInternalBehaviorElement),
-		JR.flowsTo(BusinessInternalBehaviorElement),
-		JR.triggers(BusinessEventElement),
-		JR.flowsTo(BusinessEventElement),
-		JR.triggers(BusinessServiceElement),
-		JR.flowsTo(BusinessServiceElement),
-		JR.accesses(BusinessPassiveStructureElement),
+		RR.triggers(BusinessInternalBehaviorElement),
+		RR.flowsTo(BusinessInternalBehaviorElement),
+		RR.triggers(BusinessEventElement),
+		RR.flowsTo(BusinessEventElement),
+		RR.triggers(BusinessServiceElement),
+		RR.flowsTo(BusinessServiceElement),
+		RR.accesses(BusinessPassiveStructureElement),
 	)
 
 }

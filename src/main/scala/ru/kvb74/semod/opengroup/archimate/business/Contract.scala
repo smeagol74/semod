@@ -10,9 +10,10 @@ case class Contract(
 	with ContractElement {
 
 	case class ContractRelationships(
-		override private[archimate] implicit val tt: Contract = Contract.this
+		override private[semod] implicit val tt: Contract = Contract.this
 	) extends ContractElementRelationships[Contract]
 
 	val rel: ContractRelationships = ContractRelationships()
 
+	_registerPrefix("BCn")
 }

@@ -1,7 +1,8 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 trait TechnologyEventElement
 	extends BehaviorElement
@@ -28,12 +29,12 @@ trait TechnologyEventElementRelationships[T <: TechnologyEventElement]
 	def flowsTo(dst: TechnologyServiceElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	_register(TechnologyEventElement,
-		JR.triggers(TechnologyInternalBehaviorElement),
-		JR.flowsTo(TechnologyInternalBehaviorElement),
-		JR.accesses(TechnologyObjectElement),
-		JR.triggers(TechnologyEventElement),
-		JR.flowsTo(TechnologyEventElement),
-		JR.triggers(TechnologyServiceElement),
-		JR.flowsTo(TechnologyServiceElement),
+		RR.triggers(TechnologyInternalBehaviorElement),
+		RR.flowsTo(TechnologyInternalBehaviorElement),
+		RR.accesses(TechnologyObjectElement),
+		RR.triggers(TechnologyEventElement),
+		RR.flowsTo(TechnologyEventElement),
+		RR.triggers(TechnologyServiceElement),
+		RR.flowsTo(TechnologyServiceElement),
 	)
 }

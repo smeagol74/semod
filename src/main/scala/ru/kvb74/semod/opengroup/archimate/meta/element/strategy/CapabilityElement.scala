@@ -1,7 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.strategy
 
+import ru.kvb74.semod.meta.{ElementName, RR, Junction}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
 
 trait CapabilityElement
 	extends BehaviorElement
@@ -24,11 +24,11 @@ trait CapabilityElementRelationships[T <: CapabilityElement]
 	def flowsTo(dst: CapabilityElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	_register(CapabilityElement,
-		JR.realizes(CourseOfActionElement),
-		JR.serves(CourseOfActionElement),
-		JR.serves(CapabilityElement),
-		JR.triggers(CapabilityElement),
-		JR.flowsTo(CapabilityElement),
+		RR.realizes(CourseOfActionElement),
+		RR.serves(CourseOfActionElement),
+		RR.serves(CapabilityElement),
+		RR.triggers(CapabilityElement),
+		RR.flowsTo(CapabilityElement),
 	)
 
 }

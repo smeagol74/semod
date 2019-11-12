@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait PathElement
@@ -19,6 +20,6 @@ trait PathElementRelationships[T <: PathElement]
 
 	_register(PathElement,
 		//		JR.associatedWith(NodeElement),
-		JR.aggregates(NodeElement),
+		RR.aggregates(NodeElement),
 	)
 }

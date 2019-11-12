@@ -10,9 +10,10 @@ case class Resource(
 	with ResourceElement {
 
 	case class ResourceRelationships(
-		override private[archimate] implicit val tt: Resource = Resource.this
+		override private[semod] implicit val tt: Resource = Resource.this
 	) extends ResourceElementRelationships[Resource]
 
 	val rel: ResourceRelationships = ResourceRelationships()
 
+	_registerPrefix("SR")
 }

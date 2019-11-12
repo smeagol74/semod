@@ -10,9 +10,10 @@ case class Device(
 	with DeviceElement {
 
 	case class DeviceRelationships(
-		override private[archimate] implicit val tt: Device = Device.this
+		override private[semod] implicit val tt: Device = Device.this
 	) extends DeviceElementRelationships[Device]
 
 	val rel: DeviceRelationships = DeviceRelationships()
 
+	_registerPrefix("TD")
 }

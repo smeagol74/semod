@@ -1,19 +1,20 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.implementation
 
 import ru.kvb74.semod.Origin
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
+import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.ProductElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.composite.LocationElement
-import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 trait WorkPackageElement
-	extends Element
+	extends ArchimateElement
 
 case object WorkPackageElement
 	extends ElementName
 
 trait WorkPackageElementRelationships[T <: WorkPackageElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	@Origin("http://pubs.opengroup.org/architecture/archimate3-doc/chap13.html#_Toc489946120")
 	def accesses(dst: DeliverableElement, mode: AccessMode.Value): T = tt._rel.accesses(dst, mode)
@@ -43,15 +44,15 @@ trait WorkPackageElementRelationships[T <: WorkPackageElement]
 	def realizes(dst: LocationElement): T = tt._rel.realizes(dst)
 
 	_register(WorkPackageElement,
-		JR.accesses(DeliverableElement),
-		JR.realizes(DeliverableElement),
-		JR.triggers(ImplementationEventElement),
-		JR.flowsTo(ImplementationEventElement),
-		JR.triggers(WorkPackageElement),
-		JR.flowsTo(WorkPackageElement),
-		JR.realizes(StrategyCoreStructureBehaviorElement),
-		JR.realizes(ProductElement),
-		JR.realizes(LocationElement),
+		RR.accesses(DeliverableElement),
+		RR.realizes(DeliverableElement),
+		RR.triggers(ImplementationEventElement),
+		RR.flowsTo(ImplementationEventElement),
+		RR.triggers(WorkPackageElement),
+		RR.flowsTo(WorkPackageElement),
+		RR.realizes(StrategyCoreStructureBehaviorElement),
+		RR.realizes(ProductElement),
+		RR.realizes(LocationElement),
 	)
 
 }

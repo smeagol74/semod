@@ -1,0 +1,16 @@
+@startuml Ex_04_Assignment
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945992]]
+
+title Example 4. Assignment (Relationships)
+
+Business_Function(BF_5, "Transaction Processing\n(business function)")
+Business_Service(BS_2, "Payment Service\n(business service)")
+Business_Collaboration(Business_BusinessCollaboration_1, "Finance\n(business collaboration)")
+Business_Interface(Business_BusinessInterface_1, "Payment Interface\n(business interface)")
+Rel_Assignment_Right(Business_BusinessCollaboration_1, BF_5, "assigned to")
+Rel_Composition_Down(Business_BusinessCollaboration_1, Business_BusinessInterface_1, "composed of")
+Rel_Realization_Up(BF_5, BS_2, "realizes")
+Rel_Assignment_Right(Business_BusinessInterface_1, BS_2, "assigned to")
+@enduml

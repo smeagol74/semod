@@ -1,6 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.motivation
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ElementName, JR}
+import ru.kvb74.semod.meta.{ElementName, RR}
 
 trait RequirementElement
 	extends MotivationElement
@@ -24,8 +24,8 @@ trait RequirementElementRelationships[T <: RequirementElement]
 	_register(RequirementElement,
 		//		JR.associatedWith(ValueElement),
 		//		JR.associatedWith(MeaningElement),
-		JR.realizes(PrincipleElement),
-		JR.realizes(OutcomeElement),
+		RR.realizes(PrincipleElement),
+		RR.realizes(OutcomeElement),
 	)
 
 }

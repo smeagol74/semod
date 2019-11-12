@@ -10,9 +10,10 @@ case class Product(
 	with ProductElement {
 
 	case class ProductRelationships(
-		override private[archimate] implicit val tt: Product = Product.this
+		override private[semod] implicit val tt: Product = Product.this
 	) extends ProductElementRelationships[Product]
 
 	val rel: ProductRelationships = ProductRelationships()
 
+	_registerPrefix("BPr")
 }

@@ -5,15 +5,15 @@ import java.nio.charset.Charset
 import java.util.ResourceBundle
 
 import net.sourceforge.plantuml.{FileFormat, FileFormatOption, SourceStringReader}
+import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influence}
+import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
+import ru.kvb74.semod.meta.relationship.other.Specialization
+import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
+import ru.kvb74.semod.meta.{DirectionHint, Element, Layer, Relationship}
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement, Element, PassiveStructureElement}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.layer._
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.{DirectionHint, Relationship}
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.{Access, AccessMode, Influence}
-import ru.kvb74.semod.opengroup.archimate.relationship.dynamic.{Flow, Triggering}
-import ru.kvb74.semod.opengroup.archimate.relationship.other.Specialization
-import ru.kvb74.semod.opengroup.archimate.relationship.structural.{Aggregation, Composition, Realization}
-import ru.kvb74.semod.opengroup.archimate.{Report, Resource}
+import ru.kvb74.semod.{Report, Resource}
 
 import scala.compat.Platform.EOL
 import scala.reflect.io.{File, Path}
@@ -340,7 +340,7 @@ object PlantUml {
 		sb.append("@startuml")
 		options.name.foreach(name => sb.append(s" $name"))
 		sb.append(EOL)
-		sb.append("!includeurl https://raw.githubusercontent.com/smeagol74/Archimate-PlantUML/master/Archimate.puml").append(EOL).append(EOL)
+		sb.append("!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml").append(EOL).append(EOL)
 
 		options.header.foreach(header => sb.append(s"header ${_normalize(header)}").append(EOL).append(EOL))
 		options.footer.foreach(footer => sb.append(s"footer ${_normalize(footer)}").append(EOL).append(EOL))

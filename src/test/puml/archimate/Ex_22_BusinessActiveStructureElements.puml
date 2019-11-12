@@ -1,0 +1,33 @@
+@startuml Ex_22_BusinessActiveStructureElements
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946046]]
+
+title Example 22. Business Active Structure Elements
+
+Business_Actor(BA_2, "Joan\n(business actor)")
+Business_Actor(BA_3, "Larry\n(business actor)")
+Business_Actor(BA_4, "ArchiSurance Contact Center\n(business actor)")
+Business_Collaboration(BC_7, "High-Risk\nClaims\nAdjudication\n(business collaboration)")
+Business_Interface(BIf_3, "Phone\n(business interface)")
+Business_Interface(BIf_4, "E-Mail\n(business interface)")
+Business_Interface(BIf_5, "Web\nChat\n(business interface)")
+Business_Role(BR_2, "Specialist\n(business role)")
+Business_Role(BR_3, "Travel\nInsurance\nClaim Analyst\n(business role)")
+Business_Role(BR_4, "Home Insurance\nProduct\nSpecialist\n(business role)")
+Business_Role(BR_5, "Customer\nService\nRepresentative\n(business role)")
+Business_Actor(Business_BusinessActor_1, "Greg\n(business actor)")
+Rel_Aggregation_Down(BC_7, BR_5, "aggregates")
+Rel_Aggregation_Down(BC_7, BR_2, "aggregates")
+Rel_Assignment(Business_BusinessActor_1, BR_3, "assigned to")
+Rel_Assignment(BA_2, BR_4, "assigned to")
+Rel_Assignment(BA_3, BR_5, "assigned to")
+Rel_Composition_Down(BA_4, BIf_3, "composed of")
+Rel_Composition_Down(BA_4, BIf_4, "composed of")
+Rel_Composition_Down(BA_4, BIf_5, "composed of")
+Rel_Composition_Down(BA_4, Business_BusinessActor_1, "composed of")
+Rel_Composition_Down(BA_4, BA_2, "composed of")
+Rel_Composition_Down(BA_4, BA_3, "composed of")
+Rel_Specialization_Up(BR_3, BR_2, "is specialization of")
+Rel_Specialization_Up(BR_4, BR_2, "is specialization of")
+@enduml

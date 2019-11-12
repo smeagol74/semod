@@ -1,0 +1,27 @@
+@startuml Ex_25_BusinessCompositeElementProduct
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap08.html#_Toc489946061]]
+
+title Example 25. Business Composite Element Product (Business)
+
+Business_Contract(BCn_2, "Insurance Policy\n(contract)")
+Business_Contract(BCn_3, "Drive Well and\nSave Agreement\n(contract)")
+Business_Product(BPr_2, "Auto Insurance\n(product)")
+Business_Service(BS_12, "Customer\nService\n(business service)")
+Business_Service(BS_13, "Application\n(business service)")
+Business_Service(BS_14, "Renewal\n(business service)")
+Business_Service(BS_15, "Claims\nProcessing\n(business service)")
+Business_Service(BS_16, "Appeal\n(business service)")
+Business_Service(BS_17, "Drive Well\nand Save\n(business service)")
+Business_Product(Business_Product_1, "Insurance\n(product)")
+Rel_Aggregation_Down(BS_12, BS_13, "aggregates")
+Rel_Aggregation_Down(BS_12, BS_14, "aggregates")
+Rel_Aggregation_Down(BS_12, BS_15, "aggregates")
+Rel_Aggregation_Down(BS_12, BS_16, "aggregates")
+Rel_Composition_Down(Business_Product_1, BCn_2, "composed of")
+Rel_Composition_Down(Business_Product_1, BS_12, "composed of")
+Rel_Composition_Down(BPr_2, BCn_3, "composed of")
+Rel_Composition_Down(BPr_2, BS_17, "composed of")
+Rel_Specialization_Up(BPr_2, Business_Product_1, "is specialization of")
+@enduml

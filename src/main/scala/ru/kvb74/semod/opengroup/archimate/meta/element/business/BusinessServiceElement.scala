@@ -1,10 +1,10 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, Junction, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.{ApplicationComponentElement, ApplicationInternalBehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{NodeElement, TechnologyInternalBehaviorElement}
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 trait BusinessServiceElement
 	extends BehaviorElement
@@ -39,17 +39,17 @@ trait BusinessServiceElementRelationships[T <: BusinessServiceElement]
 	def serves(dst: NodeElement): T = tt._rel.serves(dst)
 
 	_register(BusinessServiceElement,
-		JR.triggers(BusinessServiceElement),
-		JR.flowsTo(BusinessServiceElement),
-		JR.accesses(BusinessPassiveStructureElement),
-		JR.serves(BusinessInternalBehaviorElement),
-		JR.serves(BusinessInternalActiveStructureElement),
-		JR.triggers(BusinessEventElement),
-		JR.flowsTo(BusinessEventElement),
-		JR.serves(ApplicationInternalBehaviorElement),
-		JR.serves(ApplicationComponentElement),
-		JR.serves(TechnologyInternalBehaviorElement),
-		JR.serves(NodeElement),
+		RR.triggers(BusinessServiceElement),
+		RR.flowsTo(BusinessServiceElement),
+		RR.accesses(BusinessPassiveStructureElement),
+		RR.serves(BusinessInternalBehaviorElement),
+		RR.serves(BusinessInternalActiveStructureElement),
+		RR.triggers(BusinessEventElement),
+		RR.flowsTo(BusinessEventElement),
+		RR.serves(ApplicationInternalBehaviorElement),
+		RR.serves(ApplicationComponentElement),
+		RR.serves(TechnologyInternalBehaviorElement),
+		RR.serves(NodeElement),
 	)
 
 }

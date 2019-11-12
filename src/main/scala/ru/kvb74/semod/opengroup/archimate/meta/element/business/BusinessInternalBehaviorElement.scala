@@ -1,17 +1,17 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
 
 trait BusinessInternalBehaviorElement
-	extends Element
+	extends ArchimateElement
 
 case object BusinessInternalBehaviorElement
 	extends ElementName
 
 trait BusinessInternalBehaviorElementRelationships[T <: BusinessInternalBehaviorElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	def aggregates(dst: BusinessInternalBehaviorElement): T = tt._rel.aggregates(dst)
 
@@ -30,13 +30,13 @@ trait BusinessInternalBehaviorElementRelationships[T <: BusinessInternalBehavior
 	def realizes(dst: BusinessServiceElement): T = tt._rel.realizes(dst)
 
 	_register(BusinessInternalBehaviorElement,
-		JR.aggregates(BusinessInternalBehaviorElement),
-		JR.composedOf(BusinessInternalBehaviorElement),
-		JR.triggers(BusinessEventElement),
-		JR.flowsTo(BusinessEventElement),
-		JR.triggers(BusinessInternalBehaviorElement),
-		JR.flowsTo(BusinessInternalBehaviorElement),
-		JR.accesses(BusinessPassiveStructureElement),
-		JR.realizes(BusinessServiceElement),
+		RR.aggregates(BusinessInternalBehaviorElement),
+		RR.composedOf(BusinessInternalBehaviorElement),
+		RR.triggers(BusinessEventElement),
+		RR.flowsTo(BusinessEventElement),
+		RR.triggers(BusinessInternalBehaviorElement),
+		RR.flowsTo(BusinessInternalBehaviorElement),
+		RR.accesses(BusinessPassiveStructureElement),
+		RR.realizes(BusinessServiceElement),
 	)
 }

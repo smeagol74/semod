@@ -1,6 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
 import ru.kvb74.semod.Origin
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.implementation.{ImplementationEventElement, WorkPackageElement}
 
@@ -23,8 +24,8 @@ trait BusinessRoleElementRelationships[T <: BusinessRoleElement]
 	def assignedTo(dst: WorkPackageElement): T = tt._rel.assignedTo(dst)
 
 	_register(BusinessRoleElement,
-		JR.assignedTo(ImplementationEventElement),
-		JR.assignedTo(WorkPackageElement),
+		RR.assignedTo(ImplementationEventElement),
+		RR.assignedTo(WorkPackageElement),
 	)
 
 }

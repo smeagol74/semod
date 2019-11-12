@@ -10,9 +10,10 @@ case class ApplicationProcess(
 	with ApplicationProcessElement {
 
 	case class ApplicationProcessRelationships(
-		private[archimate] implicit val tt: ApplicationProcess = ApplicationProcess.this
+		override private[semod] implicit val tt: ApplicationProcess = ApplicationProcess.this
 	) extends ApplicationProcessElementRelationships[ApplicationProcess]
 
 	val rel: ApplicationProcessRelationships = ApplicationProcessRelationships()
 
+	_registerPrefix("AP")
 }

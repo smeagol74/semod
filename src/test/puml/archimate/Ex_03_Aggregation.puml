@@ -1,0 +1,13 @@
+@startuml Ex_03_Aggregation
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945991]]
+
+title Example 3. Aggregation (Relationships)
+
+Business_Object(BO_2, "Customer File\n(business object)")
+Business_Object(BO_3, "Insurance Policy\n(business object)")
+Business_Object(BO_4, "Insurance Claim\n(business object)")
+Rel_Aggregation_Down(BO_2, BO_3, "aggregates")
+Rel_Aggregation_Down(BO_2, BO_4, "aggregates")
+@enduml

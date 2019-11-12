@@ -1,0 +1,17 @@
+@startuml Ex_26_ApplicationActiveStructureElements
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946069]]
+
+title Example 26. Application Active Structure Elements (Application)
+
+Application_Component(ACmp_2, "Quotation\n(application component)")
+Application_Component(ACmp_3, "Purchases\n(application component)")
+Application_Collaboration(Application_ApplicationCollaboration_1, "Online Travel\nInsurance Sales\n(application collaboration)")
+Application_Component(Application_ApplicationComponent_1, "Travel Website\n(application component)")
+Application_Interface(Application_ApplicationInterface_1, "Web Services\nInterface\n(application interface)")
+Rel_Aggregation_Down(Application_ApplicationCollaboration_1, ACmp_2, "aggregates")
+Rel_Aggregation_Down(Application_ApplicationCollaboration_1, ACmp_3, "aggregates")
+Rel_Composition_Down(Application_ApplicationCollaboration_1, Application_ApplicationInterface_1, "composed of")
+Rel_Serving(Application_ApplicationInterface_1, Application_ApplicationComponent_1, "serves")
+@enduml

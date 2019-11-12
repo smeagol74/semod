@@ -1,0 +1,17 @@
+@startuml Ex_Systems
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+title Example. Systems
+
+System_Other(SOther_2, "Concurrent System\n(others system)")
+System_Placeholder(System_Placeholder_1, "System Type\n(system placeholder)")
+System_OfInterest(System_SystemOfInterest_1, "System of Interest\n(system of interest)")
+System_Other(System_SystemOther_1, "Owning System\n(others system)")
+System_Our(System_SystemOur_1, "Our System\n(our system)")
+System_Role(System_SystemRole_1, "Performer\n(system role)")
+Rel_Composition_Down(System_SystemOther_1, System_SystemOfInterest_1, "composed of")
+Rel_Composition_Down(System_SystemOfInterest_1, System_Placeholder_1, "composed of")
+Rel_Composition_Down(System_SystemOfInterest_1, System_SystemRole_1, "composed of")
+Rel_Realization_Up(System_SystemOur_1, System_Placeholder_1, "realizes")
+Rel_Realization_Up(SOther_2, System_Placeholder_1, "realizes")
+@enduml

@@ -10,9 +10,10 @@ case class ImplementationEvent(
 	with ImplementationEventElement {
 
 	case class ImplementationEventRelationships(
-		private[archimate] implicit val tt: ImplementationEvent = ImplementationEvent.this
+		override private[semod] implicit val tt: ImplementationEvent = ImplementationEvent.this
 	) extends ImplementationEventElementRelationships[ImplementationEvent]
 
 	val rel: ImplementationEventRelationships = ImplementationEventRelationships()
 
+	_registerPrefix("IE")
 }

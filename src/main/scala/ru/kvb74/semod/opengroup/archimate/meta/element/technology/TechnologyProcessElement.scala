@@ -1,6 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{BehaviorElement, ElementName, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
+import ru.kvb74.semod.meta.ElementName
+import ru.kvb74.semod.opengroup.archimate.meta.element.{BehaviorElement, StrategyCoreStructureBehaviorElement, StrategyCoreStructureBehaviorElementRelationships}
 
 trait TechnologyProcessElement
 	extends BehaviorElement

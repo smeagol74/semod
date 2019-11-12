@@ -10,9 +10,10 @@ case class SystemSoftware(
 	with SystemSoftwareElement {
 
 	case class SystemSoftwareRelationships(
-		override private[archimate] implicit val tt: SystemSoftware = SystemSoftware.this
+		override private[semod] implicit val tt: SystemSoftware = SystemSoftware.this
 	) extends SystemSoftwareElementRelationships[SystemSoftware]
 
 	val rel: SystemSoftwareRelationships = SystemSoftwareRelationships()
 
+	_registerPrefix("TSS")
 }

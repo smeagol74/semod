@@ -1,6 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.motivation
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ElementName, JR}
+import ru.kvb74.semod.meta.{ElementName, RR}
 
 trait ConstraintElement
 	extends MotivationElement
@@ -16,7 +16,7 @@ trait ConstraintElementRelationships[T <: ConstraintElement]
 	def specializationOf(dst: RequirementElement): T = tt._rel.specializationOf(dst)
 
 	_register(ConstraintElement,
-		JR.specializationOf(RequirementElement)
+		RR.specializationOf(RequirementElement)
 	)
 
 }

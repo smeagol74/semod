@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.{ApplicationComponentElement, ApplicationInterfaceElement}
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.{BusinessInterfaceElement, BusinessInternalActiveStructureElement}
@@ -30,14 +31,14 @@ trait TechnologyInterfaceElementRelationships[T <: TechnologyInterfaceElement]
 	def realizes(dst: ApplicationInterfaceElement): T = tt._rel.realizes(dst)
 
 	_register(TechnologyInterfaceElement,
-		JR.assignedTo(TechnologyServiceElement),
-		JR.serves(NodeElement),
-		JR.serves(SystemSoftwareElement),
-		JR.serves(DeviceElement),
-		JR.serves(TechnologyCollaborationElement),
-		JR.serves(BusinessInternalActiveStructureElement),
-		JR.serves(ApplicationComponentElement),
-		JR.realizes(BusinessInterfaceElement),
-		JR.realizes(ApplicationInterfaceElement),
+		RR.assignedTo(TechnologyServiceElement),
+		RR.serves(NodeElement),
+		RR.serves(SystemSoftwareElement),
+		RR.serves(DeviceElement),
+		RR.serves(TechnologyCollaborationElement),
+		RR.serves(BusinessInternalActiveStructureElement),
+		RR.serves(ApplicationComponentElement),
+		RR.realizes(BusinessInterfaceElement),
+		RR.realizes(ApplicationInterfaceElement),
 	)
 }

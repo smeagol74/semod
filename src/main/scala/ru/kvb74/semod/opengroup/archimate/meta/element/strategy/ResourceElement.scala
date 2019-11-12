@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.strategy
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait ResourceElement
@@ -15,7 +16,7 @@ trait ResourceElementRelationships[T <: ResourceElement]
 	def assignedTo(dst: CapabilityElement): T = tt._rel.assignedTo(dst)
 
 	_register(ResourceElement,
-		JR.assignedTo(CapabilityElement)
+		RR.assignedTo(CapabilityElement)
 	)
 
 }

@@ -10,9 +10,10 @@ case class DataObject(
 	with DataObjectElement {
 
 	case class DataObjectRelationships(
-		override private[archimate] implicit val tt: DataObject = DataObject.this
+		override private[semod] implicit val tt: DataObject = DataObject.this
 	) extends DataObjectElementRelationships[DataObject]
 
 	val rel: DataObjectRelationships = DataObjectRelationships()
 
+	_registerPrefix("ADO")
 }

@@ -10,9 +10,10 @@ case class Stakeholder(
 	with StakeholderElement {
 
 	case class StakeholderRelationships(
-		override private[archimate] implicit val tt: Stakeholder = Stakeholder.this
+		override private[semod] implicit val tt: Stakeholder = Stakeholder.this
 	) extends StakeholderElementRelationships[Stakeholder]
 
 	val rel: StakeholderRelationships = StakeholderRelationships()
 
+	_registerPrefix("MS")
 }

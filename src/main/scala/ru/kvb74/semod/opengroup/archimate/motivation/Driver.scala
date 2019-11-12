@@ -10,9 +10,10 @@ case class Driver(
 	with DriverElement {
 
 	case class DriverRelationships(
-		override private[archimate] implicit val tt: Driver = Driver.this
+		override private[semod] implicit val tt: Driver = Driver.this
 	) extends DriverElementRelationships[Driver]
 
 	val rel: DriverRelationships = DriverRelationships()
 
+	_registerPrefix("MD")
 }

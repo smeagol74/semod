@@ -10,9 +10,10 @@ case class Gap(
 	with GapElement {
 
 	case class GapRelationships(
-		override private[archimate] implicit val tt: Gap = Gap.this
+		override private[semod] implicit val tt: Gap = Gap.this
 	) extends GapElementRelationships[Gap]
 
 	val rel: GapRelationships = GapRelationships()
 
+	_registerPrefix("IG")
 }

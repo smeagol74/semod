@@ -10,9 +10,10 @@ case class DistributionNetwork(
 	with DistributionNetworkElement {
 
 	case class DistributionNetworkRelationships(
-		private[archimate] implicit val tt: DistributionNetwork = DistributionNetwork.this
+		override private[semod] implicit val tt: DistributionNetwork = DistributionNetwork.this
 	) extends DistributionNetworkElementRelationships[DistributionNetwork]
 
 	val rel: DistributionNetworkRelationships = DistributionNetworkRelationships()
 
+	_registerPrefix("PDN")
 }

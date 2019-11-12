@@ -1,0 +1,38 @@
+@startuml Ex_18_StakeholderDriverAndAssessment
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap06.html#_Toc489946015]]
+
+title Example 18. Stakeholder, Driver and Assessment (Motivation)
+
+Motivation_Assessment(MA_2, "Revenue is\nDeclining\n(assessment)")
+Motivation_Assessment(MA_3, "Profitability is\nDeclining\n(assessment)")
+Motivation_Assessment(MA_4, "Cost Of\nAcquiring New\nCustomers Is\nIncreasing\n(assessment)")
+Motivation_Assessment(MA_5, "Competitors Are Including\nAdvanced Features In\nTheir Service Models\n(assessment)")
+Motivation_Assessment(MA_6, "Discounts Provided\nTo Remain\nCompetitive\n(assessment)")
+Motivation_Driver(MD_2, "Revenue\n(driver)")
+Motivation_Driver(MD_3, "Profitability\n(driver)")
+Motivation_Driver(MD_4, "Costs\n(driver)")
+Motivation_Stakeholder(MS_2, "Chief Executive\nOfficer (CEO)\n(stakeholder)")
+Motivation_Stakeholder(MS_3, "Chief Financial\nOfficer (CFO)\n(stakeholder)")
+Motivation_Assessment(Motivation_Assessment_1, "Market Share is\nDeclining\n(assessment)")
+Motivation_Driver(Motivation_Driver_1, "Market Share\n(driver)")
+Motivation_Stakeholder(Motivation_Stakeholder_1, "Chief Marketing\nOfficer (CMO)\n(stakeholder)")
+Rel_Association(Motivation_Stakeholder_1, Motivation_Driver_1, "associated with")
+Rel_Association(MS_2, Motivation_Driver_1, "associated with")
+Rel_Association(MS_2, MD_3, "associated with")
+Rel_Association(MS_3, MD_3, "associated with")
+Rel_Association(MD_3, MA_3, "associated with")
+Rel_Association(Motivation_Driver_1, Motivation_Assessment_1, "associated with")
+Rel_Association(MD_2, MA_2, "associated with")
+Rel_Association(MD_4, MA_4, "associated with")
+Rel_Composition_Down(MD_3, MD_2, "composed of")
+Rel_Composition_Down(MD_3, MD_4, "composed of")
+Rel_Influence(Motivation_Assessment_1, MA_2, "+\n(influences)")
+Rel_Influence(MA_2, MA_3, "+\n(influences)")
+Rel_Influence(MA_4, MA_3, "+\n(influences)")
+Rel_Influence(MA_5, Motivation_Assessment_1, "+\n(influences)")
+Rel_Influence(MA_5, MA_6, "+\n(influences)")
+Rel_Influence(MA_6, Motivation_Assessment_1, "-\n(influences)")
+Rel_Influence(MA_6, MA_2, "+\n(influences)")
+@enduml

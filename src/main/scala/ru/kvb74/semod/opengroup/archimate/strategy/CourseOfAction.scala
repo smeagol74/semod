@@ -10,9 +10,10 @@ case class CourseOfAction(
 	with CourseOfActionElement {
 
 	case class CourseOfActionRelationships(
-		override private[archimate] implicit val tt: CourseOfAction = CourseOfAction.this
+		override private[semod] implicit val tt: CourseOfAction = CourseOfAction.this
 	) extends CourseOfActionElementRelationships[CourseOfAction]
 
 	val rel: CourseOfActionRelationships = CourseOfActionRelationships()
 
+	_registerPrefix("SCOA")
 }

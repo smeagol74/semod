@@ -10,9 +10,10 @@ case class Outcome(
 	with OutcomeElement {
 
 	case class OutcomeRelationships(
-		override private[archimate] implicit val tt: Outcome = Outcome.this
+		override private[semod] implicit val tt: Outcome = Outcome.this
 	) extends OutcomeElementRelationships[Outcome]
 
 	val rel: OutcomeRelationships = OutcomeRelationships()
 
+	_registerPrefix("MO")
 }

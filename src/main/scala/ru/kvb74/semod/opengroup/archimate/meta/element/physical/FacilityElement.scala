@@ -1,10 +1,11 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.physical
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.{MissedInSpec, Origin}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.BusinessActorElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.NodeElement
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 trait FacilityElement
 	extends ActiveStructureElement
@@ -32,9 +33,9 @@ trait FacilityElementRelationships[T <: FacilityElement]
 	//	def associatedWith(dst: DistributionNetworkElement): T = tt._rel.associatedWith(dst)
 
 	_register(FacilityElement,
-		JR.assignedTo(NodeElement),
-		JR.assignedTo(BusinessActorElement),
-		JR.accesses(MaterialElement)
+		RR.assignedTo(NodeElement),
+		RR.assignedTo(BusinessActorElement),
+		RR.accesses(MaterialElement)
 		//		JR.associatedWith(DistributionNetworkElement),
 	)
 }

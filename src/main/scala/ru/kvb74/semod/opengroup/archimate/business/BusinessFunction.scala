@@ -10,9 +10,10 @@ case class BusinessFunction(
 	with BusinessFunctionElement {
 
 	case class BusinessFunctionRelationships(
-		override private[archimate] implicit val tt: BusinessFunction = BusinessFunction.this
+		override private[semod] implicit val tt: BusinessFunction = BusinessFunction.this
 	) extends BusinessFunctionElementRelationships[BusinessFunction]
 
 	val rel: BusinessFunctionRelationships = BusinessFunctionRelationships()
 
+	_registerPrefix("BF")
 }

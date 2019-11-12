@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait NodeElement
@@ -30,13 +31,13 @@ trait NodeElementRelationships[T <: NodeElement]
 	//	def associatedWith(dst: PathElement): T = tt._rel.associatedWith(dst)
 
 	_register(NodeElement,
-		JR.realizes(NodeElement),
-		JR.composedOf(TechnologyInterfaceElement),
-		JR.composedOf(NodeElement),
-		JR.aggregates(NodeElement),
-		JR.assignedTo(TechnologyInternalBehaviorElement),
-		JR.assignedTo(TechnologyEventElement),
-		JR.assignedTo(ArtifactElement),
+		RR.realizes(NodeElement),
+		RR.composedOf(TechnologyInterfaceElement),
+		RR.composedOf(NodeElement),
+		RR.aggregates(NodeElement),
+		RR.assignedTo(TechnologyInternalBehaviorElement),
+		RR.assignedTo(TechnologyEventElement),
+		RR.assignedTo(ArtifactElement),
 		//		JR.associatedWith(PathElement),
 	)
 }

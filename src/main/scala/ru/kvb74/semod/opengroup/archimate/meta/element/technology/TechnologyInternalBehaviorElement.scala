@@ -1,18 +1,19 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.ApplicationInternalBehaviorElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.BusinessInternalBehaviorElement
-import ru.kvb74.semod.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
 
 trait TechnologyInternalBehaviorElement
-	extends Element
+	extends ArchimateElement
 
 case object TechnologyInternalBehaviorElement
 	extends ElementName
 
 trait TechnologyInternalBehaviorElementRelationships[T <: TechnologyInternalBehaviorElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	def realizes(dst: TechnologyServiceElement): T = tt._rel.realizes(dst)
 
@@ -35,15 +36,15 @@ trait TechnologyInternalBehaviorElementRelationships[T <: TechnologyInternalBeha
 	def realizes(dst: ApplicationInternalBehaviorElement): T = tt._rel.realizes(dst)
 
 	_register(TechnologyInternalBehaviorElement,
-		JR.realizes(TechnologyServiceElement),
-		JR.aggregates(TechnologyInternalBehaviorElement),
-		JR.composedOf(TechnologyInternalBehaviorElement),
-		JR.accesses(TechnologyObjectElement),
-		JR.triggers(TechnologyInternalBehaviorElement),
-		JR.flowsTo(TechnologyInternalBehaviorElement),
-		JR.triggers(TechnologyEventElement),
-		JR.flowsTo(TechnologyEventElement),
-		JR.realizes(BusinessInternalBehaviorElement),
-		JR.realizes(ApplicationInternalBehaviorElement),
+		RR.realizes(TechnologyServiceElement),
+		RR.aggregates(TechnologyInternalBehaviorElement),
+		RR.composedOf(TechnologyInternalBehaviorElement),
+		RR.accesses(TechnologyObjectElement),
+		RR.triggers(TechnologyInternalBehaviorElement),
+		RR.flowsTo(TechnologyInternalBehaviorElement),
+		RR.triggers(TechnologyEventElement),
+		RR.flowsTo(TechnologyEventElement),
+		RR.realizes(BusinessInternalBehaviorElement),
+		RR.realizes(ApplicationInternalBehaviorElement),
 	)
 }

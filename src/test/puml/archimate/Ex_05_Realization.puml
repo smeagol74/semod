@@ -1,0 +1,15 @@
+@startuml Ex_05_Realization
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap05.html#_Toc489945993]]
+
+title Example 5. Realization (Relationships)
+
+Business_Function(BF_6, "Transaction Processing\n(business function)")
+Business_Object(BO_5, "Billing Data\n(business object)")
+Business_Service(BS_3, "Billing Service\n(business service)")
+Business_Representation(Business_Representation_1, "Paper Invoice\n(representation)")
+Rel_Access_w(BS_3, BO_5, "writes")
+Rel_Realization_Up(BF_6, BS_3, "realizes")
+Rel_Realization_Up(Business_Representation_1, BO_5, "realizes")
+@enduml

@@ -1,0 +1,35 @@
+@startuml Ex_32_PhysicalElements
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap11.html#_Toc489946113]]
+
+title Example 32. Physical Elements (Physical)
+
+Junction_And(JA_6, "(and)")
+Physical_DistributionNetwork(PDN_2, "Overseas Shipping\n(distribution network)")
+Physical_Facility(PF_2, "National Distrubution Center\n(facility)")
+Physical_Facility(PF_3, "Manufacturing Plant\n(facility)")
+Physical_Material(PM_2, "Internal Antenna\n(material)")
+Physical_Material(PM_3, "Plastic Case\n(material)")
+Physical_Material(PM_4, "Vehicle Telematics Appliance\n(material)")
+Physical_DistributionNetwork(Physical_DistributionNetwork_1, "Local Tracking\n(distribution network)")
+Physical_Equipment(Physical_Equipment_1, "Assembly Line\n(equipment)")
+Physical_Facility(Physical_Facility_1, "Local Distrubution Center\n(facility)")
+Physical_Material(Physical_Material_1, "Pre-Assembled Circuit Board\n(material)")
+Technology_Path(TPa_2, "Intermodal Freight\n(path)")
+Rel_Access_r(Physical_Facility_1, PM_4, "reads")
+Rel_Access_r(PF_2, PM_4, "reads")
+Rel_Access_w(PF_3, PM_4, "writes")
+Rel_Access_r(Physical_Equipment_1, Physical_Material_1, "reads")
+Rel_Access_r(Physical_Equipment_1, PM_2, "reads")
+Rel_Access_r(Physical_Equipment_1, PM_3, "reads")
+Rel_Access_w(Physical_Equipment_1, PM_4, "writes")
+Rel_Association(Physical_DistributionNetwork_1, Physical_Facility_1, "associated with")
+Rel_Association(Physical_DistributionNetwork_1, PF_2, "associated with")
+Rel_Association(PDN_2, PF_2, "associated with")
+Rel_Association(PDN_2, PF_3, "associated with")
+Rel_Assignment(PF_3, Physical_Equipment_1, "assigned to")
+Rel_Realization_Up(Physical_DistributionNetwork_1, JA_6, "realizes")
+Rel_Realization_Up(PDN_2, JA_6, "realizes")
+Rel_Realization_Up(JA_6, TPa_2, "realizes")
+@enduml

@@ -1,20 +1,20 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.implementation
 
 import ru.kvb74.semod.Origin
+import ru.kvb74.semod.meta.{ElementName, RR}
+import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.ProductElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.composite.LocationElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.{GoalElement, RequirementElement}
-import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.motivation.Requirement
 
 trait PlateauElement
-	extends Element
+	extends ArchimateElement
 
 case object PlateauElement
 	extends ElementName
 
 trait PlateauElementRelationships[T <: PlateauElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	@Origin("http://pubs.opengroup.org/architecture/archimate3-doc/chap13.html#_Toc489946120")
 	def triggers(dst: PlateauElement): T = tt._rel.triggers(dst)
@@ -62,21 +62,21 @@ trait PlateauElementRelationships[T <: PlateauElement]
 	def composedOf(dst: RequirementElement): T = tt._rel.composedOf(dst)
 
 	_register(PlateauElement,
-		JR.triggers(PlateauElement),
-		JR.triggers(ImplementationEventElement),
-		JR.aggregates(StrategyCoreStructureBehaviorElement),
-		JR.composedOf(StrategyCoreStructureBehaviorElement),
-		JR.realizes(StrategyCoreStructureBehaviorElement),
-		JR.aggregates(ProductElement),
-		JR.aggregates(LocationElement),
-		JR.composedOf(ProductElement),
-		JR.composedOf(LocationElement),
-		JR.realizes(ProductElement),
-		JR.realizes(LocationElement),
-		JR.aggregates(GoalElement),
-		JR.aggregates(RequirementElement),
-		JR.composedOf(GoalElement),
-		JR.composedOf(RequirementElement),
+		RR.triggers(PlateauElement),
+		RR.triggers(ImplementationEventElement),
+		RR.aggregates(StrategyCoreStructureBehaviorElement),
+		RR.composedOf(StrategyCoreStructureBehaviorElement),
+		RR.realizes(StrategyCoreStructureBehaviorElement),
+		RR.aggregates(ProductElement),
+		RR.aggregates(LocationElement),
+		RR.composedOf(ProductElement),
+		RR.composedOf(LocationElement),
+		RR.realizes(ProductElement),
+		RR.realizes(LocationElement),
+		RR.aggregates(GoalElement),
+		RR.aggregates(RequirementElement),
+		RR.composedOf(GoalElement),
+		RR.composedOf(RequirementElement),
 	)
 
 }

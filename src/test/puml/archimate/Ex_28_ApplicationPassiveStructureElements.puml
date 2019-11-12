@@ -1,0 +1,19 @@
+@startuml Ex_28_ApplicationPassiveStructureElements
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946079]]
+
+title Example 28. Application Passive Structure Elements (Application)
+
+Application_DataObject(ADO_10, "Travel Insurance\nQuotation\n(data object)")
+Application_DataObject(ADO_5, "Online Insurance\nQuotation\n(data object)")
+Application_DataObject(ADO_6, "Quoted\nPrice\n(data object)")
+Application_DataObject(ADO_7, "Terms and\nConditions\n(data object)")
+Application_DataObject(ADO_8, "Certificate of\nAuthenticity\n(data object)")
+Application_DataObject(ADO_9, "Auth Insurance\nQuotation\n(data object)")
+Rel_Composition_Down(ADO_5, ADO_6, "composed of")
+Rel_Composition_Down(ADO_5, ADO_7, "composed of")
+Rel_Composition_Down(ADO_5, ADO_8, "composed of")
+Rel_Specialization_Up(ADO_10, ADO_5, "is specialization of")
+Rel_Specialization_Up(ADO_9, ADO_5, "is specialization of")
+@enduml

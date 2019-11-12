@@ -10,9 +10,10 @@ case class BusinessCollaboration(
 	with BusinessCollaborationElement {
 
 	case class BusinessCollaborationRelationships(
-		override private[archimate] implicit val tt: BusinessCollaboration = BusinessCollaboration.this
+		override private[semod] implicit val tt: BusinessCollaboration = BusinessCollaboration.this
 	) extends BusinessCollaborationElementRelationships[BusinessCollaboration]
 
 	val rel: BusinessCollaborationRelationships = BusinessCollaborationRelationships()
 
+	_registerPrefix("BC")
 }

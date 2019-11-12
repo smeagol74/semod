@@ -1,8 +1,8 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.strategy
 
+import ru.kvb74.semod.meta.{ElementName, RR, Junction}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.OutcomeElement
-import ru.kvb74.semod.opengroup.archimate.meta.relationship.Junction
 
 trait CourseOfActionElement
 	extends BehaviorElement
@@ -25,10 +25,10 @@ trait CourseOfActionElementRelationships[T <: CourseOfActionElement]
 	def influences(dst: OutcomeElement, label: String = ""): T = tt._rel.influences(dst, label)
 
 	_register(CourseOfActionElement,
-		JR.serves(CourseOfActionElement),
-		JR.triggers(CourseOfActionElement),
-		JR.flowsTo(CourseOfActionElement),
-		JR.realizes(OutcomeElement),
-		JR.influences(OutcomeElement),
+		RR.serves(CourseOfActionElement),
+		RR.triggers(CourseOfActionElement),
+		RR.flowsTo(CourseOfActionElement),
+		RR.realizes(OutcomeElement),
+		RR.influences(OutcomeElement),
 	)
 }

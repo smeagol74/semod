@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.ApplicationComponentElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.NodeElement
@@ -23,10 +24,10 @@ trait BusinessInterfaceElementRelationships[T <: BusinessInterfaceElement]
 	def serves(dst: NodeElement): T = tt._rel.serves(dst)
 
 	_register(BusinessInterfaceElement,
-		JR.serves(BusinessInternalActiveStructureElement),
-		JR.assignedTo(BusinessServiceElement),
-		JR.serves(ApplicationComponentElement),
-		JR.serves(NodeElement),
+		RR.serves(BusinessInternalActiveStructureElement),
+		RR.assignedTo(BusinessServiceElement),
+		RR.serves(ApplicationComponentElement),
+		RR.serves(NodeElement),
 	)
 
 }

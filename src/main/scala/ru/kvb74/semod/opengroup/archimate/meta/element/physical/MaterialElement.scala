@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.physical
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{TechnologyObjectElement, TechnologyObjectElementRelationships}
 
@@ -24,7 +25,7 @@ trait MaterialElementRelationships[T <: MaterialElement]
 	//	def associatedWith(dst: DistributionNetworkElement): T = tt._rel.associatedWith(dst)
 
 	_register(MaterialElement,
-		JR.specializationOf(TechnologyObjectElement),
+		RR.specializationOf(TechnologyObjectElement),
 		//		JR.associatedWith(DistributionNetworkElement)
 	)
 }

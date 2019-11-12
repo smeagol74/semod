@@ -1,17 +1,18 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.implementation
 
 import ru.kvb74.semod.Origin
-import ru.kvb74.semod.opengroup.archimate.meta.element.{Element, ElementName, ElementRelationships, JR}
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
 
 trait ImplementationEventElement
-	extends Element
+	extends ArchimateElement
 
 case object ImplementationEventElement
 	extends ElementName
 
 trait ImplementationEventElementRelationships[T <: ImplementationEventElement]
-	extends ElementRelationships[T] {
+	extends ArchimateElementRelationships[T] {
 
 	@Origin("http://pubs.opengroup.org/architecture/archimate3-doc/chap13.html#_Toc489946120")
 	def triggers(dst: WorkPackageElement): T = tt._rel.triggers(dst)
@@ -32,12 +33,12 @@ trait ImplementationEventElementRelationships[T <: ImplementationEventElement]
 	def flowsTo(dst: ImplementationEventElement, label: String): T = tt._rel.flowsTo(dst, label)
 
 	_register(ImplementationEventElement,
-		JR.triggers(WorkPackageElement),
-		JR.flowsTo(WorkPackageElement),
-		JR.accesses(DeliverableElement),
-		JR.triggers(PlateauElement),
-		JR.triggers(ImplementationEventElement),
-		JR.flowsTo(ImplementationEventElement),
+		RR.triggers(WorkPackageElement),
+		RR.flowsTo(WorkPackageElement),
+		RR.accesses(DeliverableElement),
+		RR.triggers(PlateauElement),
+		RR.triggers(ImplementationEventElement),
+		RR.flowsTo(ImplementationEventElement),
 	)
 
 }

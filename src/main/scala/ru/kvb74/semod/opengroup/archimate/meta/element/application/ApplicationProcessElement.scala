@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.application
 
+import ru.kvb74.semod.meta.ElementName
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait ApplicationProcessElement

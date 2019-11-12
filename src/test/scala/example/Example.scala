@@ -1,19 +1,19 @@
 package example
 
-import ru.kvb74.semod.opengroup.archimate.Report
-import ru.kvb74.semod.opengroup.archimate.meta.element.Element
+import ru.kvb74.semod.Report
+import ru.kvb74.semod.meta.Element
 import ru.kvb74.semod.plantuml.PlantUml
 
 trait Example {
 
-	def render(options: PlantUml.Options, elements: Element*): Unit = {
+	def render(prefix: String, options: PlantUml.Options, elements: Element*): Unit = {
 		val report = Report.withDependencies(elements: _*)
 
 		val name = options.name.getOrElse(this.asInstanceOf[Product].productPrefix)
 
 		PlantUml.render(
 			PlantUml.opt
-				.file(s"./src/test/puml/$name.svg")
+				.file(s"./src/test/puml/$prefix/$name.svg")
 				.name(name)
 				.title(options.title)
 				.header(options.header)
@@ -25,7 +25,7 @@ trait Example {
 
 		PlantUml.render(
 			PlantUml.opt
-				.file(s"./src/test/puml/$name.puml")
+				.file(s"./src/test/puml/$prefix/$name.puml")
 				.name(name)
 				.title(options.title)
 				.header(options.header)

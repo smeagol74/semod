@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait CommunicationNetworkElement
@@ -25,11 +26,11 @@ trait CommunicationNetworkElementRelationships[T <: CommunicationNetworkElement]
 	def aggregates(dst: SystemSoftwareElement): T = tt._rel.aggregates(dst)
 
 	_register(CommunicationNetworkElement,
-		JR.realizes(PathElement),
+		RR.realizes(PathElement),
 		//		JR.associatedWith(DeviceElement),
-		JR.aggregates(DeviceElement),
+		RR.aggregates(DeviceElement),
 		//		JR.associatedWith(SystemSoftwareElement),
-		JR.aggregates(SystemSoftwareElement),
+		RR.aggregates(SystemSoftwareElement),
 	)
 }
 

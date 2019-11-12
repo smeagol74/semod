@@ -10,9 +10,10 @@ case class Artifact(
 	with ArtifactElement {
 
 	case class ArtifactRelationships(
-		override private[archimate] implicit val tt: Artifact = Artifact.this
+		override private[semod] implicit val tt: Artifact = Artifact.this
 	) extends ArtifactElementRelationships[Artifact]
 
 	val rel: ArtifactRelationships = ArtifactRelationships()
 
+	_registerPrefix("TA")
 }

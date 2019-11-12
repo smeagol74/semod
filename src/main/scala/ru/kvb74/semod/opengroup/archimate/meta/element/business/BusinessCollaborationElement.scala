@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait BusinessCollaborationElement
@@ -17,7 +18,7 @@ trait BusinessCollaborationElementRelationships[T <: BusinessCollaborationElemen
 	def aggregates(dst: BusinessInternalActiveStructureElement): T = tt._rel.aggregates(dst)
 
 	_register(BusinessCollaborationElement,
-		JR.aggregates(BusinessInternalActiveStructureElement)
+		RR.aggregates(BusinessInternalActiveStructureElement)
 	)
 
 }

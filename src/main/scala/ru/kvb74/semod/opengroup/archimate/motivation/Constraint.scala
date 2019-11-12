@@ -10,9 +10,10 @@ case class Constraint(
 	with ConstraintElement {
 
 	case class ConstraintRelationships(
-		override private[archimate] implicit val tt: Constraint = Constraint.this
+		override private[semod] implicit val tt: Constraint = Constraint.this
 	) extends ConstraintElementRelationships[Constraint]
 
 	val rel: ConstraintRelationships = ConstraintRelationships()
 
+	_registerPrefix("MC")
 }

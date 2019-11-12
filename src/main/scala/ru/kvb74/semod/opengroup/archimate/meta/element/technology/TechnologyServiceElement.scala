@@ -1,9 +1,10 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.relationship.dependency.AccessMode
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.{ApplicationComponentElement, ApplicationInternalBehaviorElement, ApplicationServiceElement}
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.{BusinessInternalActiveStructureElement, BusinessInternalBehaviorElement, BusinessServiceElement}
-import ru.kvb74.semod.opengroup.archimate.relationship.dependency.AccessMode
 
 trait TechnologyServiceElement
 	extends BehaviorElement
@@ -50,22 +51,22 @@ trait TechnologyServiceElementRelationships[T <: TechnologyServiceElement]
 	def realizes(dst: ApplicationServiceElement): T = tt._rel.realizes(dst)
 
 	_register(TechnologyServiceElement,
-		JR.triggers(TechnologyServiceElement),
-		JR.flowsTo(TechnologyServiceElement),
-		JR.triggers(TechnologyEventElement),
-		JR.flowsTo(TechnologyEventElement),
-		JR.accesses(TechnologyObjectElement),
-		JR.accesses(ArtifactElement),
-		JR.serves(TechnologyInternalBehaviorElement),
-		JR.serves(NodeElement),
-		JR.serves(SystemSoftwareElement),
-		JR.serves(DeviceElement),
-		JR.serves(TechnologyCollaborationElement),
-		JR.serves(ApplicationInternalBehaviorElement),
-		JR.serves(ApplicationComponentElement),
-		JR.serves(BusinessInternalBehaviorElement),
-		JR.serves(BusinessInternalActiveStructureElement),
-		JR.realizes(BusinessServiceElement),
-		JR.realizes(ApplicationServiceElement),
+		RR.triggers(TechnologyServiceElement),
+		RR.flowsTo(TechnologyServiceElement),
+		RR.triggers(TechnologyEventElement),
+		RR.flowsTo(TechnologyEventElement),
+		RR.accesses(TechnologyObjectElement),
+		RR.accesses(ArtifactElement),
+		RR.serves(TechnologyInternalBehaviorElement),
+		RR.serves(NodeElement),
+		RR.serves(SystemSoftwareElement),
+		RR.serves(DeviceElement),
+		RR.serves(TechnologyCollaborationElement),
+		RR.serves(ApplicationInternalBehaviorElement),
+		RR.serves(ApplicationComponentElement),
+		RR.serves(BusinessInternalBehaviorElement),
+		RR.serves(BusinessInternalActiveStructureElement),
+		RR.realizes(BusinessServiceElement),
+		RR.realizes(ApplicationServiceElement),
 	)
 }

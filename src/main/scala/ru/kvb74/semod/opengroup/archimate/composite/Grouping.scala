@@ -10,9 +10,10 @@ case class Grouping(
 	with GroupingElement {
 
 	case class GroupingRelationships(
-		private[archimate] implicit val tt: Grouping = Grouping.this
+		override private[semod] implicit val tt: Grouping = Grouping.this
 	) extends GroupingElementRelationships[Grouping]
 
 	val rel: GroupingRelationships = GroupingRelationships()
 
+	_registerPrefix("CG")
 }

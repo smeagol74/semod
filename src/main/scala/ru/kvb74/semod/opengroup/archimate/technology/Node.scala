@@ -10,9 +10,11 @@ case class Node(
 	with NodeElement {
 
 	case class NodeRelationships(
-		override private[archimate] implicit val tt: Node = Node.this
+		override private[semod] implicit val tt: Node = Node.this
 	) extends NodeElementRelationships[Node]
 
 	val rel: NodeRelationships = NodeRelationships()
+
+	_registerPrefix("TN")
 
 }

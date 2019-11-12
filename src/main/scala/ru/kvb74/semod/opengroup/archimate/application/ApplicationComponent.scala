@@ -10,9 +10,10 @@ case class ApplicationComponent(
 	with ApplicationComponentElement {
 
 	case class ApplicationComponentRelationships(
-		private[archimate] implicit val tt: ApplicationComponent = ApplicationComponent.this
+		override private[semod] implicit val tt: ApplicationComponent = ApplicationComponent.this
 	) extends ApplicationComponentElementRelationships[ApplicationComponent]
 
 	val rel: ApplicationComponentRelationships = ApplicationComponentRelationships()
 
+	_registerPrefix("ACmp")
 }

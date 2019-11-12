@@ -10,9 +10,10 @@ case class Material(
 	with MaterialElement {
 
 	case class MaterialRelationships(
-		override private[archimate] implicit val tt: Material = Material.this
+		override private[semod] implicit val tt: Material = Material.this
 	) extends MaterialElementRelationships[Material]
 
 	val rel: MaterialRelationships = MaterialRelationships()
 
+	_registerPrefix("PM")
 }

@@ -10,9 +10,10 @@ case class Plateau(
 	with PlateauElement {
 
 	case class PlateauRelationships(
-		override private[archimate] implicit val tt: Plateau = Plateau.this
+		override private[semod] implicit val tt: Plateau = Plateau.this
 	) extends PlateauElementRelationships[Plateau]
 
 	val rel: PlateauRelationships = PlateauRelationships()
 
+	_registerPrefix("IP")
 }

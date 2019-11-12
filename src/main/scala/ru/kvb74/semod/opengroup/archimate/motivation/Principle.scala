@@ -10,9 +10,10 @@ case class Principle(
 	with PrincipleElement {
 
 	case class PrincipleRelationships(
-		override private[archimate] implicit val tt: Principle = Principle.this
+		override private[semod] implicit val tt: Principle = Principle.this
 	) extends PrincipleElementRelationships[Principle]
 
 	val rel: PrincipleRelationships = PrincipleRelationships()
 
+	_registerPrefix("MP")
 }

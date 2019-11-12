@@ -10,9 +10,10 @@ case class Representation(
 	with RepresentationElement {
 
 	case class RepresentationRelationships(
-		override private[archimate] implicit val tt: Representation = Representation.this
+		override private[semod] implicit val tt: Representation = Representation.this
 	) extends RepresentationElementRelationships[Representation]
 
 	val rel: RepresentationRelationships = RepresentationRelationships()
 
+	_registerPrefix("BRep")
 }

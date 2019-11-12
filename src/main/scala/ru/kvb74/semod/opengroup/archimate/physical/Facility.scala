@@ -28,9 +28,10 @@ case class Facility(
 	with FacilityElement {
 
 	case class FacilityRelationships(
-		private[archimate] implicit val tt: Facility = Facility.this
+		override private[semod] implicit val tt: Facility = Facility.this
 	) extends FacilityElementRelationships[Facility]
 
 	val rel: FacilityRelationships = FacilityRelationships()
 
+	_registerPrefix("PF")
 }

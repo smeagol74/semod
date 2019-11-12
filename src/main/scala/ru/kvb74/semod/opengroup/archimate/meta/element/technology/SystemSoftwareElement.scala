@@ -1,5 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.technology
 
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.{MissedInSpec, Origin}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
@@ -27,9 +28,9 @@ trait SystemSoftwareElementRelationships[T <: SystemSoftwareElement]
 	// def associatedWith(dst: CommunicationNetworkElement): T = tt._rel.associatedWith(dst)
 
 	_register(SystemSoftwareElement,
-		JR.specializationOf(NodeElement),
-		JR.assignedTo(SystemSoftwareElement),
-		JR.realizes(TechnologyServiceElement),
+		RR.specializationOf(NodeElement),
+		RR.assignedTo(SystemSoftwareElement),
+		RR.realizes(TechnologyServiceElement),
 		//		JR.associatedWith(CommunicationNetworkElement),
 	)
 }

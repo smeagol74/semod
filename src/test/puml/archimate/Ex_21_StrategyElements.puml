@@ -1,0 +1,37 @@
+@startuml Ex_21_StrategyElements
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+footer [[http://pubs.opengroup.org/architecture/archimate3-doc/chap07.html#_Toc489946036]]
+
+title Example 21. Strategy Elements
+
+Motivation_Goal(MG_4, "Decrease Costs\n(goal)")
+Motivation_Goal(MG_5, "Increase Revenue\n(goal)")
+Motivation_Goal(MG_6, "Increase Profit\n(goal)")
+Motivation_Outcome(MO_5, "Decreased\nCosts\n(outcome)")
+Motivation_Outcome(MO_6, "Loss of\nCustomers\n(outcome)")
+Other_Location(OL_3, "Headquarters\n(location)")
+Strategy_CourseOfAction(SCOA_2, "Standartize\nProducts\n(course of action)")
+Strategy_CourseOfAction(SCOA_3, "Operational\nExcellence\n(course of action)")
+Strategy_Capability(SC_2, "Product\nManagement\n(capability)")
+Strategy_Resource(SR_2, "IT\nResources\n(resource)")
+Strategy_Capability(Strategy_Capability_1, "IT\nManagement &\nOperations\n(capability)")
+Strategy_CourseOfAction(Strategy_CourseOfAction_1, "Centralize IT\nSystems\n(course of action)")
+Strategy_Resource(Strategy_Resource_1, "Human\nResources\n(resource)")
+Rel_Aggregation_Down(SCOA_3, Strategy_CourseOfAction_1, "aggregates")
+Rel_Aggregation_Down(SCOA_3, SCOA_2, "aggregates")
+Rel_Aggregation_Down(OL_3, Strategy_Resource_1, "aggregates")
+Rel_Aggregation_Down(OL_3, SR_2, "aggregates")
+Rel_Aggregation_Down(MG_6, MG_4, "aggregates")
+Rel_Aggregation_Down(MG_6, MG_5, "aggregates")
+Rel_Association(SCOA_3, MG_4, "associated with")
+Rel_Assignment(Strategy_Resource_1, Strategy_Capability_1, "assigned to")
+Rel_Assignment(SR_2, Strategy_Capability_1, "assigned to")
+Rel_Influence(MO_5, MG_4, "+\n(influences)")
+Rel_Influence(MO_6, MG_5, "-\n(influences)")
+Rel_Influence(Strategy_CourseOfAction_1, MO_5, "+\n(influences)")
+Rel_Influence(SCOA_2, MO_5, "+\n(influences)")
+Rel_Influence(SCOA_2, MO_6, "+\n(influences)")
+Rel_Realization_Up(Strategy_Capability_1, Strategy_CourseOfAction_1, "realizes")
+Rel_Realization_Up(SC_2, SCOA_2, "realizes")
+@enduml

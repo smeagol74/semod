@@ -10,9 +10,10 @@ case class ApplicationService(
 	with ApplicationServiceElement {
 
 	case class ApplicationServiceRelationships(
-		private[archimate] implicit val tt: ApplicationService = ApplicationService.this
+		override private[semod] implicit val tt: ApplicationService = ApplicationService.this
 	) extends ApplicationServiceElementRelationships[ApplicationService]
 
 	val rel: ApplicationServiceRelationships = ApplicationServiceRelationships()
 
+	_registerPrefix("AS")
 }
