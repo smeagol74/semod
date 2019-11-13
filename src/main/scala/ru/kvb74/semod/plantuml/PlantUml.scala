@@ -20,7 +20,7 @@ import scala.reflect.io.{File, Path}
 
 object PlantUml {
 
-	private val b = Resource.bundle("opengroup")
+	private val b = Resource.bundle
 
 	private def _res(bundle: ResourceBundle, key: String): String = {
 		if (bundle.containsKey(key))
