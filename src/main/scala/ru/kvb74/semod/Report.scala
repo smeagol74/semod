@@ -30,7 +30,7 @@ object Report {
 
 	def withDependencies(elements: Set[Element]): Report = {
 		val deps = _getAllDependencies(elements)
-	ª	val rels = mutable.Set.empty[Relationship]
+		val rels = mutable.Set.empty[Relationship]
 		deps.foreach(el => {
 			rels ++= el._relationships
 		})
