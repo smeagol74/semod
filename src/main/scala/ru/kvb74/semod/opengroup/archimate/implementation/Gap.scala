@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.implementation
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.implementation.{GapElement, GapElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Implementation
+import ru.kvb74.semod.opengroup.archimate.meta.layer.ImplementationLayer
 
 case class Gap(
 	name: String,
 	desc: String = ""
-) extends Implementation
+) extends ImplementationLayer
 	with GapElement {
 
 	case class GapRelationships(

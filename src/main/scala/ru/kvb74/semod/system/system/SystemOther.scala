@@ -1,13 +1,13 @@
 package ru.kvb74.semod.system.system
 
 import ru.kvb74.semod.system.meta.element.{SystemOtherElement, SystemOtherElementRelationships}
-import ru.kvb74.semod.system.meta.layer.System
+import ru.kvb74.semod.system.meta.layer.SystemLayer
 
 
 case class SystemOther(
                       name: String,
                       desc: String = ""
-                    ) extends System
+                    ) extends SystemLayer
   with SystemOtherElement {
 
   case class SystemOtherRelationships(

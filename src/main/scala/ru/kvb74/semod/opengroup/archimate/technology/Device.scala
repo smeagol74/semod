@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.technology
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{DeviceElement, DeviceElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Technology
+import ru.kvb74.semod.opengroup.archimate.meta.layer.TechnologyLayer
 
 case class Device(
 	name: String,
 	desc: String = ""
-) extends Technology
+) extends TechnologyLayer
 	with DeviceElement {
 
 	case class DeviceRelationships(

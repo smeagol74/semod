@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.motivation
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.{AssessmentElement, AssessmentElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Motivation
+import ru.kvb74.semod.opengroup.archimate.meta.layer.MotivationLayer
 
 case class Assessment(
 	name: String,
 	desc: String = ""
-) extends Motivation
+) extends MotivationLayer
 	with AssessmentElement {
 
 	case class AssessmentRelationships(

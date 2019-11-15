@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.motivation
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.{RequirementElement, RequirementElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Motivation
+import ru.kvb74.semod.opengroup.archimate.meta.layer.MotivationLayer
 
 case class Requirement(
 	name: String,
 	desc: String = ""
-) extends Motivation
+) extends MotivationLayer
 	with RequirementElement {
 
 	case class RequirementRelationships(

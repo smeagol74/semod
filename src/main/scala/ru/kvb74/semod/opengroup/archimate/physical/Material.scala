@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.physical
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.physical.{MaterialElement, MaterialElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Physical
+import ru.kvb74.semod.opengroup.archimate.meta.layer.PhysicalLayer
 
 case class Material(
 	name: String,
 	desc: String = ""
-) extends Physical
+) extends PhysicalLayer
 	with MaterialElement {
 
 	case class MaterialRelationships(

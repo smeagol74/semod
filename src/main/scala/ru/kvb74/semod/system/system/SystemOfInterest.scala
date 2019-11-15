@@ -1,12 +1,12 @@
 package ru.kvb74.semod.system.system
 
 import ru.kvb74.semod.system.meta.element.{SystemOfInterestElement, SystemOfInterestElementRelationships}
-import ru.kvb74.semod.system.meta.layer.System
+import ru.kvb74.semod.system.meta.layer.SystemLayer
 
 case class SystemOfInterest(
                              name: String,
                              desc: String = ""
-                           ) extends System
+                           ) extends SystemLayer
   with SystemOfInterestElement {
 
   case class SystemOfInterestRelationships(

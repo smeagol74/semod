@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.motivation
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.{DriverElement, DriverElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Motivation
+import ru.kvb74.semod.opengroup.archimate.meta.layer.MotivationLayer
 
 case class Driver(
 	name: String,
 	desc: String = ""
-) extends Motivation
+) extends MotivationLayer
 	with DriverElement {
 
 	case class DriverRelationships(

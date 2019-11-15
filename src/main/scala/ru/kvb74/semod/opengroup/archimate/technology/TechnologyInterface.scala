@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.technology
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{TechnologyInterfaceElement, TechnologyInterfaceElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Technology
+import ru.kvb74.semod.opengroup.archimate.meta.layer.TechnologyLayer
 
 case class TechnologyInterface(
 	name: String,
 	desc: String = ""
-) extends Technology
+) extends TechnologyLayer
 	with TechnologyInterfaceElement {
 
 	case class TechnologyInterfaceRelationships(

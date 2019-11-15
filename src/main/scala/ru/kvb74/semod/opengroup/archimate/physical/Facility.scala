@@ -1,7 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.physical
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.physical.{FacilityElement, FacilityElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Physical
+import ru.kvb74.semod.opengroup.archimate.meta.layer.PhysicalLayer
 
 /**
 	* A facility represents a physical structure or environment.
@@ -24,7 +24,7 @@ import ru.kvb74.semod.opengroup.archimate.meta.layer.Physical
 case class Facility(
 	name: String,
 	desc: String = ""
-) extends Physical
+) extends PhysicalLayer
 	with FacilityElement {
 
 	case class FacilityRelationships(

@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.application
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.{ApplicationFunctionElement, ApplicationFunctionElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Application
+import ru.kvb74.semod.opengroup.archimate.meta.layer.ApplicationLayer
 
 case class ApplicationFunction(
 	name: String,
 	desc: String = ""
-) extends Application
+) extends ApplicationLayer
 	with ApplicationFunctionElement {
 
 	case class ApplicationFunctionRelationships(

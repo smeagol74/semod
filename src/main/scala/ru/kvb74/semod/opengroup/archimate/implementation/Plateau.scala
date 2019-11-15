@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.implementation
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.implementation.{PlateauElement, PlateauElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Implementation
+import ru.kvb74.semod.opengroup.archimate.meta.layer.ImplementationLayer
 
 case class Plateau(
 	name: String,
 	desc: String = ""
-) extends Implementation
+) extends ImplementationLayer
 	with PlateauElement {
 
 	case class PlateauRelationships(

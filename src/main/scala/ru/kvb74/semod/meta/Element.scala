@@ -1,5 +1,6 @@
 package ru.kvb74.semod.meta
 
+import ru.kvb74.semod.DB
 import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influence, Serving}
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
 import ru.kvb74.semod.meta.relationship.junction.JunctionElement
@@ -110,6 +111,8 @@ trait Element {
 			case Method.realizes => apply(Realization(Element.this, dst, dir))(Element.this.asInstanceOf[T])
 		}
 	}
+
+	DB.register(Element.this)
 
 }
 

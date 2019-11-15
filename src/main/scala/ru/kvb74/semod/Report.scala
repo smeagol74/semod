@@ -28,9 +28,9 @@ object Report {
 		relationships: Set[Relationship]
 	) extends Report
 
-	def withDependencies(elements: Element*): Report = {
-		val deps = _getAllDependencies(elements.toSet)
-		val rels = mutable.Set.empty[Relationship]
+	def withDependencies(elements: Set[Element]): Report = {
+		val deps = _getAllDependencies(elements)
+	ª	val rels = mutable.Set.empty[Relationship]
 		deps.foreach(el => {
 			rels ++= el._relationships
 		})
@@ -39,4 +39,9 @@ object Report {
 			rels.toSet
 		)
 	}
+
+	def withDependencies(elements: Element*): Report = {
+		withDependencies(elements.toSet)
+	}
+
 }

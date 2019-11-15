@@ -75,11 +75,11 @@ object PlantUml {
 		_res(bundle, puml)
 
 	private def _layerWeight(element: Element) = element match {
-		case _: Business => 1
-		case _: Application => 2
-		case _: Technology => 3
-		case _: Physical => 4
-		case _: Implementation => 5
+		case _: BusinessLayer => 1
+		case _: ApplicationLayer => 2
+		case _: TechnologyLayer => 3
+		case _: PhysicalLayer => 4
+		case _: ImplementationLayer => 5
 		case _ => 0
 	}
 

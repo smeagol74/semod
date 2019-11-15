@@ -1,12 +1,12 @@
 package ru.kvb74.semod.opengroup.archimate.business
 
 import ru.kvb74.semod.opengroup.archimate.meta.element.business.{BusinessFunctionElement, BusinessFunctionElementRelationships}
-import ru.kvb74.semod.opengroup.archimate.meta.layer.Business
+import ru.kvb74.semod.opengroup.archimate.meta.layer.BusinessLayer
 
 case class BusinessFunction(
 	name: String,
 	desc: String = ""
-) extends Business
+) extends BusinessLayer
 	with BusinessFunctionElement {
 
 	case class BusinessFunctionRelationships(
