@@ -1,7 +1,7 @@
 package example.system
 
 import ru.kvb74.semod.plantuml.PlantUml
-import ru.kvb74.semod.system.system.{Placeholder, SystemOfInterest, SystemOther, SystemOur, SystemRole}
+import ru.kvb74.semod.system.system.{Placeholder, SystemOfInterest, SystemOther, SystemOur, SystemRole, SystemSupport}
 
 case object Ex_Systems extends App with SystemExample {
 
@@ -11,6 +11,7 @@ case object Ex_Systems extends App with SystemExample {
   val role = SystemRole("Performer")
   val our = SystemOur("Our System")
   val concurrent = SystemOther("Concurrent System")
+  val support = SystemSupport("Our Business System")
 
   top
     .rel.composedOf(soi)
@@ -21,6 +22,8 @@ case object Ex_Systems extends App with SystemExample {
     .rel.realizes(placeholder)
   concurrent
     .rel.realizes(placeholder)
+  support
+      .rel.composedOf(our)
 
   render(
     PlantUml.opt

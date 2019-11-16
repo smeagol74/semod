@@ -11,12 +11,24 @@ case object SystemOfInterestElement
 trait SystemOfInterestElementRelationships[T <: SystemOfInterestElement]
   extends SystemElementRelationships[T] {
 
-  def composedOf(dst: SystemElement): T = tt._rel.composedOf(dst)
+  def composedOf(dst: PlaceholderElement): T = tt._rel.composedOf(dst)
+
+  def composedOf(dst: SystemOtherElement): T = tt._rel.composedOf(dst)
+
+  def composedOf(dst: SystemOurElement): T = tt._rel.composedOf(dst)
+
+  def composedOf(dst: SystemRoleElement): T = tt._rel.composedOf(dst)
+
+  def composedOf(dst: SystemSupportElement): T = tt._rel.composedOf(dst)
 
   def realizes(dst: PlaceholderElement): T = tt._rel.realizes(dst)
 
   _register(SystemOfInterestElement,
-    RR.composedOf(SystemElement),
+    RR.composedOf(PlaceholderElement),
+    RR.composedOf(SystemOtherElement),
+    RR.composedOf(SystemOurElement),
+    RR.composedOf(SystemRoleElement),
+    RR.composedOf(SystemSupportElement),
     RR.realizes(PlaceholderElement),
   )
 }
