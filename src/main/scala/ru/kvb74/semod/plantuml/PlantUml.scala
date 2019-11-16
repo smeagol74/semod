@@ -7,7 +7,7 @@ import java.util.ResourceBundle
 import net.sourceforge.plantuml.{FileFormat, FileFormatOption, SourceStringReader}
 import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influence}
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
-import ru.kvb74.semod.meta.relationship.other.Specialization
+import ru.kvb74.semod.meta.relationship.other.{Association, Specialization}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
 import ru.kvb74.semod.meta.{DirectionHint, Element, Layer, Relationship}
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
@@ -194,6 +194,13 @@ object PlantUml {
 		_renderRelationship(relationship, puml, s"${relationship.label.trim}$desc")
 	}
 
+	private def _renderAssociation(bundle: ResourceBundle, showHints: Boolean, relationship: Association): String = {
+		val puml = _relPuml(relationship)
+		val desc = _relHint(relationship.label.isBlank, bundle, showHints, relationship, puml)
+		val label = if (relationship.label.isBlank) desc else relationship.label
+		_renderRelationship(relationship, puml, label)
+	}
+
 
 	private def renderRelationship(bundle: ResourceBundle,
 		showHints: Boolean,
@@ -201,6 +208,7 @@ object PlantUml {
 		case rel: Influence => _renderInfluence(bundle, showHints, rel)
 		case rel: Access => _renderAccess(bundle, showHints, rel)
 		case rel: Flow => _renderFlow(bundle, showHints, rel)
+		case rel: Association => _renderAssociation(bundle, showHints, rel)
 		case _ => _renderGeneric(bundle, showHints, relationship)
 	}
 

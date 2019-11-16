@@ -14,8 +14,8 @@ case object Ex_12_Association extends App with ArchimateExample {
 		.rel.flowsTo(management, "Insurance Policy")
 	val policy = BusinessObject("Insurance Policy")
   	.rel.junction.associatedWith.and(creation, management)()
-		.rel.associatedWith(BusinessObject("Customer File"))
-		.rel.associatedWith(BusinessObject("Insured Object"))
+		.rel.associatedWith(BusinessObject("Customer File"), "uses >")
+		.rel.associatedWith(BusinessObject("Insured Object"), "uses >")
 
 	render(
 		PlantUml.opt
