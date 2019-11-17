@@ -44,4 +44,19 @@ object Report {
 		withDependencies(elements.toSet)
 	}
 
+	def forElements(elements: Set[Element]): Report = {
+		val rels = mutable.Set.empty[Relationship]
+		elements.foreach(el => {
+			rels ++= el._relationships.filter(rel => elements.contains(rel.dst))
+		})
+		ReportInstance(
+			elements,
+			rels.toSet
+		)
+	}
+
+	def forElements(elements: Element*): Report = {
+		forElements(elements.toSet)
+	}
+
 }

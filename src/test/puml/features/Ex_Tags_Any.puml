@@ -1,0 +1,32 @@
+@startuml Ex_Tags_Any
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+title Example. Features: Tags Any
+
+System_Other(SOther_10, "Subsystem 1.3.1\n(others system)")
+System_Other(SOther_12, "Main System\n(others system)")
+System_Other(SOther_13, "Subsystem 1.1\n(others system)")
+System_Other(SOther_14, "Subsystem 1.1.1\n(others system)")
+System_Other(SOther_16, "Subsystem 1.2\n(others system)")
+System_Other(SOther_17, "Subsystem 1.2.1\n(others system)")
+System_Other(SOther_19, "Subsystem 1.3.1\n(others system)")
+System_Other(SOther_3, "Main System\n(others system)")
+System_Other(SOther_4, "Subsystem 1.1\n(others system)")
+System_Other(SOther_5, "Subsystem 1.1.1\n(others system)")
+System_Other(SOther_7, "Subsystem 1.2\n(others system)")
+System_Other(SOther_8, "Subsystem 1.2.1\n(others system)")
+System_Our(SOur_2, "Subsystem 1.3\n(our system)")
+System_Our(SOur_3, "Subsystem 1.3\n(our system)")
+Rel_Composition_Down(SOther_4, SOther_5, "composed of")
+Rel_Composition_Down(SOther_3, SOther_4, "composed of")
+Rel_Composition_Down(SOther_7, SOther_8, "composed of")
+Rel_Composition_Down(SOther_3, SOther_7, "composed of")
+Rel_Composition_Down(SOur_2, SOther_10, "composed of")
+Rel_Composition_Down(SOther_3, SOur_2, "composed of")
+Rel_Composition_Down(SOther_13, SOther_14, "composed of")
+Rel_Composition_Down(SOther_12, SOther_13, "composed of")
+Rel_Composition_Down(SOther_16, SOther_17, "composed of")
+Rel_Composition_Down(SOther_12, SOther_16, "composed of")
+Rel_Composition_Down(SOur_3, SOther_19, "composed of")
+Rel_Composition_Down(SOther_12, SOur_3, "composed of")
+@enduml

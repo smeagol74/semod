@@ -6,9 +6,7 @@ import ru.kvb74.semod.plantuml.PlantUml
 
 trait Example {
 
-	def render(prefix: String, options: PlantUml.Options, elements: Element*): Unit = {
-		val report = Report.withDependencies(elements: _*)
-
+	def render(prefix: String, options: PlantUml.Options, report: Report): Unit = {
 		val name = options.name.getOrElse(this.asInstanceOf[Product].productPrefix)
 
 		PlantUml.render(

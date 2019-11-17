@@ -288,24 +288,10 @@ trait ElementProps[T <: Element] {
 		*
 		* Описание элемента. Для форматирования можно использовать markdown
 		*/
-	def desc: Option[String] = tt.props.asString(ElementProps.desc)
-
-	/**
-		* Element description. Markdown formatting could be used.
-		*
-		* Описание элемента. Для форматирования можно использовать markdown
-		*/
 	def desc(value: String): T = {
 		tt._props.getOrElseUpdate(ElementProps.desc, value)
 		tt
 	}
-
-	/**
-		* Link. In SVG report element will be wrapped with http link.
-		*
-		* Ссылка. При выгрузке в SVG формат, этот элемент будет обёрнут в http ссылку.
-		*/
-	def link: Option[String] = tt.props.asString(ElementProps.link)
 
 	/**
 		* Link. In SVG report element will be wrapped with http link.
@@ -322,28 +308,9 @@ trait ElementProps[T <: Element] {
 		*
 		* Специальная подсказка для SVG. Будет использоваться только вместе со ссылкой `link`.
 		*/
-	def tooltip: Option[String] = tt.props.asString(ElementProps.tooltip)
-
-	/**
-		* Custom tooltip for SVG. Will be used only if `link` is specified.
-		*
-		* Специальная подсказка для SVG. Будет использоваться только вместе со ссылкой `link`.
-		*/
 	def tooltip(value: String): T = {
 		tt._props.getOrElseUpdate(ElementProps.tooltip, value)
 		tt
-	}
-
-	/**
-		* Set of custom tags. Could be used for selects of specific elements on report.
-		*
-		* Набор текстовых меток. Может быть использовано для выборки необходимых элементов для отчёта.
-		*/
-	def tags: Set[String] = {
-		tt.props.asStringSet(ElementProps.tags) match {
-			case Some(res) => res
-			case None => Set()
-		}
 	}
 
 	/**

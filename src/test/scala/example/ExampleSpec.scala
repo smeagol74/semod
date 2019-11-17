@@ -10,6 +10,7 @@ import example.archimate._10_technology.{Ex_29_TechnologyActiveStructureElements
 import example.archimate._11_physical.Ex_32_PhysicalElements
 import example.archimate._12_cross_layer.Ex_33_CrossLayerRelationships
 import example.archimate._13_implementation.Ex_34_ImplementationAndMigrationElements
+import example.features.{Ex_Links, Ex_Tags_All, Ex_Tags_Any}
 import example.system.Ex_Systems
 import org.scalatest.FunSpec
 
@@ -222,6 +223,24 @@ class ExampleSpec extends FunSpec {
 		describe("Ex_Systems") {
 			it("should run without errors") {
 				Ex_Systems.main(Array())
+			}
+		}
+	}
+
+	describe("features") {
+		describe("Ex_Links") {
+			it("should run without errors") {
+				Ex_Links.main(Array())
+			}
+		}
+		describe("Ex_Tags_All") {
+			it("should run without errors") {
+				Ex_Tags_All.main(Array())
+			}
+		}
+		describe("Ex_Tags_Any") {
+			it("should run without errors") {
+				Ex_Tags_Any.main(Array())
 			}
 		}
 	}

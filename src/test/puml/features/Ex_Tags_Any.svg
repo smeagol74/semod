@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="351px" preserveAspectRatio="none" style="width:992px;height:351px;" version="1.1" viewBox="0 0 992 351" width="992px" zoomAndPan="magnify"><defs><filter height="300%" id="fqsb6tlr0yy3t" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="251" x="374" y="17.4023">Example. Features: Tags Any</text><!--entity SOther_10--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="132" x="340" y="287.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="350" y="310.7344">Subsystem 1.3.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="353.5" y="327.2227">(others system)</text><!--entity SOther_12--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="125" x="677.5" y="29.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="697.5" y="52.7344">Main System</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="687.5" y="69.2227">(others system)</text><!--entity SOther_13--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="125" x="514.5" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="99" x="527.5" y="181.7344">Subsystem 1.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="524.5" y="198.2227">(others system)</text><!--entity SOther_14--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="132" x="507" y="287.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="517" y="310.7344">Subsystem 1.1.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="520.5" y="327.2227">(others system)</text><!--entity SOther_16--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="125" x="677.5" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="99" x="690.5" y="181.7344">Subsystem 1.2</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="687.5" y="198.2227">(others system)</text><!--entity SOther_17--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="132" x="674" y="287.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="684" y="310.7344">Subsystem 1.2.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="687.5" y="327.2227">(others system)</text><!--entity SOther_19--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="132" x="841" y="287.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="851" y="310.7344">Subsystem 1.3.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="854.5" y="327.2227">(others system)</text><!--entity SOther_3--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="125" x="176.5" y="29.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="196.5" y="52.7344">Main System</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="186.5" y="69.2227">(others system)</text><!--entity SOther_4--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="125" x="13.5" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="99" x="26.5" y="181.7344">Subsystem 1.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="23.5" y="198.2227">(others system)</text><!--entity SOther_5--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="132" x="6" y="287.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="16" y="310.7344">Subsystem 1.1.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="19.5" y="327.2227">(others system)</text><!--entity SOther_7--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="125" x="176.5" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="99" x="189.5" y="181.7344">Subsystem 1.2</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="186.5" y="198.2227">(others system)</text><!--entity SOther_8--><rect fill="#D3D3D3" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #A9A9A9; stroke-width: 1.5;" width="132" x="173" y="287.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="183" y="310.7344">Subsystem 1.2.1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="186.5" y="327.2227">(others system)</text><!--entity SOur_2--><rect fill="#A9DCDF" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #4C6263; stroke-width: 1.5;" width="119" x="341.5" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="99" x="351.5" y="181.7344">Subsystem 1.3</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="358.5" y="198.2227">(our system)</text><!--entity SOur_3--><rect fill="#A9DCDF" filter="url(#fqsb6tlr0yy3t)" height="52.9766" rx="3" ry="3" style="stroke: #4C6263; stroke-width: 1.5;" width="119" x="842.5" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="99" x="852.5" y="181.7344">Subsystem 1.3</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="859.5" y="198.2227">(our system)</text><!--link SOther_4 to SOther_5--><path d="M74.7679,224.4356 C74.1378,244.7538 73.388,268.9374 72.8277,287.0046 " fill="none" id="SOther_4-SOther_5" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="75.1712,211.4281,70.9871,217.3012,74.7992,223.4224,78.9833,217.5492,75.1712,211.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="76" y="253.8008">composed of</text><!--link SOther_3 to SOther_4--><path d="M185.2433,89.5171 C174.6644,96.702 163.8102,104.4628 154,112.1992 C135.9989,126.395 117.1361,143.8485 102.4698,158.0732 " fill="none" id="SOther_3-SOther_4" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="196.1126,82.2634,188.9015,82.2669,186.1312,88.9246,193.3423,88.9212,196.1126,82.2634" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="155" y="124.8008">composed of</text><!--link SOther_7 to SOther_8--><path d="M239,224.4356 C239,244.7538 239,268.9374 239,287.0046 " fill="none" id="SOther_7-SOther_8" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="239,211.4281,235,217.4281,239,223.4281,243,217.4281,239,211.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="240" y="253.8008">composed of</text><!--link SOther_3 to SOther_7--><path d="M239,95.4356 C239,115.7538 239,139.9374 239,158.0046 " fill="none" id="SOther_3-SOther_7" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="239,82.4281,235,88.4281,239,94.4281,243,88.4281,239,82.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="240" y="124.8008">composed of</text><!--link SOur_2 to SOther_10--><path d="M402.5402,224.4356 C403.3277,244.7538 404.265,268.9374 404.9653,287.0046 " fill="none" id="SOur_2-SOther_10" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="402.036,211.4281,398.2714,217.5786,402.5008,223.4191,406.2654,217.2687,402.036,211.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="404" y="253.8008">composed of</text><!--link SOther_3 to SOur_2--><path d="M292.796,89.4674 C303.3718,96.6563 314.2147,104.4312 324,112.1992 C341.8321,126.3551 360.4551,143.8074 374.9189,158.0414 " fill="none" id="SOther_3-SOur_2" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="281.9273,82.213,284.6972,88.8709,291.9083,88.8749,289.1384,82.217,281.9273,82.213" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="342" y="124.8008">composed of</text><!--link SOther_13 to SOther_14--><path d="M575.7679,224.4356 C575.1378,244.7538 574.388,268.9374 573.8277,287.0046 " fill="none" id="SOther_13-SOther_14" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="576.1712,211.4281,571.9871,217.3012,575.7992,223.4224,579.9833,217.5492,576.1712,211.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="576" y="253.8008">composed of</text><!--link SOther_12 to SOther_13--><path d="M686.2433,89.5171 C675.6644,96.702 664.8102,104.4628 655,112.1992 C636.9989,126.395 618.1361,143.8485 603.4698,158.0732 " fill="none" id="SOther_12-SOther_13" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="697.1126,82.2634,689.9015,82.2669,687.1312,88.9246,694.3423,88.9212,697.1126,82.2634" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="656" y="124.8008">composed of</text><!--link SOther_16 to SOther_17--><path d="M740,224.4356 C740,244.7538 740,268.9374 740,287.0046 " fill="none" id="SOther_16-SOther_17" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="740,211.4281,736,217.4281,740,223.4281,744,217.4281,740,211.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="741" y="253.8008">composed of</text><!--link SOther_12 to SOther_16--><path d="M740,95.4356 C740,115.7538 740,139.9374 740,158.0046 " fill="none" id="SOther_12-SOther_16" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="740,82.4281,736,88.4281,740,94.4281,744,88.4281,740,82.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="741" y="124.8008">composed of</text><!--link SOur_3 to SOther_19--><path d="M903.5402,224.4356 C904.3277,244.7538 905.265,268.9374 905.9653,287.0046 " fill="none" id="SOur_3-SOther_19" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="903.036,211.4281,899.2714,217.5786,903.5008,223.4191,907.2654,217.2687,903.036,211.4281" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="905" y="253.8008">composed of</text><!--link SOther_12 to SOur_3--><path d="M793.796,89.4674 C804.3718,96.6563 815.2147,104.4312 825,112.1992 C842.8321,126.3551 861.4551,143.8074 875.9189,158.0414 " fill="none" id="SOther_12-SOur_3" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="782.9273,82.213,785.6972,88.8709,792.9083,88.8749,790.1384,82.217,782.9273,82.213" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="75" x="843" y="124.8008">composed of</text><!--
+@startuml Ex_Tags_Any
+
+skinparam defaultTextAlignment center
+skinparam wrapWidth 400
+skinparam maxMessageSize 150
+skinparam StereotypeAlignment right
+
+skinparam Arrow {
+    Color #000000
+    FontColor #000000
+    FontSize 12
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam Folder<<grouping>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam Folder<<group>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BackgroundColor lightgrey
+}
+
+hide <<grouping>> stereotype
+hide <<group>> stereotype
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam node {
+  StereotypeAlignment right
+}
+skinparam cloud {
+  StereotypeAlignment right
+}
+skinparam frame<<business-product>> {
+  StereotypeAlignment right
+}
+hide <<business-product>> stereotype
+skinparam rectangle {
+  StereotypeAlignment right
+  RoundCorner<<location>> 0
+  RoundCorner<<strategy-resource>> 0
+  RoundCorner<<business-actor>> 0
+  RoundCorner<<business-role>> 0
+  RoundCorner<<business-collaboration>> 0
+  RoundCorner<<business-interface>> 0
+  RoundCorner<<business-object>> 0
+  RoundCorner<<business-contract>> 0
+  RoundCorner<<business-representation>> 0
+  RoundCorner<<application-component>> 0
+  RoundCorner<<application-collaboration>> 0
+  RoundCorner<<application-interface>> 0
+  RoundCorner<<application-data-object>> 0
+  RoundCorner<<technology-node>> 0
+  RoundCorner<<technology-system-software>> 0
+  RoundCorner<<technology-collaboration>> 0
+  RoundCorner<<technology-interface>> 0
+  RoundCorner<<technology-communication-path>> 0
+  RoundCorner<<technology-network>> 0
+  RoundCorner<<technology-artifact>> 0
+  RoundCorner<<physical-equipment>> 0
+  RoundCorner<<physical-facility>> 0
+  RoundCorner<<physical-distribution-network>> 0
+  RoundCorner<<physical-material>> 0
+  RoundCorner<<implementation-deliverable>> 0
+  RoundCorner<<implementation-gap>> 0
+  RoundCorner<<strategy-capability>> 25
+  RoundCorner<<strategy-course-of-action>> 25
+  RoundCorner<<business-process>> 25
+  RoundCorner<<business-function>> 25
+  RoundCorner<<business-interaction>> 25
+  RoundCorner<<business-event>> 25
+  RoundCorner<<business-service>> 25
+  RoundCorner<<application-function>> 25
+  RoundCorner<<application-interaction>> 25
+  RoundCorner<<application-process>> 25
+  RoundCorner<<application-event>> 25
+  RoundCorner<<application-service>> 25
+  RoundCorner<<technology-function>> 25
+  RoundCorner<<technology-process>> 25
+  RoundCorner<<technology-interaction>> 25
+  RoundCorner<<technology-event>> 25
+  RoundCorner<<technology-infra-service>> 25
+  RoundCorner<<implementation-workpackage>> 25
+  RoundCorner<<implementation-event>> 25
+  DiagonalCorner<<motivation-stakeholder>> 12
+  DiagonalCorner<<motivation-driver>> 12
+  DiagonalCorner<<motivation-assessment>> 12
+  DiagonalCorner<<motivation-goal>> 12
+  DiagonalCorner<<motivation-outcome>> 12
+  DiagonalCorner<<motivation-principle>> 12
+  DiagonalCorner<<motivation-requirement>> 12
+  DiagonalCorner<<motivation-constraint>> 12
+}
+skinparam usecase {
+  BorderColor #000000
+}
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle {
+    Shadowing true
+    RoundCorner 6
+    BorderColor<<system-other>> darkgray
+    BackgroundColor<<system-other>> lightgray
+    BorderColor<<system-of-interest>> #504661
+    BackgroundColor<<system-of-interest>> #B19CD9
+    DiagonalCorner<<system-of-interest>> 12
+    BorderColor<<system-our>> #4c6263
+    BackgroundColor<<system-our>> #A9DCDF
+    BorderColor<<system-placeholder>> black
+    BackgroundColor<<system-placeholder>> #eeeeee
+    BorderStyle<<system-placeholder>> dotted
+    BackgroundColor<<system-enabling>> #FFFF00
+    BorderColor<<system-enabling>> black
+}
+skinparam actor<<system-role>> {
+    BorderColor #777777
+    BackgroundColor lightgray
+}
+
+hide <<system-other>> stereotype
+hide <<system-of-interest>> stereotype
+hide <<system-our>> stereotype
+hide <<system-role>> stereotype
+hide <<system-placeholder>> stereotype
+hide <<system-enabling>> stereotype
+
+
+
+
+title Example. Features: Tags Any
+
+rectangle "Subsystem 1.3.1\n(others system)" <<system-other>> as SOther_10
+rectangle "Main System\n(others system)" <<system-other>> as SOther_12
+rectangle "Subsystem 1.1\n(others system)" <<system-other>> as SOther_13
+rectangle "Subsystem 1.1.1\n(others system)" <<system-other>> as SOther_14
+rectangle "Subsystem 1.2\n(others system)" <<system-other>> as SOther_16
+rectangle "Subsystem 1.2.1\n(others system)" <<system-other>> as SOther_17
+rectangle "Subsystem 1.3.1\n(others system)" <<system-other>> as SOther_19
+rectangle "Main System\n(others system)" <<system-other>> as SOther_3
+rectangle "Subsystem 1.1\n(others system)" <<system-other>> as SOther_4
+rectangle "Subsystem 1.1.1\n(others system)" <<system-other>> as SOther_5
+rectangle "Subsystem 1.2\n(others system)" <<system-other>> as SOther_7
+rectangle "Subsystem 1.2.1\n(others system)" <<system-other>> as SOther_8
+rectangle "Subsystem 1.3\n(our system)" <<system-our>> as SOur_2
+rectangle "Subsystem 1.3\n(our system)" <<system-our>> as SOur_3
+SOther_4 *-DOWN- SOther_5 : "composed of"
+SOther_3 *-DOWN- SOther_4 : "composed of"
+SOther_7 *-DOWN- SOther_8 : "composed of"
+SOther_3 *-DOWN- SOther_7 : "composed of"
+SOur_2 *-DOWN- SOther_10 : "composed of"
+SOther_3 *-DOWN- SOur_2 : "composed of"
+SOther_13 *-DOWN- SOther_14 : "composed of"
+SOther_12 *-DOWN- SOther_13 : "composed of"
+SOther_16 *-DOWN- SOther_17 : "composed of"
+SOther_12 *-DOWN- SOther_16 : "composed of"
+SOur_3 *-DOWN- SOther_19 : "composed of"
+SOther_12 *-DOWN- SOur_3 : "composed of"
+@enduml
+
+PlantUML version 1.2019.06(Sat May 25 00:10:25 NOVT 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 12.0.2+10
+Operating System: Mac OS X
+OS Version: 10.15
+Default Encoding: UTF-8
+Language: en
+Country: RU
+--></g></svg>

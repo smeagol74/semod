@@ -1,0 +1,8 @@
+@startuml Ex_Tags_All
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+title Example. Features: Tags All
+
+System_Other(SOther_7, "Subsystem 1.2\n(others system)")
+System_Our(SOur_2, "Subsystem 1.3\n(our system)")
+@enduml
