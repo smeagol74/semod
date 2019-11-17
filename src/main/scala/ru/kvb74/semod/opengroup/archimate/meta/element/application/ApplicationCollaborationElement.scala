@@ -10,6 +10,9 @@ trait ApplicationCollaborationElement
 case object ApplicationCollaborationElement
 	extends ElementName
 
+trait ApplicationCollaborationElementProps[T <: ApplicationCollaborationElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait ApplicationCollaborationElementRelationships[T <: ApplicationCollaborationElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

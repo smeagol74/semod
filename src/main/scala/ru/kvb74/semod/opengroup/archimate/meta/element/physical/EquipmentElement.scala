@@ -4,7 +4,7 @@ import ru.kvb74.semod.meta.relationship.dependency.AccessMode
 import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.{MissedInSpec, Origin}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{NodeElement, NodeElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{NodeElement, NodeElementProps, NodeElementRelationships}
 
 trait EquipmentElement
 	extends ActiveStructureElement
@@ -13,6 +13,10 @@ trait EquipmentElement
 
 case object EquipmentElement
 	extends ElementName
+
+trait EquipmentElementProps[T <: EquipmentElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with NodeElementProps[T]
 
 trait EquipmentElementRelationships[T <: EquipmentElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T]

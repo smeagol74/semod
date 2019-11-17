@@ -1,13 +1,16 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.motivation
 
 import ru.kvb74.semod.meta.{ElementName, RR}
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, ArchimateElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, ArchimateElementProps, ArchimateElementRelationships}
 
 trait StakeholderElement
 	extends ActiveStructureElement
 
 case object StakeholderElement
 	extends ElementName
+
+trait StakeholderElementProps[T <: StakeholderElement]
+	extends ArchimateElementProps[T]
 
 trait StakeholderElementRelationships[T <: StakeholderElement]
 	extends ArchimateElementRelationships[T] {

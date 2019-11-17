@@ -8,6 +8,9 @@ trait AssessmentElement
 case object AssessmentElement
 	extends ElementName
 
+trait AssessmentElementProps[T <: AssessmentElement]
+	extends MotivationElementProps[T]
+
 trait AssessmentElementRelationships[T <: AssessmentElement]
 	extends MotivationElementRelationships[T] {
 

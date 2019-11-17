@@ -12,6 +12,9 @@ trait TechnologyInterfaceElement
 case object TechnologyInterfaceElement
 	extends ElementName
 
+trait TechnologyInterfaceElementProps[T <: TechnologyInterfaceElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait TechnologyInterfaceElementRelationships[T <: TechnologyInterfaceElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

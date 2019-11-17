@@ -8,6 +8,9 @@ trait SystemOurElement
 case object SystemOurElement
   extends ElementName
 
+trait SystemOurElementProps[T <: SystemOurElement]
+  extends SystemElementProps[T]
+
 trait SystemOurElementRelationships[T <: SystemOurElement]
   extends SystemElementRelationships[T] {
 
@@ -19,7 +22,7 @@ trait SystemOurElementRelationships[T <: SystemOurElement]
 
   def composedOf(dst: SystemRoleElement): T = tt._rel.composedOf(dst)
 
-  def composedOf(dst: SystemSupportElement): T = tt._rel.composedOf(dst)
+  def composedOf(dst: SystemEnablingElement): T = tt._rel.composedOf(dst)
 
   def realizes(dst: PlaceholderElement): T = tt._rel.realizes(dst)
 
@@ -28,7 +31,7 @@ trait SystemOurElementRelationships[T <: SystemOurElement]
     RR.composedOf(SystemOtherElement),
     RR.composedOf(SystemOfInterestElement),
     RR.composedOf(SystemRoleElement),
-    RR.composedOf(SystemSupportElement),
+    RR.composedOf(SystemEnablingElement),
     RR.realizes(PlaceholderElement),
   )
 }

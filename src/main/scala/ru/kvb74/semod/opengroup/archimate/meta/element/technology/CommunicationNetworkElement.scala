@@ -10,6 +10,9 @@ trait CommunicationNetworkElement
 case object CommunicationNetworkElement
 	extends ElementName
 
+trait CommunicationNetworkElementProps[T <: CommunicationNetworkElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait CommunicationNetworkElementRelationships[T <: CommunicationNetworkElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

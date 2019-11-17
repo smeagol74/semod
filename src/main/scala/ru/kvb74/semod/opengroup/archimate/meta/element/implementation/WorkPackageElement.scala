@@ -13,6 +13,9 @@ trait WorkPackageElement
 case object WorkPackageElement
 	extends ElementName
 
+trait WorkPackageElementProps[T <: WorkPackageElement]
+	extends ArchimateElementProps[T]
+
 trait WorkPackageElementRelationships[T <: WorkPackageElement]
 	extends ArchimateElementRelationships[T] {
 

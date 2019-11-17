@@ -1,7 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.application
 
 import ru.kvb74.semod.meta.relationship.dependency.AccessMode
-import ru.kvb74.semod.meta.{ElementName, Junction, RR}
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait ApplicationEventElement
@@ -10,6 +10,9 @@ trait ApplicationEventElement
 
 case object ApplicationEventElement
 	extends ElementName
+
+trait ApplicationEventElementProps[T <: ApplicationEventElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946064

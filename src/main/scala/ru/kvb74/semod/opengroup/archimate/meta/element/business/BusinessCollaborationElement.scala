@@ -11,6 +11,10 @@ trait BusinessCollaborationElement
 case object BusinessCollaborationElement
 	extends ElementName
 
+trait BusinessCollaborationElementProps[T <: BusinessCollaborationElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with BusinessInternalActiveStructureElementProps[T]
+
 trait BusinessCollaborationElementRelationships[T <: BusinessCollaborationElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T]
 		with BusinessInternalActiveStructureElementRelationships[T] {

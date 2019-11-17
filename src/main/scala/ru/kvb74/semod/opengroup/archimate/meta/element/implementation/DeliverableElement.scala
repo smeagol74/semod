@@ -13,6 +13,9 @@ trait DeliverableElement
 case object DeliverableElement
 	extends ElementName
 
+trait DeliverableElementProps[T <: DeliverableElement]
+	extends ArchimateElementProps[T]
+
 trait DeliverableElementRelationships[T <: DeliverableElement]
 	extends ArchimateElementRelationships[T] {
 

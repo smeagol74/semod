@@ -8,6 +8,9 @@ trait PrincipleElement
 case object PrincipleElement
 	extends ElementName
 
+trait PrincipleElementProps[T <: PrincipleElement]
+	extends MotivationElementProps[T]
+
 trait PrincipleElementRelationships[T <: PrincipleElement]
 	extends MotivationElementRelationships[T] {
 

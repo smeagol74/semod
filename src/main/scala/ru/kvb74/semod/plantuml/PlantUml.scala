@@ -9,7 +9,7 @@ import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influenc
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
 import ru.kvb74.semod.meta.relationship.other.{Association, Specialization}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
-import ru.kvb74.semod.meta.{DirectionHint, Element, Layer, Relationship}
+import ru.kvb74.semod.meta.{DirectionHint, Element, ElementProps, Layer, Relationship}
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
 import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.layer._
@@ -40,6 +40,16 @@ object PlantUml {
 		}
 	}
 
+	private def _renderLinkTooltip(link: Option[String], tooltip: Option[String]): String = link match {
+		case Some(href) =>
+			val ttip = tooltip match {
+				case Some(value) => s"{$value}"
+					case None => ""
+			}
+			s"[[$href$ttip]]"
+			case None => ""
+	}
+
 	private def _renderElement(bundle: ResourceBundle, showHints: Boolean, element: Element, layer: String): String = {
 		val sb = StringBuilder.newBuilder
 		if (!layer.isBlank) {
@@ -52,6 +62,7 @@ object PlantUml {
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
 		_appendHint(sb, bundle, showHints, element)
 		sb.append("\")")
+		sb.append(_renderLinkTooltip(element.props.asString(ElementProps.link), element.props.asString(ElementProps.tooltip)))
 		sb.mkString
 	}
 
@@ -388,6 +399,7 @@ object PlantUml {
 					reader.generateImage(os, new FileFormatOption(FileFormat.SVG))
 					os.close()
 					val svg = new String(os.toByteArray, Charset.forName("UTF-8"))
+  						.replaceAll("target=\"_top\"", "target=\"_blank\"")
 					file.writeAll(svg)
 				} else {
 					file.writeAll(source)

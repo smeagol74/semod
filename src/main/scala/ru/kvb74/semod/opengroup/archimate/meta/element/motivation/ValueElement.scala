@@ -9,6 +9,9 @@ trait ValueElement
 case object ValueElement
 	extends ElementName
 
+trait ValueElementProps[T <: ValueElement]
+	extends MotivationElementProps[T]
+
 trait ValueElementRelationships[T <: ValueElement]
 	extends MotivationElementRelationships[T] {
 

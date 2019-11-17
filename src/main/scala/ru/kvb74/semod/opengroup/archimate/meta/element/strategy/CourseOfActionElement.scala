@@ -11,6 +11,9 @@ trait CourseOfActionElement
 case object CourseOfActionElement
 	extends ElementName
 
+trait CourseOfActionElementProps[T <: CourseOfActionElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait CourseOfActionElementRelationships[T <: CourseOfActionElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

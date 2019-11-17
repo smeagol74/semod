@@ -8,6 +8,9 @@ trait DriverElement
 case object DriverElement
 	extends ElementName
 
+trait DriverElementProps[T <: DriverElement]
+	extends MotivationElementProps[T]
+
 trait DriverElementRelationships[T <: DriverElement]
 	extends MotivationElementRelationships[T] {
 

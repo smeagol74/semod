@@ -2,13 +2,16 @@ package ru.kvb74.semod.system.meta.element
 
 import ru.kvb74.semod.meta.{ElementName, RR}
 
-trait SystemSupportElement
+trait SystemEnablingElement
   extends SystemElement
 
-case object SystemSupportElement
+case object SystemEnablingElement
   extends ElementName
 
-trait SystemSupportElementRelationships[T <: SystemSupportElement]
+trait SystemEnablingElementProps[T <: SystemEnablingElement]
+  extends SystemElementProps[T]
+
+trait SystemEnablingElementRelationships[T <: SystemEnablingElement]
   extends SystemElementRelationships[T] {
 
   def composedOf(dst: PlaceholderElement): T = tt._rel.composedOf(dst)

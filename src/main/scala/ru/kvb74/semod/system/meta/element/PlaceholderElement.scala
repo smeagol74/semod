@@ -8,6 +8,9 @@ trait PlaceholderElement
 case object PlaceholderElement
   extends ElementName
 
+trait PlaceholderElementProps[T <: PlaceholderElement]
+  extends SystemElementProps[T]
+
 trait PlaceholderElementRelationships[T <: PlaceholderElement]
   extends SystemElementRelationships[T] {
 

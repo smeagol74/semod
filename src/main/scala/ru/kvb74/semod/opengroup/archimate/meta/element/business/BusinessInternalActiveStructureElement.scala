@@ -1,13 +1,16 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
 import ru.kvb74.semod.meta.{ElementName, RR}
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementProps, ArchimateElementRelationships}
 
 trait BusinessInternalActiveStructureElement
 	extends ArchimateElement
 
 case object BusinessInternalActiveStructureElement
 	extends ElementName
+
+trait BusinessInternalActiveStructureElementProps[T <: BusinessInternalActiveStructureElement]
+	extends ArchimateElementProps[T]
 
 trait BusinessInternalActiveStructureElementRelationships[T <: BusinessInternalActiveStructureElement]
 	extends ArchimateElementRelationships[T] {

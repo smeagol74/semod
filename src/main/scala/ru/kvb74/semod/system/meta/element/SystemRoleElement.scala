@@ -8,6 +8,9 @@ trait SystemRoleElement
 case object SystemRoleElement
   extends ElementName
 
+trait SystemRoleElementProps[T <: SystemRoleElement]
+  extends SystemElementProps[T]
+
 trait SystemRoleElementRelationships[T <: SystemRoleElement]
   extends SystemElementRelationships[T] {
 

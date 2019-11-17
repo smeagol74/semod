@@ -11,6 +11,9 @@ trait TechnologyObjectElement
 case object TechnologyObjectElement
 	extends ElementName
 
+trait TechnologyObjectElementProps[T <: TechnologyObjectElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait TechnologyObjectElementRelationships[T <: TechnologyObjectElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

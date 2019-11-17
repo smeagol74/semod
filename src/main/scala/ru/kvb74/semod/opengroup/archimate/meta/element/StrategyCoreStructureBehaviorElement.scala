@@ -13,6 +13,9 @@ trait StrategyCoreStructureBehaviorElement
 case object StrategyCoreStructureBehaviorElement
 	extends ElementName
 
+trait StrategyCoreStructureBehaviorElementProps[T <: StrategyCoreStructureBehaviorElement]
+	extends ArchimateElementProps[T]
+
 trait StrategyCoreStructureBehaviorElementRelationships[T <: StrategyCoreStructureBehaviorElement]
 	extends ArchimateElementRelationships[T] {
 

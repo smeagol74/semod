@@ -15,6 +15,9 @@ trait FacilityElement
 case object FacilityElement
 	extends ElementName
 
+trait FacilityElementProps[T <: FacilityElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap11.html#_Toc489946104
 	*/

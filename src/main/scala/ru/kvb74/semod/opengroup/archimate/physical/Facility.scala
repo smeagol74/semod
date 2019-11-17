@@ -1,6 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.physical
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.physical.{FacilityElement, FacilityElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.physical.{FacilityElement, FacilityElementProps, FacilityElementRelationships}
 import ru.kvb74.semod.opengroup.archimate.meta.layer.PhysicalLayer
 
 /**
@@ -18,12 +18,10 @@ import ru.kvb74.semod.opengroup.archimate.meta.layer.PhysicalLayer
 	* A facility can be composed of other facilities and can be aggregated in a location.
 	*
 	* @param name The name of a facility should preferably be a noun referring to the type of facility; e.g., “Rotterdam harbor oil refinery”.
-	* @param desc
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap11.html#_Toc489946108
 	*/
 case class Facility(
-	name: String,
-	desc: String = ""
+	name: String
 ) extends PhysicalLayer
 	with FacilityElement {
 
@@ -32,6 +30,12 @@ case class Facility(
 	) extends FacilityElementRelationships[Facility]
 
 	val rel: FacilityRelationships = FacilityRelationships()
+
+	case class FacilityProps(
+		override private[semod] implicit val tt: Facility = Facility.this
+	) extends FacilityElementProps[Facility]
+
+	val prop: FacilityProps = FacilityProps()
 
 	_registerPrefix("PF")
 }

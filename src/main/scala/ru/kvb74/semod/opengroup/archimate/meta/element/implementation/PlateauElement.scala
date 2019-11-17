@@ -13,6 +13,9 @@ trait PlateauElement
 case object PlateauElement
 	extends ElementName
 
+trait PlateauElementProps[T <: PlateauElement]
+	extends ArchimateElementProps[T]
+
 trait PlateauElementRelationships[T <: PlateauElement]
 	extends ArchimateElementRelationships[T] {
 

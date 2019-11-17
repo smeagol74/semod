@@ -9,6 +9,10 @@ trait ConstraintElement
 case object ConstraintElement
 	extends ElementName
 
+trait ConstraintElementProps[T <: ConstraintElement]
+	extends MotivationElementProps[T]
+		with RequirementElementProps[T] 
+
 trait ConstraintElementRelationships[T <: ConstraintElement]
 	extends MotivationElementRelationships[T]
 		with RequirementElementRelationships[T] {

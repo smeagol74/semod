@@ -11,6 +11,10 @@ trait ApplicationFunctionElement
 case object ApplicationFunctionElement
 	extends ElementName
 
+trait ApplicationFunctionElementProps[T <: ApplicationFunctionElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with ApplicationInternalBehaviorElementProps[T]
+
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946064
 	*/

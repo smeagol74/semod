@@ -2,7 +2,7 @@ package ru.kvb74.semod.opengroup.archimate.meta.element.physical
 
 import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
-import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{TechnologyObjectElement, TechnologyObjectElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{TechnologyObjectElement, TechnologyObjectElementProps, TechnologyObjectElementRelationships}
 
 trait MaterialElement
 	extends PassiveStructureElement
@@ -11,6 +11,10 @@ trait MaterialElement
 
 case object MaterialElement
 	extends ElementName
+
+trait MaterialElementProps[T <: MaterialElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with TechnologyObjectElementProps[T]
 
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap11.html#_Toc489946105

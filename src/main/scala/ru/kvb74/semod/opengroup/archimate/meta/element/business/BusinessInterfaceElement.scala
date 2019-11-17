@@ -12,6 +12,9 @@ trait BusinessInterfaceElement
 case object BusinessInterfaceElement
 	extends ElementName
 
+trait BusinessInterfaceElementProps[T <: BusinessInterfaceElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait BusinessInterfaceElementRelationships[T <: BusinessInterfaceElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

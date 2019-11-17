@@ -11,6 +11,10 @@ trait TechnologyCollaborationElement
 case object TechnologyCollaborationElement
 	extends ElementName
 
+trait TechnologyCollaborationElementProps[T <: TechnologyCollaborationElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with NodeElementProps[T]
+
 trait TechnologyCollaborationElementRelationships[T <: TechnologyCollaborationElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T]
 		with NodeElementRelationships[T] {

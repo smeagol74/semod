@@ -9,6 +9,9 @@ trait MeaningElement
 case object MeaningElement
 	extends ElementName
 
+trait MeaningElementProps[T <: MeaningElement]
+	extends MotivationElementProps[T]
+
 trait MeaningElementRelationships[T <: MeaningElement]
 	extends MotivationElementRelationships[T] {
 

@@ -13,6 +13,9 @@ trait ApplicationServiceElement
 case object ApplicationServiceElement
 	extends ElementName
 
+trait ApplicationServiceElementProps[T <: ApplicationServiceElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 /**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap09.html#_Toc489946064
 	*/

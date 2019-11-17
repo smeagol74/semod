@@ -2,13 +2,16 @@ package ru.kvb74.semod.opengroup.archimate.meta.element.composite
 
 import ru.kvb74.semod.meta.relationship.dependency.AccessMode
 import ru.kvb74.semod.meta.{ElementName, RR}
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementProps, ArchimateElementRelationships}
 
 trait GroupingElement
 	extends ArchimateElement
 
 case object GroupingElement
 	extends ElementName
+
+trait GroupingElementProps[T <: GroupingElement]
+	extends ArchimateElementProps[T]
 
 trait GroupingElementRelationships[T <: GroupingElement]
 	extends ArchimateElementRelationships[T] {

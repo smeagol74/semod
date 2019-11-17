@@ -8,6 +8,9 @@ trait OutcomeElement
 case object OutcomeElement
 	extends ElementName
 
+trait OutcomeElementProps[T <: OutcomeElement]
+	extends MotivationElementProps[T]
+
 trait OutcomeElementRelationships[T <: OutcomeElement]
 	extends MotivationElementRelationships[T] {
 

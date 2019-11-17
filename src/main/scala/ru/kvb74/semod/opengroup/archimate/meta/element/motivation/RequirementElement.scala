@@ -8,6 +8,9 @@ trait RequirementElement
 case object RequirementElement
 	extends ElementName
 
+trait RequirementElementProps[T <: RequirementElement]
+	extends MotivationElementProps[T]
+
 trait RequirementElementRelationships[T <: RequirementElement]
 	extends MotivationElementRelationships[T] {
 

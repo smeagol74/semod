@@ -11,6 +11,10 @@ trait BusinessFunctionElement
 case object BusinessFunctionElement
 	extends ElementName
 
+trait BusinessFunctionElementProps[T <: BusinessFunctionElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with BusinessInternalBehaviorElementProps[T]
+
 trait BusinessFunctionElementRelationships[T <: BusinessFunctionElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T]
 		with BusinessInternalBehaviorElementRelationships[T] {

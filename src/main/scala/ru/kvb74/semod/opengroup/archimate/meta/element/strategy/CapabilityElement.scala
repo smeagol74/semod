@@ -10,6 +10,9 @@ trait CapabilityElement
 case object CapabilityElement
 	extends ElementName
 
+trait CapabilityElementProps[T <: CapabilityElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait CapabilityElementRelationships[T <: CapabilityElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

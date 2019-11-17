@@ -12,6 +12,9 @@ trait ApplicationInterfaceElement
 case object ApplicationInterfaceElement
 	extends ElementName
 
+trait ApplicationInterfaceElementProps[T <: ApplicationInterfaceElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait ApplicationInterfaceElementRelationships[T <: ApplicationInterfaceElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

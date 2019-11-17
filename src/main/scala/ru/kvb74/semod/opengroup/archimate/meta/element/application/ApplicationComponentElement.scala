@@ -12,6 +12,9 @@ trait ApplicationComponentElement
 case object ApplicationComponentElement
 	extends ElementName
 
+trait ApplicationComponentElementProps[T <: ApplicationComponentElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait ApplicationComponentElementRelationships[T <: ApplicationComponentElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

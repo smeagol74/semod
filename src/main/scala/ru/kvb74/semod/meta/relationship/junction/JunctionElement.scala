@@ -10,5 +10,4 @@ trait Junction
 trait JunctionElement
 	extends Element {
 	override val name: String = ""
-	override val desc: String = ""
 }

@@ -1,6 +1,6 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
-import ru.kvb74.semod.meta.{DirectionHint, ElementName, RR}
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait RepresentationElement
@@ -10,6 +10,9 @@ trait RepresentationElement
 
 case object RepresentationElement
 	extends ElementName
+
+trait RepresentationElementProps[T <: RepresentationElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
 
 trait RepresentationElementRelationships[T <: RepresentationElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {

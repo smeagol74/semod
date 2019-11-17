@@ -8,6 +8,9 @@ trait GoalElement
 case object GoalElement
 	extends ElementName
 
+trait GoalElementProps[T <: GoalElement]
+	extends MotivationElementProps[T]
+
 trait GoalElementRelationships[T <: GoalElement]
 	extends MotivationElementRelationships[T] {
 

@@ -12,6 +12,10 @@ trait SystemSoftwareElement
 case object SystemSoftwareElement
 	extends ElementName
 
+trait SystemSoftwareElementProps[T <: SystemSoftwareElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with NodeElementProps[T]
+
 trait SystemSoftwareElementRelationships[T <: SystemSoftwareElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T]
 		with NodeElementRelationships[T] {

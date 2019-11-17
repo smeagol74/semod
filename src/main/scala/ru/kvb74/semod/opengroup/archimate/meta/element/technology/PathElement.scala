@@ -10,6 +10,9 @@ trait PathElement
 case object PathElement
 	extends ElementName
 
+trait PathElementProps[T <: PathElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait PathElementRelationships[T <: PathElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

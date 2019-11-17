@@ -1,7 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
 import ru.kvb74.semod.meta.relationship.dependency.AccessMode
-import ru.kvb74.semod.meta.{ElementName, Junction, RR}
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 
 trait BusinessEventElement
@@ -10,6 +10,9 @@ trait BusinessEventElement
 
 case object BusinessEventElement
 	extends ElementName
+
+trait BusinessEventElementProps[T <: BusinessEventElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
 
 trait BusinessEventElementRelationships[T <: BusinessEventElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {

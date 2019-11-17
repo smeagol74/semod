@@ -2,13 +2,16 @@ package ru.kvb74.semod.opengroup.archimate.meta.element.implementation
 
 import ru.kvb74.semod.Origin
 import ru.kvb74.semod.meta.ElementName
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementProps, ArchimateElementRelationships}
 
 trait GapElement
 	extends ArchimateElement
 
 case object GapElement
 	extends ElementName
+
+trait GapElementProps[T <: GapElement]
+	extends ArchimateElementProps[T]
 
 trait GapElementRelationships[T <: GapElement]
 	extends ArchimateElementRelationships[T] {

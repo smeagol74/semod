@@ -11,6 +11,9 @@ trait DataObjectElement
 case object DataObjectElement
 	extends ElementName
 
+trait DataObjectElementProps[T <: DataObjectElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait DataObjectElementRelationships[T <: DataObjectElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

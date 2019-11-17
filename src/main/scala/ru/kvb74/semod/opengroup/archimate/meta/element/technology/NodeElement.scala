@@ -10,6 +10,9 @@ trait NodeElement
 case object NodeElement
 	extends ElementName
 
+trait NodeElementProps[T <: NodeElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait NodeElementRelationships[T <: NodeElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

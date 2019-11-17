@@ -12,6 +12,11 @@ trait ContractElement
 case object ContractElement
 	extends ElementName
 
+trait ContractElementProps[T <: ContractElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with BusinessPassiveStructureElementProps[T]
+		with BusinessObjectElementProps[T]
+
 trait ContractElementRelationships[T <: ContractElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T]
 		with BusinessPassiveStructureElementRelationships[T]

@@ -1,11 +1,10 @@
 package ru.kvb74.semod.opengroup.archimate.motivation
 
-import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.{RequirementElement, RequirementElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.motivation.{RequirementElement, RequirementElementProps, RequirementElementRelationships}
 import ru.kvb74.semod.opengroup.archimate.meta.layer.MotivationLayer
 
 case class Requirement(
-	name: String,
-	desc: String = ""
+	name: String
 ) extends MotivationLayer
 	with RequirementElement {
 
@@ -14,6 +13,12 @@ case class Requirement(
 	) extends RequirementElementRelationships[Requirement]
 
 	val rel: RequirementRelationships = RequirementRelationships()
+
+	case class RequirementProps(
+		override private[semod] implicit val tt: Requirement = Requirement.this
+	) extends RequirementElementProps[Requirement]
+
+	val prop: RequirementProps = RequirementProps()
 
 	_registerPrefix("MR")
 }

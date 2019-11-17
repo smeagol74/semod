@@ -12,6 +12,9 @@ trait ArtifactElement
 case object ArtifactElement
 	extends ElementName
 
+trait ArtifactElementProps[T <: ArtifactElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait ArtifactElementRelationships[T <: ArtifactElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

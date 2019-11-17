@@ -10,6 +10,9 @@ trait ResourceElement
 case object ResourceElement
 	extends ElementName
 
+trait ResourceElementProps[T <: ResourceElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait ResourceElementRelationships[T <: ResourceElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

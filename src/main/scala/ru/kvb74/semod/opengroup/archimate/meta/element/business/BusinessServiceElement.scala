@@ -1,7 +1,7 @@
 package ru.kvb74.semod.opengroup.archimate.meta.element.business
 
 import ru.kvb74.semod.meta.relationship.dependency.AccessMode
-import ru.kvb74.semod.meta.{ElementName, Junction, RR}
+import ru.kvb74.semod.meta.{ElementName, RR}
 import ru.kvb74.semod.opengroup.archimate.meta.element._
 import ru.kvb74.semod.opengroup.archimate.meta.element.application.{ApplicationComponentElement, ApplicationInternalBehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.element.technology.{NodeElement, TechnologyInternalBehaviorElement}
@@ -12,6 +12,9 @@ trait BusinessServiceElement
 
 case object BusinessServiceElement
 	extends ElementName
+
+trait BusinessServiceElementProps[T <: BusinessServiceElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
 
 trait BusinessServiceElementRelationships[T <: BusinessServiceElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {

@@ -11,6 +11,10 @@ trait DeviceElement
 case object DeviceElement
 	extends ElementName
 
+trait DeviceElementProps[T <: DeviceElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+		with NodeElementProps[T]
+
 trait DeviceElementRelationships[T <: DeviceElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T]
 		with NodeElementRelationships[T] {

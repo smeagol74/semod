@@ -11,7 +11,10 @@ trait DistributionNetworkElement
 case object DistributionNetworkElement
 	extends ElementName
 
-/**
+trait DistributionNetworkElementProps[T <: DistributionNetworkElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+	
+	/**
 	* @see http://pubs.opengroup.org/architecture/archimate3-doc/chap11.html#_Toc489946104
 	*/
 trait DistributionNetworkElementRelationships[T <: DistributionNetworkElement]

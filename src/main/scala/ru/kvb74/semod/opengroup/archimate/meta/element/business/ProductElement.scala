@@ -12,6 +12,9 @@ trait ProductElement
 case object ProductElement
 	extends ElementName
 
+trait ProductElementProps[T <: ProductElement]
+	extends StrategyCoreStructureBehaviorElementProps[T]
+
 trait ProductElementRelationships[T <: ProductElement]
 	extends StrategyCoreStructureBehaviorElementRelationships[T] {
 

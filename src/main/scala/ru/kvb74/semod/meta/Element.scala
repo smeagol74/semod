@@ -1,5 +1,7 @@
 package ru.kvb74.semod.meta
 
+import java.util
+
 import ru.kvb74.semod.DB
 import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influence, Serving}
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
@@ -12,10 +14,27 @@ import scala.collection.mutable
 trait Element {
 	val id: String = IdGenerator.next(fullElementName)
 	val name: String
-	val desc: String
 
-	val _relationships: mutable.HashSet[Relationship] = mutable.HashSet.empty[Relationship]
-	val _reverseRelationships: mutable.HashSet[Relationship] = mutable.HashSet.empty[Relationship]
+	private[semod] val _relationships: mutable.HashSet[Relationship] = mutable.HashSet.empty[Relationship]
+	private[semod] val _reverseRelationships: mutable.HashSet[Relationship] = mutable.HashSet.empty[Relationship]
+	private[semod] val _props: mutable.HashMap[ElementProps.Param, Any] = mutable.HashMap.empty[ElementProps.Param, Any]
+
+	object props {
+		def asString(key: ElementProps.Param): Option[String] = _props.get(key).flatMap(_ match {
+			case str: String => Some(str)
+			case _ => None
+		})
+
+		def asInt(key: ElementProps.Param): Option[Int] = _props.get(key).flatMap(_ match {
+			case str: Int => Some(str)
+			case _ => None
+		})
+
+		def asBool(key: ElementProps.Param): Option[Boolean] = _props.get(key).flatMap(_ match {
+			case str: Boolean => Some(str)
+			case _ => None
+		})
+	}
 
 	override def equals(obj: Any): Boolean = {
 		obj match {
@@ -253,6 +272,39 @@ trait ElementRelationships[T <: Element] {
 
 	_doRegister()
 
+}
+
+trait ElementProps[T <: Element] {
+
+	private[semod] implicit val tt: T
+
+	def desc: Option[String] = tt.props.asString(ElementProps.desc)
+
+	def desc(value: String): T = {
+		tt._props.getOrElseUpdate(ElementProps.desc, value)
+		tt
+	}
+
+	def link: Option[String] = tt.props.asString(ElementProps.link)
+
+	def link(value: String): T = {
+		tt._props.getOrElseUpdate(ElementProps.link, value)
+		tt
+	}
+
+	def tooltip: Option[String] = tt.props.asString(ElementProps.tooltip)
+
+	def tooltip(value: String): T = {
+		tt._props.getOrElseUpdate(ElementProps.tooltip, value)
+		tt
+	}
+
+}
+object ElementProps {
+	sealed trait Param
+	case object desc extends Param
+	case object link extends Param
+	case object tooltip extends Param
 }
 
 case object Element

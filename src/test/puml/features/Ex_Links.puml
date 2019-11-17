@@ -1,0 +1,11 @@
+@startuml Ex_Links
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+title Example. Features: Links
+
+Application_Process(AP_2, "Another Process\n(application process)")
+Application_Interface(Application_ApplicationInterface_1, "Some interface\n(application interface)")[[https://google.com{Google main page}]]
+Application_Process(Application_ApplicationProcess_1, "Some Process\n(application process)")[[https://github.com]]
+Rel_Association_Left(AP_2, Application_ApplicationInterface_1, "associated with")
+Rel_Association_Left(Application_ApplicationProcess_1, Application_ApplicationInterface_1, "associated with")
+@enduml

@@ -3,13 +3,16 @@ package ru.kvb74.semod.opengroup.archimate.meta.element.implementation
 import ru.kvb74.semod.Origin
 import ru.kvb74.semod.meta.relationship.dependency.AccessMode
 import ru.kvb74.semod.meta.{ElementName, RR}
-import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementRelationships}
+import ru.kvb74.semod.opengroup.archimate.meta.element.{ArchimateElement, ArchimateElementProps, ArchimateElementRelationships}
 
 trait ImplementationEventElement
 	extends ArchimateElement
 
 case object ImplementationEventElement
 	extends ElementName
+
+trait ImplementationEventElementProps[T <: ImplementationEventElement]
+	extends ArchimateElementProps[T]
 
 trait ImplementationEventElementRelationships[T <: ImplementationEventElement]
 	extends ArchimateElementRelationships[T] {
