@@ -16,6 +16,7 @@ object Resource {
   def bundle: ResourceBundle = _bundle(Seq(
     "relationships",
     "system",
+    "ontology",
     "archimate",
     "essence"
   ), raiseErrors = true)
@@ -23,10 +24,12 @@ object Resource {
   def bundle(theme: String): ResourceBundle = _bundle(Seq(
     "relationships",
     "system",
+    "ontology",
     "archimate",
     "essence",
     s"relationships_$theme",
     s"system_$theme",
+    s"ontology_$theme",
     s"archimate_$theme",
     s"essence_$theme",
   ), raiseErrors = false)

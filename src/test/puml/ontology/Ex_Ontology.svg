@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="222px" preserveAspectRatio="none" style="width:179px;height:222px;" version="1.1" viewBox="0 0 179 222" width="179px" zoomAndPan="magnify"><defs><filter height="300%" id="f1q3whz4qwnr3m" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="165" x="2" y="17.4023">Example. Ontology</text><!--entity OC_2--><rect fill="#FFFFFF" filter="url(#f1q3whz4qwnr3m)" height="52.9766" rx="3" ry="3" style="stroke: #000000; stroke-width: 1.5;" width="92" x="16" y="158.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="26" y="181.7344">Понятие 2</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="30" y="198.2227">(concept)</text><!--entity Ontology_Concept_1--><rect fill="#FFFFFF" filter="url(#f1q3whz4qwnr3m)" height="52.9766" rx="3" ry="3" style="stroke: #000000; stroke-width: 1.5;" width="92" x="16" y="29.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="26" y="52.7344">Понятие 1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="30" y="69.2227">(concept)</text><!--link Ontology_Concept_1 to OC_2--><path d="M62,82.4281 C62,104.5677 62,135.8744 62,158.0046 " fill="none" id="Ontology_Concept_1-OC_2" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65" x="63" y="124.8008">следует из</text><polygon fill="#000000" points="91.5,132.332,94.5,138.332,97.5,132.332,91.5,132.332" style="stroke: #000000; stroke-width: 1.0;"/><!--
+@startuml Ex_Ontology
+
+skinparam defaultTextAlignment center
+skinparam wrapWidth 400
+skinparam maxMessageSize 150
+skinparam StereotypeAlignment right
+
+skinparam Arrow {
+    Color #000000
+    FontColor #000000
+    FontSize 12
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam Folder<<grouping>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam Folder<<group>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BackgroundColor lightgrey
+}
+
+hide <<grouping>> stereotype
+hide <<group>> stereotype
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam node {
+  StereotypeAlignment right
+}
+skinparam cloud {
+  StereotypeAlignment right
+}
+skinparam frame<<business-product>> {
+  StereotypeAlignment right
+}
+hide <<business-product>> stereotype
+skinparam rectangle {
+  StereotypeAlignment right
+  RoundCorner<<location>> 0
+  RoundCorner<<strategy-resource>> 0
+  RoundCorner<<business-actor>> 0
+  RoundCorner<<business-role>> 0
+  RoundCorner<<business-collaboration>> 0
+  RoundCorner<<business-interface>> 0
+  RoundCorner<<business-object>> 0
+  RoundCorner<<business-contract>> 0
+  RoundCorner<<business-representation>> 0
+  RoundCorner<<application-component>> 0
+  RoundCorner<<application-collaboration>> 0
+  RoundCorner<<application-interface>> 0
+  RoundCorner<<application-data-object>> 0
+  RoundCorner<<technology-node>> 0
+  RoundCorner<<technology-system-software>> 0
+  RoundCorner<<technology-collaboration>> 0
+  RoundCorner<<technology-interface>> 0
+  RoundCorner<<technology-communication-path>> 0
+  RoundCorner<<technology-network>> 0
+  RoundCorner<<technology-artifact>> 0
+  RoundCorner<<physical-equipment>> 0
+  RoundCorner<<physical-facility>> 0
+  RoundCorner<<physical-distribution-network>> 0
+  RoundCorner<<physical-material>> 0
+  RoundCorner<<implementation-deliverable>> 0
+  RoundCorner<<implementation-gap>> 0
+  RoundCorner<<strategy-capability>> 25
+  RoundCorner<<strategy-course-of-action>> 25
+  RoundCorner<<business-process>> 25
+  RoundCorner<<business-function>> 25
+  RoundCorner<<business-interaction>> 25
+  RoundCorner<<business-event>> 25
+  RoundCorner<<business-service>> 25
+  RoundCorner<<application-function>> 25
+  RoundCorner<<application-interaction>> 25
+  RoundCorner<<application-process>> 25
+  RoundCorner<<application-event>> 25
+  RoundCorner<<application-service>> 25
+  RoundCorner<<technology-function>> 25
+  RoundCorner<<technology-process>> 25
+  RoundCorner<<technology-interaction>> 25
+  RoundCorner<<technology-event>> 25
+  RoundCorner<<technology-infra-service>> 25
+  RoundCorner<<implementation-workpackage>> 25
+  RoundCorner<<implementation-event>> 25
+  DiagonalCorner<<motivation-stakeholder>> 12
+  DiagonalCorner<<motivation-driver>> 12
+  DiagonalCorner<<motivation-assessment>> 12
+  DiagonalCorner<<motivation-goal>> 12
+  DiagonalCorner<<motivation-outcome>> 12
+  DiagonalCorner<<motivation-principle>> 12
+  DiagonalCorner<<motivation-requirement>> 12
+  DiagonalCorner<<motivation-constraint>> 12
+}
+skinparam usecase {
+  BorderColor #000000
+}
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle {
+    Shadowing true
+    RoundCorner 6
+    BorderColor<<system-other>> darkgray
+    BackgroundColor<<system-other>> lightgray
+    BorderColor<<system-of-interest>> #504661
+    BackgroundColor<<system-supra-of-interest>> #cab1f5
+    DiagonalCorner<<system-supra-of-interest>> 12
+    BackgroundColor<<system-of-interest>> #B19CD9
+    DiagonalCorner<<system-of-interest>> 12
+    BorderColor<<system-our>> #4c6263
+    BackgroundColor<<system-our>> #A9DCDF
+    BorderColor<<system-placeholder>> black
+    BackgroundColor<<system-placeholder>> #eeeeee
+    BorderStyle<<system-placeholder>> dotted
+    BackgroundColor<<system-enabling>> #FFFF00
+    BorderColor<<system-enabling>> black
+}
+skinparam actor<<system-role>> {
+    BorderColor #777777
+    BackgroundColor lightgray
+}
+
+hide <<system-other>> stereotype
+hide <<system-of-interest>> stereotype
+hide <<system-supra-of-interest>> stereotype
+hide <<system-our>> stereotype
+hide <<system-role>> stereotype
+hide <<system-placeholder>> stereotype
+hide <<system-enabling>> stereotype
+
+
+
+
+skinparam rectangle {
+    Shadowing true
+    RoundCorner 6
+    BorderColor<<ontology-concept>> black
+    BackgroundColor<<ontology-concept>> white
+}
+
+hide <<ontology-concept>> stereotype
+
+
+
+
+title Example. Ontology
+
+rectangle "Понятие 2\n(concept)" <<ontology-concept>> as OC_2
+rectangle "Понятие 1\n(concept)" <<ontology-concept>> as Ontology_Concept_1
+Ontology_Concept_1 - - OC_2 : "следует из >"
+@enduml
+
+PlantUML version 1.2019.06(Sat May 25 00:10:25 NOVT 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 12.0.2+10
+Operating System: Mac OS X
+OS Version: 10.15
+Default Encoding: UTF-8
+Language: en
+Country: RU
+--></g></svg>

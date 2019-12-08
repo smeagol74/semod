@@ -1,0 +1,9 @@
+@startuml Ex_Ontology
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+title Example. Ontology
+
+Ontology_Concept(OC_2, "Понятие 2\n(concept)")
+Ontology_Concept(Ontology_Concept_1, "Понятие 1\n(concept)")
+Rel_Association(Ontology_Concept_1, OC_2, "следует из >")
+@enduml
