@@ -32,6 +32,7 @@ trait SystemEnablingElementRelationships[T <: SystemEnablingElement]
     RR.composedOf(SystemOurElement),
     RR.composedOf(SystemRoleElement),
     RR.composedOf(SystemOfInterestElement),
+    RR.composedOf(SystemSupraOfInterestElement),
     RR.realizes(PlaceholderElement),
   )
 }

@@ -18,6 +18,8 @@ trait SystemOtherElementRelationships[T <: SystemOtherElement]
 
   def composedOf(dst: SystemOfInterestElement): T = tt._rel.composedOf(dst)
 
+  def composedOf(dst: SystemSupraOfInterestElement): T = tt._rel.composedOf(dst)
+
   def composedOf(dst: SystemOurElement): T = tt._rel.composedOf(dst)
 
   def composedOf(dst: SystemRoleElement): T = tt._rel.composedOf(dst)
@@ -29,6 +31,7 @@ trait SystemOtherElementRelationships[T <: SystemOtherElement]
   _register(SystemOfInterestElement,
     RR.composedOf(PlaceholderElement),
     RR.composedOf(SystemOfInterestElement),
+    RR.composedOf(SystemSupraOfInterestElement),
     RR.composedOf(SystemOurElement),
     RR.composedOf(SystemRoleElement),
     RR.composedOf(SystemEnablingElement),
