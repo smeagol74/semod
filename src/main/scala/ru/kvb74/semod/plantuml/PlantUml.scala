@@ -40,17 +40,26 @@ object PlantUml {
 		}
 	}
 
-	private def _renderLinkTooltip(link: Option[String], tooltip: Option[String]): String = link match {
+	private def _renderLinkTooltip(baseUrl: String, link: Option[String], tooltip: Option[String]): String = link match {
 		case Some(href) =>
+			val hreff = if (href.toLowerCase.startsWith("http")) {
+				href
+			} else {
+				s"$baseUrl/$href"
+			}
 			val ttip = tooltip match {
 				case Some(value) => s"{$value}"
-					case None => ""
+				case None => ""
 			}
-			s"[[$href$ttip]]"
-			case None => ""
+			s"[[$hreff$ttip]]"
+		case None => ""
 	}
 
-	private def _renderElement(bundle: ResourceBundle, showHints: Boolean, element: Element, layer: String): String = {
+	private def _renderElement(bundle: ResourceBundle,
+		showHints: Boolean,
+		baseUrl: String,
+		element: Element,
+		layer: String): String = {
 		val sb = StringBuilder.newBuilder
 		if (!layer.isBlank) {
 			sb.append(layer)
@@ -62,7 +71,7 @@ object PlantUml {
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
 		_appendHint(sb, bundle, showHints, element)
 		sb.append("\")")
-		sb.append(_renderLinkTooltip(element.props.asString(ElementProps.link), element.props.asString(ElementProps.tooltip)))
+		sb.append(_renderLinkTooltip(baseUrl, element.props.asString(ElementProps.link), element.props.asString(ElementProps.tooltip)))
 		sb.mkString
 	}
 
@@ -73,10 +82,13 @@ object PlantUml {
 			""
 	}
 
-	private def renderElement(bundle: ResourceBundle, showHints: Boolean, element: Element): String = element match {
-		case _: Grouping => _renderElement(bundle, showHints, element, "")
-		case el: Location => _renderElement(bundle, showHints, element, "Other")
-		case _ => _renderElement(bundle, showHints, element, _layerName(element))
+	private def renderElement(bundle: ResourceBundle,
+		showHints: Boolean,
+		baseUrl: String,
+		element: Element): String = element match {
+		case _: Grouping => _renderElement(bundle, showHints, baseUrl, element, "")
+		case el: Location => _renderElement(bundle, showHints, baseUrl, element, "Other")
+		case _ => _renderElement(bundle, showHints, baseUrl, element, _layerName(element))
 	}
 
 	private def _relPuml(relationship: Relationship, suff: String = "") =
@@ -258,6 +270,11 @@ object PlantUml {
 			* Если True то добавлять названия элементов и отношений на диаграммы
 			*/
 		val showHints: Boolean
+
+		/**
+			* Базовый урл для локальных (начинающихся не с http) ссылок
+			*/
+		val url: String
 	}
 
 	class OptionsBuilder {
@@ -268,6 +285,7 @@ object PlantUml {
 		private var _file: Option[String] = None
 		private var _terms: String = "opengroup"
 		private var _showHints: Boolean = true
+		private var _url: String = ""
 
 		def name(value: String): OptionsBuilder = {
 			_name = Some(value)
@@ -329,7 +347,16 @@ object PlantUml {
 			this
 		}
 
-		def get: Options = OptionsInstance(_name, _title, _header, _footer, _file, _terms, _showHints)
+		def url(value: String): OptionsBuilder = {
+			_url = if (value.endsWith("/")) {
+				value.trim.replaceAll("/+$", "")
+			} else {
+				value.trim
+			}
+			this
+		}
+
+		def get: Options = OptionsInstance(_name, _title, _header, _footer, _file, _terms, _showHints, _url)
 	}
 
 	/**
@@ -346,7 +373,8 @@ object PlantUml {
 		footer: Option[String],
 		file: Option[String],
 		terms: String,
-		showHints: Boolean
+		showHints: Boolean,
+		url: String
 	) extends Options
 
 	private def renderToString(
@@ -365,7 +393,7 @@ object PlantUml {
 		options.footer.foreach(footer => sb.append(s"footer ${_normalize(footer)}").append(EOL).append(EOL))
 		options.title.foreach(title => sb.append(s"title ${_normalize(title)}").append(EOL).append(EOL))
 
-		elements.toList.sortBy(_.id).map(renderElement(bundle, options.showHints, _)).foreach(sb.append(_).append(EOL))
+		elements.toList.sortBy(_.id).map(renderElement(bundle, options.showHints, options.url, _)).foreach(sb.append(_).append(EOL))
 		relationships.toList.sortBy(_.id).map(renderRelationship(bundle, options.showHints, _)).foreach(sb.append(_).append(EOL))
 
 		sb.append("@enduml").append(EOL)
@@ -399,7 +427,7 @@ object PlantUml {
 					reader.generateImage(os, new FileFormatOption(FileFormat.SVG))
 					os.close()
 					val svg = new String(os.toByteArray, Charset.forName("UTF-8"))
-  						.replaceAll("target=\"_top\"", "target=\"_blank\"")
+						.replaceAll("target=\"_top\"", "target=\"_blank\"")
 					file.writeAll(svg)
 				} else {
 					file.writeAll(source)
