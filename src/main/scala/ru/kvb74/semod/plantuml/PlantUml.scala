@@ -9,7 +9,7 @@ import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influenc
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
 import ru.kvb74.semod.meta.relationship.other.{Association, Specialization}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
-import ru.kvb74.semod.meta.{DirectionHint, Element, ElementProps, Layer, Relationship}
+import ru.kvb74.semod.meta.{DirectionHint, Element, ElementProps, Layer, NotePosition, Relationship}
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
 import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.layer._
@@ -55,6 +55,16 @@ object PlantUml {
 		case None => ""
 	}
 
+	private def _renderNote(id: String, note: Option[String], position: String): String = note match {
+		case Some(msg) =>
+			s"""
+				 |note $position of $id
+				 |$msg
+				 |end note
+				 |""".stripMargin
+			case None => ""
+	}
+
 	private def _renderElement(bundle: ResourceBundle,
 		showHints: Boolean,
 		baseUrl: String,
@@ -71,7 +81,8 @@ object PlantUml {
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
 		_appendHint(sb, bundle, showHints, element)
 		sb.append("\")")
-		sb.append(_renderLinkTooltip(baseUrl, element.props.asString(ElementProps.link), element.props.asString(ElementProps.tooltip)))
+		sb.append(_renderLinkTooltip(baseUrl, element.props.asString(ElementProps.link), element.props.asString(ElementProps.linkTooltip)))
+		sb.append(_renderNote(element.id, element.props.asString(ElementProps.note), element.props.asString(ElementProps.notePosition).getOrElse(NotePosition.right.toString)))
 		sb.mkString
 	}
 

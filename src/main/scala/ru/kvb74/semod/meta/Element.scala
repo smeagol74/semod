@@ -102,24 +102,32 @@ trait Element {
 		def influences[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)
 			(implicit tThis: T) = apply(Influence(Element.this, dst, dir, label))
 
-		def serves[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Serving(Element.this, dst, dir))
+		def serves[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Serving(Element.this, dst, dir))
 
-		def flowsTo[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Flow(Element.this, dst, dir, label))
+		def flowsTo[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Flow(Element.this, dst, dir, label))
 
-		def triggers[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Triggering(Element.this, dst, dir))
+		def triggers[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Triggering(Element.this, dst, dir))
 
 		def associatedWith[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)
 			(implicit tThis: T) = apply(Association(Element.this, dst, dir, label))
 
-		def specializationOf[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Specialization(Element.this, dst, dir))
+		def specializationOf[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Specialization(Element.this, dst, dir))
 
-		def aggregates[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Aggregation(Element.this, dst, dir))
+		def aggregates[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Aggregation(Element.this, dst, dir))
 
-		def assignedTo[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Assignment(Element.this, dst, dir))
+		def assignedTo[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Assignment(Element.this, dst, dir))
 
-		def composedOf[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Composition(Element.this, dst, dir))
+		def composedOf[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Composition(Element.this, dst, dir))
 
-		def realizes[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)(implicit tThis: T) = apply(Realization(Element.this, dst, dir))
+		def realizes[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(Realization(Element.this, dst, dir))
 
 		def add[T <: Element](method: Method.Value, dst: Element)(dir: DirectionHint.Value): T = method match {
 			case Method.accesses => apply(Access(Element.this, dst, dir, AccessMode.NONE))(Element.this.asInstanceOf[T])
@@ -221,7 +229,9 @@ trait ElementRelationships[T <: Element] {
 		*
 		* Universal add relationship method with runtime type control and ability to specify rendering direction hint
 		*/
-	def add(method: Method.Value, dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO): T = tt._rel.add(method, dst)(dir)
+	def add(method: Method.Value,
+		dst: Element,
+		dir: DirectionHint.Value = DirectionHint.AUTO): T = tt._rel.add(method, dst)(dir)
 
 	object junction {
 		def accesses: JunctionMethodThis[T] = JunctionMethodThis(tt, Method.accesses)
@@ -309,7 +319,7 @@ trait ElementProps[T <: Element] {
 		* Специальная подсказка для SVG. Будет использоваться только вместе со ссылкой `link`.
 		*/
 	def tooltip(value: String): T = {
-		tt._props.getOrElseUpdate(ElementProps.tooltip, value)
+		tt._props.getOrElseUpdate(ElementProps.linkTooltip, value)
 		tt
 	}
 
@@ -323,6 +333,21 @@ trait ElementProps[T <: Element] {
 		tt
 	}
 
+	/**
+		* Sideout element note
+		*
+		* Короткая заметка рядом с элементом
+		*/
+	def note(note: String): T = {
+		tt._props.getOrElseUpdate(ElementProps.note, note)
+		tt
+	}
+
+	def notePosition(position: NotePosition.Value): T = {
+		tt._props.getOrElseUpdate(ElementProps.notePosition, position.toString)
+		tt
+	}
+
 }
 
 object ElementProps {
@@ -333,10 +358,18 @@ object ElementProps {
 
 	case object link extends Param
 
-	case object tooltip extends Param
+	case object linkTooltip extends Param
 
 	case object tags extends Param
 
+	case object note extends Param
+
+	case object notePosition extends Param
+
+}
+
+object NotePosition extends Enumeration {
+	val right, left, top, bottom = Value
 }
 
 case object Element
