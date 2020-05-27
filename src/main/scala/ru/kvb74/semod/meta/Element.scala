@@ -6,7 +6,7 @@ import ru.kvb74.semod.DB
 import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influence, Serving}
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
 import ru.kvb74.semod.meta.relationship.junction.JunctionElement
-import ru.kvb74.semod.meta.relationship.other.{Association, Specialization}
+import ru.kvb74.semod.meta.relationship.other.{Association, Specialization, _Association, _Layout}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Assignment, Composition, Realization}
 
 import scala.collection.mutable
@@ -113,6 +113,12 @@ trait Element {
 
 		def associatedWith[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)
 			(implicit tThis: T) = apply(Association(Element.this, dst, dir, label))
+
+		def __[T <: Element](dst: Element, label: String, dir: DirectionHint.Value = DirectionHint.AUTO)
+			(implicit tThis: T) = apply(_Association(Element.this, dst, dir, label))
+
+		def _lay[T <: Element](dst: Element, dir: DirectionHint.Value)
+			(implicit tThis: T) = apply(_Layout(Element.this, dst, dir))
 
 		def specializationOf[T <: Element](dst: Element, dir: DirectionHint.Value = DirectionHint.AUTO)
 			(implicit tThis: T) = apply(Specialization(Element.this, dst, dir))
@@ -269,6 +275,10 @@ trait ElementRelationships[T <: Element] {
 
 	def associatedWith(dst: Element, label: String = ""): T = tt._rel.associatedWith(dst, label)
 
+	def __(dst: Element, label: String = ""): T = tt._rel.__(dst, label)
+
+	def _lay(dst: Element, dir: DirectionHint.Value): T = tt._rel._lay(dst, dir)
+
 	private def _doRegister(): Unit = {
 		val element = new ElementName {
 			override def name: String = tt.elementName
@@ -281,7 +291,9 @@ trait ElementRelationships[T <: Element] {
 		)
 
 		_register(Element,
-			RR.associatedWith(Element)
+			RR.associatedWith(Element),
+			RR.__(Element),
+			RR._lay(Element)
 		)
 	}
 

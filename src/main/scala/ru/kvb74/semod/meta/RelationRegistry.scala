@@ -2,7 +2,7 @@ package ru.kvb74.semod.meta
 
 import ru.kvb74.semod.meta.relationship.dependency.{Access, Influence, Serving}
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
-import ru.kvb74.semod.meta.relationship.other.{Association, Specialization}
+import ru.kvb74.semod.meta.relationship.other.{Association, Specialization, _Association, _Layout}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Assignment, Composition, Realization}
 
 import scala.collection.mutable
@@ -19,7 +19,9 @@ object Method extends Enumeration {
 	aggregates,
 	assignedTo,
 	composedOf,
-	realizes = Value
+	realizes,
+	__,
+	_lay = Value
 }
 
 trait RelationRegistry {
@@ -99,6 +101,8 @@ trait RelationRegistry {
 			case _: Assignment => Method.assignedTo
 			case _: Composition => Method.composedOf
 			case _: Realization => Method.realizes
+			case _: _Association => Method.__
+			case _: _Layout => Method._lay
 		}
 
 		assertRelationAllowed(method, rel.src, rel.dst)
@@ -126,6 +130,9 @@ trait RelationRegistry {
 
 	def realizes(tName: ElementName): (Method.Value, ElementName) = Method.realizes -> tName
 
+	def __(tName: ElementName): (Method.Value, ElementName) = Method.__ -> tName
+
+	def _lay(tName: ElementName) = Method._lay -> tName
 }
 
 object RR

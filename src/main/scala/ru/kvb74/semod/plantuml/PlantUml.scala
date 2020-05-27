@@ -7,7 +7,7 @@ import java.util.ResourceBundle
 import net.sourceforge.plantuml.{FileFormat, FileFormatOption, SourceStringReader}
 import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influence}
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
-import ru.kvb74.semod.meta.relationship.other.{Association, Specialization}
+import ru.kvb74.semod.meta.relationship.other.{Association, Specialization, _Association, _Layout}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
 import ru.kvb74.semod.meta.{DirectionHint, Element, ElementProps, Layer, NotePosition, Relationship}
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
@@ -62,7 +62,7 @@ object PlantUml {
 				 |$msg
 				 |end note
 				 |""".stripMargin
-			case None => ""
+		case None => ""
 	}
 
 	private def _renderElement(bundle: ResourceBundle,
@@ -171,6 +171,15 @@ object PlantUml {
 		case DirectionHint.RIGHT => "_Right"
 	}
 
+	private def _directionHintShort(dir: DirectionHint.Value) = dir match {
+		case DirectionHint.NONE => ""
+		case DirectionHint.AUTO => ""
+		case DirectionHint.UP => "U"
+		case DirectionHint.DOWN => "D"
+		case DirectionHint.LEFT => "L"
+		case DirectionHint.RIGHT => "R"
+	}
+
 	private def _directionHint(relationship: Relationship): String = relationship.dir match {
 		case DirectionHint.AUTO => _directionHint(_directionAuto(relationship))
 		case _ => _directionHint(relationship.dir)
@@ -236,6 +245,20 @@ object PlantUml {
 	}
 
 
+	private def _render__(rel: _Association): String = {
+		s"Rel__${_directionHintShort(rel.dir)}(${rel.src.id}, ${rel.dst.id}, ${rel.label})"
+	}
+
+	val _directions = Set(DirectionHint.DOWN, DirectionHint.UP, DirectionHint.LEFT, DirectionHint.RIGHT)
+
+	private def _render_lay(rel: _Layout): String = {
+		if (_directions.contains(rel.dir)) {
+			s"Lay_${_directionHintShort(rel.dir)}(${rel.src.id}, ${rel.dst.id})"
+		} else {
+			""
+		}
+	}
+
 	private def renderRelationship(bundle: ResourceBundle,
 		showHints: Boolean,
 		relationship: Relationship): String = relationship match {
@@ -243,6 +266,8 @@ object PlantUml {
 		case rel: Access => _renderAccess(bundle, showHints, rel)
 		case rel: Flow => _renderFlow(bundle, showHints, rel)
 		case rel: Association => _renderAssociation(bundle, showHints, rel)
+		case rel: _Association => _render__(rel)
+		case rel: _Layout => _render_lay(rel)
 		case _ => _renderGeneric(bundle, showHints, relationship)
 	}
 
