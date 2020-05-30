@@ -2,14 +2,14 @@ package ru.kvb74.semod.plantuml
 
 import java.io.ByteArrayOutputStream
 import java.nio.charset.Charset
-import java.util.ResourceBundle
+import java.util.{Objects, ResourceBundle}
 
 import net.sourceforge.plantuml.{FileFormat, FileFormatOption, SourceStringReader}
+import ru.kvb74.semod.meta._
 import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influence}
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
 import ru.kvb74.semod.meta.relationship.other.{Association, Specialization, _Association, _Layout}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
-import ru.kvb74.semod.meta.{AggregationElement, DirectionHint, Element, ElementProps, Layer, NotePosition, Relationship}
 import ru.kvb74.semod.omg.essence.meta.element.EssenceElement
 import ru.kvb74.semod.omg.essence.meta.layer.AreaOfConcern
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
@@ -68,6 +68,10 @@ object PlantUml {
 		case None => ""
 	}
 
+	private def _isBlank(value: String): Boolean = Objects.isNull(value) || value.trim.isEmpty
+
+	private def _nonBlank(value: String): Boolean = !_isBlank(value)
+
 	private def _pumlElement(element: Element, layer: String): String = {
 		val sb = StringBuilder.newBuilder
 		element match {
@@ -78,7 +82,7 @@ object PlantUml {
 				}
 				sb.append(element.elementName)
 			case _ =>
-				if (!layer.isBlank) {
+				if (_nonBlank(layer)) {
 					sb.append(layer)
 					sb.append("_")
 					sb.append(element.elementName.replaceFirst(layer, ""))
@@ -250,7 +254,7 @@ object PlantUml {
 
 	private def _renderInfluence(bundle: ResourceBundle, showHints: Boolean, relationship: Influence): String = {
 		val puml = _relPuml(relationship)
-		val desc = _relHint(relationship.label.isBlank, bundle, showHints, relationship, puml)
+		val desc = _relHint(_isBlank(relationship.label), bundle, showHints, relationship, puml)
 		_renderRelationship(relationship, puml, s"${relationship.label.trim}$desc")
 	}
 
@@ -273,14 +277,14 @@ object PlantUml {
 
 	private def _renderFlow(bundle: ResourceBundle, showHints: Boolean, relationship: Flow): String = {
 		val puml = _relPuml(relationship)
-		val desc = _relHint(relationship.label.isBlank, bundle, showHints, relationship, puml)
+		val desc = _relHint(_isBlank(relationship.label), bundle, showHints, relationship, puml)
 		_renderRelationship(relationship, puml, s"${relationship.label.trim}$desc")
 	}
 
 	private def _renderAssociation(bundle: ResourceBundle, showHints: Boolean, relationship: Association): String = {
 		val puml = _relPuml(relationship)
-		val desc = _relHint(relationship.label.isBlank, bundle, showHints, relationship, puml)
-		val label = if (relationship.label.isBlank) desc else relationship.label
+		val desc = _relHint(_isBlank(relationship.label), bundle, showHints, relationship, puml)
+		val label = if (_isBlank(relationship.label)) desc else relationship.label
 		_renderRelationship(relationship, puml, label)
 	}
 
@@ -523,7 +527,7 @@ object PlantUml {
 					os.close()
 					val svg = new String(os.toByteArray, Charset.forName("UTF-8"))
 						.replaceAll("""target="_top"""", """target="_blank"""")
-  						.replaceAll("""href="/""", s"""href="${options.url}/""")
+						.replaceAll("""href="/""", s"""href="${options.url}/""")
 					file.writeAll(svg)
 				} else {
 					file.writeAll(source)
