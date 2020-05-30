@@ -9,12 +9,15 @@ import ru.kvb74.semod.meta.relationship.dependency.{Access, AccessMode, Influenc
 import ru.kvb74.semod.meta.relationship.dynamic.{Flow, Triggering}
 import ru.kvb74.semod.meta.relationship.other.{Association, Specialization, _Association, _Layout}
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
-import ru.kvb74.semod.meta.{DirectionHint, Element, ElementProps, Layer, NotePosition, Relationship}
+import ru.kvb74.semod.meta.{AggregationElement, DirectionHint, Element, ElementProps, Layer, NotePosition, Relationship}
+import ru.kvb74.semod.omg.essence.meta.element.EssenceElement
+import ru.kvb74.semod.omg.essence.meta.layer.AreaOfConcern
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
 import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.layer._
 import ru.kvb74.semod.{Report, Resource}
 
+import scala.collection.mutable
 import scala.compat.Platform.EOL
 import scala.reflect.io.{File, Path}
 
@@ -65,23 +68,52 @@ object PlantUml {
 		case None => ""
 	}
 
-	private def _renderElement(bundle: ResourceBundle,
+	private def _pumlElement(element: Element, layer: String): String = {
+		val sb = StringBuilder.newBuilder
+		element match {
+			case e: EssenceElement =>
+				if (AreaOfConcern.None != e.areaOfConcern) {
+					sb.append(e.areaOfConcern.toString)
+					sb.append("_")
+				}
+				sb.append(element.elementName)
+			case _ =>
+				if (!layer.isBlank) {
+					sb.append(layer)
+					sb.append("_")
+					sb.append(element.elementName.replaceFirst(layer, ""))
+				} else {
+					sb.append(element.elementName)
+				}
+		}
+		sb.mkString
+	}
+
+	private def _renderElement(rendered: mutable.HashSet[String],
+		bundle: ResourceBundle,
 		showHints: Boolean,
 		baseUrl: String,
 		element: Element,
 		layer: String): String = {
 		val sb = StringBuilder.newBuilder
-		if (!layer.isBlank) {
-			sb.append(layer)
-			sb.append("_")
-			sb.append(element.elementName.replaceFirst(layer, ""))
-		} else {
-			sb.append(element.elementName)
-		}
+		sb.append(_pumlElement(element, layer))
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
 		_appendHint(sb, bundle, showHints, element)
 		sb.append("\")")
-		sb.append(_renderLinkTooltip(baseUrl, element.props.asString(ElementProps.link), element.props.asString(ElementProps.linkTooltip)))
+		if (element.isInstanceOf[AggregationElement]) {
+			sb.append(" {").append(EOL)
+
+			val elems = element._relationships.filter(r => r.isInstanceOf[Aggregation])
+			elems.foreach(rel => {
+				rendered += rel.id
+				sb.append(renderElement(rendered, bundle, showHints, baseUrl, rel.dst))
+				sb.append(EOL)
+			})
+
+			sb.append(EOL).append("}")
+		} else {
+			sb.append(_renderLinkTooltip(baseUrl, element.props.asString(ElementProps.link), element.props.asString(ElementProps.linkTooltip)))
+		}
 		sb.append(_renderNote(element.id, element.props.asString(ElementProps.note), element.props.asString(ElementProps.notePosition).getOrElse(NotePosition.right.toString)))
 		sb.mkString
 	}
@@ -93,13 +125,21 @@ object PlantUml {
 			""
 	}
 
-	private def renderElement(bundle: ResourceBundle,
+	private def renderElement(rendered: mutable.HashSet[String],
+		bundle: ResourceBundle,
 		showHints: Boolean,
 		baseUrl: String,
-		element: Element): String = element match {
-		case _: Grouping => _renderElement(bundle, showHints, baseUrl, element, "")
-		case el: Location => _renderElement(bundle, showHints, baseUrl, element, "Other")
-		case _ => _renderElement(bundle, showHints, baseUrl, element, _layerName(element))
+		element: Element): String = {
+		if (rendered.contains(element.id)) {
+			""
+		} else {
+			rendered += element.id
+			element match {
+				case _: Grouping => _renderElement(rendered, bundle, showHints, baseUrl, element, "")
+				case _: Location => _renderElement(rendered, bundle, showHints, baseUrl, element, "Other")
+				case _ => _renderElement(rendered, bundle, showHints, baseUrl, element, _layerName(element))
+			}
+		}
 	}
 
 	private def _relPuml(relationship: Relationship, suff: String = "") =
@@ -259,16 +299,22 @@ object PlantUml {
 		}
 	}
 
-	private def renderRelationship(bundle: ResourceBundle,
+	private def renderRelationship(rendered: mutable.HashSet[String], bundle: ResourceBundle,
 		showHints: Boolean,
-		relationship: Relationship): String = relationship match {
-		case rel: Influence => _renderInfluence(bundle, showHints, rel)
-		case rel: Access => _renderAccess(bundle, showHints, rel)
-		case rel: Flow => _renderFlow(bundle, showHints, rel)
-		case rel: Association => _renderAssociation(bundle, showHints, rel)
-		case rel: _Association => _render__(rel)
-		case rel: _Layout => _render_lay(rel)
-		case _ => _renderGeneric(bundle, showHints, relationship)
+		relationship: Relationship): String = {
+		if (rendered.contains(relationship.id)) {
+			""
+		} else {
+			relationship match {
+				case rel: Influence => _renderInfluence(bundle, showHints, rel)
+				case rel: Access => _renderAccess(bundle, showHints, rel)
+				case rel: Flow => _renderFlow(bundle, showHints, rel)
+				case rel: Association => _renderAssociation(bundle, showHints, rel)
+				case rel: _Association => _render__(rel)
+				case rel: _Layout => _render_lay(rel)
+				case _ => _renderGeneric(bundle, showHints, relationship)
+			}
+		}
 	}
 
 	/**
@@ -429,8 +475,21 @@ object PlantUml {
 		options.footer.foreach(footer => sb.append(s"footer ${_normalize(footer)}").append(EOL).append(EOL))
 		options.title.foreach(title => sb.append(s"title ${_normalize(title)}").append(EOL).append(EOL))
 
-		elements.toList.sortBy(_.id).map(renderElement(bundle, options.showHints, options.url, _)).foreach(sb.append(_).append(EOL))
-		relationships.toList.sortBy(_.id).map(renderRelationship(bundle, options.showHints, _)).foreach(sb.append(_).append(EOL))
+		val rendered = mutable.HashSet.empty[String]
+
+		elements.toList
+			.filter(e => e.isInstanceOf[AggregationElement])
+			.sortBy(_.id)
+			.map(renderElement(rendered, bundle, options.showHints, options.url, _))
+			.foreach(sb.append(_).append(EOL))
+		elements.toList
+			.sortBy(_.id)
+			.map(renderElement(rendered, bundle, options.showHints, options.url, _))
+			.foreach(sb.append(_).append(EOL))
+		relationships.toList
+			.sortBy(_.id)
+			.map(renderRelationship(rendered, bundle, options.showHints, _))
+			.foreach(sb.append(_).append(EOL))
 
 		sb.append("@enduml").append(EOL)
 		sb.mkString
@@ -463,7 +522,8 @@ object PlantUml {
 					reader.generateImage(os, new FileFormatOption(FileFormat.SVG))
 					os.close()
 					val svg = new String(os.toByteArray, Charset.forName("UTF-8"))
-						.replaceAll("target=\"_top\"", "target=\"_blank\"")
+						.replaceAll("""target="_top"""", """target="_blank"""")
+  						.replaceAll("""href="/""", s"""href="${options.url}/""")
 					file.writeAll(svg)
 				} else {
 					file.writeAll(source)

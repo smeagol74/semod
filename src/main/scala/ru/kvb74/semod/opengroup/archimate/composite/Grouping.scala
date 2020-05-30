@@ -1,11 +1,13 @@
 package ru.kvb74.semod.opengroup.archimate.composite
 
+import ru.kvb74.semod.meta.AggregationElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.composite.{GroupingElement, GroupingElementProps, GroupingElementRelationships}
 import ru.kvb74.semod.opengroup.archimate.meta.layer.CompositeLayer
 
 case class Grouping(
 	name: String
 ) extends CompositeLayer
+  with AggregationElement
 	with GroupingElement {
 
 	case class GroupingRelationships(

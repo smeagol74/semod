@@ -1,11 +1,13 @@
 package ru.kvb74.semod.opengroup.archimate.composite
 
+import ru.kvb74.semod.meta.AggregationElement
 import ru.kvb74.semod.opengroup.archimate.meta.element.composite.{LocationElement, LocationElementProps, LocationElementRelationships}
 import ru.kvb74.semod.opengroup.archimate.meta.layer.CompositeLayer
 
 case class Location(
 	name: String
 ) extends CompositeLayer
+  with AggregationElement
 	with LocationElement {
 
 	case class LocationRelationships(

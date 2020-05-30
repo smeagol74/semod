@@ -275,7 +275,7 @@ trait ElementRelationships[T <: Element] {
 
 	def associatedWith(dst: Element, label: String = ""): T = tt._rel.associatedWith(dst, label)
 
-	def __(dst: Element, label: String = ""): T = tt._rel.__(dst, label)
+	def __(dst: Element, label: String = "", dir: DirectionHint.Value = DirectionHint.AUTO): T = tt._rel.__(dst, label, dir)
 
 	def _lay(dst: Element, dir: DirectionHint.Value): T = tt._rel._lay(dst, dir)
 
@@ -386,3 +386,5 @@ object NotePosition extends Enumeration {
 
 case object Element
 	extends ElementName
+
+trait AggregationElement

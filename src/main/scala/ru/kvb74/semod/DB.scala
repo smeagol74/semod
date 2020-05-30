@@ -37,4 +37,8 @@ object DB {
 			.toSet
 	}
 
+	def withAllRelations(elements: Element*): Set[Element] = elements.flatMap(e => {
+		e.relatedElements + e
+	}).toSet
+
 }

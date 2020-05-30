@@ -14,5 +14,5 @@ trait ConceptElementProps[T <: ConceptElement]
 trait ConceptElementRelationships[T <: ConceptElement]
   extends OntologyElementRelationships[T] {
 
-  _register(OntologyElement)
+  _register(ConceptElement)
 }
