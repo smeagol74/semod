@@ -25,11 +25,19 @@ object PlantUml {
 
 	private val b = Resource.bundle
 
-	private def _res(bundle: ResourceBundle, key: String): String = {
+	private def _res(bundle: ResourceBundle, key: String, returnKeyIfNotFound: Boolean = false): String = {
 		if (bundle.containsKey(key))
 			bundle.getString(key)
-		else
+		else if (returnKeyIfNotFound) {
+			if (b.containsKey(key)) {
+				b.getString(key)
+			} else {
+				key
+			}
+		} else {
 			b.getString(key)
+		}
+
 	}
 
 	private def _normalize(text: String): String = text.replaceAll("\n", "\\\\n")
@@ -285,12 +293,12 @@ object PlantUml {
 		val puml = _relPuml(relationship)
 		val desc = _relHint(_isBlank(relationship.label), bundle, showHints, relationship, puml)
 		val label = if (_isBlank(relationship.label)) desc else relationship.label
-		_renderRelationship(relationship, puml, label)
+		_renderRelationship(relationship, puml, _res(bundle, label, returnKeyIfNotFound = true))
 	}
 
 
-	private def _render__(rel: _Association): String = {
-		s"Rel__${_directionHintShort(rel.dir)}(${rel.src.id}, ${rel.dst.id}, ${rel.label})"
+	private def _render__(bundle: ResourceBundle, rel: _Association): String = {
+		s"Rel__${_directionHintShort(rel.dir)}(${rel.src.id}, ${rel.dst.id}, ${_res(bundle, rel.label, true)})"
 	}
 
 	val _directions = Set(DirectionHint.DOWN, DirectionHint.UP, DirectionHint.LEFT, DirectionHint.RIGHT)
@@ -314,7 +322,7 @@ object PlantUml {
 				case rel: Access => _renderAccess(bundle, showHints, rel)
 				case rel: Flow => _renderFlow(bundle, showHints, rel)
 				case rel: Association => _renderAssociation(bundle, showHints, rel)
-				case rel: _Association => _render__(rel)
+				case rel: _Association => _render__(bundle, rel)
 				case rel: _Layout => _render_lay(rel)
 				case _ => _renderGeneric(bundle, showHints, relationship)
 			}

@@ -1,6 +1,6 @@
 package ru.kvb74.semod
 
-import ru.kvb74.semod.meta.{Element, Layer, ElementProps}
+import ru.kvb74.semod.meta.{Element, ElementProps, Layer}
 
 import scala.collection.mutable
 
@@ -41,4 +41,27 @@ object DB {
 		e.relatedElements + e
 	}).toSet
 
+	def withRelationsOfType(clazz: Class[_], elements: Element*): Set[Element] = elements.flatMap(e => {
+		e.relatedElements
+			.filter(re =>
+				clazz.isAssignableFrom(re.getClass)
+			) + e
+	}).toSet
+
+	def withRelationsOfTypeRecursive(clazz: Class[_], elements: Element*): Set[Element] = elements.flatMap(e => {
+		val childs = e.relatedElements
+			.filter(re =>
+				!elements.contains(re) && clazz.isAssignableFrom(re.getClass)
+			)
+		if (childs.nonEmpty) {
+			val childsRecursive = withRelationsOfTypeRecursive(clazz, (childs ++ elements).toSeq: _*)
+			if (childsRecursive.size > childs.size) {
+				childsRecursive + e
+			} else {
+				childs + e
+			}
+		} else {
+			childs + e
+		}
+	}).toSet
 }

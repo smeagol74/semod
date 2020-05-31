@@ -1,5 +1,6 @@
 package ru.kvb74.semod.omg.essence.essence
 
+import ru.kvb74.semod.meta.Link
 import ru.kvb74.semod.omg.essence.meta.element.{WorkProductElement, WorkProductElementProps, WorkProductElementRelationships}
 import ru.kvb74.semod.omg.essence.meta.layer.{AreaOfConcern, EssenceLayer}
 
@@ -25,3 +26,6 @@ case class WorkProduct(
 
 }
 
+case object WorkProduct {
+	def apply(areaOfConcern: AreaOfConcern.Value, link: Link): WorkProduct = WorkProduct(areaOfConcern, link.label).prop.link(link)
+}

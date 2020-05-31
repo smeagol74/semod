@@ -301,6 +301,12 @@ trait ElementRelationships[T <: Element] {
 
 }
 
+trait Link {
+	val url: String
+	val link: String
+	val label: String
+}
+
 trait ElementProps[T <: Element] {
 
 	private[semod] implicit val tt: T
@@ -324,6 +330,8 @@ trait ElementProps[T <: Element] {
 		tt._props.getOrElseUpdate(ElementProps.link, value)
 		tt
 	}
+
+	def link(value: Link): T = link(value.url)
 
 	/**
 		* Custom tooltip for SVG. Will be used only if `link` is specified.
