@@ -50,7 +50,9 @@ case object Ex_Tags_All extends App with FeaturesExample {
 		PlantUml.opt
 			.title("Example. Features: Tags All")
 			.get,
-		DB.byAllTags("visible", "sub")
+		DB.query.all
+			.allTags("visible", "sub")
+			.get
 	)
 
 }

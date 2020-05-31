@@ -11,40 +11,12 @@ trait Report {
 
 object Report {
 
-	private def _getAllDependencies(elements: Set[Element]): Set[Element] = {
-		val res = mutable.HashSet.empty[Element]
-		res ++= elements
-
-		elements.foreach(el => res ++= el.relatedElements)
-
-		if (res.size != elements.size)
-			_getAllDependencies(res.toSet)
-		else
-			res.toSet
-	}
-
 	case class ReportInstance(
 		elements: Set[Element],
 		relationships: Set[Relationship]
 	) extends Report
 
-	def withDependencies(elements: Set[Element]): Report = {
-		val deps = _getAllDependencies(elements)
-		val rels = mutable.Set.empty[Relationship]
-		deps.foreach(el => {
-			rels ++= el._relationships
-		})
-		ReportInstance(
-			deps,
-			rels.toSet
-		)
-	}
-
-	def withDependencies(elements: Element*): Report = {
-		withDependencies(elements.toSet)
-	}
-
-	def forElements(elements: Set[Element]): Report = {
+	def apply(elements: Set[Element]): Report = {
 		val rels = mutable.Set.empty[Relationship]
 		elements.foreach(el => {
 			rels ++= el._relationships.filter(rel => elements.contains(rel.dst))
@@ -55,8 +27,8 @@ object Report {
 		)
 	}
 
-	def forElements(elements: Element*): Report = {
-		forElements(elements.toSet)
+	def apply(elements: Element*): Report = {
+		apply(elements.toSet)
 	}
 
 }

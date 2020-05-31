@@ -8,17 +8,19 @@ import ru.kvb74.semod.system.system.{SystemOther, SystemOur}
 
 class DBTest extends FunSuite {
 
-  test("testByLayer") {
-    val s1 = SystemOur("Our")
-    val s2 = SystemOther("Other")
-    val b1 = BusinessActor("Actor")
-    val t1 = TechnologyEvent("Event")
+	test("testByLayer") {
+		val s1 = SystemOur("Our")
+		val s2 = SystemOther("Other")
+		val b1 = BusinessActor("Actor")
+		val t1 = TechnologyEvent("Event")
 
-    val test = DB.byLayer(SystemLayer)
-    assert(test.contains(s1))
-    assert(test.contains(s2))
-    assert(!test.contains(b1))
-    assert(!test.contains(t1))
-  }
+		val test = DB.query.all
+			.layer(SystemLayer)
+			.get
+		assert(test.contains(s1))
+		assert(test.contains(s2))
+		assert(!test.contains(b1))
+		assert(!test.contains(t1))
+	}
 
 }
