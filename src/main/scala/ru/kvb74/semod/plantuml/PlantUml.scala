@@ -104,13 +104,34 @@ object PlantUml {
 		sb.mkString
 	}
 
-	private def _renderElement(rendered: mutable.HashSet[String],
+	private def _renderGroupElement(rendered: mutable.HashSet[String],
+		bundle: ResourceBundle,
+		showHints: Boolean,
+		baseUrl: String,
+		element: Element
+	): String = {
+		val sb = mutable.StringBuilder.newBuilder
+		sb.append(s"""frame "${_normalize(element.name)}" as ${element.id} {""")
+			.append(EOL)
+		val elems = element._relationships.filter(r => r.isInstanceOf[Aggregation])
+		elems.foreach(rel => {
+			rendered += rel.id
+			sb.append(renderElement(rendered, bundle, showHints, baseUrl, rel.dst))
+			sb.append(EOL)
+		})
+
+		sb.append(EOL).append("}")
+		sb.toString
+	}
+
+	private def _renderSemodElement(rendered: mutable.HashSet[String],
 		bundle: ResourceBundle,
 		showHints: Boolean,
 		baseUrl: String,
 		element: Element,
-		layer: String): String = {
-		val sb = StringBuilder.newBuilder
+		layer: String
+	): String = {
+		val sb = mutable.StringBuilder.newBuilder
 		sb.append(_pumlElement(element, layer))
 		sb.append(s"""(${element.id}, "${_normalize(element.name)}""")
 		_appendHint(sb, bundle, showHints, element)
@@ -130,7 +151,21 @@ object PlantUml {
 			sb.append(_renderLinkTooltip(baseUrl, element.props.asString(ElementProps.link), element.props.asString(ElementProps.linkTooltip)))
 		}
 		sb.append(_renderNote(element.id, element.props.asString(ElementProps.note), element.props.asString(ElementProps.notePosition).getOrElse(NotePosition.right.toString)))
-		sb.mkString
+		sb.toString
+	}
+
+	private def _renderElement(rendered: mutable.HashSet[String],
+		bundle: ResourceBundle,
+		showHints: Boolean,
+		baseUrl: String,
+		element: Element,
+		layer: String): String = {
+		element match {
+			case e: GroupElement =>
+				_renderGroupElement(rendered, bundle, showHints, baseUrl, element)
+			case _ =>
+				_renderSemodElement(rendered, bundle, showHints, baseUrl, element, layer)
+		}
 	}
 
 	private def _layerName(element: Element): String = element match {
