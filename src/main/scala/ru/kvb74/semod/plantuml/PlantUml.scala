@@ -12,6 +12,7 @@ import ru.kvb74.semod.meta.relationship.other.{Association, Specialization, _Ass
 import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Realization}
 import ru.kvb74.semod.omg.essence.meta.element.EssenceElement
 import ru.kvb74.semod.omg.essence.meta.layer.AreaOfConcern
+import ru.kvb74.semod.ontology.meta.element.OntologyElement
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
 import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.layer._
@@ -88,6 +89,8 @@ object PlantUml {
 					sb.append(e.areaOfConcern.toString)
 					sb.append("_")
 				}
+				sb.append(element.elementName)
+			case _: OntologyElement =>
 				sb.append(element.elementName)
 			case _ =>
 				if (_nonBlank(layer)) {
