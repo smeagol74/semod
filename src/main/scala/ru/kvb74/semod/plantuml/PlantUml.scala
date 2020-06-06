@@ -13,6 +13,7 @@ import ru.kvb74.semod.meta.relationship.structural.{Aggregation, Composition, Re
 import ru.kvb74.semod.omg.essence.meta.element.EssenceElement
 import ru.kvb74.semod.omg.essence.meta.layer.AreaOfConcern
 import ru.kvb74.semod.ontology.meta.element.OntologyElement
+import ru.kvb74.semod.ontology.meta.layer.OntologyLayer
 import ru.kvb74.semod.opengroup.archimate.composite.{Grouping, Location}
 import ru.kvb74.semod.opengroup.archimate.meta.element.{ActiveStructureElement, BehaviorElement}
 import ru.kvb74.semod.opengroup.archimate.meta.layer._
@@ -187,7 +188,7 @@ object PlantUml {
 			element match {
 				case _: Grouping => _renderElement(rendered, bundle, showHints, baseUrl, element, "")
 				case _: Location => _renderElement(rendered, bundle, showHints, baseUrl, element, "Other")
-				case _ => _renderElement(rendered, bundle, showHints, baseUrl, element, _layerName(element))
+				case _ => _renderElement(rendered, bundle, showHints && !element.isInstanceOf[OntologyElement], baseUrl, element, _layerName(element))
 			}
 		}
 	}
