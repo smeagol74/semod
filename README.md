@@ -19,8 +19,11 @@ The easiest way to try the DSL is to use the [smeagol74/semod.g8][g8] Gitter8 te
 $ sbt new smeagol74/semod.g8
 ```
 
+[More documentation][pages]
+
 [archimate]: http://pubs.opengroup.org/architecture/archimate3-doc/toc.html
 [sbt]: https://www.scala-sbt.org/
 [jdk]: https://jdk.java.net/12/
 [g8]: https://github.com/smeagol74/semod.g8
 [puml]: http://plantuml.com/
+[pages]: https://smeagol74.github.io/semod/
