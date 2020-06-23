@@ -15,7 +15,7 @@ To be able to work with this DSL you will need to have installed on your compute
 
 ## Usage
 The easiest way to try the DSL is to use the [smeagol74/semod.g8][g8] Gitter8 template to generate the project boilerplate with command
-```bash
+```shell script
 $ sbt new smeagol74/semod.g8
 ```
 
