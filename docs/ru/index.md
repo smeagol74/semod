@@ -3,7 +3,7 @@
 1. Установить [Java Development Kit 12][jdk] и [SBT][sbt]
 2. Если вы собираетесь использовать модели практик OMG Essence, то установить картинки [semod-plantuml][semod-plantuml]
 3. Создать проект модели из шаблона [smeagol74/semod.g8][g8]
-```shell script
+```bash
 $ sbt new smeagol74/semod.g8
 ```
 

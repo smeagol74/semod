@@ -4,7 +4,7 @@
 
 Начни создавать свою модель:
 
-```shell script
+```bash
 $ sbt new smeagol74/semod.g8
 ```
 
@@ -15,7 +15,7 @@ programs and validate/render your model just running these programs/models.
 
 Start your own model:
 
-```shell script
+```bash
 $ sbt new smeagol74/semod.g8
 ```
 
