@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="300px" preserveAspectRatio="none" style="width:301px;height:300px;" version="1.1" viewBox="0 0 301 300" width="301px" zoomAndPan="magnify"><defs><filter height="300%" id="fo82d2jwsqqsr" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="65" x="122" y="17.4023">Онтика</text><!--MD5=[51f6663ddc804dacd4de053f6f498d1f]
+entity OC_2--><rect fill="#FFFFFF" filter="url(#fo82d2jwsqqsr)" height="36.4883" rx="3" ry="3" style="stroke: #000000; stroke-width: 1.5;" width="96" x="45.5" y="29.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="55.5" y="52.7344">Мышление</text><!--MD5=[40fcec7be80d0d495d27a04ec2cecff7]
+entity OC_3--><rect fill="#FFFFFF" filter="url(#fo82d2jwsqqsr)" height="36.4883" rx="3" ry="3" style="stroke: #000000; stroke-width: 1.5;" width="139" x="102" y="253.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="119" x="112" y="276.7344">Сложный проект</text><!--MD5=[4fe67547bd86d5486a0c9a0ca163cb5f]
+entity OC_4--><rect fill="#FFFFFF" filter="url(#fo82d2jwsqqsr)" height="36.4883" rx="3" ry="3" style="stroke: #000000; stroke-width: 1.5;" width="68" x="216.5" y="141.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="48" x="226.5" y="164.7344">Работа</text><!--MD5=[51e4d05a27797f977e4b3ebad9a72346]
+entity Ontology_Concept_1--><rect fill="#FFFFFF" filter="url(#fo82d2jwsqqsr)" height="36.4883" rx="3" ry="3" style="stroke: #000000; stroke-width: 1.5;" width="175" x="6" y="141.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="155" x="16" y="164.7344">Системное мышление</text><!--MD5=[8c0cc87b7c20d726dbe58ff3391b8386]
+link OC_4 to OC_3--><path d="M238.3044,177.223 C229.5457,190.0972 217.4092,207.7935 206.5,223.1992 C200.5659,231.5792 193.9536,240.7012 188.0881,248.7206 " fill="none" id="OC_4-&gt;OC_3" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="184.9155,253.0507,193.4615,248.1551,187.8707,249.0175,187.0083,243.4268,184.9155,253.0507" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="71" x="218.5" y="219.8008">продвигает</text><!--MD5=[bf0aa49d95b259a4ebe96af5b8b84859]
+reverse link OC_2 to Ontology_Concept_1--><path d="M93.5,85.7861 C93.5,104.5224 93.5,126.1467 93.5,141.0488 " fill="none" id="OC_2&lt;-Ontology_Concept_1" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="none" points="86.5001,85.6938,93.5,65.6937,100.5001,85.6937,86.5001,85.6938" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="52" x="94.5" y="107.8008">уточняет</text><!--MD5=[575635d62c663f48199b86fb0aeedfe2]
+link Ontology_Concept_1 to OC_3--><path d="M106.3801,177.6937 C119.9533,197.1835 141.3385,227.8904 155.8684,248.7538 " fill="none" id="Ontology_Concept_1-&gt;OC_3" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="158.8596,253.0488,156.9984,243.3774,156.002,248.9458,150.4336,247.9495,158.8596,253.0488" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="59" x="138.5" y="219.8008">упрощает</text><!--MD5=[880d3d527925ee63cfb5b60f3f1c4074]
+@startuml Overview
+!include https://raw.githubusercontent.com/smeagol74/semod-plantuml/master/dist/semod.puml
+
+title Онтика
+
+Concept(OC_2, "Мышление")
+Concept(OC_3, "Сложный проект")
+Concept(OC_4, "Работа")
+Concept(Ontology_Concept_1, "Системное мышление")
+Rel__(OC_4, OC_3, продвигает)
+Rel_Specialization_Up(Ontology_Concept_1, OC_2, "уточняет")
+Rel__(Ontology_Concept_1, OC_3, упрощает)
+@enduml
+
+@startuml Overview
+
+skinparam defaultTextAlignment center
+skinparam wrapWidth 400
+skinparam maxMessageSize 150
+skinparam StereotypeAlignment right
+
+skinparam Arrow {
+    Color #000000
+    FontColor #000000
+    FontSize 12
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam Folder<<grouping>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam Folder<<group>> {
+    Shadowing true
+    StereotypeFontSize 0
+    FontColor #444444
+    BackgroundColor lightgrey
+}
+
+hide <<grouping>> stereotype
+hide <<group>> stereotype
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+skinparam node {
+  StereotypeAlignment right
+}
+skinparam cloud {
+  StereotypeAlignment right
+}
+skinparam frame<<business-product>> {
+  StereotypeAlignment right
+}
+hide <<business-product>> stereotype
+skinparam rectangle {
+  StereotypeAlignment right
+  RoundCorner<<location>> 0
+  RoundCorner<<strategy-resource>> 0
+  RoundCorner<<business-actor>> 0
+  RoundCorner<<business-role>> 0
+  RoundCorner<<business-collaboration>> 0
+  RoundCorner<<business-interface>> 0
+  RoundCorner<<business-object>> 0
+  RoundCorner<<business-contract>> 0
+  RoundCorner<<business-representation>> 0
+  RoundCorner<<application-component>> 0
+  RoundCorner<<application-collaboration>> 0
+  RoundCorner<<application-interface>> 0
+  RoundCorner<<application-data-object>> 0
+  RoundCorner<<technology-node>> 0
+  RoundCorner<<technology-system-software>> 0
+  RoundCorner<<technology-collaboration>> 0
+  RoundCorner<<technology-interface>> 0
+  RoundCorner<<technology-communication-path>> 0
+  RoundCorner<<technology-network>> 0
+  RoundCorner<<technology-artifact>> 0
+  RoundCorner<<physical-equipment>> 0
+  RoundCorner<<physical-facility>> 0
+  RoundCorner<<physical-distribution-network>> 0
+  RoundCorner<<physical-material>> 0
+  RoundCorner<<implementation-deliverable>> 0
+  RoundCorner<<implementation-gap>> 0
+  RoundCorner<<strategy-capability>> 25
+  RoundCorner<<strategy-course-of-action>> 25
+  RoundCorner<<business-process>> 25
+  RoundCorner<<business-function>> 25
+  RoundCorner<<business-interaction>> 25
+  RoundCorner<<business-event>> 25
+  RoundCorner<<business-service>> 25
+  RoundCorner<<application-function>> 25
+  RoundCorner<<application-interaction>> 25
+  RoundCorner<<application-process>> 25
+  RoundCorner<<application-event>> 25
+  RoundCorner<<application-service>> 25
+  RoundCorner<<technology-function>> 25
+  RoundCorner<<technology-process>> 25
+  RoundCorner<<technology-interaction>> 25
+  RoundCorner<<technology-event>> 25
+  RoundCorner<<technology-infra-service>> 25
+  RoundCorner<<implementation-workpackage>> 25
+  RoundCorner<<implementation-event>> 25
+  DiagonalCorner<<motivation-stakeholder>> 12
+  DiagonalCorner<<motivation-driver>> 12
+  DiagonalCorner<<motivation-assessment>> 12
+  DiagonalCorner<<motivation-goal>> 12
+  DiagonalCorner<<motivation-outcome>> 12
+  DiagonalCorner<<motivation-principle>> 12
+  DiagonalCorner<<motivation-requirement>> 12
+  DiagonalCorner<<motivation-constraint>> 12
+}
+skinparam usecase {
+  BorderColor #000000
+}
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle {
+    Shadowing true
+    RoundCorner 6
+    BorderColor<<system-other>> darkgray
+    BackgroundColor<<system-other>> lightgray
+    BorderColor<<system-supra-of-interest>> #504661
+    BackgroundColor<<system-supra-of-interest>> #B19CD9
+    DiagonalCorner<<system-supra-of-interest>> 12
+    BorderColor<<system-of-interest>> #4c6263
+    BackgroundColor<<system-of-interest>> #A9DCDF
+    DiagonalCorner<<system-of-interest>> 12
+    BorderColor<<system-our>> #4c6263
+    BackgroundColor<<system-our>> #A9DCDF
+    BorderColor<<system-placeholder>> black
+    BackgroundColor<<system-placeholder>> #eeeeee
+    BorderStyle<<system-placeholder>> dotted
+    BackgroundColor<<system-enabling>> #FFFF00
+    BorderColor<<system-enabling>> black
+}
+skinparam actor<<system-role>> {
+    BorderColor #777777
+    BackgroundColor lightgray
+}
+
+hide <<system-other>> stereotype
+hide <<system-of-interest>> stereotype
+hide <<system-supra-of-interest>> stereotype
+hide <<system-our>> stereotype
+hide <<system-role>> stereotype
+hide <<system-placeholder>> stereotype
+hide <<system-enabling>> stereotype
+
+
+
+
+skinparam rectangle {
+    Shadowing true
+    RoundCorner 6
+    BorderColor<<ontology-concept>> black
+    BackgroundColor<<ontology-concept>> white
+}
+
+hide <<ontology-concept>> stereotype
+
+
+
+
+
+skinparam frame {
+  BackgroundColor<<essence_customer_area>> #c9ffc9
+  BorderColor<<essence_customer_area>> #40a94c
+  BackgroundColor<<essence_solution_area>> #ffff99
+  BorderColor<<essence_solution_area>> #ea7502
+  BackgroundColor<<essence_endeavor_area>> #c6d9f1
+  BorderColor<<essence_endeavor_area>> #4b6ec6
+  BorderThickness<<essence_area>> 2
+  RoundCorner<<essence_area>> 25
+}
+
+skinparam rectangle {
+  BackgroundColor<<essence_generic>> #f2f2f2
+  BorderColor<<essence_generic>> #6e6e6e
+  DefaultTextAlignment<<essence_generic>> center
+  RoundCorner<<essence_generic>> 12
+  BorderThickness<<essence_generic>> 2
+  BorderStyle<<essence_optional_level_of_details>> dashed
+  BorderStyle<<essence_activity_space>> dashed
+  BackgroundColor<<essence_customer>> #e5ffe5
+  BorderColor<<essence_customer>> #40a94c
+  DefaultTextAlignment<<essence_customer>> center
+  RoundCorner<<essence_customer>> 12
+  BorderThickness<<essence_customer>> 2
+  BackgroundColor<<essence_solution>> #ffffcc
+  BorderColor<<essence_solution>> #ea7502
+  DefaultTextAlignment<<essence_solution>> center
+  RoundCorner<<essence_solution>> 12
+  BorderThickness<<essence_solution>> 2
+  BackgroundColor<<essence_endeavor>> #dce6f2
+  BorderColor<<essence_endeavor>> #4b6ec6
+  DefaultTextAlignment<<essence_endeavor>> center
+  RoundCorner<<essence_endeavor>> 12
+  BorderThickness<<essence_endeavor>> 2
+}
+
+skinparam file {
+  BackgroundColor<<essence_generic>> #f2f2f2
+  BorderColor<<essence_generic>> #6e6e6e
+  BorderThickness<<essence_generic>> 2
+  DefaultTextAlignment<<essence_generic>> center
+}
+
+skinparam storage {
+  BackgroundColor<<essence_generic>> #f2f2f2
+  BorderColor<<essence_generic>> #6e6e6e
+  BorderThickness<<essence_generic>> 2
+  DefaultTextAlignment<<essence_generic>> center
+}
+
+sprite $alpha /usr/local/share/semod/sprites/essence/alpha.png
+sprite $kernel /usr/local/share/semod/sprites/essence/kernel_20.png
+sprite $pattern /usr/local/share/semod/sprites/essence/pattern.png
+sprite $state /usr/local/share/semod/sprites/essence/state.png
+sprite $level_of_detail /usr/local/share/semod/sprites/essence/level_of_detail_20.png
+sprite $practice /usr/local/share/semod/sprites/essence/practice.png
+sprite $activity /usr/local/share/semod/sprites/essence/activity.png
+sprite $activity_space /usr/local/share/semod/sprites/essence/activity_space.png
+sprite $competency /usr/local/share/semod/sprites/essence/competency.png
+sprite $resource /usr/local/share/semod/sprites/essence/resource.png
+sprite $work_product /usr/local/share/semod/sprites/essence/work_product.png
+
+sprite $alpha_customer /usr/local/share/semod/sprites/essence/alpha_customer.png
+sprite $activity_customer /usr/local/share/semod/sprites/essence/activity_customer.png
+sprite $activity_space_customer /usr/local/share/semod/sprites/essence/activity_space_customer.png
+sprite $competency_customer /usr/local/share/semod/sprites/essence/competency_customer.png
+sprite $practice_customer /usr/local/share/semod/sprites/essence/practice_customer.png
+sprite $pattern_customer /usr/local/share/semod/sprites/essence/pattern_customer.png
+sprite $resource_customer /usr/local/share/semod/sprites/essence/resource_customer.png
+sprite $work_product_customer /usr/local/share/semod/sprites/essence/work_product_customer.png
+sprite $state_customer /usr/local/share/semod/sprites/essence/state_customer.png
+
+sprite $alpha_solution /usr/local/share/semod/sprites/essence/alpha_solution.png
+sprite $activity_solution /usr/local/share/semod/sprites/essence/activity_solution.png
+sprite $activity_space_solution /usr/local/share/semod/sprites/essence/activity_space_solution.png
+sprite $competency_solution /usr/local/share/semod/sprites/essence/competency_solution.png
+sprite $practice_solution /usr/local/share/semod/sprites/essence/practice_solution.png
+sprite $pattern_solution /usr/local/share/semod/sprites/essence/pattern_solution.png
+sprite $resource_solution /usr/local/share/semod/sprites/essence/resource_solution.png
+sprite $work_product_solution /usr/local/share/semod/sprites/essence/work_product_solution.png
+sprite $state_solution /usr/local/share/semod/sprites/essence/state_solution.png
+
+sprite $alpha_endeavor /usr/local/share/semod/sprites/essence/alpha_endeavor.png
+sprite $activity_endeavor /usr/local/share/semod/sprites/essence/activity_endeavor.png
+sprite $activity_space_endeavor /usr/local/share/semod/sprites/essence/activity_space_endeavor.png
+sprite $competency_endeavor /usr/local/share/semod/sprites/essence/competency_endeavor.png
+sprite $practice_endeavor /usr/local/share/semod/sprites/essence/practice_endeavor.png
+sprite $pattern_endeavor /usr/local/share/semod/sprites/essence/pattern_endeavor.png
+sprite $resource_endeavor /usr/local/share/semod/sprites/essence/resource_endeavor.png
+sprite $work_product_endeavor /usr/local/share/semod/sprites/essence/work_product_endeavor.png
+sprite $state_endeavor /usr/local/share/semod/sprites/essence/state_endeavor.png
+
+hide <<essence_generic>><<essence_work_product>> stereotype
+hide <<essence_generic>> <<essence_work_product>> stereotype
+hide <<essence_area>><<essence_customer_area>> stereotype
+hide <<essence_area>> <<essence_customer_area>> stereotype
+hide <<essence_area>><<essence_solution_area>> stereotype
+hide <<essence_area>> <<essence_solution_area>> stereotype
+hide <<essence_area>><<essence_endeavor_area>> stereotypes
+hide <<essence_area>> <<essence_endeavor_area>> stereotypes
+hide <<essence_generic>><<essence_pattern_association>> stereotype
+hide <<essence_generic>> <<essence_pattern_association>> stereotype
+
+
+
+
+
+
+
+
+
+title Онтика
+
+rectangle "Мышление" <<ontology-concept>> as OC_2
+rectangle "Сложный проект" <<ontology-concept>> as OC_3
+rectangle "Работа" <<ontology-concept>> as OC_4
+rectangle "Системное мышление" <<ontology-concept>> as Ontology_Concept_1
+OC_4 - -> OC_3 : "продвигает"
+Ontology_Concept_1 -UP-|> OC_2 : "уточняет"
+Ontology_Concept_1 - -> OC_3 : "упрощает"
+@enduml
+
+PlantUML version 1.2020.10(Sun May 17 16:35:57 NOVT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 12.0.2+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: RU
+--></g></svg>

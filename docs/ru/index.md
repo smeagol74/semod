@@ -13,23 +13,25 @@ $ sbt new smeagol74/semod.g8
 
 #### Произвольные онтики (сущности и их связи)
 
-![Пример онтики](../../src/test/puml/ontology/Ex_Ontology.svg)
+![Пример онтики](img/ontology/Overview.svg)
 
 [Подробнее...](ontology)
 
 #### Системных разбиения (системы, их роли и структура)
 
-![Пример системного разбиения](../../src/test/puml/system/Ex_Systems.svg)
+![Пример системного разбиения](img/system/Overview.svg)
 
 [Подробнее...](system)
 
 #### Практик OMG Essence (альфы, состояния, рабочие документы, практики)
 
+![Пример практики OMG Essence](img/essence/Overview.svg)
+
 [Подробнее...](essence)
 
 #### Архитектура OpenGroup Archimate (слои, деятельности, связи)
 
-![Пример Archimate](../../src/test/puml/archimate/Ex_18_StakeholderDriverAndAssessment.svg)
+![Пример Archimate](img/archimate/Overview.svg)
 
 [Подробнее...](archimate)
 
